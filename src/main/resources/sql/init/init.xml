@@ -168,5 +168,49 @@
     </changeSet>
 
 
+    <changeSet id="tb_dictionary_type" author="milo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="tb_dictionary_type" />
+            </not>
+        </preConditions>
+        <sql>
+            CREATE TABLE `tb_dictionary_type`  (
+            `id` varchar(32) NOT NULL COMMENT '主键',
+            `uuid` int(11) NULL,
+            `type_name` varchar(32) NULL COMMENT '字典种类名称',
+            `delete_flag` tinyint(1) NULL COMMENT '状态，1代表删除，0代表未删除',
+            `reversion` int(11) NULL COMMENT '版本',
+            `created_by` int(11) NULL COMMENT '创建人',
+            `created_time` datetime(0) NULL COMMENT '创建时间',
+            `updated_by` int(11) NULL COMMENT '修改人',
+            `updated_time` datetime(0) NULL COMMENT '修改时间',
+            PRIMARY KEY (`id`)
+            ) COMMENT = '字典类型表';
+        </sql>
+    </changeSet>
 
+    <changeSet id="tb_dictionary" author="milo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="tb_dictionary" />
+            </not>
+        </preConditions>
+        <sql>
+            CREATE TABLE `tb_dictionary`  (
+            `id` varchar(32) NOT NULL COMMENT '主键',
+            `uuid` int(11) NULL,
+            `item_name` varchar(32) NULL COMMENT '字典项名称',
+            `dictionary_type_id` int(11) NULL COMMENT '字典类型ID',
+            `order_no` int(11) NULL COMMENT '序号',
+            `delete_flag` tinyint(1) NULL COMMENT '状态，1代表删除，0代表未删除',
+            `reversion` int(11) NULL COMMENT '版本',
+            `created_by` int(11) NULL COMMENT '创建人',
+            `created_time` datetime(0) NULL COMMENT '创建时间',
+            `updated_by` int(11) NULL COMMENT '修改人',
+            `updated_time` datetime(0) NULL COMMENT '修改时间',
+            PRIMARY KEY (`id`)
+            ) COMMENT = '字典表';
+        </sql>
+    </changeSet>
 </databaseChangeLog>
