@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <preConditions>
+        <dbms type="mysql"/>
+        <runningAs username="root"/>
+    </preConditions>
+
+    <changeSet id="tb_user" author="milo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="tb_user" />
+            </not>
+        </preConditions>
+        <sql>
+            CREATE TABLE `tb_user`  (
+            `id` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '数据库主键',
+            `user_id` int(10) NOT NULL COMMENT '业务主键',
+            `user_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '用户名称',
+            `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '密码',
+            `delete_flag` tinyint(1) NULL DEFAULT 0 COMMENT '是否删除，0代表未删除,1代表已删除',
+            `reversion` tinyint(3) NULL DEFAULT NULL COMMENT '乐观锁',
+            `created_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '创建人',
+            `created_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+            `updated_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '修改人',
+            `updated_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
+            PRIMARY KEY (`id`) USING BTREE
+            ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin COMMENT = '用户信息表 ' ROW_FORMAT = Dynamic;
+        </sql>
+    </changeSet>
+
+    <changeSet id="tb_user_token" author="milo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="tb_user_token" />
+            </not>
+        </preConditions>
+        <sql>
+            CREATE TABLE `tb_user_token`  (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `user_id` int(10) NULL COMMENT '用户ID',
+            `user_token` varchar(255) NULL COMMENT '用户token',
+            `reversion` int(11) NULL COMMENT '版本',
+            `delete_flag` tinyint(0) NULL COMMENT '删除标志',
+            `created_time` datetime(0) NULL COMMENT '创建时间',
+            `updated_time` datetime(0) NULL COMMENT '修改时间',
+            `created_by` int(10) NULL COMMENT '创建人',
+            `updated_by` int(10) NULL COMMENT '修改人',
+            PRIMARY KEY (`id`)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="tb_menu" author="milo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="tb_menu" />
+            </not>
+        </preConditions>
+        <sql>
+            CREATE TABLE tb_menu  (
+            `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT '数据库主键',
+            `menu_id` int(11) NULL DEFAULT NULL COMMENT '菜单ID',
+            `menu_name` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '菜单名称',
+            `parent_menu_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '父菜单ID',
+            `menu_level` int(11) NULL DEFAULT NULL COMMENT '菜单级别',
+            `is_delete` int(11) NULL DEFAULT NULL COMMENT '删除标志，0代表未删除，1代表已删除',
+            `reversion` int(11) NULL DEFAULT NULL COMMENT '乐观锁',
+            `created_by` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '创建人',
+            `created_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+            `updated_by` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '更新人',
+            `updated_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+            PRIMARY KEY (`id`) USING BTREE
+            ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin COMMENT = '菜单表 ' ROW_FORMAT = Dynamic;
+        </sql>
+    </changeSet>
+
+    <changeSet id="tb_role" author="milo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="tb_role" />
+            </not>
+        </preConditions>
+        <sql>
+            CREATE TABLE tb_role  (
+            `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '数据库主键',
+            `role_id` int(11) NULL DEFAULT NULL COMMENT '角色ID',
+            `role_name` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '角色名称',
+            `is_delete` int(11) NULL DEFAULT 0 COMMENT '删除标志(0代表未删除，1代表已删除)',
+            `reversion` int(11) NULL DEFAULT NULL COMMENT '乐观锁',
+            `created_by` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '创建人',
+            `created_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+            `updated_by` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '更新人',
+            `updated_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+            PRIMARY KEY (`id`) USING BTREE
+            ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin COMMENT = '角色表 ' ROW_FORMAT = Dynamic;
+        </sql>
+    </changeSet>
+
+    <changeSet id="tb_role_user" author="milo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="tb_role_user" />
+            </not>
+        </preConditions>
+        <sql>
+            CREATE TABLE tb_role_user  (
+            `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '数据库主键',
+            `role_id` int(11) NULL DEFAULT NULL COMMENT '角色ID',
+            `user_id` int(11) NULL DEFAULT NULL COMMENT '用户ID',
+            `reversion` int(11) NULL DEFAULT NULL COMMENT '乐观锁',
+            `created_by` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '创建人',
+            `created_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+            `updated_by` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '更新人',
+            `updated_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+            PRIMARY KEY (`id`) USING BTREE
+            ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin COMMENT = '用户角色关系表 ' ROW_FORMAT = Dynamic;
+        </sql>
+    </changeSet>
+
+    <changeSet id="tb_menu_role" author="milo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="tb_menu_role" />
+            </not>
+        </preConditions>
+        <sql>
+            CREATE TABLE tb_menu_role  (
+            `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '数据库主键',
+            `role_id` int(11) NULL DEFAULT NULL COMMENT '角色ID',
+            `menu_id` int(11) NULL DEFAULT NULL COMMENT '菜单ID',
+            `id_delete` int(11) NULL DEFAULT NULL COMMENT '删除标志，0代表未删除，1代表已删除',
+            `reversion` int(11) NULL DEFAULT NULL COMMENT '乐观锁',
+            `created_by` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '创建人',
+            `created_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+            `updated_by` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '更新人',
+            `updated_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+            PRIMARY KEY (`id`) USING BTREE
+            ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin COMMENT = '角色菜单关系表 ' ROW_FORMAT = Dynamic;
+        </sql>
+    </changeSet>
+
+    <changeSet id="tb_menu_alter_column" author="milo">
+        <sql>
+            ALTER TABLE `tb_menu`
+            CHANGE COLUMN `is_delete` `delete_flag` int(11) NULL DEFAULT NULL COMMENT '删除标志，0代表未删除，1代表已删除' AFTER `menu_level`;
+        </sql>
+    </changeSet>
+
+    <changeSet id="tb_role_alter_column" author="milo">
+        <sql>
+            ALTER TABLE `tb_role`
+            CHANGE COLUMN `is_delete` `delete_flag` tinyint(1) NULL DEFAULT 0 COMMENT '删除标志(0代表未删除，1代表已删除)' AFTER `role_name`;
+        </sql>
+    </changeSet>
+
+    <changeSet id="tb_menu_role_and_tb_role_user_drop_columns" author="milo">
+        <sql>
+            ALTER TABLE `tb_menu_role`
+            DROP COLUMN `id_delete`,
+            DROP COLUMN `reversion`;
+            ALTER TABLE `tb_role_use`
+            DROP COLUMN `reversion`;
+        </sql>
+    </changeSet>
+
+
+
+</databaseChangeLog>

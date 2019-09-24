@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD SQL Map Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- mybatis分页配置,数据库方言/Page结尾的表达式/拦截器 -->
+    <properties>
+        <property name="dialect" value="mysql"/>
+        <property name="pageSqlId" value=".*Page$"/>
+    </properties>
+    <plugins>
+        <plugin interceptor="com.jiaxin.pda.util.PageInterceptor"></plugin>
+    </plugins>
+
+</configuration>

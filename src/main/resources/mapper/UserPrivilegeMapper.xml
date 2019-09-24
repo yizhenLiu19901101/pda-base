@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiaxin.pda.mapper.UserPrivilegeMapper">
+
+    <!-- 插入用户角色记录-->
+    <insert id="insertUserRole" parameterType="com.jiaxin.pda.entity.vo.UserPrivilegeVo">
+        INSERT INTO tb_role_user (
+            id,
+            role_id,
+            user_id,
+            created_by,
+            created_time,
+            updated_by,
+            updated_time
+        )
+        VALUES
+        (
+            #{id},
+            #{roleId},
+            #{userId},
+            #{createdBy},
+            #{createdTime},
+            #{updatedBy},
+            #{updatedTime}
+        )
+    </insert>
+
+    <!-- 删除用户角色记录-->
+    <delete id="deleteUserRole" parameterType="com.jiaxin.pda.entity.vo.UserPrivilegeVo">
+        DELETE
+        FROM
+            tb_role_user
+        WHERE
+            user_id = #{userId}
+        AND role_id = #{roleId}
+    </delete>
+
+    <!-- 根据用户ID查询对应的角色 -->
+    <select id="selectByUserId" parameterType="java.lang.Integer" resultType="com.jiaxin.pda.entity.vo.UserPrivilegeVo">
+        SELECT
+        id,
+        role_id AS roleId,
+        user_id AS userId,
+        created_by AS createdBy,
+        created_time AS createdTime,
+        updated_by AS updatedBy,
+        updated_time AS updatedTime
+        FROM
+        tb_role_user
+        WHERE
+        user_id = #{userId}
+    </select>
+</mapper>
