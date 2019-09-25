@@ -50,4 +50,54 @@
         id = #{id}
         AND reversion = #{reversion}
     </update>
+
+    <!-- 删除字典类型 -->
+    <update id="deleteDictionaryType" parameterType="com.jiaxin.pda.entity.vo.DictionaryTypeVo">
+        UPDATE tb_dictionary_type
+        SET updated_by = #{updatedBy},
+        updated_time = #{updatedTime},
+        reversion = reversion + 1,
+        delete_flag = #{deleteFlag}
+        WHERE
+        id = #{id}
+        AND reversion = #{reversion}
+    </update>
+
+    <!-- 根据ID查找字典类型对象 -->
+    <select id="findById" parameterType="java.lang.String" resultType="com.jiaxin.pda.entity.vo.DictionaryTypeVo">
+        SELECT
+            tdt.id,
+            tdt.uuid,
+            tdt.reversion,
+            tdt.created_by AS createdBy,
+            tdt.created_time AS createdTime,
+            tdt.updated_by AS updatedBy,
+            tdt.updated_time AS updatedTime,
+            tdt.type_name AS typeName,
+            tdt.delete_flag as deleteFlag
+        FROM
+            tb_dictionary_type tdt
+        WHERE
+            tdt.id = #{id}
+    </select>
+
+    <!-- 根据条件分页查找字典类型对象 -->
+    <select id="queryDictionaryTypeByPage" parameterType="com.jiaxin.pda.entity.dto.DictionaryTypeDto" resultType="com.jiaxin.pda.entity.vo.DictionaryTypeVo">
+        SELECT
+            tdt.id,
+            tdt.uuid,
+            tdt.reversion,
+            tdt.created_by AS createdBy,
+            tdt.created_time AS createdTime,
+            tdt.updated_by AS updatedBy,
+            tdt.updated_time AS updatedTime,
+            tdt.type_name AS typeName,
+            tdt.delete_flag as deleteFlag
+        FROM
+            tb_dictionary_type tdt
+        WHERE tdt.delete_flag = 0
+        <if test="typeName != null and typeName != ''">
+            tdt.type_name like concat('%',#{typeName},'%')
+        </if>
+    </select>
 </mapper>

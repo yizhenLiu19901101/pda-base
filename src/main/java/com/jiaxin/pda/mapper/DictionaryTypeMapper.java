@@ -1,7 +1,10 @@
 package com.jiaxin.pda.mapper;
 
+import com.jiaxin.pda.entity.dto.DictionaryTypeDto;
 import com.jiaxin.pda.entity.vo.DictionaryTypeVo;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * 字典类型映射类
@@ -43,4 +46,11 @@ public interface DictionaryTypeMapper {
      * @return
      */
     DictionaryTypeVo findById(String id);
+
+    /**
+     * 分页查询字典类型
+     * @param dictionaryTypeDto
+     * @return
+     */
+    List<DictionaryTypeVo> queryDictionaryTypeByPage(DictionaryTypeDto dictionaryTypeDto);
 }

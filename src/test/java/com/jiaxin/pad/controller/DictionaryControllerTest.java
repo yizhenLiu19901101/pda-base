@@ -83,4 +83,75 @@ public class DictionaryControllerTest {
                 .characterEncoding("utf-8").content(dictionaryTypeCondition.toString().getBytes()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
+
+    @Test
+    public void thirdCase() throws Exception{
+        logger.info("删除字典类型信息");
+        //执行测试
+        mockMvc.perform(MockMvcRequestBuilders.delete("/dictionary/deleteDictionaryType/df6513c16d9e4069936ae223591a1227")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void fourCase() throws Exception{
+        logger.info("分页查找字典类型信息");
+        //设置查询条件
+        JSONObject dictionaryTypeCondition = new JSONObject();
+        dictionaryTypeCondition.put("current","1");
+        dictionaryTypeCondition.put("offset","10");
+        logger.info("分页查找字典信息条件: " + dictionaryTypeCondition.toJSONString());
+        //执行测试
+        mockMvc.perform(MockMvcRequestBuilders.post("/dictionary/queryDictionaryTypeByPage")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8").content(dictionaryTypeCondition.toString().getBytes()))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+    @Test
+    public void fiveCase() throws Exception{
+        logger.info("插入字典信息");
+        //设置查询条件
+        JSONObject dictionaryTypeCondition = new JSONObject();
+        dictionaryTypeCondition.put("itemName","小吃");
+        dictionaryTypeCondition.put("orderNo",2);
+        dictionaryTypeCondition.put("dictionaryTypeId",1);
+        logger.info("插入字典信息条件: " + dictionaryTypeCondition.toJSONString());
+        //执行测试
+        mockMvc.perform(MockMvcRequestBuilders.put("/dictionary/insertDictionary")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8").content(dictionaryTypeCondition.toString().getBytes()))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void sixCase() throws Exception{
+        logger.info("修改字典信息");
+        //设置查询条件
+        JSONObject dictionaryTypeCondition = new JSONObject();
+        dictionaryTypeCondition.put("itemName","饮料");
+        dictionaryTypeCondition.put("orderNo",1);
+        dictionaryTypeCondition.put("id","048d9d027d2e4ec9bb1c5e0493705260");
+        dictionaryTypeCondition.put("reversion",2);
+        logger.info("修改字典信息条件: " + dictionaryTypeCondition.toJSONString());
+        //执行测试
+        mockMvc.perform(MockMvcRequestBuilders.put("/dictionary/updateDictionary")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8").content(dictionaryTypeCondition.toString().getBytes()))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void sevenCase() throws Exception{
+        logger.info("删除字典信息");
+        //执行测试
+        mockMvc.perform(MockMvcRequestBuilders.delete("/dictionary/deleteDictionaryItem/048d9d027d2e4ec9bb1c5e0493705260")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
 }

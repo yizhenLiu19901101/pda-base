@@ -69,21 +69,21 @@
     <!-- 根据ID查询菜单对象 -->
     <select id="findMenuById" parameterType="java.lang.String" resultType="com.jiaxin.pda.entity.vo.MenuVo">
         SELECT
-        tm.id,
-        tm.menu_id AS menuId,
-        tm.menu_name AS menuName,
-        tm.menu_level AS menuLevel,
-        tm.parent_menu_id AS parentMenuId,
-        tm.delete_flag AS deleteFlag,
-        tm.reversion,
-        tm.created_by AS createdBy,
-        tm.created_time AS createdTime,
-        tm.updated_by AS updatedBy,
-        tm.updated_time AS updatedTime
+            tm.id,
+            tm.menu_id AS menuId,
+            tm.menu_name AS menuName,
+            tm.menu_level AS menuLevel,
+            tm.parent_menu_id AS parentMenuId,
+            tm.delete_flag AS deleteFlag,
+            tm.reversion,
+            tm.created_by AS createdBy,
+            tm.created_time AS createdTime,
+            tm.updated_by AS updatedBy,
+            tm.updated_time AS updatedTime
         FROM
-        tb_menu tm
+            tb_menu tm
         WHERE
-        tm.id = #{id}
+            tm.id = #{id}
     </select>
 
     <!-- 按照菜单名称分页查询菜单对象 -->

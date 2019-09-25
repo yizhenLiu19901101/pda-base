@@ -11,7 +11,7 @@
  Target Server Version : 50721
  File Encoding         : 65001
 
- Date: 24/09/2019 18:32:55
+ Date: 25/09/2019 18:05:53
 */
 
 SET NAMES utf8mb4;
@@ -95,6 +95,14 @@ CREATE TABLE `tb_dictionary` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='字典表';
 
 -- ----------------------------
+-- Records of tb_dictionary
+-- ----------------------------
+BEGIN;
+INSERT INTO `tb_dictionary` VALUES ('048d9d027d2e4ec9bb1c5e0493705260', 1, '饮料', 1, 1, 0, 4, -1, '2019-09-25 14:37:40', -1, '2019-09-25 17:26:51');
+INSERT INTO `tb_dictionary` VALUES ('048d9d027d2e4ec9bb1c5e0493705269', 2, '小吃', 1, 2, 0, 1, -1, '2019-09-25 14:57:44', -1, '2019-09-25 14:57:44');
+COMMIT;
+
+-- ----------------------------
 -- Table structure for tb_dictionary_type
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_dictionary_type`;
@@ -116,7 +124,7 @@ CREATE TABLE `tb_dictionary_type` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `tb_dictionary_type` VALUES ('7a0eb5cd8dc84654b1c922c32655bf4e', 2, '餐饮', 0, 1, -1, '2019-09-24 18:01:52', -1, '2019-09-24 18:01:52');
-INSERT INTO `tb_dictionary_type` VALUES ('df6513c16d9e4069936ae223591a1227', 1, '交通', 0, 3, -1, '2019-09-24 17:59:28', -1, '2019-09-24 18:17:29');
+INSERT INTO `tb_dictionary_type` VALUES ('df6513c16d9e4069936ae223591a1227', 1, '交通', 0, 3, -1, '2019-09-24 17:59:28', -1, '2019-09-25 11:21:09');
 COMMIT;
 
 -- ----------------------------
