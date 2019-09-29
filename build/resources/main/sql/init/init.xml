@@ -213,4 +213,30 @@
             ) COMMENT = '字典表';
         </sql>
     </changeSet>
+
+
+    <changeSet id="tb_finance_detail" author="milo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="tb_finance_detail" />
+            </not>
+        </preConditions>
+        <sql>
+            CREATE TABLE `tb_finance_detail`  (
+            `id` varchar(32) NOT NULL DEFAULT 0 COMMENT '数据库主键',
+            `uuid` int(11) NULL COMMENT '业务主键',
+            `item_id` int(11) NULL COMMENT '字典项ID',
+            `cost_money` double(7, 2) NULL COMMENT '花费金额',
+            `note` varchar(64) NULL COMMENT '备注',
+            `delete_flag` tinyint(1) NULL COMMENT '删除状态',
+            `reversion` int(11) NULL COMMENT '版本',
+            `created_by` int(11) NULL COMMENT '创建人',
+            `created_time` datetime(0) NULL COMMENT '创建时间',
+            `updated_by` int(11) NULL COMMENT '修改人',
+            `updated_time` datetime(0) NULL COMMENT '修改时间',
+            PRIMARY KEY (`id`)
+            ) COMMENT = '财务详情表';
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>

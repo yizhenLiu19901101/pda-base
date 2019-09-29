@@ -116,9 +116,9 @@ public class DictionaryControllerTest {
         logger.info("插入字典信息");
         //设置查询条件
         JSONObject dictionaryTypeCondition = new JSONObject();
-        dictionaryTypeCondition.put("itemName","小吃");
-        dictionaryTypeCondition.put("orderNo",2);
-        dictionaryTypeCondition.put("dictionaryTypeId",1);
+        dictionaryTypeCondition.put("itemName","出租车");
+        dictionaryTypeCondition.put("orderNo",1);
+        dictionaryTypeCondition.put("dictionaryTypeId",2);
         logger.info("插入字典信息条件: " + dictionaryTypeCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.put("/dictionary/insertDictionary")
@@ -176,7 +176,7 @@ public class DictionaryControllerTest {
     public void nineCase() throws Exception{
         logger.info("根据typeId查找字典信息");
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.get("/dictionary/queryDictionaryByTypeId/1")
+        mockMvc.perform(MockMvcRequestBuilders.get("/dictionary/queryDictionaryByTypeId/2")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());

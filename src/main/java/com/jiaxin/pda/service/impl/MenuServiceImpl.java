@@ -30,8 +30,7 @@ public class MenuServiceImpl implements MenuService {
         menuVo.setReversion(Constant.INIT_REVERSION);
         menuVo.setCreatedBy(Constant.SUPER_ADMIN);
         menuVo.setCreatedTime(Constant.NOW);
-        menuVo.setUpdatedBy(Constant.SUPER_ADMIN);
-        menuVo.setUpdatedTime(Constant.NOW);
+        this.initUpdateParam(menuVo);
         return menuMapper.insertMenu(menuVo);
     }
 
