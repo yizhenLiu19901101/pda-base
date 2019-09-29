@@ -1,5 +1,6 @@
 package com.jiaxin.pda.service;
 
+import com.jiaxin.pda.entity.dto.DictionaryDto;
 import com.jiaxin.pda.entity.dto.DictionaryTypeDto;
 import com.jiaxin.pda.entity.vo.DictionaryTypeVo;
 import com.jiaxin.pda.entity.vo.DictionaryVo;
@@ -41,6 +42,13 @@ public interface DictionaryTypeService {
     List<DictionaryTypeVo> queryDictionaryTypeByPage(DictionaryTypeDto dictionaryTypeDto);
 
     /**
+     * 分页查询字典
+     * @param dictionaryDto
+     * @return
+     */
+    List<DictionaryVo> queryDictionaryByPage(DictionaryDto dictionaryDto);
+
+    /**
      * 插入字典项
      * @param dictionaryVo 字典对象
      * @return 返回结果
@@ -61,4 +69,11 @@ public interface DictionaryTypeService {
      * @return
      */
     int deleteDictionaryItem(String id);
+
+    /**
+     * 根据类型ID查询字典
+     * @param typeUuid
+     * @return
+     */
+    List<DictionaryVo> queryDictionaryByTypeId(Integer typeUuid);
 }

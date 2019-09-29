@@ -1,6 +1,7 @@
 package com.jiaxin.pda.service.impl;
 
 import com.jiaxin.pda.constant.Constant;
+import com.jiaxin.pda.entity.dto.DictionaryDto;
 import com.jiaxin.pda.entity.dto.DictionaryTypeDto;
 import com.jiaxin.pda.entity.vo.DictionaryTypeVo;
 import com.jiaxin.pda.entity.vo.DictionaryVo;
@@ -56,6 +57,12 @@ public class DictionaryTypeServiceImpl implements DictionaryTypeService {
     }
 
     @Override
+    public List<DictionaryVo> queryDictionaryByPage(DictionaryDto dictionaryDto) {
+        return dictionaryMapper.queryDictionaryByPage(dictionaryDto);
+    }
+
+
+    @Override
     public int insertDictionaryItem(DictionaryVo dictionaryVo) {
         dictionaryVo.setId(GenerateUtil.generateRandomString());
         dictionaryVo.setUuid(dictionaryMapper.selectMaxUuid() + Constant.INCREASE_PACE);
@@ -84,6 +91,10 @@ public class DictionaryTypeServiceImpl implements DictionaryTypeService {
         return dictionaryMapper.deleteDictionaryItem(dictionaryVo);
     }
 
+    @Override
+    public List<DictionaryVo> queryDictionaryByTypeId(Integer typeUuid) {
+        return dictionaryMapper.queryDictionaryByTypeId(typeUuid);
+    }
 
     /**
      * 初始化更新参数

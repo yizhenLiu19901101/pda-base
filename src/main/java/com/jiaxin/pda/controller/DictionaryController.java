@@ -1,6 +1,7 @@
 package com.jiaxin.pda.controller;
 
 import com.jiaxin.pda.entity.ListPageVo;
+import com.jiaxin.pda.entity.dto.DictionaryDto;
 import com.jiaxin.pda.entity.dto.DictionaryTypeDto;
 import com.jiaxin.pda.entity.vo.DictionaryTypeVo;
 import com.jiaxin.pda.entity.vo.DictionaryVo;
@@ -8,6 +9,7 @@ import com.jiaxin.pda.entity.vo.GeneralVo;
 import com.jiaxin.pda.entity.vo.MenuVo;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.service.DictionaryTypeService;
+import com.jiaxin.pda.util.GenerateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -93,6 +95,25 @@ public class DictionaryController {
     public GeneralVo deleteDictionary(@PathVariable("id") String id){
         dictionaryTypeService.deleteDictionaryItem(id);
         return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+    }
+
+    /**
+     * 按照条件分页查找字典信息
+     * @return
+     */
+    @PostMapping("/dictionary/queryDictionaryByPage")
+    public ListPageVo queryDictionaryByPage(@RequestBody DictionaryDto dictionaryDto){
+        dictionaryDto.build();
+        return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,dictionaryTypeService.queryDictionaryByPage(dictionaryDto),dictionaryDto.getPageInfo());
+    }
+
+    /**
+     * 根据typeId查找字典信息
+     * @return
+     */
+    @GetMapping("/dictionary/queryDictionaryByTypeId/{typeId}")
+    public GeneralVo queryDictionaryByPage(@PathVariable("typeId") Integer typeId){
+        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,dictionaryTypeService.queryDictionaryByTypeId(typeId));
     }
 
 }

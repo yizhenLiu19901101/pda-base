@@ -109,6 +109,8 @@ public class DictionaryControllerTest {
                 .characterEncoding("utf-8").content(dictionaryTypeCondition.toString().getBytes()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
+
+
     @Test
     public void fiveCase() throws Exception{
         logger.info("插入字典信息");
@@ -149,6 +151,32 @@ public class DictionaryControllerTest {
         logger.info("删除字典信息");
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.delete("/dictionary/deleteDictionaryItem/048d9d027d2e4ec9bb1c5e0493705260")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void eightCase() throws Exception{
+        logger.info("分页查找字典信息");
+        //设置查询条件
+        JSONObject dictionaryTypeCondition = new JSONObject();
+        dictionaryTypeCondition.put("current","1");
+        dictionaryTypeCondition.put("offset","10");
+        logger.info("分页查找字典信息条件: " + dictionaryTypeCondition.toJSONString());
+        //执行测试
+        mockMvc.perform(MockMvcRequestBuilders.post("/dictionary/queryDictionaryByPage")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8").content(dictionaryTypeCondition.toString().getBytes()))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void nineCase() throws Exception{
+        logger.info("根据typeId查找字典信息");
+        //执行测试
+        mockMvc.perform(MockMvcRequestBuilders.get("/dictionary/queryDictionaryByTypeId/1")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());

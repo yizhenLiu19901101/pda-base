@@ -88,4 +88,48 @@
         WHERE
             td.id = #{id}
     </select>
+
+
+
+
+    <!-- 根据条件分页查找字对象 -->
+    <select id="queryDictionaryByPage" parameterType="com.jiaxin.pda.entity.dto.DictionaryDto" resultType="com.jiaxin.pda.entity.vo.DictionaryVo">
+        SELECT
+        td.id,
+        td.uuid,
+        td.reversion,
+        td.created_by AS createdBy,
+        td.created_time AS createdTime,
+        td.updated_by AS updatedBy,
+        td.updated_time AS updatedTime,
+        td.item_name AS itemName,
+        td.order_no as orderNo,
+        td.delete_flag as deleteFlag
+        FROM
+        tb_dictionary td
+        WHERE td.delete_flag = 0
+        <if test="itemName != null and itemName != ''">
+            td.item_name like concat('%',#{itemName},'%')
+        </if>
+    </select>
+
+    <!-- 根据类型ID分页查找字对象 -->
+    <select id="queryDictionaryByTypeId" parameterType="java.lang.Integer" resultType="com.jiaxin.pda.entity.vo.DictionaryVo">
+        SELECT
+        td.id,
+        td.uuid,
+        td.reversion,
+        td.created_by AS createdBy,
+        td.created_time AS createdTime,
+        td.updated_by AS updatedBy,
+        td.updated_time AS updatedTime,
+        td.item_name AS itemName,
+        td.order_no as orderNo,
+        td.delete_flag as deleteFlag
+        FROM
+        tb_dictionary td
+        WHERE td.delete_flag = 0
+        and td.dictionary_type_id = #{dictionaryTypeId}
+        order by td.order_no asc
+    </select>
 </mapper>

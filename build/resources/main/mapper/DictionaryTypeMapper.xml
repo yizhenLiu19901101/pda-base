@@ -100,4 +100,5 @@
             tdt.type_name like concat('%',#{typeName},'%')
         </if>
     </select>
+
 </mapper>
