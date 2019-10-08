@@ -21,11 +21,5 @@ public class GenerateUtil {
         return  UUID.randomUUID().toString().replace("-", Constant.EMPTY_STRING);
     }
 
-    /**
-     * 主程序
-     * @param args
-     */
-    public static void main(String[] args){
-        logger.info(GenerateUtil.generateRandomString());
-    }
+
 }

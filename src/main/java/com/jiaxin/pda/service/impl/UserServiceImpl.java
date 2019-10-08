@@ -101,7 +101,7 @@ public class UserServiceImpl implements UserService {
         result = userMapper.updateUserName(userVo);
         if(Constant.OPERATE_SUCCESS == result){
             this.rePutUserObject(userVo.getId());
-        }
+       }
         return result;
     }
 

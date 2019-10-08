@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiaxin.pda.mapper.RolePrivilegeMapper">
+    <!-- 插入角色-菜单记录 -->
+    <insert id="insertRoleMenu" parameterType="com.jiaxin.pda.entity.vo.RolePrivilegeVo">
+        INSERT INTO tb_menu_role (
+            id,
+            role_id,
+            menu_id,
+            created_by,
+            created_time,
+            updated_by,
+            updated_time
+        )
+        VALUES
+        (
+            #{id},
+            #{roleId},
+            #{menuId},
+            #{createdBy},
+            #{createdTime},
+            #{updatedBy},
+            #{updatedTime}
+        )
+    </insert>
+
+    <!-- 删除角色-菜单记录 -->
+    <delete id="deleteRoleMenu" parameterType="com.jiaxin.pda.entity.vo.RolePrivilegeVo">
+        DELETE
+        FROM
+            tb_menu_role
+        WHERE
+            menu_id = #{menuId}
+        AND role_id = #{roleId}
+    </delete>
+
+    <!-- 根据角色ID查询的菜单信息 -->
+    <select id="selectByRoleId" parameterType="java.lang.Integer" resultType="com.jiaxin.pda.entity.vo.RolePrivilegeVo">
+        SELECT
+            id,
+            role_id AS roleId,
+            menu_id AS menuId,
+            created_by AS createdBy,
+            created_time AS createdTime,
+            updated_by AS updatedBy,
+            updated_time AS updatedTime
+        FROM
+            tb_menu_role
+        WHERE
+            role_id = #{roleId}
+    </select>
+</mapper>

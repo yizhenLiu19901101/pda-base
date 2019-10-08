@@ -1,6 +1,17 @@
-plugins {
-    id 'java'
+buildscript {
+
+    repositories {
+        maven { url "https://repo.spring.io/libs-release" }
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE")
+    }
 }
+
+apply plugin: 'org.springframework.boot'
 
 group 'jiaxin'
 version '1.0'
@@ -14,6 +25,13 @@ ext {
 repositories {
     mavenCentral()
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': "com.jiaxin.pda.PdaApplication"
+    }
+}
+
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'

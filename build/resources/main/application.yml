@@ -1,22 +1,22 @@
 #端口号
 server:
-  port: 8090
+  port: 8080
 spring:
   application:
     name: pda
   #设置数据源
   datasource:
     druid:
-      url: jdbc:mysql://localhost:3306/pda?allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true&failOverReadOnly=false&characterEncoding=UTF-8&characterSetResults=UTF-8
+      url: jdbc:mysql://47.93.97.24:3306/pda?allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true&failOverReadOnly=false&characterEncoding=UTF-8&characterSetResults=UTF-8
       username: root
       password: 123456
       driver-class-name: com.mysql.jdbc.Driver
   #redis数据库配置
   redis:
     database: 0
-    host: 127.0.0.1
+    host: 47.93.97.24
     port: 6379
-    auth: 123456
+    password: 123456
 #sql版本控制
 liquibase:
   change-log: classpath:/sql/master.xml

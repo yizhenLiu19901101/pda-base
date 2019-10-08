@@ -1,4 +1,4 @@
 FROM java
-COPY target/jiaxin-1.0.jar app.jar
-RUN bash -c 'touch ./app.jar'
-CMD ["java","-jar","app.jar"]
+COPY build/libs/pda-1.0.jar pda.jar
+RUN bash -c 'touch ./pda.jar'
+CMD ["java","-jar","pda.jar"]
