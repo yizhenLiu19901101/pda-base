@@ -101,4 +101,20 @@ public class Md5Util  extends SimpleHash {
         hash.setBytes(Base64.decode(base64));
         return hash.toString();
     }
+
+    public static void main(String[] args){
+        //原始密码
+        String source="111111";
+        //盐
+        String salt="pda";
+        //散列次数
+        int hashIterations = 2;
+        //上边散列一次 f3694f162729b7d0254c6e40260bf15c
+        //上边散列2次 36f2dfa24d0a9fa97276abbe13e596fc
+        // 参数一：明文原始密码
+        //参数二： 盐，通过使用随机数
+        //参数三： 散列次数，比如散列两次相当如 md5(md5(''))
+        String password= Md5Util.md5(source,salt,hashIterations);
+        logger.info(password);
+    }
 }

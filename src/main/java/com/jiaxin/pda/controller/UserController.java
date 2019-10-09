@@ -177,6 +177,4 @@ public class UserController {
     public GeneralVo queryRoleByUserId(@PathVariable("userId") int  userId){
         return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS, userService.selectByUserId(userId));
     }
-
-
 }

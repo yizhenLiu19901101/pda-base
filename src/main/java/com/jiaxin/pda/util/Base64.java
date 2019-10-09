@@ -80,5 +80,14 @@ public class Base64 {
 		codes['/'] = 63;
 	}
 
+	public static void main(String[] args) throws Exception  {
+		//加密成base64
+		String strSrc = "加密成base64 ";
+		String strOut =Base64.encode(strSrc.getBytes());
+		System.out.println(strOut);
+
+		String strOut2 = new String(Base64.decode(strOut));
+		System.out.println(strOut2);
+	}
 
 }
