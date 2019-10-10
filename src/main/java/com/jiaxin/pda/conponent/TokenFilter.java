@@ -1,7 +1,10 @@
 package com.jiaxin.pda.conponent;
 
+import com.alibaba.fastjson.JSONObject;
+import com.jiaxin.pda.entity.vo.GeneralVo;
 import com.jiaxin.pda.entity.vo.UserTokenVo;
 import com.jiaxin.pda.entity.vo.UserVo;
+import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.service.UserService;
 import com.jiaxin.pda.util.JWT;
 import org.slf4j.Logger;
@@ -34,17 +37,22 @@ public class TokenFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse rep = (HttpServletResponse) response;
         //header方式
         String token = req.getHeader("token");
         boolean isFilter = false;
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("application/json");
         if (null == token || token.isEmpty()) {
           logger.info("token不存在");
+          GeneralVo generalVo = new GeneralVo(ErrorListEnum.INVALID_TOKEN,null);
+          response.getWriter().write(generalVo.toString());
         } else {
             //根据用户ID查询相应的token
             UserTokenVo userToken = userService.findUserToken(token);
             if (null == userToken || userToken.getUserToken().trim().length() == 0) {
                 logger.info("token失效");
+                GeneralVo generalVo = new GeneralVo(ErrorListEnum.NOT_LOGIN,null);
+                response.getWriter().write(generalVo.toString());
             } else {
                 String userId = JWT.unsign(userToken.getUserToken(), String.class);
                 UserVo userVo = userService.findUserById(userId);
@@ -52,6 +60,8 @@ public class TokenFilter implements Filter {
                     isFilter = true;
                 }else{
                     logger.info("用户不存在");
+                    GeneralVo generalVo = new GeneralVo(ErrorListEnum.INVALID_USER,null);
+                    response.getWriter().write(generalVo.toString());
                 }
             }
         }

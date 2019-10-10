@@ -23,6 +23,10 @@ public enum ErrorListEnum {
      */
     INVALID_TOKEN(205,"token不存在或者token失效"),
     /**
+     * 用户不存在或者token失效
+     */
+    INVALID_USER(206,"用户不存在"),
+    /**
      * 服务器内部错误
      */
     SERVER_INTERNAL_ERROR(202,"服务器内部错误");
