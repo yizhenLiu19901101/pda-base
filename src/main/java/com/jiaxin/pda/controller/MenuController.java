@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
  * @author milo
  */
 @RestController
-public class MenuController {
+public class MenuController extends BaseController{
 
     @Autowired
     private MenuService menuService;

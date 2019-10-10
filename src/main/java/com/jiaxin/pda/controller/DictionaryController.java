@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  * @author milo
  */
 @RestController
-public class DictionaryController {
+public class DictionaryController extends BaseController{
 
     @Autowired
     private DictionaryTypeService dictionaryTypeService;

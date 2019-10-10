@@ -50,13 +50,14 @@ public class TokenFilter implements Filter {
             //根据用户ID查询相应的token
             UserTokenVo userToken = userService.findUserToken(token);
             if (null == userToken || userToken.getUserToken().trim().length() == 0) {
-                logger.info("token失效");
+                logger.info("未登录");
                 GeneralVo generalVo = new GeneralVo(ErrorListEnum.NOT_LOGIN,null);
                 response.getWriter().write(generalVo.toString());
             } else {
                 String userId = JWT.unsign(userToken.getUserToken(), String.class);
                 UserVo userVo = userService.findUserById(userId);
                 if(null != userVo && (!userVo.isDeleteFlag())){
+                    request.setAttribute("userId",userVo.getUserId());
                     isFilter = true;
                 }else{
                     logger.info("用户不存在");

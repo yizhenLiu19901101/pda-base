@@ -68,6 +68,16 @@ public class Constant {
     public static final int OPERATE_FAIL = 0;
 
     /**
+     * 空整形值
+     */
+    public static final int EMPTY_INTEGER_VALUE = 0;
+
+    /**
+     * 用户ID
+     */
+    public static final String USER_ID = "userId";
+
+    /**
      * token有效时间
      */
     public static final long TOKEN_VALID_PERIOD = 60L* 1000L* 60L * 24L *7L;

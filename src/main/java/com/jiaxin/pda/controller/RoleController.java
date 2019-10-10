@@ -20,7 +20,7 @@ import javax.validation.Valid;
  * @author milo
  */
 @RestController
-public class RoleController {
+public class RoleController extends BaseController{
     private static final Logger logger = LoggerFactory.getLogger(RoleController.class);
 
     /**

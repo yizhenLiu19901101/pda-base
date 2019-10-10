@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
  * @author milo
  */
 @RestController
-public class FinanceDetailController {
+public class FinanceDetailController extends BaseController{
     @Autowired
     private FinanceDetailService financeDetailService;
 

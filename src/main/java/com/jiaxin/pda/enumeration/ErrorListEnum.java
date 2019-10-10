@@ -21,7 +21,7 @@ public enum ErrorListEnum {
     /**
      * token不存在或者token失效
      */
-    INVALID_TOKEN(205,"token不存在或者token失效"),
+    INVALID_TOKEN(205,"token不存在"),
     /**
      * 用户不存在或者token失效
      */

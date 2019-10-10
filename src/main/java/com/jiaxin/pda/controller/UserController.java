@@ -9,13 +9,16 @@ import com.jiaxin.pda.entity.vo.UserTokenVo;
 import com.jiaxin.pda.entity.vo.UserVo;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.service.UserService;
-import com.jiaxin.pda.util.JWT;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.validation.Valid;
 import java.security.NoSuchAlgorithmException;
 
@@ -24,7 +27,7 @@ import java.security.NoSuchAlgorithmException;
  * @author milo
  */
 @RestController
-public class UserController {
+public class UserController extends BaseController{
     @Autowired
     private UserService userService;
 
@@ -36,7 +39,7 @@ public class UserController {
      * @return
      */
     @GetMapping("/user/findById/{id}")
-    public GeneralVo findById(@PathVariable("id") String id){
+    public GeneralVo findById(ServletRequest request, ServletResponse response, @PathVariable("id") String id){
         return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,userService.findUserById(id));
     }
 
