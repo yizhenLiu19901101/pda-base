@@ -6,10 +6,8 @@ import com.jiaxin.pda.entity.dto.DictionaryTypeDto;
 import com.jiaxin.pda.entity.vo.DictionaryTypeVo;
 import com.jiaxin.pda.entity.vo.DictionaryVo;
 import com.jiaxin.pda.entity.vo.GeneralVo;
-import com.jiaxin.pda.entity.vo.MenuVo;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.service.DictionaryTypeService;
-import com.jiaxin.pda.util.GenerateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

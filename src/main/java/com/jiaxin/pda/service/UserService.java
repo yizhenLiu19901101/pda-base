@@ -92,4 +92,11 @@ public interface UserService {
      * @return 角色权限对象
      */
     UserPrivilegeVo selectByUserId(Integer userId);
+
+    /**
+     * 根据用户ID查找对应的token
+     * @param userId
+     * @return
+     */
+    UserTokenVo findUserToken(String userId);
 }

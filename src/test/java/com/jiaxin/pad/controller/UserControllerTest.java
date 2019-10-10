@@ -56,11 +56,8 @@ public class UserControllerTest {
     @Test
     public void firstCase() throws Exception{
         logger.info("根据ID查询用户信息");
-        HttpHeaders httpHeaders =new HttpHeaders();
-        httpHeaders.add("token","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Njg2OTExNDMwNzcsInBheWxvYWQiOiIxIn0.SVtRojo_PXhMskZGLS8TqcrKeZ2d6sQTIqWNKwOVjps");
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.get("/user/findById/27d98c37195e448193639c9c382235ef")
-                .headers(httpHeaders)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8"))

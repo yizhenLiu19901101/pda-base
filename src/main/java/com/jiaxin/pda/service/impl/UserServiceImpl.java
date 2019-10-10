@@ -121,12 +121,12 @@ public class UserServiceImpl implements UserService {
         //根据用户名和密码查找是否有目标用户存在，如果有，则成功登陆，否则，提示说用户不存在
         UserVo queryResult = userMapper.findUserInfoByUserName(userVo.getUserName());
         if(null != queryResult){
-            String token = JWT.sign(queryResult.getUserId(),Constant.TOKEN_VALID_PERIOD);
+            String token = JWT.sign(queryResult.getId(),Constant.TOKEN_VALID_PERIOD);
             String password = Md5Util.MD5Encode(userVo.getPassword());
             if(password.equals(queryResult.getPassword())){
                 UserTokenVo userTokenVo = new UserTokenVo();
                 userTokenVo.setId(userTokenMapper.selectMaxTokenId() + Constant.INCREASE_PACE);
-                userTokenVo.setUserId(queryResult.getUserId());
+                userTokenVo.setUserId(queryResult.getId());
                 userTokenVo.setUserToken(token);
                 userTokenVo.setDeleteFlag(false);
                 userTokenVo.setReversion(Constant.INIT_REVERSION);
@@ -198,6 +198,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserPrivilegeVo selectByUserId(Integer userId) {
         return userPrivilegeMapper.selectByUserId(userId);
+    }
+
+    @Override
+    public UserTokenVo findUserToken(String userId) {
+        if(redisTemplate.opsForHash().hasKey(userId,Constant.USER_TOKEN_KEY)){
+            return (UserTokenVo) redisTemplate.opsForHash().get(userId,Constant.USER_TOKEN_KEY);
+        }else{
+            return null;
+        }
     }
 
 

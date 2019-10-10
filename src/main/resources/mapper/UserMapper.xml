@@ -10,6 +10,7 @@
             tu.`password`,
             tu.reversion,
             tu.user_name AS userName,
+            tu.delete_flag as deleteFlag,
             tu.created_by AS createdBy,
             tu.created_time AS createdTime,
             tu.updated_by AS updatedBy,

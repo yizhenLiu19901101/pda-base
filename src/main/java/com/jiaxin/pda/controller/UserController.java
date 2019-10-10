@@ -36,12 +36,7 @@ public class UserController {
      * @return
      */
     @GetMapping("/user/findById/{id}")
-    public GeneralVo findById(@RequestHeader("token") String token,@PathVariable("id") String id){
-        String userId = JWT.unsign(token,String.class);
-        logger.info("userId = " + userId);
-        if(null == userId){
-            return new GeneralVo(ErrorListEnum.NOT_LOGIN,null);
-        }
+    public GeneralVo findById(@PathVariable("id") String id){
         return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,userService.findUserById(id));
     }
 

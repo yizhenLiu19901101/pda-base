@@ -1,14 +1,11 @@
 package com.jiaxin.pda.controller;
 
 import com.jiaxin.pda.entity.ListPageVo;
-import com.jiaxin.pda.entity.dto.DictionaryDto;
 import com.jiaxin.pda.entity.dto.FinanceDetailDto;
 import com.jiaxin.pda.entity.vo.FinanceDetailVo;
 import com.jiaxin.pda.entity.vo.GeneralVo;
-import com.jiaxin.pda.entity.vo.MenuVo;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.service.FinanceDetailService;
-import com.jiaxin.pda.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

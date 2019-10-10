@@ -20,7 +20,7 @@ public class UserTokenVo implements Serializable {
     /**
      * 用户ID
      */
-    private int userId;
+    private String userId;
 
     /**
      * 用户token
