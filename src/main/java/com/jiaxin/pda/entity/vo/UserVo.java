@@ -31,7 +31,6 @@ public class UserVo extends OperateVo implements Serializable {
     /**
      * 用户名
      */
-    @NotNull(message = "用户名不能为空")
     private String userName;
 
     /**

@@ -2,6 +2,7 @@ package com.jiaxin.pad.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jiaxin.pda.PdaApplication;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -57,19 +58,19 @@ public class UserControllerTest {
     public void firstCase() throws Exception{
         logger.info("根据ID查询用户信息");
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.get("/user/findById/27d98c37195e448193639c9c382235ef")
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/findById/28d98c37195e448193639c9c382235ef")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
-
     }
 
     @Test
     public void secondCase() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
-        userCondition.put("userName","vivian");
+        userCondition.put("userName","danny");
+        userCondition.put("password","999999");
         logger.info("插入用户信息条件: " + userCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.put("/user/insertUser")
@@ -77,17 +78,21 @@ public class UserControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
-
     }
 
     @Test
     public void thirdCase() throws Exception{
-        logger.info("根据ID删除信息");
+        //设置查询条件
+        JSONObject userCondition = new JSONObject();
+        userCondition.put("id","a8f67c704e9f4dc981698084dffe4ce8");
+        userCondition.put("userId",11);
+        userCondition.put("reversion",1);
+        logger.info("删除用户信息条件: " + userCondition.toJSONString());
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.delete("/user/deleteById/ed2109f4642a4a4490e6e2ddc224d3b0")
+        mockMvc.perform(MockMvcRequestBuilders.delete("/user/deleteUser")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8"))
+                .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
 
     }
@@ -98,7 +103,7 @@ public class UserControllerTest {
         JSONObject userCondition = new JSONObject();
         userCondition.put("id","27d98c37195e448193639c9c382235ef");
         userCondition.put("userName","lele");
-        userCondition.put("reversion",1);
+        userCondition.put("reversion",2);
         logger.info("修改用户姓名条件: " + userCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.put("/user/updateUserName")
@@ -106,7 +111,6 @@ public class UserControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
-
     }
 
     @Test
@@ -179,7 +183,7 @@ public class UserControllerTest {
         userCondition.put("roleId",1);
         logger.info("插入添加用户权限条件: " + userCondition.toJSONString());
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.put("/user/insertUserPrivilege")
+        mockMvc.perform(MockMvcRequestBuilders.put("/user/insertUserRole")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
@@ -194,7 +198,7 @@ public class UserControllerTest {
         userCondition.put("roleId",1);
         logger.info("删除用户权限条件: " + userCondition.toJSONString());
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.delete("/user/deleteUserPrivilege")
+        mockMvc.perform(MockMvcRequestBuilders.delete("/user/deleteUserRole")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
@@ -206,6 +210,68 @@ public class UserControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/user/queryRoleByUserId/8")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void twelveCase() throws Exception{
+        //设置查询条件
+        JSONObject userCondition = new JSONObject();
+        userCondition.put("userName","");
+        userCondition.put("password","999999");
+        logger.info("插入用户信息条件: " + userCondition.toJSONString());
+        //执行测试
+        mockMvc.perform(MockMvcRequestBuilders.put("/user/insertUser")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void thirteenCase() throws Exception{
+        //设置查询条件
+        JSONObject userCondition = new JSONObject();
+        userCondition.put("userName","tom");
+        userCondition.put("password","");
+        logger.info("插入用户信息条件: " + userCondition.toJSONString());
+        //执行测试
+        mockMvc.perform(MockMvcRequestBuilders.put("/user/insertUser")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void fortheenCase() throws Exception{
+        //设置查询条件
+        JSONObject userCondition = new JSONObject();
+        userCondition.put("id","27d98c37195e448193639c9c382235ef");
+        userCondition.put("userName","danny");
+        userCondition.put("reversion",3);
+        logger.info("修改用户姓名条件: " + userCondition.toJSONString());
+        //执行测试
+        mockMvc.perform(MockMvcRequestBuilders.put("/user/updateUserName")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void fifteenCase() throws Exception{
+        //设置查询条件
+        JSONObject userCondition = new JSONObject();
+        userCondition.put("id","27d98c37195e448193639c9c382235ef");
+        userCondition.put("userName","");
+        userCondition.put("reversion",3);
+        logger.info("修改用户姓名条件: " + userCondition.toJSONString());
+        //执行测试
+        mockMvc.perform(MockMvcRequestBuilders.put("/user/updateUserName")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 

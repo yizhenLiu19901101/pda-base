@@ -1,24 +1,18 @@
 package com.jiaxin.pda.controller;
 
 
+import com.jiaxin.pda.constant.Constant;
 import com.jiaxin.pda.entity.ListPageVo;
 import com.jiaxin.pda.entity.dto.UserDto;
-import com.jiaxin.pda.entity.vo.GeneralVo;
-import com.jiaxin.pda.entity.vo.UserPrivilegeVo;
-import com.jiaxin.pda.entity.vo.UserTokenVo;
-import com.jiaxin.pda.entity.vo.UserVo;
+import com.jiaxin.pda.entity.vo.*;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.security.NoSuchAlgorithmException;
 
@@ -31,16 +25,19 @@ public class UserController extends BaseController{
     @Autowired
     private UserService userService;
 
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-
     /**
      * 根据ID查找用户信息
      * @param id
      * @return
      */
     @GetMapping("/user/findById/{id}")
-    public GeneralVo findById(ServletRequest request, ServletResponse response, @PathVariable("id") String id){
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,userService.findUserById(id));
+    public GeneralVo findById(@PathVariable("id") String id){
+        UserVo userVo = userService.findUserById(id);
+        if(null == userVo){
+            return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
+        }else{
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,userVo);
+        }
     }
 
     /**
@@ -49,15 +46,32 @@ public class UserController extends BaseController{
      * @return
      */
     @PutMapping("/user/insertUser")
-    public GeneralVo insertUser(@RequestBody UserVo userVo){
+    public GeneralVo insertUser(HttpServletRequest request, HttpServletResponse response,@RequestBody UserVo userVo){
         try{
+            logger.info("插入用户-参数,{}",userVo);
+            //用户名不能为空/重复
+            if(null == userVo.getUserName() || userVo.getUserName().trim().length() == 0){
+                return new GeneralVo(ErrorListEnum.USERNAME_NOT_EMPTY,null);
+            }else{
+                //根据用户名查找用户信息
+                UserVo queryResult = userService.findUserByName(userVo.getUserName());
+                if(null != queryResult){
+                    return new GeneralVo(ErrorListEnum.USERNAME_REPEAT,null);
+                }
+            }
+            //密码不能为空
+            if(null == userVo.getPassword() || userVo.getPassword().trim().length() == 0){
+                return new GeneralVo(ErrorListEnum.PASSWORD_NOT_EMPTY,null);
+            }
+            //初始化创建人和修改人
+            initPeopleParam(request,response,userVo, Constant.CREATE_TYPE);
             //插入用户信息
             userService.insertUser(userVo);
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
         }catch(NoSuchAlgorithmException e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
         }
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
     }
 
     /**
@@ -66,14 +80,20 @@ public class UserController extends BaseController{
      * @return
      */
     @PutMapping("/user/updateUserName")
-    public GeneralVo updateUserName(@RequestBody @Valid UserVo userVo, BindingResult result){
+    public GeneralVo updateUserName(HttpServletRequest request, HttpServletResponse response,@RequestBody @Valid UserVo userVo, BindingResult result){
         logger.info("修改用户-参数,{}",userVo);
-        //入参校验
-        if (result.hasErrors()) {
-            FieldError fieldError = result.getFieldError();
-            logger.error("修改用户-参数:{}", fieldError.getDefaultMessage());
-            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        //用户名不能为空/重复
+        if(null == userVo.getUserName() || userVo.getUserName().trim().length() == 0){
+            return new GeneralVo(ErrorListEnum.USERNAME_NOT_EMPTY,null);
+        }else{
+            //根据用户名查找用户信息
+            UserVo queryResult = userService.findUserByName(userVo.getUserName());
+            if(null != queryResult && (!userVo.getId().equals(queryResult.getId()))){
+                return new GeneralVo(ErrorListEnum.USERNAME_REPEAT,null);
+            }
         }
+        //修改修改人
+        initPeopleParam(request,response,userVo,Constant.UPDATE_TYPE);
         //修改用户名
         userService.updateUserName(userVo);
         return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
@@ -85,8 +105,10 @@ public class UserController extends BaseController{
      * @return
      */
     @PutMapping("/user/updateUserPassword")
-    public GeneralVo updateUserPassword(@RequestBody UserVo userVo){
+    public GeneralVo updateUserPassword(HttpServletRequest request, HttpServletResponse response,@RequestBody UserVo userVo){
         try{
+            //修改修改人
+            initPeopleParam(request,response,userVo, Constant.UPDATE_TYPE);
             //修改用户密码
             userService.updateUserPassword(userVo);
         }catch(NoSuchAlgorithmException e){
@@ -97,13 +119,23 @@ public class UserController extends BaseController{
     }
 
     /**
-     * 根据ID删除用户信息
-     * @param id
+     * 删除用户信息
+     * @param userVo
      * @return
      */
-    @DeleteMapping("/user/deleteById/{id}")
-    public GeneralVo deleteById(@PathVariable("id") String id){
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,userService.deleteUserInfo(id));
+    @DeleteMapping("/user/deleteUser")
+    public GeneralVo deleteUser(HttpServletRequest request, HttpServletResponse response,@RequestBody UserVo userVo){
+        UserVo checkResult = userService.findUserById(userVo.getId());
+        if(null == checkResult || checkResult.isDeleteFlag()){
+            return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
+        }
+        //修改修改人
+        initPeopleParam(request,response,userVo, Constant.UPDATE_TYPE);
+        int operateResult = userService.deleteUserInfo(userVo);
+        if(Constant.OPERATE_FAIL == operateResult){
+            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        }
+        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
     }
 
     /**
@@ -128,7 +160,12 @@ public class UserController extends BaseController{
      */
     @PostMapping("/user/logout")
     public GeneralVo logout(@RequestBody UserTokenVo userTokenVo){
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,userService.userLogout(userTokenVo));
+        int result = userService.userLogout(userTokenVo);
+        if(result == Constant.OPERATE_SUCCESS){
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        }else{
+            return new GeneralVo(ErrorListEnum.INVALID_TOKEN,null);
+        }
     }
 
     /**
@@ -143,25 +180,34 @@ public class UserController extends BaseController{
     }
 
     /**
-     * 插入用户权限信息
-     * @param userPrivilegeVo 用户权限对象
+     * 插入用户角色信息
+     * @param userPrivilegeVo 用户角色对象
      * @return 响应结果
      */
-    @PutMapping("/user/insertUserPrivilege")
-    public GeneralVo insertUser(@RequestBody UserPrivilegeVo userPrivilegeVo){
-        //插入用户权限信息
-        userService.insertUserRole(userPrivilegeVo);
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+    @PutMapping("/user/insertUserRole")
+    public GeneralVo insertUserRole(HttpServletRequest request, HttpServletResponse response,@RequestBody UserPrivilegeVo userPrivilegeVo){
+        UserPrivilegeVo queryResult = userService.selectByUserId(userPrivilegeVo.getUserId());
+        if(null ==queryResult || queryResult.isDeleteFlag()){
+            //初始化创建人和修改人
+            initPeopleParam(request,response,userPrivilegeVo, Constant.CREATE_TYPE);
+            //插入用户角色信息
+            userService.insertUserRole(userPrivilegeVo);
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        }else{
+            return new GeneralVo(ErrorListEnum.USER_ROLE_EXIST,null);
+        }
     }
 
     /**
-     * 删除用户权限信息
-     * @param userPrivilegeVo 用户权限对象
+     * 删除用户角色信息
+     * @param userPrivilegeVo 用户角色对象
      * @return 响应结果
      */
-    @DeleteMapping("/user/deleteUserPrivilege")
-    public GeneralVo deleteUserPrivilege(@RequestBody UserPrivilegeVo userPrivilegeVo){
-        //删除用户权限信息
+    @DeleteMapping("/user/deleteUserRole")
+    public GeneralVo deleteUserRole(HttpServletRequest request, HttpServletResponse response,@RequestBody UserPrivilegeVo userPrivilegeVo){
+        //初始化创建人和修改人
+        initPeopleParam(request,response,userPrivilegeVo, Constant.UPDATE_TYPE);
+        //删除用户角色信息
         userService.deleteUserRole(userPrivilegeVo);
         return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
     }

@@ -11,6 +11,27 @@ public enum ErrorListEnum {
      */
     OPERATE_SUCCESS(200,"操作成功"),
     /**
+     * 用户名不能为空
+     */
+    USERNAME_NOT_EMPTY(207,"用户名不能为空"),
+    /**
+     * 用户名不能重复
+     */
+    USERNAME_REPEAT(208,"用户名不能重复"),
+    /**
+     * 密码不能为空
+     */
+    PASSWORD_NOT_EMPTY(209,"密码不能为空"),
+
+    /**
+     * 用户角色已存在
+     */
+    USER_ROLE_EXIST(210,"用户角色已存在"),
+    /**
+     * 用户不存在
+     */
+    NOT_EXIST(204,"用户不存在或者已被删除"),
+    /**
      * 操作失败
      */
     OPERATE_FAIL(201,"操作失败"),

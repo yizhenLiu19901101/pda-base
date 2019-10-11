@@ -32,10 +32,10 @@ public interface UserService {
 
     /**
      * 删除用户信息
-     * @param id
+     * @param userVo
      * @return
      */
-    Integer deleteUserInfo(String id);
+    Integer deleteUserInfo(UserVo userVo);
 
     /**
      * 修改用户名
@@ -99,4 +99,11 @@ public interface UserService {
      * @return
      */
     UserTokenVo findUserToken(String userId);
+
+    /**
+     * 根据用户名查找用户信息
+     * @param userName
+     * @return
+     */
+    UserVo findUserByName(String userName);
 }

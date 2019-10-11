@@ -134,4 +134,22 @@
             and tu.user_name like concat('%',#{userName},'%')
         </if>
     </select>
+
+    <!-- 根据条件分页查询用户对象 -->
+    <select id="findUserByName" parameterType="java.lang.String" resultType="com.jiaxin.pda.entity.vo.UserVo">
+        SELECT
+            tu.id,
+            tu.user_id AS userId,
+            tu.`password`,
+            tu.reversion,
+            tu.user_name AS userName,
+            tu.created_by AS createdBy,
+            tu.created_time AS createdTime,
+            tu.updated_by AS updatedBy,
+            tu.updated_time AS updatedTime
+        FROM
+            tb_user tu
+        WHERE tu.delete_flag = 0
+        and tu.user_name = #{userName}
+    </select>
 </mapper>

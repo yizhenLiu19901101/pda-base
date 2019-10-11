@@ -67,5 +67,10 @@ public interface UserMapper {
      */
     List<UserVo> queryUserListByPage(UserDto userDto);
 
-
+    /**
+     * 根据用户名查找用户信息
+     * @param userName
+     * @return
+     */
+    UserVo findUserByName(String userName);
 }

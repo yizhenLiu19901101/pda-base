@@ -86,4 +86,14 @@ public class Constant {
      * 有效期
      */
     public static final int VALID_PERIOD = 120;
+
+    /**
+     * 创建
+     */
+    public static final int CREATE_TYPE = 1;
+
+    /**
+     * 修改
+     */
+    public static final int UPDATE_TYPE = 2;
 }

@@ -66,12 +66,7 @@ public class UserServiceImpl implements UserService {
     public Integer insertUser(UserVo userVo) throws NoSuchAlgorithmException {
         userVo.setId(GenerateUtil.generateRandomString());
         userVo.setUserId(userMapper.selectMaxUserId() + Constant.INCREASE_PACE);
-        userVo.setDeleteFlag(false);
-        userVo.setPassword(Md5Util.MD5Encode(Constant.DEFAULT_PASSWORD));
-        userVo.setReversion(Constant.INIT_REVERSION);
-        userVo.setCreatedBy(Constant.SUPER_ADMIN);
-        userVo.setCreatedTime(Constant.NOW);
-        this.initUpdateParam(userVo);
+        userVo.setPassword(Md5Util.MD5Encode(userVo.getPassword()));
         result = userMapper.insertUser(userVo);
         //成功将数据插入mysql数据库后，再将对象放到redis中
         if(Constant.OPERATE_SUCCESS == result){
@@ -82,9 +77,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer deleteUserInfo(String id) {
-        UserVo userVo = userMapper.findUserById(id);
-        this.initUpdateParam(userVo);
+    public Integer deleteUserInfo(UserVo userVo) {
         userVo.setDeleteFlag(true);
         result = userMapper.deleteUserInfo(userVo);
         //成功将数据插入mysql数据库后，再将对象放到redis中
@@ -97,7 +90,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Integer updateUserName(UserVo userVo) {
-        this.initUpdateParam(userVo);
         result = userMapper.updateUserName(userVo);
         if(Constant.OPERATE_SUCCESS == result){
             this.rePutUserObject(userVo.getId());
@@ -107,7 +99,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Integer updateUserPassword(UserVo userVo) throws NoSuchAlgorithmException{
-        this.initUpdateParam(userVo);
         userVo.setPassword(Md5Util.MD5Encode(userVo.getPassword()));
         result = userMapper.updateUserPassword(userVo);
         if(Constant.OPERATE_SUCCESS == result){
@@ -151,15 +142,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public Integer userLogout(UserTokenVo userTokenVo) {
         UserTokenVo queryResult = (UserTokenVo) redisTemplate.opsForHash().get(userTokenVo.getUserToken(),Constant.USER_TOKEN_KEY);
-        queryResult.setDeleteFlag(true);
-        queryResult.setUpdatedTime(Constant.NOW);
-        queryResult.setUpdatedBy(Constant.SUPER_ADMIN);
-        result = userTokenMapper.deleteUserToken(queryResult);
-        if(Constant.OPERATE_SUCCESS == result){
-            redisTemplate.opsForHash().delete(userTokenVo.getUserToken(),Constant.USER_TOKEN_KEY);
-            logger.info("将对象从redis中移除");
+        if(null != queryResult){
+            queryResult.setDeleteFlag(true);
+            queryResult.setUpdatedTime(Constant.NOW);
+            queryResult.setUpdatedBy(Constant.SUPER_ADMIN);
+            result = userTokenMapper.deleteUserToken(queryResult);
+            if(Constant.OPERATE_SUCCESS == result){
+                redisTemplate.opsForHash().delete(userTokenVo.getUserToken(),Constant.USER_TOKEN_KEY);
+                logger.info("将对象从redis中移除");
+            }
+            return result;
+        }else{
+            return Constant.OPERATE_FAIL;
         }
-        return result;
     }
 
     @Override
@@ -183,10 +178,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public int insertUserRole(UserPrivilegeVo userPrivilegeVo) {
         userPrivilegeVo.setId(GenerateUtil.generateRandomString());
-        userPrivilegeVo.setCreatedBy(Constant.SUPER_ADMIN);
-        userPrivilegeVo.setCreatedTime(Constant.NOW);
-        userPrivilegeVo.setUpdatedBy(Constant.SUPER_ADMIN);
-        userPrivilegeVo.setUpdatedTime(Constant.NOW);
         return userPrivilegeMapper.insertUserRole(userPrivilegeVo);
     }
 
@@ -209,16 +200,10 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-
-    /**
-     * 初始化用户更新参数
-     * @param userVo
-     */
-    private void initUpdateParam(UserVo userVo){
-        userVo.setUpdatedBy(Constant.SUPER_ADMIN);
-        userVo.setUpdatedTime(Constant.NOW);
+    @Override
+    public UserVo findUserByName(String userName) {
+        return userMapper.findUserByName(userName);
     }
-
 
     /**
      * 将用户对象重新放到redis中
@@ -228,5 +213,5 @@ public class UserServiceImpl implements UserService {
         redisTemplate.opsForHash().delete(userId,Constant.USER_KEY);
         redisTemplate.opsForHash().put(userId,Constant.USER_KEY,userMapper.findUserById(userId));
         logger.info("将对象重新放入redis");
-    };
+    }
 }

@@ -29,7 +29,6 @@ public class DictionaryTypeServiceImpl implements DictionaryTypeService {
 
     @Override
     public int insertDictionaryType(DictionaryTypeVo dictionaryTypeVo) {
-
         //初始化更新参数
         this.initUpdateParam(dictionaryTypeVo);
         return dictionaryTypeMapper.insertDictionaryType(dictionaryTypeVo);
