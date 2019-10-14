@@ -22,11 +22,23 @@ public enum ErrorListEnum {
      * 密码不能为空
      */
     PASSWORD_NOT_EMPTY(209,"密码不能为空"),
-
     /**
      * 用户角色已存在
      */
     USER_ROLE_EXIST(210,"用户角色已存在"),
+    /**
+     * 角色名称不能为空
+     */
+    ROLE_NAME_NOT_EXIST(211,"角色名称不能为空"),
+    /**
+     * 角色名称不能重复
+     */
+    ROLE_NAME_REPEAT(212,"角色名称不能重复"),
+
+    /**
+     * 角色不存在
+     */
+    ROLE_NOT_EXIST(213,"角色不存在"),
     /**
      * 用户不存在
      */

@@ -1,6 +1,7 @@
 package com.jiaxin.pda.mapper;
 
 import com.jiaxin.pda.entity.vo.RolePrivilegeVo;
+import com.jiaxin.pda.entity.vo.RoleVo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

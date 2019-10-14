@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.jiaxin.pad.controller.RoleControllerTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2019-10-12T03:41:59" hostname="milos-computer.local" time="0.537">
+  <properties/>
+  <testcase name="sevenCase" classname="com.jiaxin.pad.controller.RoleControllerTest" time="0.045"/>
+  <testcase name="thirdCase" classname="com.jiaxin.pad.controller.RoleControllerTest" time="0.04"/>
+  <testcase name="fiveCase" classname="com.jiaxin.pad.controller.RoleControllerTest" time="0.067"/>
+  <testcase name="firstCase" classname="com.jiaxin.pad.controller.RoleControllerTest" time="0.118"/>
+  <testcase name="secondCase" classname="com.jiaxin.pad.controller.RoleControllerTest" time="0.107"/>
+  <testcase name="eightCase" classname="com.jiaxin.pad.controller.RoleControllerTest" time="0.012"/>
+  <testcase name="fourCase" classname="com.jiaxin.pad.controller.RoleControllerTest" time="0.073"/>
+  <testcase name="sixCase" classname="com.jiaxin.pad.controller.RoleControllerTest" time="0.069"/>
+  <system-out><![CDATA[2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.context.SpringBootTestContextBootstrapper?[0;39m | Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.jiaxin.pad.controller.RoleControllerTest], using SpringBootContextLoader
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.context.support.AbstractContextLoader?[0;39m | Could not detect default resource locations for test class [com.jiaxin.pad.controller.RoleControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.context.SpringBootTestContextBootstrapper?[0;39m | Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.context.SpringBootTestContextBootstrapper?[0;39m | Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@113883bc, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2342faaa, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@72cf09e, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1cdde831, org.springframework.test.context.transaction.TransactionalTestExecutionListener@492dad75, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7d8e8950, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1dc63e7f, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@6ea9c196, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4a4b9f33, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@43065b23, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6f1fb0fa, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4f1a79fe]
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 2 ms
+2019-10-12 11:41:59 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RolePrivilegeMapper.selectByRoleId?[0;39m | ==>  Preparing: SELECT id, role_id AS roleId, menu_id AS menuId, created_by AS createdBy, created_time AS createdTime, updated_by AS updatedBy, updated_time AS updatedTime FROM tb_menu_role WHERE role_id = ? 
+2019-10-12 11:41:59 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RolePrivilegeMapper.selectByRoleId?[0;39m | ==> Parameters: 1(Integer)
+2019-10-12 11:41:59 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RolePrivilegeMapper.selectByRoleId?[0;39m | <==      Total: 12
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /role/queryPrivilegeByRoleId/1
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.RoleController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.RoleController.queryPrivilegeByRoleId(java.lang.Integer)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":200,"msg":"操作成功","body":[{"createdTime":1570525362000,"createdBy":-1,"updatedTime":1570525362000,"updatedBy":-1,"reversion":0,"deleteFlag":false,"id":"10319b94c03b45d8af09ad3c1f82b381","menuId":"3","roleId":"1"},{"createdTime":1570526747000,"createdBy":-1,"updatedTime":1570526747000,"updatedBy":-1,"reversion":0,"deleteFlag":false,"id":"22e29ec2f01d45a0ac4afe4ac9dc583f","menuId":"3","roleId":"1"},{"createdTime":1568022719000,"createdBy":-1,"updatedTime":1568022719000,"updatedBy":-1,"reversion":0,"deleteFlag":false,"id":"231167925b8d4ee9a09eea86f312e27b","menuId":"2","roleId":"1"},{"createdTime":1570526308000,"createdBy":-1,"updatedTime":1570526308000,"updatedBy":-1,"reversion":0,"deleteFlag":false,"id":"28857e2af5474ec7ba886250145f705e","menuId":"3","roleId":"1"},{"createdTime":1570525932000,"createdBy":-1,"updatedTime":1570525932000,"updatedBy":-1,"reversion":0,"deleteFlag":false,"id":"3ee78189418048f5982f3ed21e319399","menuId":"3","roleId":"1"},{"createdTime":1570783698000,"createdBy":-1,"updatedTime":1570783698000,"updatedBy":-1,"reversion":0,"deleteFlag":false,"id":"421b2d39c7044687954ef578acc926ad","menuId":"3","roleId":"1"},{"createdTime":1570521737000,"createdBy":-1,"updatedTime":1570521737000,"updatedBy":-1,"reversion":0,"deleteFlag":false,"id":"8364e7ecdf504c72b2243f3ae8c94f72","menuId":"3","roleId":"1"},{"createdTime":1568022762000,"createdBy":-1,"updatedTime":1568022762000,"updatedBy":-1,"reversion":0,"deleteFlag":false,"id":"c178364a23da4f7da7eb8266dd944b93","menuId":"3","roleId":"1"},{"createdTime":1569809876000,"createdBy":-1,"updatedTime":1569809876000,"updatedBy":-1,"reversion":0,"deleteFlag":false,"id":"d1459e71e6394e1591a9cfee2174f61e","menuId":"3","roleId":"1"},{"createdTime":1570783272000,"createdBy":-1,"updatedTime":1570783272000,"updatedBy":-1,"reversion":0,"deleteFlag":false,"id":"e0d30075f1244e14a1ad87e9e08d808b","menuId":"3","roleId":"1"},{"createdTime":1570512932000,"createdBy":-1,"updatedTime":1570512932000,"updatedBy":-1,"reversion":0,"deleteFlag":false,"id":"f338b08d29564c699b56a0c47b005ab5","menuId":"3","roleId":"1"},{"createdTime":1570512950000,"createdBy":-1,"updatedTime":1570512950000,"updatedBy":-1,"reversion":0,"deleteFlag":false,"id":"f3ac486fc7aa4defa56eaba80fe5c257","menuId":"3","roleId":"1"}]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 2 ms
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | 删除角色
+2019-10-12 11:41:59 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.queryById?[0;39m | ==>  Preparing: SELECT tr.id, tr.role_id AS roleId, tr.role_name AS roleName, tr.reversion, tr.delete_flag AS deleteFlag, tr.created_by AS createdBy, tr.created_time AS createdTime, tr.updated_by AS updatedBy, tr.updated_time AS updatedTime FROM tb_role tr WHERE tr.id = ? 
+2019-10-12 11:41:59 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.queryById?[0;39m | ==> Parameters: 1f2e572cb99344459ed9d7e600e19574(String)
+2019-10-12 11:41:59 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.queryById?[0;39m | <==      Total: 1
+
+MockHttpServletRequest:
+      HTTP Method = DELETE
+      Request URI = /role/deleteRole
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.RoleController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.RoleController.deleteRole(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.RoleVo)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":213,"msg":"角色不存在","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 3 ms
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | 角色授权条件: {"roleId":1,"menuId":3}
+2019-10-12 11:41:59 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RolePrivilegeMapper.insertRoleMenu?[0;39m | ==>  Preparing: INSERT INTO tb_menu_role ( id, role_id, menu_id, created_by, created_time, updated_by, updated_time ) VALUES ( ?, ?, ?, ?, ?, ?, ? ) 
+2019-10-12 11:41:59 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RolePrivilegeMapper.insertRoleMenu?[0;39m | ==> Parameters: f0f193436ec1469a857d808c6d25886e(String), 1(String), 3(String), 0(Integer), null, -1(Integer), 2019-10-12 11:41:57.051(Timestamp)
+2019-10-12 11:41:59 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RolePrivilegeMapper.insertRoleMenu?[0;39m | <==    Updates: 1
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /role/givePrivilege
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.RoleController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.RoleController.givePrivilege(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.RolePrivilegeVo)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":200,"msg":"操作成功","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 2 ms
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | 插入角色信息条件: {"roleName":"超级管理员"}
+2019-10-12 11:41:59 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.selectByRoleName?[0;39m | ==>  Preparing: SELECT tr.id, tr.role_id AS roleId, tr.role_name AS roleName, tr.reversion, tr.delete_flag AS deleteFlag, tr.created_by AS createdBy, tr.created_time AS createdTime, tr.updated_by AS updatedBy, tr.updated_time AS updatedTime FROM tb_role tr WHERE tr.role_name = ? 
+2019-10-12 11:41:59 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.selectByRoleName?[0;39m | ==> Parameters: 超级管理员(String)
+2019-10-12 11:41:59 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.selectByRoleName?[0;39m | <==      Total: 1
+2019-10-12 11:41:59 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.selectMaxRoleId?[0;39m | ==>  Preparing: SELECT IFNULL( max( tr.role_id ), 0 ) FROM tb_role tr WHERE tr.delete_flag = 0 
+2019-10-12 11:41:59 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.selectMaxRoleId?[0;39m | ==> Parameters: 
+2019-10-12 11:41:59 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.selectMaxRoleId?[0;39m | <==      Total: 1
+2019-10-12 11:41:59 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.service.impl.RoleServiceImpl?[0;39m | 插入角色，入参为-RoleVo(id=5b4419a363e04d1ab7c707566207a47a, roleId=10, roleName=超级管理员)
+2019-10-12 11:41:59 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.insertRole?[0;39m | ==>  Preparing: INSERT INTO tb_role ( id, role_id, role_name, delete_flag, reversion, created_by, created_time, updated_by, updated_time ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019-10-12 11:41:59 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.insertRole?[0;39m | ==> Parameters: 5b4419a363e04d1ab7c707566207a47a(String), 10(Integer), 超级管理员(String), false(Boolean), 1(Integer), -1(Integer), 2019-10-12 11:41:57.051(Timestamp), -1(Integer), 2019-10-12 11:41:57.051(Timestamp)
+2019-10-12 11:42:00 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.insertRole?[0;39m | <==    Updates: 1
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /role/insertRole
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.RoleController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.RoleController.insertRole(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.RoleVo,org.springframework.validation.BindingResult)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":200,"msg":"操作成功","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-12 11:42:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-12 11:42:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-12 11:42:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 3 ms
+2019-10-12 11:42:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | 修改角色名称条件: {"reversion":1,"roleName":"系统管理员","id":"0061b24449754b2780771691c19fa250"}
+2019-10-12 11:42:00 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.selectByRoleName?[0;39m | ==>  Preparing: SELECT tr.id, tr.role_id AS roleId, tr.role_name AS roleName, tr.reversion, tr.delete_flag AS deleteFlag, tr.created_by AS createdBy, tr.created_time AS createdTime, tr.updated_by AS updatedBy, tr.updated_time AS updatedTime FROM tb_role tr WHERE tr.role_name = ? 
+2019-10-12 11:42:00 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.selectByRoleName?[0;39m | ==> Parameters: 系统管理员(String)
+2019-10-12 11:42:00 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.selectByRoleName?[0;39m | <==      Total: 0
+2019-10-12 11:42:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.service.impl.RoleServiceImpl?[0;39m | 修改角色名称，入参为-RoleVo(id=0061b24449754b2780771691c19fa250, roleId=0, roleName=系统管理员)
+2019-10-12 11:42:00 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.updateRoleName?[0;39m | ==>  Preparing: UPDATE tb_role SET role_name = ?, reversion = reversion + 1, updated_by = ?, updated_time = ? WHERE id = ? AND reversion = ? 
+2019-10-12 11:42:00 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.updateRoleName?[0;39m | ==> Parameters: 系统管理员(String), -1(Integer), 2019-10-12 11:41:57.051(Timestamp), 0061b24449754b2780771691c19fa250(String), 1(Integer)
+2019-10-12 11:42:00 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.updateRoleName?[0;39m | <==    Updates: 1
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /role/updateRoleName
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.RoleController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.RoleController.updateRoleName(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.RoleVo,org.springframework.validation.BindingResult)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":200,"msg":"操作成功","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-12 11:42:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-12 11:42:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-12 11:42:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 4 ms
+2019-10-12 11:42:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | 插入角色信息条件: {"roleName":""}
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /role/insertRole
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.RoleController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.RoleController.insertRole(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.RoleVo,org.springframework.validation.BindingResult)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":211,"msg":"角色名称不能为空","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-12 11:42:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-12 11:42:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-12 11:42:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 3 ms
+2019-10-12 11:42:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | 分页查询角色列表条件: {"current":1,"offset":10,"roleName":"模块管理员"}
+2019-10-12 11:42:00 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.selectRoleByPage?[0;39m | ==>  Preparing: select count(0) from (SELECT tr.id, tr.role_id AS roleId, tr.role_name AS roleName, tr.reversion, tr.delete_flag AS deleteFlag, tr.created_by AS createdBy, tr.created_time AS createdTime, tr.updated_by AS updatedBy, tr.updated_time AS updatedTime FROM tb_role tr WHERE tr.delete_flag = 0 and tr.role_name like concat('%',?,'%')) as total 
+2019-10-12 11:42:00 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.selectRoleByPage?[0;39m | ==> Parameters: 模块管理员(String)
+2019-10-12 11:42:00 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.selectRoleByPage?[0;39m | ==>  Preparing: SELECT tr.id, tr.role_id AS roleId, tr.role_name AS roleName, tr.reversion, tr.delete_flag AS deleteFlag, tr.created_by AS createdBy, tr.created_time AS createdTime, tr.updated_by AS updatedBy, tr.updated_time AS updatedTime FROM tb_role tr WHERE tr.delete_flag = 0 and tr.role_name like concat('%',?,'%') limit 0,10 
+2019-10-12 11:42:00 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.selectRoleByPage?[0;39m | ==> Parameters: 模块管理员(String)
+2019-10-12 11:42:00 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RoleMapper.selectRoleByPage?[0;39m | <==      Total: 0
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /role/selectRoleByPage
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.RoleController
+           Method = public com.jiaxin.pda.entity.ListPageVo com.jiaxin.pda.controller.RoleController.selectRoleByPage(com.jiaxin.pda.entity.dto.RoleDto)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":200,"msg":"操作成功","body":{"rows":[],"page":{"offset":10,"current":1,"pages":0,"rows":0}}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-12 11:42:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-12 11:42:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-12 11:42:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 2 ms
+2019-10-12 11:42:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | 角色授权条件: {"roleId":1,"menuId":1}
+2019-10-12 11:42:00 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RolePrivilegeMapper.deleteRoleMenu?[0;39m | ==>  Preparing: DELETE FROM tb_menu_role WHERE menu_id = ? AND role_id = ? 
+2019-10-12 11:42:00 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RolePrivilegeMapper.deleteRoleMenu?[0;39m | ==> Parameters: 1(String), 1(String)
+2019-10-12 11:42:00 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.RolePrivilegeMapper.deleteRoleMenu?[0;39m | <==    Updates: 0
+
+MockHttpServletRequest:
+      HTTP Method = DELETE
+      Request URI = /role/cancelPrivilege
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.RoleController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.RoleController.cancelPrivilege(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.RolePrivilegeVo)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":200,"msg":"操作成功","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

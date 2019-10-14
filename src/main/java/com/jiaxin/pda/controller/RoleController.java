@@ -1,5 +1,6 @@
 package com.jiaxin.pda.controller;
 
+import com.jiaxin.pda.constant.Constant;
 import com.jiaxin.pda.entity.ListPageVo;
 import com.jiaxin.pda.entity.dto.RoleDto;
 import com.jiaxin.pda.entity.vo.GeneralVo;
@@ -13,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 /**
@@ -36,12 +40,17 @@ public class RoleController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/role/insertRole")
-    public GeneralVo insertRole(@RequestBody @Valid RoleVo roleVo, BindingResult result){
-        if(result.hasErrors()){
-            FieldError fieldError = result.getFieldError();
-            logger.info("插入角色-参数错误: " + fieldError.getDefaultMessage());
-            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+    public GeneralVo insertRole(HttpServletRequest request, HttpServletResponse response,@RequestBody RoleVo roleVo, BindingResult result){
+        if(null == roleVo.getRoleName() || roleVo.getRoleName().trim().length() == 0){
+            return new GeneralVo(ErrorListEnum.ROLE_NAME_NOT_EXIST,null);
+        }else{
+            RoleVo queryResult = roleService.selectByRoleName(roleVo.getRoleName());
+            if(null != queryResult && (!queryResult.isDeleteFlag())){
+                return new GeneralVo(ErrorListEnum.ROLE_NAME_REPEAT,null);
+            }
         }
+        //初始化创建参数
+        initOperateParam(request,response,roleVo, Constant.CREATE_TYPE);
         //插入角色
         roleService.insertRole(roleVo);
         return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
@@ -54,12 +63,17 @@ public class RoleController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/role/updateRoleName")
-    public GeneralVo updateRoleName(@RequestBody @Valid RoleVo roleVo, BindingResult result){
-        if(result.hasErrors()){
-            FieldError fieldError = result.getFieldError();
-            logger.info("修改角色名称-参数错误: " + fieldError.getDefaultMessage());
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+    public GeneralVo updateRoleName(HttpServletRequest request, HttpServletResponse response,@RequestBody @Valid RoleVo roleVo, BindingResult result){
+        if(null == roleVo.getRoleName() || roleVo.getRoleName().trim().length() == 0){
+            return new GeneralVo(ErrorListEnum.ROLE_NAME_NOT_EXIST,null);
+        }else{
+            RoleVo queryResult = roleService.selectByRoleName(roleVo.getRoleName());
+            if(null != queryResult && (!queryResult.isDeleteFlag()) && (!queryResult.getId().equals(roleVo.getId()))){
+                return new GeneralVo(ErrorListEnum.ROLE_NAME_REPEAT,null);
+            }
         }
+        //初始化创建参数
+        initOperateParam(request,response,roleVo, Constant.UPDATE_TYPE);
         //修改角色名称
         roleService.updateRoleName(roleVo);
         return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
@@ -67,14 +81,24 @@ public class RoleController extends BaseController{
 
     /**
      * 删除角色
-     * @param id 角色ID
+     * @param roleVo
      * @return 响应结果
      */
-    @DeleteMapping("/role/deleteRole/{id}")
-    public GeneralVo deleteRole(@PathVariable("id") String id){
-        //修改角色名称
-        roleService.deleteRole(id);
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+    @DeleteMapping("/role/deleteRole")
+    public GeneralVo deleteRole(HttpServletRequest request, HttpServletResponse response,@RequestBody RoleVo roleVo){
+        RoleVo queryResult = roleService.queryById(roleVo.getId());
+        if(null == queryResult ||(null != queryResult && queryResult.isDeleteFlag())){
+            return new GeneralVo(ErrorListEnum.ROLE_NOT_EXIST,null);
+        }
+        //初始化创建参数
+        initOperateParam(request,response,roleVo, Constant.UPDATE_TYPE);
+        //删除角色名称
+        int result = roleService.deleteRole(roleVo);
+        if(Constant.OPERATE_SUCCESS == result){
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        }else{
+            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        }
     }
 
     /**
@@ -94,7 +118,9 @@ public class RoleController extends BaseController{
      * @return 响应结果
      */
     @PostMapping("/role/givePrivilege")
-    public GeneralVo givePrivilege(@RequestBody RolePrivilegeVo rolePrivilegeVo){
+    public GeneralVo givePrivilege(HttpServletRequest request, HttpServletResponse response,@RequestBody RolePrivilegeVo rolePrivilegeVo){
+        //初始化创建参数
+        initSimpleOperateParam(request,response,rolePrivilegeVo, Constant.UPDATE_TYPE);
         roleService.insertRoleMenu(rolePrivilegeVo);
         return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
     }
@@ -105,7 +131,9 @@ public class RoleController extends BaseController{
      * @return 响应结果
      */
     @DeleteMapping("/role/cancelPrivilege")
-    public GeneralVo cancelPrivilege(@RequestBody RolePrivilegeVo rolePrivilegeVo){
+    public GeneralVo cancelPrivilege(HttpServletRequest request, HttpServletResponse response,@RequestBody RolePrivilegeVo rolePrivilegeVo){
+        //初始化创建参数
+        initSimpleOperateParam(request,response,rolePrivilegeVo, Constant.UPDATE_TYPE);
         roleService.deleteRoleMenu(rolePrivilegeVo);
         return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
     }

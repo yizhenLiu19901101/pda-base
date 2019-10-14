@@ -26,6 +26,5 @@ public class RoleVo extends OperateVo implements Serializable {
     /**
      * 角色名称
      */
-    @NotNull(message = "角色名称不能为Null")
     private String roleName;
 }

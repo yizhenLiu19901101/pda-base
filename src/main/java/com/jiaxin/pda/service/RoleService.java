@@ -12,6 +12,14 @@ import java.util.List;
  */
 public interface RoleService {
 
+
+    /**
+     * 根据ID查询角色信息
+     * @param id
+     * @return
+     */
+    RoleVo queryById(String id);
+
     /**
      * 插入角色信息
      * @param roleVo
@@ -21,10 +29,10 @@ public interface RoleService {
 
     /**
      * 删除角色
-     * @param id
+     * @param roleVo
      * @return
      */
-    int deleteRole(String id);
+    int deleteRole(RoleVo roleVo);
 
     /**
      * 修改角色名称
@@ -60,4 +68,11 @@ public interface RoleService {
      * @return 角色权限对象
      */
     List<RolePrivilegeVo> selectByRoleId(Integer roleId);
+
+    /**
+     * 根绝角色名称查询角色信息
+     * @param roleName
+     * @return
+     */
+    RoleVo selectByRoleName(String roleName);
 }

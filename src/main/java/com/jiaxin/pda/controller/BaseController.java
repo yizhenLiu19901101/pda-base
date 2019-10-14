@@ -2,6 +2,7 @@ package com.jiaxin.pda.controller;
 
 import com.jiaxin.pda.constant.Constant;
 import com.jiaxin.pda.entity.vo.OperateVo;
+import com.jiaxin.pda.entity.vo.SimpleOperateVo;
 import com.jiaxin.pda.util.Md5Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,22 +35,36 @@ public class BaseController {
     }
 
     /**
-     * 初始化用户参数
+     * 初始化操作对象参数
      * @param request
      * @param response
      * @param operateVo
      * @param type
      */
-    public static void initPeopleParam(HttpServletRequest request, HttpServletResponse response, OperateVo operateVo, Integer type){
-        int currentUserId = getCurrentUserId(request,response);
-        operateVo.setUpdatedBy(currentUserId);
-        operateVo.setUpdatedTime(Constant.NOW);
+    public static void initOperateParam(HttpServletRequest request, HttpServletResponse response, OperateVo operateVo, Integer type){
+        //初始化简单操作对象参数
+        initSimpleOperateParam(request,response,operateVo,type);
         if(type == Constant.CREATE_TYPE){
             operateVo.setDeleteFlag(false);
             operateVo.setReversion(Constant.INIT_REVERSION);
-            operateVo.setCreatedTime(Constant.NOW);
-            operateVo.setCreatedBy(currentUserId);
+
         }
     }
 
+    /**
+     * 初始化简单操作对象参数
+     * @param request
+     * @param response
+     * @param simpleOperateVo
+     * @param type
+     */
+    public static void initSimpleOperateParam(HttpServletRequest request, HttpServletResponse response, SimpleOperateVo simpleOperateVo, Integer type){
+        int currentUserId = getCurrentUserId(request,response);
+        simpleOperateVo.setUpdatedBy(currentUserId);
+        simpleOperateVo.setUpdatedTime(Constant.NOW);
+        if(type == Constant.CREATE_TYPE){
+            simpleOperateVo.setCreatedTime(Constant.NOW);
+            simpleOperateVo.setCreatedBy(currentUserId);
+        }
+    }
 }

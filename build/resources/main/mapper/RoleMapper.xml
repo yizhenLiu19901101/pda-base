@@ -102,5 +102,38 @@
         </if>
     </select>
 
+    <!-- 根据角色名称查询的角色信息 -->
+    <select id="selectByRoleName" parameterType="java.lang.String" resultType="com.jiaxin.pda.entity.vo.RoleVo">
+        SELECT
+            tr.id,
+            tr.role_id AS roleId,
+            tr.role_name AS roleName,
+            tr.reversion,
+            tr.delete_flag AS deleteFlag,
+            tr.created_by AS createdBy,
+            tr.created_time AS createdTime,
+            tr.updated_by AS updatedBy,
+            tr.updated_time AS updatedTime
+        FROM
+            tb_role tr
+        WHERE tr.role_name = #{roleName}
+    </select>
+
+    <!-- 根据角色名称查询的角色信息 -->
+    <select id="queryById" parameterType="java.lang.String" resultType="com.jiaxin.pda.entity.vo.RoleVo">
+        SELECT
+        tr.id,
+        tr.role_id AS roleId,
+        tr.role_name AS roleName,
+        tr.reversion,
+        tr.delete_flag AS deleteFlag,
+        tr.created_by AS createdBy,
+        tr.created_time AS createdTime,
+        tr.updated_by AS updatedBy,
+        tr.updated_time AS updatedTime
+        FROM
+        tb_role tr
+        WHERE tr.id = #{id}
+    </select>
 
 </mapper>

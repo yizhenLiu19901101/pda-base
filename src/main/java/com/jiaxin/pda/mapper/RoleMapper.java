@@ -53,4 +53,18 @@ public interface RoleMapper {
      * @return
      */
     List<RoleVo> selectRoleByPage(RoleDto roleDto);
+
+    /**
+     * 根据角色名称查询角色信息
+     * @param roleName
+     * @return
+     */
+    RoleVo selectByRoleName(String roleName);
+
+    /**
+     * 根据ID查询角色信息
+     * @param id
+     * @return
+     */
+    RoleVo queryById(String id);
 }

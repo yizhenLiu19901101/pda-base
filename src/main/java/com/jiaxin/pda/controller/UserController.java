@@ -64,7 +64,7 @@ public class UserController extends BaseController{
                 return new GeneralVo(ErrorListEnum.PASSWORD_NOT_EMPTY,null);
             }
             //初始化创建人和修改人
-            initPeopleParam(request,response,userVo, Constant.CREATE_TYPE);
+            initOperateParam(request,response,userVo, Constant.CREATE_TYPE);
             //插入用户信息
             userService.insertUser(userVo);
             return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
@@ -93,7 +93,7 @@ public class UserController extends BaseController{
             }
         }
         //修改修改人
-        initPeopleParam(request,response,userVo,Constant.UPDATE_TYPE);
+        initOperateParam(request,response,userVo,Constant.UPDATE_TYPE);
         //修改用户名
         userService.updateUserName(userVo);
         return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
@@ -108,7 +108,7 @@ public class UserController extends BaseController{
     public GeneralVo updateUserPassword(HttpServletRequest request, HttpServletResponse response,@RequestBody UserVo userVo){
         try{
             //修改修改人
-            initPeopleParam(request,response,userVo, Constant.UPDATE_TYPE);
+            initOperateParam(request,response,userVo, Constant.UPDATE_TYPE);
             //修改用户密码
             userService.updateUserPassword(userVo);
         }catch(NoSuchAlgorithmException e){
@@ -130,7 +130,7 @@ public class UserController extends BaseController{
             return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
         }
         //修改修改人
-        initPeopleParam(request,response,userVo, Constant.UPDATE_TYPE);
+        initOperateParam(request,response,userVo, Constant.UPDATE_TYPE);
         int operateResult = userService.deleteUserInfo(userVo);
         if(Constant.OPERATE_FAIL == operateResult){
             return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
@@ -189,7 +189,7 @@ public class UserController extends BaseController{
         UserPrivilegeVo queryResult = userService.selectByUserId(userPrivilegeVo.getUserId());
         if(null ==queryResult || queryResult.isDeleteFlag()){
             //初始化创建人和修改人
-            initPeopleParam(request,response,userPrivilegeVo, Constant.CREATE_TYPE);
+            initOperateParam(request,response,userPrivilegeVo, Constant.CREATE_TYPE);
             //插入用户角色信息
             userService.insertUserRole(userPrivilegeVo);
             return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
@@ -206,7 +206,7 @@ public class UserController extends BaseController{
     @DeleteMapping("/user/deleteUserRole")
     public GeneralVo deleteUserRole(HttpServletRequest request, HttpServletResponse response,@RequestBody UserPrivilegeVo userPrivilegeVo){
         //初始化创建人和修改人
-        initPeopleParam(request,response,userPrivilegeVo, Constant.UPDATE_TYPE);
+        initOperateParam(request,response,userPrivilegeVo, Constant.UPDATE_TYPE);
         //删除用户角色信息
         userService.deleteUserRole(userPrivilegeVo);
         return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);

@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class RolePrivilegeVo extends SimpleOperateVo{
+public class RolePrivilegeVo extends OperateVo{
 
     /**
      * 数据库主键

@@ -29,6 +29,12 @@ public class DictionaryTypeServiceImpl implements DictionaryTypeService {
 
     @Override
     public int insertDictionaryType(DictionaryTypeVo dictionaryTypeVo) {
+        dictionaryTypeVo.setId(GenerateUtil.generateRandomString());
+        dictionaryTypeVo.setUuid(dictionaryTypeMapper.queryMaxId() + Constant.INCREASE_PACE);
+        dictionaryTypeVo.setDeleteFlag(false);
+        dictionaryTypeVo.setReversion(Constant.INIT_REVERSION);
+        dictionaryTypeVo.setCreatedBy(Constant.SUPER_ADMIN);
+        dictionaryTypeVo.setCreatedTime(Constant.NOW);
         //初始化更新参数
         this.initUpdateParam(dictionaryTypeVo);
         return dictionaryTypeMapper.insertDictionaryType(dictionaryTypeVo);

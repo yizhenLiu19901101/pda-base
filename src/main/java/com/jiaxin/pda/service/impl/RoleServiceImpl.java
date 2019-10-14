@@ -29,37 +29,29 @@ public class RoleServiceImpl implements RoleService {
     private RolePrivilegeMapper rolePrivilegeMapper;
 
     @Override
+    public RoleVo queryById(String id) {
+        return roleMapper.queryById(id);
+    }
+
+    @Override
     public int insertRole(RoleVo roleVo) {
         roleVo.setId(GenerateUtil.generateRandomString());
         roleVo.setRoleId(roleMapper.selectMaxRoleId()+ Constant.INCREASE_PACE);
-        roleVo.setReversion(Constant.INIT_REVERSION);
-        roleVo.setDeleteFlag(false);
-        roleVo.setCreatedBy(Constant.SUPER_ADMIN);
-        roleVo.setCreatedTime(Constant.NOW);
-        roleVo.setUpdatedBy(Constant.SUPER_ADMIN);
-        roleVo.setUpdatedTime(Constant.NOW);
         logger.info("插入角色，入参为-{}",roleVo);
         return roleMapper.insertRole(roleVo);
     }
 
     @Override
-    public int deleteRole(String id) {
-        RoleVo queryResult = roleMapper.findRoleById(id);
-        queryResult.setUpdatedTime(Constant.NOW);
-        queryResult.setUpdatedBy(Constant.SUPER_ADMIN);
-        queryResult.setDeleteFlag(true);
-        logger.info("删除角色，入参为-{}",queryResult);
-        return roleMapper.deleteRole(queryResult);
+    public int deleteRole(RoleVo  roleVo) {
+        roleVo.setDeleteFlag(true);
+        logger.info("删除角色，入参为-{}",roleVo);
+        return roleMapper.deleteRole(roleVo);
     }
 
     @Override
     public int updateRoleName(RoleVo roleVo) {
-        RoleVo queryResult = roleMapper.findRoleById(roleVo.getId());
-        queryResult.setUpdatedTime(Constant.NOW);
-        queryResult.setUpdatedBy(Constant.SUPER_ADMIN);
-        queryResult.setRoleName(roleVo.getRoleName());
-        logger.info("修改角色名称，入参为-{}",queryResult);
-        return roleMapper.updateRoleName(queryResult);
+        logger.info("修改角色名称，入参为-{}",roleVo);
+        return roleMapper.updateRoleName(roleVo);
     }
 
     @Override
@@ -70,10 +62,6 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public int insertRoleMenu(RolePrivilegeVo rolePrivilegeVo) {
         rolePrivilegeVo.setId(GenerateUtil.generateRandomString());
-        rolePrivilegeVo.setCreatedBy(Constant.SUPER_ADMIN);
-        rolePrivilegeVo.setCreatedTime(Constant.NOW);
-        rolePrivilegeVo.setUpdatedBy(Constant.SUPER_ADMIN);
-        rolePrivilegeVo.setUpdatedTime(Constant.NOW);
         return rolePrivilegeMapper.insertRoleMenu(rolePrivilegeVo);
     }
 
@@ -85,6 +73,11 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public List<RolePrivilegeVo> selectByRoleId(Integer roleId) {
         return rolePrivilegeMapper.selectByRoleId(roleId);
+    }
+
+    @Override
+    public RoleVo selectByRoleName(String roleName) {
+        return roleMapper.selectByRoleName(roleName);
     }
 
 
