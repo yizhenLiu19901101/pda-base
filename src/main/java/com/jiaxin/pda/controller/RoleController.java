@@ -119,10 +119,15 @@ public class RoleController extends BaseController{
      */
     @PostMapping("/role/givePrivilege")
     public GeneralVo givePrivilege(HttpServletRequest request, HttpServletResponse response,@RequestBody RolePrivilegeVo rolePrivilegeVo){
-        //初始化创建参数
-        initSimpleOperateParam(request,response,rolePrivilegeVo, Constant.UPDATE_TYPE);
-        roleService.insertRoleMenu(rolePrivilegeVo);
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        int result = roleService.queryMenuAuthorityByCondition(rolePrivilegeVo.getMenuId(),rolePrivilegeVo.getRoleId());
+        if(Constant.EMPTY_INTEGER_VALUE == result){
+            //初始化创建参数
+            initSimpleOperateParam(request,response,rolePrivilegeVo, Constant.UPDATE_TYPE);
+            roleService.insertRoleMenu(rolePrivilegeVo);
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        }else{
+
+        }    return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
     }
 
     /**
@@ -134,8 +139,12 @@ public class RoleController extends BaseController{
     public GeneralVo cancelPrivilege(HttpServletRequest request, HttpServletResponse response,@RequestBody RolePrivilegeVo rolePrivilegeVo){
         //初始化创建参数
         initSimpleOperateParam(request,response,rolePrivilegeVo, Constant.UPDATE_TYPE);
-        roleService.deleteRoleMenu(rolePrivilegeVo);
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        int result = roleService.deleteRoleMenu(rolePrivilegeVo);
+        if(Constant.EMPTY_INTEGER_VALUE == result){
+            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        }else{
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        }
     }
 
     /**

@@ -113,7 +113,7 @@ public class RoleControllerTest {
     }
 
     @Test
-    public void fiveCase() throws Exception{
+    public void givePrivilege() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
         userCondition.put("menuId",3);
@@ -128,10 +128,10 @@ public class RoleControllerTest {
     }
 
     @Test
-    public void sixCase() throws Exception{
+    public void cancelPrivilege() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
-        userCondition.put("menuId",1);
+        userCondition.put("menuId",3);
         userCondition.put("roleId",1);
         logger.info("角色授权条件: " + userCondition.toJSONString());
         //执行测试

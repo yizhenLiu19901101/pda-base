@@ -3,6 +3,7 @@ package com.jiaxin.pda.mapper;
 import com.jiaxin.pda.entity.vo.RolePrivilegeVo;
 import com.jiaxin.pda.entity.vo.RoleVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -33,4 +34,12 @@ public interface RolePrivilegeMapper {
      * @return 角色权限对象
      */
     List<RolePrivilegeVo> selectByRoleId(Integer roleId);
+
+    /**
+     * 根据菜单ID和角色ID查询菜单是否得到授权
+     * @param menuId
+     * @param roleId
+     * @return
+     */
+    int queryMenuAuthorityByCondition(@Param("menuId") String menuId,@Param("roleId") String roleId);
 }

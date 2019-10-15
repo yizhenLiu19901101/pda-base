@@ -3,6 +3,7 @@ package com.jiaxin.pda.service;
 import com.jiaxin.pda.entity.dto.RoleDto;
 import com.jiaxin.pda.entity.vo.RolePrivilegeVo;
 import com.jiaxin.pda.entity.vo.RoleVo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -75,4 +76,12 @@ public interface RoleService {
      * @return
      */
     RoleVo selectByRoleName(String roleName);
+
+    /**
+     * 根据菜单ID和角色ID查询菜单是否得到授权
+     * @param menuId
+     * @param roleId
+     * @return
+     */
+    int queryMenuAuthorityByCondition(String menuId,String roleId);
 }

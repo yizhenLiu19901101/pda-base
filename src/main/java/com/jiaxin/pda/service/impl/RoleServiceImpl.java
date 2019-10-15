@@ -80,5 +80,10 @@ public class RoleServiceImpl implements RoleService {
         return roleMapper.selectByRoleName(roleName);
     }
 
+    @Override
+    public int queryMenuAuthorityByCondition(String menuId, String roleId) {
+        return rolePrivilegeMapper.queryMenuAuthorityByCondition(menuId,roleId);
+    }
+
 
 }

@@ -49,4 +49,14 @@
         WHERE
             role_id = #{roleId}
     </select>
+
+    <!-- 根据菜单ID和角色ID查询菜单是否得到授权 -->
+    <select id="queryMenuAuthorityByCondition"  resultType="java.lang.Integer">
+        SELECT
+        ifnull(count(id),0)
+        FROM
+        tb_menu_role
+        WHERE
+        role_id = #{roleId}
+    </select>
 </mapper>

@@ -32,6 +32,7 @@ public class UserController extends BaseController{
      */
     @GetMapping("/user/findById/{id}")
     public GeneralVo findById(@PathVariable("id") String id){
+        logger.info("用户的ID为 {}",id);
         UserVo userVo = userService.findUserById(id);
         if(null == userVo){
             return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
@@ -187,7 +188,7 @@ public class UserController extends BaseController{
     @PutMapping("/user/insertUserRole")
     public GeneralVo insertUserRole(HttpServletRequest request, HttpServletResponse response,@RequestBody UserPrivilegeVo userPrivilegeVo){
         UserPrivilegeVo queryResult = userService.selectByUserId(userPrivilegeVo.getUserId());
-        if(null ==queryResult || queryResult.isDeleteFlag()){
+        if(null == queryResult || queryResult.isDeleteFlag()){
             //初始化创建人和修改人
             initOperateParam(request,response,userPrivilegeVo, Constant.CREATE_TYPE);
             //插入用户角色信息
