@@ -55,4 +55,18 @@ public interface MenuMapper {
      * @return
      */
     List<MenuVo> queryMenuListByPage(MenuDto menuDto);
+
+    /**
+     * 根据名称查询菜单数量
+     * @param menuName
+     * @return
+     */
+    int queryMenuCountByMenuName(String menuName);
+
+    /**
+     * 根据名称查询菜单信息
+     * @param menuName
+     * @return
+     */
+    MenuVo queryMenuInfoByMenuName(String menuName);
 }

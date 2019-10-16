@@ -107,4 +107,36 @@
             and tm.menu_name like concat('%',#{menuName},'%')
         </if>
     </select>
+
+    <!-- 根据名称查询菜单数量 -->
+    <select id="queryMenuCountByMenuName" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT
+        ifnull(count(tm.id),0)
+        FROM
+        tb_menu tm
+        WHERE tm.delete_flag = 0
+        and tm.menu_name =#{menuName}
+    </select>
+
+    <!-- 根据名称查询菜单信息 -->
+    <select id="queryMenuInfoByMenuName" parameterType="java.lang.String" resultType="com.jiaxin.pda.entity.vo.MenuVo">
+        SELECT
+        tm.id,
+        tm.menu_id AS menuId,
+        tm.menu_name AS menuName,
+        tm.menu_level AS menuLevel,
+        tm.parent_menu_id AS parentMenuId,
+        tm.delete_flag AS deleteFlag,
+        tm.reversion,
+        tm.created_by AS createdBy,
+        tm.created_time AS createdTime,
+        tm.updated_by AS updatedBy,
+        tm.updated_time AS updatedTime
+        FROM
+        tb_menu tm
+        WHERE tm.delete_flag = 0
+        and tm.menu_name = #{menuName}
+    </select>
+
+
 </mapper>

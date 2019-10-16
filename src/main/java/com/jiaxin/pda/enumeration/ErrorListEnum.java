@@ -39,6 +39,16 @@ public enum ErrorListEnum {
      * 角色不存在
      */
     ROLE_NOT_EXIST(213,"角色不存在"),
+
+    /**
+     * 菜单名称重复
+     */
+    MENU_NAME_REPEAT(214,"菜单名称重复"),
+
+    /**
+     * 菜单名称不能为空
+     */
+    MENU_NAME_NOT_BLANK(215,"菜单名称不能为空"),
     /**
      * 用户不存在
      */

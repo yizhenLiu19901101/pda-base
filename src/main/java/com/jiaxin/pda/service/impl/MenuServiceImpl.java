@@ -42,13 +42,11 @@ public class MenuServiceImpl implements MenuService {
 
     /**
      * 删除菜单
-     * @param id
+     * @param menuVo
      * @return
      */
     @Override
-    public Integer deleteMenu(String id) {
-        MenuVo menuVo = menuMapper.findMenuById(id);
-        this.initUpdateParam(menuVo);
+    public Integer deleteMenu(MenuVo menuVo) {
         menuVo.setDeleteFlag(true);
         return menuMapper.deleteMenu(menuVo);
     }
@@ -56,6 +54,16 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public List<MenuVo> queryMenuListByPage(MenuDto menuDto) {
         return menuMapper.queryMenuListByPage(menuDto);
+    }
+
+    @Override
+    public int queryMenuCountByMenuName(String menuName) {
+        return menuMapper.queryMenuCountByMenuName(menuName);
+    }
+
+    @Override
+    public MenuVo queryMenuInfoByMenuName(String menuName) {
+        return menuMapper.queryMenuInfoByMenuName(menuName);
     }
 
     /**

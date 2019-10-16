@@ -54,7 +54,7 @@ public class MenuControllerTest {
     }
 
     @Test
-    public void firstCase() throws Exception{
+    public void insertMenu() throws Exception{
         logger.info("插入菜单信息");
         //设置查询条件
         JSONObject userCondition = new JSONObject();
@@ -71,12 +71,29 @@ public class MenuControllerTest {
     }
 
     @Test
-    public void secondCase() throws Exception{
+    public void insertMenuWithNullMenuName() throws Exception{
+        logger.info("插入菜单信息");
+        //设置查询条件
+        JSONObject userCondition = new JSONObject();
+        userCondition.put("menuName","");
+        userCondition.put("parentMenuId",0);
+        userCondition.put("menuLevel",1);
+        logger.info("插入菜单信息条件: " + userCondition.toJSONString());
+        //执行测试
+        mockMvc.perform(MockMvcRequestBuilders.put("/menu/insertMenu")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void updateMenuName() throws Exception{
         logger.info("修改菜单名称");
         //设置查询条件
         JSONObject userCondition = new JSONObject();
-        userCondition.put("id","ccecd5d6b0294c7d97a6aa6654dd0390");
-        userCondition.put("menuName","小看板");
+        userCondition.put("id","bb6d90c3778b46e6b67f8748966a15b0");
+        userCondition.put("menuName","小看版");
         userCondition.put("reversion",1);
         logger.info("修改菜单名称条件: " + userCondition.toJSONString());
         //执行测试
@@ -88,12 +105,17 @@ public class MenuControllerTest {
     }
 
     @Test
-    public void thirdCase() throws Exception{
+    public void deleteMenu() throws Exception{
+        //设置查询条件
+        JSONObject userCondition = new JSONObject();
+        userCondition.put("id","ccecd5d6b0294c7d97a6aa6654dd0390");
+        userCondition.put("reversion",16);
         logger.info("删除菜单");
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.delete("/menu/delete/ccecd5d6b0294c7d97a6aa6654dd0390")
+        mockMvc.perform(MockMvcRequestBuilders.delete("/menu/delete")
                 .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON))
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
