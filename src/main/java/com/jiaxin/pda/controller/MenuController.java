@@ -60,6 +60,7 @@ public class MenuController extends BaseController{
      * @return 响应结果
      */
     @DeleteMapping("/delete")
+    @ApiOperation(value = "删除菜单信息",notes = "")
     public GeneralVo deleteMenu(HttpServletRequest request, HttpServletResponse response,@RequestBody MenuVo menuVo){
         logger.info("删除菜单，入参为：{}",menuVo);
         initOperateParam(request,response,menuVo,Constant.UPDATE_TYPE);
@@ -77,6 +78,7 @@ public class MenuController extends BaseController{
      * @return 响应对象
      */
     @PostMapping("/updateMenuName")
+    @ApiOperation(value = "修改菜单信息",notes = "")
     public GeneralVo updateMenuName(HttpServletRequest request, HttpServletResponse response,@RequestBody MenuVo menuVo){
         logger.info("修改菜单名称，入参为:{}",menuVo);
         if(null == menuVo.getMenuName() || Constant.EMPTY_INTEGER_VALUE == menuVo.getMenuName().trim().length()){
@@ -103,6 +105,7 @@ public class MenuController extends BaseController{
      * @return 查询对象
      */
     @PostMapping("/queryMenuListByPage")
+    @ApiOperation(value = "分页查找菜单信息",notes = "")
     public ListPageVo queryMenuListByPage(@RequestBody MenuDto menuDto){
         menuDto.build();
         logger.info("分页查询菜单信息，入参为：{}",menuDto);

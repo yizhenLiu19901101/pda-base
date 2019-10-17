@@ -7,6 +7,8 @@ import com.jiaxin.pda.entity.dto.UserDto;
 import com.jiaxin.pda.entity.vo.*;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -21,6 +23,8 @@ import java.security.NoSuchAlgorithmException;
  * @author milo
  */
 @RestController
+@Api(value = "user",tags = {"用户控制器"})
+@RequestMapping("/user")
 public class UserController extends BaseController{
     @Autowired
     private UserService userService;
@@ -30,7 +34,8 @@ public class UserController extends BaseController{
      * @param id
      * @return
      */
-    @GetMapping("/user/findById/{id}")
+    @GetMapping("/findById/{id}")
+    @ApiOperation(value = "根据ID查找用户信息")
     public GeneralVo findById(@PathVariable("id") String id){
         logger.info("用户的ID为 {}",id);
         UserVo userVo = userService.findUserById(id);
@@ -46,7 +51,8 @@ public class UserController extends BaseController{
      * @param userVo
      * @return
      */
-    @PutMapping("/user/registerUser")
+    @PutMapping("/registerUser")
+    @ApiOperation(value = "注册用户")
     public GeneralVo insertUser(HttpServletRequest request, HttpServletResponse response,@RequestBody UserVo userVo){
         try{
             logger.info("插入用户-参数,{}",userVo);
@@ -80,7 +86,8 @@ public class UserController extends BaseController{
      * @param userVo
      * @return
      */
-    @PutMapping("/user/updateUserName")
+    @PutMapping("/updateUserName")
+    @ApiOperation(value = "修改用户名")
     public GeneralVo updateUserName(HttpServletRequest request, HttpServletResponse response,@RequestBody @Valid UserVo userVo, BindingResult result){
         logger.info("修改用户-参数,{}",userVo);
         //用户名不能为空/重复
@@ -105,7 +112,8 @@ public class UserController extends BaseController{
      * @param userVo
      * @return
      */
-    @PutMapping("/user/updateUserPassword")
+    @PutMapping("/updateUserPassword")
+    @ApiOperation(value = "修改密码")
     public GeneralVo updateUserPassword(HttpServletRequest request, HttpServletResponse response,@RequestBody UserVo userVo){
         try{
             //修改修改人
@@ -124,7 +132,8 @@ public class UserController extends BaseController{
      * @param userVo
      * @return
      */
-    @DeleteMapping("/user/deleteUser")
+    @DeleteMapping("/deleteUser")
+    @ApiOperation(value = "删除用户")
     public GeneralVo deleteUser(HttpServletRequest request, HttpServletResponse response,@RequestBody UserVo userVo){
         UserVo checkResult = userService.findUserById(userVo.getId());
         if(null == checkResult || checkResult.isDeleteFlag()){
@@ -144,7 +153,8 @@ public class UserController extends BaseController{
      * @param userVo
      * @return
      */
-    @PostMapping("/user/login")
+    @PostMapping("/login")
+    @ApiOperation(value = "用户登陆")
     public GeneralVo login(@RequestBody UserVo userVo){
         try{
             return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,userService.userLogin(userVo));
@@ -159,7 +169,8 @@ public class UserController extends BaseController{
      * @param userTokenVo
      * @return0
      */
-    @PostMapping("/user/logout")
+    @PostMapping("/logout")
+    @ApiOperation(value = "用户退出")
     public GeneralVo logout(@RequestBody UserTokenVo userTokenVo){
         int result = userService.userLogout(userTokenVo);
         if(result == Constant.OPERATE_SUCCESS){
@@ -174,7 +185,8 @@ public class UserController extends BaseController{
      * @param userDto 查询条件
      * @return 响应结果
      */
-    @PostMapping("/user/queryUserListByPage")
+    @PostMapping("/queryUserListByPage")
+    @ApiOperation(value = "分页查询用户信息")
     public ListPageVo queryUserListByPage(@RequestBody UserDto userDto){
         userDto.build();
         return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,userService.queryUserListByPage(userDto),userDto.getPageInfo());
@@ -185,7 +197,8 @@ public class UserController extends BaseController{
      * @param userPrivilegeVo 用户角色对象
      * @return 响应结果
      */
-    @PutMapping("/user/insertUserRole")
+    @PutMapping("/insertUserRole")
+    @ApiOperation(value = "给用户赋予角色")
     public GeneralVo insertUserRole(HttpServletRequest request, HttpServletResponse response,@RequestBody UserPrivilegeVo userPrivilegeVo){
         UserPrivilegeVo queryResult = userService.selectByUserId(userPrivilegeVo.getUserId());
         if(null == queryResult || queryResult.isDeleteFlag()){
@@ -204,7 +217,8 @@ public class UserController extends BaseController{
      * @param userPrivilegeVo 用户角色对象
      * @return 响应结果
      */
-    @DeleteMapping("/user/deleteUserRole")
+    @ApiOperation(value = "取消用户的角色")
+    @DeleteMapping("/deleteUserRole")
     public GeneralVo deleteUserRole(HttpServletRequest request, HttpServletResponse response,@RequestBody UserPrivilegeVo userPrivilegeVo){
         //初始化创建人和修改人
         initOperateParam(request,response,userPrivilegeVo, Constant.UPDATE_TYPE);
@@ -218,7 +232,8 @@ public class UserController extends BaseController{
      * @param userId 用户ID
      * @return 响应结果
      */
-    @GetMapping("/user/queryRoleByUserId/{userId}")
+    @ApiOperation(value = "根据用户ID查询角色信息")
+    @GetMapping("/queryRoleByUserId/{userId}")
     public GeneralVo queryRoleByUserId(@PathVariable("userId") int  userId){
         return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS, userService.selectByUserId(userId));
     }

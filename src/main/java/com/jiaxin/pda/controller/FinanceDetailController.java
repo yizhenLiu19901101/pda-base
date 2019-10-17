@@ -7,6 +7,8 @@ import com.jiaxin.pda.entity.vo.FinanceDetailVo;
 import com.jiaxin.pda.entity.vo.GeneralVo;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.service.FinanceDetailService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author milo
  */
 @RestController
+@RequestMapping(value = "/finance")
+@Api(value = "finance",tags = {"财务"})
 public class FinanceDetailController extends BaseController{
     @Autowired
     private FinanceDetailService financeDetailService;
@@ -28,6 +32,7 @@ public class FinanceDetailController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/finance/insertFinanceDetail")
+    @ApiOperation(value = "插入财务详情",notes = "")
     public GeneralVo insertFinanceDetail(HttpServletRequest request, HttpServletResponse response, @RequestBody FinanceDetailVo financeDetailVo){
         logger.info("插入财务信息，入参为：{}",financeDetailVo);
         initOperateParam(request,response,financeDetailVo, Constant.CREATE_TYPE);
@@ -45,6 +50,7 @@ public class FinanceDetailController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/finance/updateFinanceDetail")
+    @ApiOperation(value = "修改财务详情",notes = "")
     public GeneralVo updateFinanceDetail(HttpServletRequest request, HttpServletResponse response,@RequestBody FinanceDetailVo financeDetailVo){
         logger.info("修改财务信息，入参为：{}",financeDetailVo);
         initOperateParam(request,response,financeDetailVo, Constant.UPDATE_TYPE);
@@ -62,6 +68,7 @@ public class FinanceDetailController extends BaseController{
      * @return 响应结果
      */
     @DeleteMapping("/finance/deleteFinanceDetail")
+    @ApiOperation(value = "删除财务详情",notes = "")
     public GeneralVo deleteFinanceDetail(HttpServletRequest request, HttpServletResponse response,@RequestBody FinanceDetailVo financeDetailVo){
         logger.info("删除财务信息，入参为：{}",financeDetailVo);
         initOperateParam(request,response,financeDetailVo, Constant.UPDATE_TYPE);
@@ -77,6 +84,7 @@ public class FinanceDetailController extends BaseController{
      * 按照条件分页查找财务信息
      * @return
      */
+    @ApiOperation(value = "分页查询财务详情",notes = "")
     @PostMapping("/finance/queryFinanceDetailByPage")
     public ListPageVo queryFinanceDetailByPage(@RequestBody FinanceDetailDto financeDetailDto){
         financeDetailDto.build();

@@ -8,6 +8,8 @@ import com.jiaxin.pda.entity.vo.RolePrivilegeVo;
 import com.jiaxin.pda.entity.vo.RoleVo;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.service.RoleService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ import javax.validation.Valid;
  * @author milo
  */
 @RestController
+@Api(value = "role",tags = {"角色控制器"})
+@RequestMapping(value = "/role")
 public class RoleController extends BaseController{
     private static final Logger logger = LoggerFactory.getLogger(RoleController.class);
 
@@ -40,6 +44,7 @@ public class RoleController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/role/insertRole")
+    @ApiOperation(value = "插入角色")
     public GeneralVo insertRole(HttpServletRequest request, HttpServletResponse response,@RequestBody RoleVo roleVo, BindingResult result){
         if(null == roleVo.getRoleName() || roleVo.getRoleName().trim().length() == 0){
             return new GeneralVo(ErrorListEnum.ROLE_NAME_NOT_EXIST,null);
@@ -63,6 +68,7 @@ public class RoleController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/role/updateRoleName")
+    @ApiOperation(value = "修改角色姓名")
     public GeneralVo updateRoleName(HttpServletRequest request, HttpServletResponse response,@RequestBody @Valid RoleVo roleVo, BindingResult result){
         if(null == roleVo.getRoleName() || roleVo.getRoleName().trim().length() == 0){
             return new GeneralVo(ErrorListEnum.ROLE_NAME_NOT_EXIST,null);
@@ -85,6 +91,7 @@ public class RoleController extends BaseController{
      * @return 响应结果
      */
     @DeleteMapping("/role/deleteRole")
+    @ApiOperation(value = "删除角色")
     public GeneralVo deleteRole(HttpServletRequest request, HttpServletResponse response,@RequestBody RoleVo roleVo){
         RoleVo queryResult = roleService.queryById(roleVo.getId());
         if(null == queryResult ||(null != queryResult && queryResult.isDeleteFlag())){
@@ -107,6 +114,7 @@ public class RoleController extends BaseController{
      * @return 响应结果
      */
     @PostMapping("/role/selectRoleByPage")
+    @ApiOperation(value = "分页查找角色信息")
     public ListPageVo selectRoleByPage(@RequestBody RoleDto roleDto){
         roleDto.build();
         return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,roleService.selectRoleByPage(roleDto),roleDto.getPageInfo());
@@ -118,6 +126,7 @@ public class RoleController extends BaseController{
      * @return 响应结果
      */
     @PostMapping("/role/givePrivilege")
+    @ApiOperation(value = "角色授权")
     public GeneralVo givePrivilege(HttpServletRequest request, HttpServletResponse response,@RequestBody RolePrivilegeVo rolePrivilegeVo){
         int result = roleService.queryMenuAuthorityByCondition(rolePrivilegeVo.getMenuId(),rolePrivilegeVo.getRoleId());
         if(Constant.EMPTY_INTEGER_VALUE == result){
@@ -136,6 +145,7 @@ public class RoleController extends BaseController{
      * @return 响应结果
      */
     @DeleteMapping("/role/cancelPrivilege")
+    @ApiOperation(value = "角色取消授权")
     public GeneralVo cancelPrivilege(HttpServletRequest request, HttpServletResponse response,@RequestBody RolePrivilegeVo rolePrivilegeVo){
         //初始化创建参数
         initSimpleOperateParam(request,response,rolePrivilegeVo, Constant.UPDATE_TYPE);
@@ -152,6 +162,7 @@ public class RoleController extends BaseController{
      * @param roleId 角色Id
      * @return 响应结果
      */
+    @ApiOperation(value = "根据角色信息查询权限信息")
     @GetMapping("/role/queryPrivilegeByRoleId/{roleId}")
     public GeneralVo queryPrivilegeByRoleId(@PathVariable("roleId") Integer roleId){
         return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,roleService.selectByRoleId(roleId));
