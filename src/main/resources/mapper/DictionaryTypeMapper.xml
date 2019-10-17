@@ -97,7 +97,7 @@
             tb_dictionary_type tdt
         WHERE tdt.delete_flag = 0
         <if test="typeName != null and typeName != ''">
-            tdt.type_name like concat('%',#{typeName},'%')
+            and tdt.type_name like concat('%',#{typeName},'%')
         </if>
     </select>
 

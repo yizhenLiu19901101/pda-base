@@ -59,6 +59,16 @@ public enum ErrorListEnum {
      * 数据字典类型名称重复
      */
     DICTIONARY_TYPE_NAME_REPEAT(217,"数据字典类型名称重复"),
+
+    /**
+     * 字典项名称不能为空
+     */
+    ITEM_NAME_NOT_BLANK(218,"字典项名称不能为空"),
+
+    /**
+     * 字典项名称重复
+     */
+    ITEM_NAME_REPEAT(219,"字典项名称重复"),
     /**
      * 用户不存在
      */

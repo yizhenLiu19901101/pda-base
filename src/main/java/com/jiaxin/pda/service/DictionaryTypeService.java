@@ -29,10 +29,10 @@ public interface DictionaryTypeService {
 
     /**
      * 删除字典类型(逻辑删除)
-     * @param id
+     * @param dictionaryTypeVo
      * @return
      */
-    int deleteDictionaryType(String id);
+    int deleteDictionaryType(DictionaryTypeVo dictionaryTypeVo);
 
     /**
      * 分页查询字典类型
@@ -65,10 +65,10 @@ public interface DictionaryTypeService {
 
     /**
      * 删除字典项(逻辑删除)
-     * @param id
+     * @param dictionaryVo
      * @return
      */
-    int deleteDictionaryItem(String id);
+    int deleteDictionaryItem(DictionaryVo  dictionaryVo);
 
     /**
      * 根据类型ID查询字典
@@ -83,4 +83,11 @@ public interface DictionaryTypeService {
      * @return
      */
     DictionaryTypeVo queryDictionaryTypeInfoByName(String dictionaryTypeName);
+
+    /**
+     * 根据名称查询字典项信息
+     * @param itemName
+     * @return
+     */
+    DictionaryVo queryDictionaryItemInfoByName(String itemName);
 }

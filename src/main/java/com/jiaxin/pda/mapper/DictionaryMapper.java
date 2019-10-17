@@ -1,6 +1,7 @@
 package com.jiaxin.pda.mapper;
 
 import com.jiaxin.pda.entity.dto.DictionaryDto;
+import com.jiaxin.pda.entity.vo.DictionaryTypeVo;
 import com.jiaxin.pda.entity.vo.DictionaryVo;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -60,4 +61,11 @@ public interface DictionaryMapper {
      * @return
      */
     List<DictionaryVo> queryDictionaryByTypeId(Integer typeUuid);
+
+    /**
+     * 根据名称查询字典项信息
+     * @param itemName
+     * @return
+     */
+    DictionaryVo queryDictionaryItemInfoByName(String itemName);
 }

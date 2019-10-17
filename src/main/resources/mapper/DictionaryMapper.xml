@@ -109,7 +109,7 @@
         tb_dictionary td
         WHERE td.delete_flag = 0
         <if test="itemName != null and itemName != ''">
-            td.item_name like concat('%',#{itemName},'%')
+            and td.item_name like concat('%',#{itemName},'%')
         </if>
     </select>
 
@@ -131,5 +131,24 @@
         WHERE td.delete_flag = 0
         and td.dictionary_type_id = #{dictionaryTypeId}
         order by td.order_no asc
+    </select>
+
+    <!-- 根据名称查询数据字典类型信息 -->
+    <select id="queryDictionaryItemInfoByName" parameterType="java.lang.String" resultType="com.jiaxin.pda.entity.vo.DictionaryVo">
+        SELECT
+            td.id,
+            td.uuid,
+            td.reversion,
+            td.created_by AS createdBy,
+            td.created_time AS createdTime,
+            td.updated_by AS updatedBy,
+            td.updated_time AS updatedTime,
+            td.item_name AS itemName,
+            td.order_no as orderNo,
+            td.delete_flag as deleteFlag
+        FROM
+        tb_dictionary td
+        WHERE td.delete_flag = 0
+        and td.item_name = #{itemName}
     </select>
 </mapper>

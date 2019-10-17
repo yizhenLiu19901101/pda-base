@@ -18,24 +18,22 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/jiaxin/pda/controller/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/jiaxin/pda/controller/MenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/jiaxin/pda/service/impl/MenuServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/jiaxin/pda/service/impl/MenuServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/com.jiaxin.pad.controller.MenuControllerTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/com.jiaxin.pad.controller.MenuControllerTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/jiaxin/pda/enumeration/ErrorListEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/jiaxin/pda/enumeration/ErrorListEnum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/com.jiaxin.pad.controller.MenuControllerTest.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/com.jiaxin.pad.controller.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/com.jiaxin.pad.controller.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-com.jiaxin.pad.controller.MenuControllerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-com.jiaxin.pad.controller.MenuControllerTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-com.jiaxin.pad.controller.MenuControllerTest.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/DictionaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/DictionaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/MenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/enumeration/ErrorListEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/enumeration/ErrorListEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/mapper/DictionaryTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/mapper/DictionaryTypeMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/mapper/DictionaryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/mapper/DictionaryMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/service/DictionaryTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/service/DictionaryTypeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/service/impl/DictionaryTypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/service/impl/DictionaryTypeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/service/impl/MenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/service/impl/MenuServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/DictionaryMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DictionaryMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/DictionaryTypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DictionaryTypeMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/MenuControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/MenuControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/DictionaryControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/DictionaryControllerTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,7 +133,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.MenuControllerTest.insertMenu">
+  <component name="RunManager" selected="Gradle.DictionaryControllerTest.sevenCase">
     <configuration name="pda" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -145,12 +143,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MenuControllerTest.deleteMenu" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DictionaryControllerTest.deleteDictionaryType" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.MenuControllerTest.deleteMenu&quot;" />
+        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.DictionaryControllerTest.deleteDictionaryType&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -165,12 +163,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="MenuControllerTest.insertMenu" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DictionaryControllerTest.insertDictionaryType" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.MenuControllerTest.insertMenu&quot;" />
+        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.DictionaryControllerTest.insertDictionaryType&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -185,12 +183,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="MenuControllerTest.insertMenuWithNullMenuName" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DictionaryControllerTest.sevenCase" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.MenuControllerTest.insertMenuWithNullMenuName&quot;" />
+        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.DictionaryControllerTest.sevenCase&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -205,12 +203,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="MenuControllerTest.updateMenuName" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DictionaryControllerTest.updateDictionaryItem" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.MenuControllerTest.updateMenuName&quot;" />
+        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.DictionaryControllerTest.updateDictionaryItem&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -225,12 +223,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="RoleControllerTest.cancelPrivilege" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DictionaryControllerTest.updateDictionaryType" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.RoleControllerTest.cancelPrivilege&quot;" />
+        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.DictionaryControllerTest.updateDictionaryType&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -247,19 +245,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.pda" />
-      <item itemvalue="Gradle.RoleControllerTest.cancelPrivilege" />
-      <item itemvalue="Gradle.MenuControllerTest.insertMenu" />
-      <item itemvalue="Gradle.MenuControllerTest.insertMenuWithNullMenuName" />
-      <item itemvalue="Gradle.MenuControllerTest.deleteMenu" />
-      <item itemvalue="Gradle.MenuControllerTest.updateMenuName" />
+      <item itemvalue="Gradle.DictionaryControllerTest.insertDictionaryType" />
+      <item itemvalue="Gradle.DictionaryControllerTest.updateDictionaryType" />
+      <item itemvalue="Gradle.DictionaryControllerTest.deleteDictionaryType" />
+      <item itemvalue="Gradle.DictionaryControllerTest.updateDictionaryItem" />
+      <item itemvalue="Gradle.DictionaryControllerTest.sevenCase" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.MenuControllerTest.insertMenu" />
-        <item itemvalue="Gradle.MenuControllerTest.updateMenuName" />
-        <item itemvalue="Gradle.MenuControllerTest.deleteMenu" />
-        <item itemvalue="Gradle.MenuControllerTest.insertMenuWithNullMenuName" />
-        <item itemvalue="Gradle.RoleControllerTest.cancelPrivilege" />
+        <item itemvalue="Gradle.DictionaryControllerTest.sevenCase" />
+        <item itemvalue="Gradle.DictionaryControllerTest.updateDictionaryItem" />
+        <item itemvalue="Gradle.DictionaryControllerTest.deleteDictionaryType" />
+        <item itemvalue="Gradle.DictionaryControllerTest.updateDictionaryType" />
+        <item itemvalue="Gradle.DictionaryControllerTest.insertDictionaryType" />
       </list>
     </recent_temporary>
   </component>

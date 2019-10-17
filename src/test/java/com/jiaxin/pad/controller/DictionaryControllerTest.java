@@ -53,11 +53,11 @@ public class DictionaryControllerTest {
     }
 
     @Test
-    public void firstCase() throws Exception{
+    public void insertDictionaryType() throws Exception{
         logger.info("插入字典类型信息");
         //设置查询条件
         JSONObject dictionaryTypeCondition = new JSONObject();
-        dictionaryTypeCondition.put("typeName","餐饮");
+        dictionaryTypeCondition.put("typeName","交通");
         logger.info("插入字典信息条件: " + dictionaryTypeCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.put("/dictionary/insertDictionaryType")
@@ -68,12 +68,12 @@ public class DictionaryControllerTest {
     }
 
     @Test
-    public void secondCase() throws Exception{
+    public void updateDictionaryType() throws Exception{
         logger.info("修改字典类型信息");
         //设置查询条件
         JSONObject dictionaryTypeCondition = new JSONObject();
         dictionaryTypeCondition.put("typeName","交通");
-        dictionaryTypeCondition.put("id","df6513c16d9e4069936ae223591a1227");
+        dictionaryTypeCondition.put("id","27ffdd89da5f447bb3f6c89ba53c912a");
         dictionaryTypeCondition.put("reversion",2);
         logger.info("修改字典信息条件: " + dictionaryTypeCondition.toJSONString());
         //执行测试
@@ -85,17 +85,22 @@ public class DictionaryControllerTest {
     }
 
     @Test
-    public void thirdCase() throws Exception{
+    public void deleteDictionaryType() throws Exception{
         logger.info("删除字典类型信息");
+        //设置查询条件
+        JSONObject dictionaryTypeCondition = new JSONObject();
+        dictionaryTypeCondition.put("id","404e5b9ed6154ff78d0a0d531af55950");
+        dictionaryTypeCondition.put("reversion",1);
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.delete("/dictionary/deleteDictionaryType/df6513c16d9e4069936ae223591a1227")
+        mockMvc.perform(MockMvcRequestBuilders.delete("/dictionary/deleteDictionaryType")
                 .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON))
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8").content(dictionaryTypeCondition.toString().getBytes()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
     @Test
-    public void fourCase() throws Exception{
+    public void queryDictionaryTypeByPage() throws Exception{
         logger.info("分页查找字典类型信息");
         //设置查询条件
         JSONObject dictionaryTypeCondition = new JSONObject();
@@ -112,13 +117,13 @@ public class DictionaryControllerTest {
 
 
     @Test
-    public void fiveCase() throws Exception{
+    public void insertDictionaryItem() throws Exception{
         logger.info("插入字典信息");
         //设置查询条件
         JSONObject dictionaryTypeCondition = new JSONObject();
-        dictionaryTypeCondition.put("itemName","出租车");
-        dictionaryTypeCondition.put("orderNo",1);
-        dictionaryTypeCondition.put("dictionaryTypeId",2);
+        dictionaryTypeCondition.put("itemName","饮料");
+        dictionaryTypeCondition.put("orderNo",3);
+        dictionaryTypeCondition.put("dictionaryTypeId",3);
         logger.info("插入字典信息条件: " + dictionaryTypeCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.put("/dictionary/insertDictionary")
@@ -129,14 +134,14 @@ public class DictionaryControllerTest {
     }
 
     @Test
-    public void sixCase() throws Exception{
+    public void updateDictionaryItem() throws Exception{
         logger.info("修改字典信息");
         //设置查询条件
         JSONObject dictionaryTypeCondition = new JSONObject();
         dictionaryTypeCondition.put("itemName","饮料");
         dictionaryTypeCondition.put("orderNo",1);
         dictionaryTypeCondition.put("id","048d9d027d2e4ec9bb1c5e0493705260");
-        dictionaryTypeCondition.put("reversion",2);
+        dictionaryTypeCondition.put("reversion",15);
         logger.info("修改字典信息条件: " + dictionaryTypeCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.put("/dictionary/updateDictionary")
@@ -147,12 +152,17 @@ public class DictionaryControllerTest {
     }
 
     @Test
-    public void sevenCase() throws Exception{
+    public void deleteDictionaryItem() throws Exception{
         logger.info("删除字典信息");
+        //设置查询条件
+        JSONObject dictionaryTypeCondition = new JSONObject();
+        dictionaryTypeCondition.put("id","048d9d027d2e4ec9bb1c5e0493705260");
+        dictionaryTypeCondition.put("reversion",15);
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.delete("/dictionary/deleteDictionaryItem/048d9d027d2e4ec9bb1c5e0493705260")
+        mockMvc.perform(MockMvcRequestBuilders.delete("/dictionary/deleteDictionaryItem")
                 .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON))
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8").content(dictionaryTypeCondition.toString().getBytes()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 

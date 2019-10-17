@@ -5,7 +5,6 @@ import com.jiaxin.pda.entity.dto.DictionaryDto;
 import com.jiaxin.pda.entity.dto.DictionaryTypeDto;
 import com.jiaxin.pda.entity.vo.DictionaryTypeVo;
 import com.jiaxin.pda.entity.vo.DictionaryVo;
-import com.jiaxin.pda.entity.vo.OperateVo;
 import com.jiaxin.pda.mapper.DictionaryMapper;
 import com.jiaxin.pda.mapper.DictionaryTypeMapper;
 import com.jiaxin.pda.service.DictionaryTypeService;
@@ -31,28 +30,17 @@ public class DictionaryTypeServiceImpl implements DictionaryTypeService {
     public int insertDictionaryType(DictionaryTypeVo dictionaryTypeVo) {
         dictionaryTypeVo.setId(GenerateUtil.generateRandomString());
         dictionaryTypeVo.setUuid(dictionaryTypeMapper.queryMaxId() + Constant.INCREASE_PACE);
-        dictionaryTypeVo.setDeleteFlag(false);
-        dictionaryTypeVo.setReversion(Constant.INIT_REVERSION);
-        dictionaryTypeVo.setCreatedBy(Constant.SUPER_ADMIN);
-        dictionaryTypeVo.setCreatedTime(Constant.NOW);
-        //初始化更新参数
-        this.initUpdateParam(dictionaryTypeVo);
         return dictionaryTypeMapper.insertDictionaryType(dictionaryTypeVo);
     }
 
     @Override
     public int updateDictionaryType(DictionaryTypeVo dictionaryTypeVo) {
-        //初始化更新参数
-        this.initUpdateParam(dictionaryTypeVo);
         return dictionaryTypeMapper.updateDictionaryType(dictionaryTypeVo);
     }
 
     @Override
-    public int deleteDictionaryType(String id) {
-        DictionaryTypeVo dictionaryTypeVo = dictionaryTypeMapper.findById(id);
+    public int deleteDictionaryType(DictionaryTypeVo dictionaryTypeVo) {
         dictionaryTypeVo.setDeleteFlag(true);
-        //初始化更新参数
-        this.initUpdateParam(dictionaryTypeVo);
         return dictionaryTypeMapper.deleteDictionaryType(dictionaryTypeVo);
     }
 
@@ -71,28 +59,17 @@ public class DictionaryTypeServiceImpl implements DictionaryTypeService {
     public int insertDictionaryItem(DictionaryVo dictionaryVo) {
         dictionaryVo.setId(GenerateUtil.generateRandomString());
         dictionaryVo.setUuid(dictionaryMapper.selectMaxUuid() + Constant.INCREASE_PACE);
-        dictionaryVo.setDeleteFlag(false);
-        dictionaryVo.setReversion(Constant.INIT_REVERSION);
-        dictionaryVo.setCreatedBy(Constant.SUPER_ADMIN);
-        dictionaryVo.setCreatedTime(Constant.NOW);
-        //初始化更新参数
-        this.initUpdateParam(dictionaryVo);
         return dictionaryMapper.insertDictionaryItem(dictionaryVo);
     }
 
     @Override
     public int updateDictionaryItem(DictionaryVo dictionaryVo) {
-        //初始化更新参数
-        this.initUpdateParam(dictionaryVo);
         return dictionaryMapper.updateDictionaryItem(dictionaryVo);
     }
 
     @Override
-    public int deleteDictionaryItem(String id) {
-        DictionaryVo dictionaryVo = dictionaryMapper.findById(id);
+    public int deleteDictionaryItem(DictionaryVo dictionaryVo) {
         dictionaryVo.setDeleteFlag(true);
-        //初始化更新参数
-        this.initUpdateParam(dictionaryVo);
         return dictionaryMapper.deleteDictionaryItem(dictionaryVo);
     }
 
@@ -106,16 +83,8 @@ public class DictionaryTypeServiceImpl implements DictionaryTypeService {
         return dictionaryTypeMapper.queryDictionaryTypeInfoByName(dictionaryTypeName);
     }
 
-
-    /**
-     * 初始化更新参数
-     * @param operateVo
-     */
-    private void initUpdateParam(OperateVo operateVo){
-        operateVo.setUpdatedBy(Constant.SUPER_ADMIN);
-        operateVo.setUpdatedTime(Constant.NOW);
+    @Override
+    public DictionaryVo queryDictionaryItemInfoByName(String itemName) {
+        return dictionaryMapper.queryDictionaryItemInfoByName(itemName);
     }
-
-
-
 }
