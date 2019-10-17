@@ -55,7 +55,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void firstCase() throws Exception{
+    public void queryUserInfoById() throws Exception{
         logger.info("根据ID查询用户信息");
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.get("/user/findById/28d98c37195e448193639c9c382235ef")
@@ -66,7 +66,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void secondCase() throws Exception{
+    public void insertUser() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
         userCondition.put("userName","danny");
@@ -81,7 +81,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void thirdCase() throws Exception{
+    public void deleteUser() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
         userCondition.put("id","a8f67c704e9f4dc981698084dffe4ce8");
@@ -98,7 +98,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void fourCase() throws Exception{
+    public void updateUserName() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
         userCondition.put("id","27d98c37195e448193639c9c382235ef");
@@ -114,7 +114,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void fiveCase() throws Exception{
+    public void updateUserPassword() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
         userCondition.put("id","80bc9bf1702040f884a52fa0c4c0b4e9");
@@ -131,7 +131,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void sixCase() throws Exception{
+    public void userLogin() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
         userCondition.put("userName","xuexue");
@@ -147,7 +147,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void sevenCase() throws Exception{
+    public void userLogout() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
         userCondition.put("userToken","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Njg2OTA5NTUwNjgsInBheWxvYWQiOiIxIn0.lBt7srIZJ-YuvAirDo36kwjuk8BWs73gtJQqrk12AG4");
@@ -161,7 +161,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void eightCase() throws Exception{
+    public void queryUserInfoByPage() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
         userCondition.put("current",1);
@@ -176,7 +176,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void nineCase() throws Exception{
+    public void giveUserRole() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
         userCondition.put("userId",8);
@@ -191,7 +191,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void tenCase() throws Exception{
+    public void cancelUserRole() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
         userCondition.put("userId",1);
@@ -205,74 +205,11 @@ public class UserControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
     @Test
-    public void elevenCase() throws Exception{
+    public void queryRoleByUserId() throws Exception{
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.get("/user/queryRoleByUserId/8")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
-
-    @Test
-    public void twelveCase() throws Exception{
-        //设置查询条件
-        JSONObject userCondition = new JSONObject();
-        userCondition.put("userName","");
-        userCondition.put("password","999999");
-        logger.info("插入用户信息条件: " + userCondition.toJSONString());
-        //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.put("/user/insertUser")
-                .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
-                .andExpect(MockMvcResultMatchers.status().isOk());
-    }
-
-    @Test
-    public void thirteenCase() throws Exception{
-        //设置查询条件
-        JSONObject userCondition = new JSONObject();
-        userCondition.put("userName","tom");
-        userCondition.put("password","");
-        logger.info("插入用户信息条件: " + userCondition.toJSONString());
-        //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.put("/user/insertUser")
-                .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
-                .andExpect(MockMvcResultMatchers.status().isOk());
-    }
-
-    @Test
-    public void fortheenCase() throws Exception{
-        //设置查询条件
-        JSONObject userCondition = new JSONObject();
-        userCondition.put("id","27d98c37195e448193639c9c382235ef");
-        userCondition.put("userName","danny");
-        userCondition.put("reversion",3);
-        logger.info("修改用户姓名条件: " + userCondition.toJSONString());
-        //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.put("/user/updateUserName")
-                .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
-                .andExpect(MockMvcResultMatchers.status().isOk());
-    }
-
-    @Test
-    public void fifteenCase() throws Exception{
-        //设置查询条件
-        JSONObject userCondition = new JSONObject();
-        userCondition.put("id","27d98c37195e448193639c9c382235ef");
-        userCondition.put("userName","");
-        userCondition.put("reversion",3);
-        logger.info("修改用户姓名条件: " + userCondition.toJSONString());
-        //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.put("/user/updateUserName")
-                .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
-                .andExpect(MockMvcResultMatchers.status().isOk());
-    }
-
 }

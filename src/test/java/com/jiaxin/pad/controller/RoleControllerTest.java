@@ -53,7 +53,7 @@ public class RoleControllerTest {
     }
 
     @Test
-    public void firstCase() throws Exception{
+    public void insertRole() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
         userCondition.put("roleName","超级管理员");
@@ -67,7 +67,7 @@ public class RoleControllerTest {
     }
 
     @Test
-    public void secondCase() throws Exception{
+    public void updateRoleName() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
         userCondition.put("id","0061b24449754b2780771691c19fa250");
@@ -83,7 +83,7 @@ public class RoleControllerTest {
     }
 
     @Test
-    public void thirdCase() throws Exception{
+    public void deleteRole() throws Exception{
         JSONObject userCondition = new JSONObject();
         userCondition.put("id","1f2e572cb99344459ed9d7e600e19574");
         userCondition.put("reversion",2);
@@ -97,7 +97,7 @@ public class RoleControllerTest {
     }
 
     @Test
-    public void fourCase() throws Exception{
+    public void queryRoleByPage() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
         userCondition.put("offset",10);
@@ -150,20 +150,4 @@ public class RoleControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
-
-    @Test
-    public void eightCase() throws Exception{
-        //设置查询条件
-        JSONObject userCondition = new JSONObject();
-        userCondition.put("roleName","");
-        logger.info("插入角色信息条件: " + userCondition.toJSONString());
-        //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.put("/role/insertRole")
-                .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
-                .andExpect(MockMvcResultMatchers.status().isOk());
-    }
-
-
 }

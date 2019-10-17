@@ -167,7 +167,7 @@ public class DictionaryControllerTest {
     }
 
     @Test
-    public void eightCase() throws Exception{
+    public void queryDictionaryByPage() throws Exception{
         logger.info("分页查找字典信息");
         //设置查询条件
         JSONObject dictionaryTypeCondition = new JSONObject();
@@ -183,7 +183,7 @@ public class DictionaryControllerTest {
     }
 
     @Test
-    public void nineCase() throws Exception{
+    public void queryDictionaryByTypeId() throws Exception{
         logger.info("根据typeId查找字典信息");
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.get("/dictionary/queryDictionaryByTypeId/2")
