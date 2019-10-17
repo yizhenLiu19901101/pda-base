@@ -46,7 +46,7 @@ public class UserController extends BaseController{
      * @param userVo
      * @return
      */
-    @PutMapping("/user/insertUser")
+    @PutMapping("/user/registerUser")
     public GeneralVo insertUser(HttpServletRequest request, HttpServletResponse response,@RequestBody UserVo userVo){
         try{
             logger.info("插入用户-参数,{}",userVo);
