@@ -26,10 +26,10 @@ public interface FinanceDetailService {
 
     /**
      * 删除财务数据
-     * @param id
+     * @param financeDetailVo
      * @return
      */
-    int deleteFinanceDetail(String id);
+    int deleteFinanceDetail(FinanceDetailVo financeDetailVo);
 
     /**
      * 按照条件分页查询财务对象

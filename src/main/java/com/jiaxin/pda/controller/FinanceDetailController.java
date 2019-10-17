@@ -1,5 +1,6 @@
 package com.jiaxin.pda.controller;
 
+import com.jiaxin.pda.constant.Constant;
 import com.jiaxin.pda.entity.ListPageVo;
 import com.jiaxin.pda.entity.dto.FinanceDetailDto;
 import com.jiaxin.pda.entity.vo.FinanceDetailVo;
@@ -8,6 +9,9 @@ import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.service.FinanceDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 财务详情控制器类
@@ -24,9 +28,15 @@ public class FinanceDetailController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/finance/insertFinanceDetail")
-    public GeneralVo insertFinanceDetail(@RequestBody FinanceDetailVo financeDetailVo){
-        financeDetailService.insertFinanceDetail(financeDetailVo);
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+    public GeneralVo insertFinanceDetail(HttpServletRequest request, HttpServletResponse response, @RequestBody FinanceDetailVo financeDetailVo){
+        logger.info("插入财务信息，入参为：{}",financeDetailVo);
+        initOperateParam(request,response,financeDetailVo, Constant.CREATE_TYPE);
+        int result = financeDetailService.insertFinanceDetail(financeDetailVo);
+        if(Constant.OPERATE_SUCCESS == result){
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        }else{
+            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        }
     }
 
     /**
@@ -35,20 +45,32 @@ public class FinanceDetailController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/finance/updateFinanceDetail")
-    public GeneralVo updateFinanceDetail(@RequestBody FinanceDetailVo financeDetailVo){
-        financeDetailService.updateFinanceDetail(financeDetailVo);
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+    public GeneralVo updateFinanceDetail(HttpServletRequest request, HttpServletResponse response,@RequestBody FinanceDetailVo financeDetailVo){
+        logger.info("修改财务信息，入参为：{}",financeDetailVo);
+        initOperateParam(request,response,financeDetailVo, Constant.UPDATE_TYPE);
+        int result = financeDetailService.updateFinanceDetail(financeDetailVo);
+        if(Constant.OPERATE_SUCCESS == result){
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        }else{
+            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        }
     }
 
     /**
      * 删除财务信息
-     * @param id 记录ID
+     * @param financeDetailVo
      * @return 响应结果
      */
-    @DeleteMapping("/finance/deleteFinanceDetail/{id}")
-    public GeneralVo deleteFinanceDetail(@PathVariable("id") String id){
-        financeDetailService.deleteFinanceDetail(id);
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+    @DeleteMapping("/finance/deleteFinanceDetail")
+    public GeneralVo deleteFinanceDetail(HttpServletRequest request, HttpServletResponse response,@RequestBody FinanceDetailVo financeDetailVo){
+        logger.info("删除财务信息，入参为：{}",financeDetailVo);
+        initOperateParam(request,response,financeDetailVo, Constant.UPDATE_TYPE);
+        int result = financeDetailService.deleteFinanceDetail(financeDetailVo);
+        if(Constant.OPERATE_SUCCESS == result){
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        }else{
+            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        }
     }
 
     /**

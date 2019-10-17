@@ -53,7 +53,7 @@ public class FinanceDetailControllerTest {
     }
 
     @Test
-    public void firstCase() throws Exception{
+    public void insertFinanceDetail() throws Exception{
         logger.info("插入财务信息");
         //设置查询条件
         JSONObject financeDetailCondition = new JSONObject();
@@ -70,7 +70,7 @@ public class FinanceDetailControllerTest {
     }
 
     @Test
-    public void secondCase() throws Exception{
+    public void updateFinanceDetail() throws Exception{
         logger.info("修改财务信息");
         //设置查询条件
         JSONObject financeDetailCondition = new JSONObject();
@@ -88,7 +88,22 @@ public class FinanceDetailControllerTest {
     }
 
     @Test
-    public void thirdCase() throws Exception{
+    public void deleteFinanceDetail() throws Exception{
+        logger.info("删除财务信息");
+        //设置查询条件
+        JSONObject financeDetailCondition = new JSONObject();
+        financeDetailCondition.put("id","fa17977a028a4489ad4e2dae354bff53");
+        financeDetailCondition.put("reversion","17");
+        //执行测试
+        mockMvc.perform(MockMvcRequestBuilders.delete("/finance/deleteFinanceDetail")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8").content(financeDetailCondition.toString().getBytes()))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void queryByPage() throws Exception{
         logger.info("分页查询财务信息");
         //设置查询条件
         JSONObject userCondition = new JSONObject();

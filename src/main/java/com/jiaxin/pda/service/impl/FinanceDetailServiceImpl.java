@@ -26,19 +26,16 @@ public class FinanceDetailServiceImpl implements FinanceDetailService {
     public int insertFinanceDetail(FinanceDetailVo financeDetailVo) {
         financeDetailVo.setId(GenerateUtil.generateRandomString());
         financeDetailVo.setUuid(financeDetailMapper.selectMaxUuid() + Constant.INCREASE_PACE);
-        this.initCreateParam(financeDetailVo);
         return financeDetailMapper.insertFinanceDetail(financeDetailVo);
     }
 
     @Override
     public int updateFinanceDetail(FinanceDetailVo financeDetailVo) {
-        this.initUpdateParam(financeDetailVo);
         return financeDetailMapper.updateFinanceDetail(financeDetailVo);
     }
 
     @Override
-    public int deleteFinanceDetail(String id) {
-        FinanceDetailVo financeDetailVo = financeDetailMapper.queryFinanceDetailById(id);
+    public int deleteFinanceDetail(FinanceDetailVo financeDetailVo) {
         financeDetailVo.setDeleteFlag(true);
         return financeDetailMapper.deleteFinanceDetail(financeDetailVo);
     }
@@ -46,28 +43,5 @@ public class FinanceDetailServiceImpl implements FinanceDetailService {
     @Override
     public List<FinanceDetailVo> queryFinanceDetailByPage(FinanceDetailDto financeDetailDto) {
         return financeDetailMapper.queryFinanceDetailByPage(financeDetailDto);
-    }
-
-
-    /**
-     * 初始化创建参数
-     * @param operateVo
-     */
-    private void initCreateParam(OperateVo operateVo){
-        operateVo.setDeleteFlag(false);
-        operateVo.setReversion(Constant.INIT_REVERSION);
-        operateVo.setCreatedBy(Constant.SUPER_ADMIN);
-        operateVo.setCreatedTime(Constant.NOW);
-        //初始化更次参数
-        this.initUpdateParam(operateVo);
-    }
-
-    /**
-     * 初始化更新参数
-     * @param operateVo
-     */
-    private void initUpdateParam(OperateVo operateVo){
-        operateVo.setUpdatedBy(Constant.SUPER_ADMIN);
-        operateVo.setUpdatedTime(Constant.NOW);
     }
 }

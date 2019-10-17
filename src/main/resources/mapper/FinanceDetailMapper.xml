@@ -108,7 +108,7 @@
         updated_by = #{updatedBy},
         updated_time = #{updatedTime}
         WHERE
-        id = #{id}
+        id = #{id} and reversion = #{reversion}
     </update>
 
 </mapper>

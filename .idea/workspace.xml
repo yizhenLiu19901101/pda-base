@@ -18,22 +18,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/jiaxin/pda/enumeration/ErrorListEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/jiaxin/pda/enumeration/ErrorListEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/com.jiaxin.pad.controller.MenuControllerTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/com.jiaxin.pad.controller.DictionaryControllerTest.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/com.jiaxin.pad.controller.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/com.jiaxin.pad.controller.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-com.jiaxin.pad.controller.MenuControllerTest.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/DictionaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/DictionaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/enumeration/ErrorListEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/enumeration/ErrorListEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/mapper/DictionaryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/mapper/DictionaryMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/service/DictionaryTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/service/DictionaryTypeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/service/impl/DictionaryTypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/service/impl/DictionaryTypeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/DictionaryMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DictionaryMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/DictionaryTypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DictionaryTypeMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/DictionaryControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/DictionaryControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/FinanceDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/FinanceDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/service/FinanceDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/service/FinanceDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/service/impl/FinanceDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/service/impl/FinanceDetailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/FinanceDetailMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/FinanceDetailMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/FinanceDetailControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/FinanceDetailControllerTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -133,7 +128,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.DictionaryControllerTest.sevenCase">
+  <component name="RunManager" selected="Gradle.FinanceDetailControllerTest.deleteFinanceDetail">
     <configuration name="pda" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -143,12 +138,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DictionaryControllerTest.deleteDictionaryType" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DictionaryControllerTest.deleteDictionaryItem" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.DictionaryControllerTest.deleteDictionaryType&quot;" />
+        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.DictionaryControllerTest.deleteDictionaryItem&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -163,12 +158,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="DictionaryControllerTest.insertDictionaryType" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DictionaryControllerTest.deleteDictionaryType" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.DictionaryControllerTest.insertDictionaryType&quot;" />
+        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.DictionaryControllerTest.deleteDictionaryType&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -223,12 +218,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="DictionaryControllerTest.updateDictionaryType" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="FinanceDetailControllerTest.deleteFinanceDetail" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.DictionaryControllerTest.updateDictionaryType&quot;" />
+        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.FinanceDetailControllerTest.deleteFinanceDetail&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -245,19 +240,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.pda" />
-      <item itemvalue="Gradle.DictionaryControllerTest.insertDictionaryType" />
-      <item itemvalue="Gradle.DictionaryControllerTest.updateDictionaryType" />
       <item itemvalue="Gradle.DictionaryControllerTest.deleteDictionaryType" />
       <item itemvalue="Gradle.DictionaryControllerTest.updateDictionaryItem" />
       <item itemvalue="Gradle.DictionaryControllerTest.sevenCase" />
+      <item itemvalue="Gradle.DictionaryControllerTest.deleteDictionaryItem" />
+      <item itemvalue="Gradle.FinanceDetailControllerTest.deleteFinanceDetail" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.FinanceDetailControllerTest.deleteFinanceDetail" />
+        <item itemvalue="Gradle.DictionaryControllerTest.deleteDictionaryItem" />
         <item itemvalue="Gradle.DictionaryControllerTest.sevenCase" />
         <item itemvalue="Gradle.DictionaryControllerTest.updateDictionaryItem" />
         <item itemvalue="Gradle.DictionaryControllerTest.deleteDictionaryType" />
-        <item itemvalue="Gradle.DictionaryControllerTest.updateDictionaryType" />
-        <item itemvalue="Gradle.DictionaryControllerTest.insertDictionaryType" />
       </list>
     </recent_temporary>
   </component>
