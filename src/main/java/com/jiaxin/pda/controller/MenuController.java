@@ -10,6 +10,9 @@ import com.jiaxin.pda.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 菜单控制器类
  * @author milo
@@ -26,9 +29,9 @@ public class MenuController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/menu/insertMenu")
-    public GeneralVo insertMenu(@RequestBody MenuVo menuVo){
+    public GeneralVo insertMenu(HttpServletRequest request, HttpServletResponse response,@RequestBody MenuVo menuVo){
         logger.info("菜单信息：{}",menuVo);
-        int result = Constant.EMPTY_INTEGER_VALUE;
+        int result;
         if(null == menuVo.getMenuName() || Constant.EMPTY_INTEGER_VALUE == menuVo.getMenuName().trim().length()){
             return new GeneralVo(ErrorListEnum.MENU_NAME_NOT_BLANK,null);
         }
@@ -36,6 +39,7 @@ public class MenuController extends BaseController{
         if(count != Constant.EMPTY_INTEGER_VALUE){
             return new GeneralVo(ErrorListEnum.MENU_NAME_REPEAT,null);
         }else{
+            initOperateParam(request,response,menuVo,Constant.CREATE_TYPE);
             result = menuService.insertMenu(menuVo);
         }
         if(Constant.OPERATE_SUCCESS == result){
@@ -51,8 +55,9 @@ public class MenuController extends BaseController{
      * @return 响应结果
      */
     @DeleteMapping("/menu/delete")
-    public GeneralVo deleteMenu(@RequestBody MenuVo menuVo){
+    public GeneralVo deleteMenu(HttpServletRequest request, HttpServletResponse response,@RequestBody MenuVo menuVo){
         logger.info("删除菜单，入参为：{}",menuVo);
+        initOperateParam(request,response,menuVo,Constant.UPDATE_TYPE);
         int result = menuService.deleteMenu(menuVo);
         if(Constant.OPERATE_SUCCESS == result){
             return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
@@ -67,7 +72,7 @@ public class MenuController extends BaseController{
      * @return 响应对象
      */
     @PostMapping("/menu/updateMenuName")
-    public GeneralVo updateMenuName(@RequestBody MenuVo menuVo){
+    public GeneralVo updateMenuName(HttpServletRequest request, HttpServletResponse response,@RequestBody MenuVo menuVo){
         logger.info("修改菜单名称，入参为:{}",menuVo);
         if(null == menuVo.getMenuName() || Constant.EMPTY_INTEGER_VALUE == menuVo.getMenuName().trim().length()){
             return new GeneralVo(ErrorListEnum.MENU_NAME_NOT_BLANK,null);
@@ -77,6 +82,7 @@ public class MenuController extends BaseController{
         if(null != queryResult && (!queryResult.getId().equals(menuVo.getId()))){
             return new GeneralVo(ErrorListEnum.MENU_NAME_REPEAT,null);
         }else{
+            initOperateParam(request,response,menuVo,Constant.UPDATE_TYPE);
             result = menuService.updateMenuName(menuVo);
         }
         if(Constant.OPERATE_SUCCESS == result){

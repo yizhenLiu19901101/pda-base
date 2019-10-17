@@ -58,7 +58,7 @@ public class MenuControllerTest {
         logger.info("插入菜单信息");
         //设置查询条件
         JSONObject userCondition = new JSONObject();
-        userCondition.put("menuName","用户");
+        userCondition.put("menuName","大看版");
         userCondition.put("parentMenuId",0);
         userCondition.put("menuLevel",1);
         logger.info("插入菜单信息条件: " + userCondition.toJSONString());
@@ -120,7 +120,7 @@ public class MenuControllerTest {
     }
 
     @Test
-    public void fourCase() throws Exception{
+    public void queryByPage() throws Exception{
         logger.info("分页查询菜单对象");
         //设置查询条件
         JSONObject userCondition = new JSONObject();

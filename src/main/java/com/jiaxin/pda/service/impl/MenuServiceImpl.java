@@ -26,17 +26,11 @@ public class MenuServiceImpl implements MenuService {
     public int insertMenu(MenuVo menuVo) {
         menuVo.setId(GenerateUtil.generateRandomString());
         menuVo.setMenuId(menuMapper.selectMaxMenuId() + Constant.INCREASE_PACE);
-        menuVo.setDeleteFlag(false);
-        menuVo.setReversion(Constant.INIT_REVERSION);
-        menuVo.setCreatedBy(Constant.SUPER_ADMIN);
-        menuVo.setCreatedTime(Constant.NOW);
-        this.initUpdateParam(menuVo);
         return menuMapper.insertMenu(menuVo);
     }
 
     @Override
     public Integer updateMenuName(MenuVo menuVo) {
-        this.initUpdateParam(menuVo);
         return menuMapper.updateMenuName(menuVo);
     }
 
@@ -64,14 +58,5 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public MenuVo queryMenuInfoByMenuName(String menuName) {
         return menuMapper.queryMenuInfoByMenuName(menuName);
-    }
-
-    /**
-     * 初始化用户更新参数
-     * @param menuVo
-     */
-    private void initUpdateParam(MenuVo menuVo){
-        menuVo.setUpdatedBy(Constant.SUPER_ADMIN);
-        menuVo.setUpdatedTime(Constant.NOW);
     }
 }

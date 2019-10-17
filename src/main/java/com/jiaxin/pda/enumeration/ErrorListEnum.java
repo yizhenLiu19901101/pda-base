@@ -49,6 +49,16 @@ public enum ErrorListEnum {
      * 菜单名称不能为空
      */
     MENU_NAME_NOT_BLANK(215,"菜单名称不能为空"),
+
+    /**
+     * 数据字典类型名称不能为空
+     */
+    DICTIONARY_TYPE_NAME_NOT_BLANK(216,"数据字典类型名称不能为空"),
+
+    /**
+     * 数据字典类型名称重复
+     */
+    DICTIONARY_TYPE_NAME_REPEAT(217,"数据字典类型名称重复"),
     /**
      * 用户不存在
      */

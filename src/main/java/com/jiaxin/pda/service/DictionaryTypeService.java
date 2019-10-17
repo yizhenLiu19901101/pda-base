@@ -76,4 +76,11 @@ public interface DictionaryTypeService {
      * @return
      */
     List<DictionaryVo> queryDictionaryByTypeId(Integer typeUuid);
+
+    /**
+     * 根据名称查询数据字典类型信息
+     * @param dictionaryTypeName
+     * @return
+     */
+    DictionaryTypeVo queryDictionaryTypeInfoByName(String dictionaryTypeName);
 }

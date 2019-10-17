@@ -101,6 +101,12 @@ public class DictionaryTypeServiceImpl implements DictionaryTypeService {
         return dictionaryMapper.queryDictionaryByTypeId(typeUuid);
     }
 
+    @Override
+    public DictionaryTypeVo queryDictionaryTypeInfoByName(String dictionaryTypeName) {
+        return dictionaryTypeMapper.queryDictionaryTypeInfoByName(dictionaryTypeName);
+    }
+
+
     /**
      * 初始化更新参数
      * @param operateVo

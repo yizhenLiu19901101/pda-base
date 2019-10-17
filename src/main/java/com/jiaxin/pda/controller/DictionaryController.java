@@ -1,5 +1,6 @@
 package com.jiaxin.pda.controller;
 
+import com.jiaxin.pda.constant.Constant;
 import com.jiaxin.pda.entity.ListPageVo;
 import com.jiaxin.pda.entity.dto.DictionaryDto;
 import com.jiaxin.pda.entity.dto.DictionaryTypeDto;
@@ -10,6 +11,9 @@ import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.service.DictionaryTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 字典控制器类
@@ -27,9 +31,25 @@ public class DictionaryController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/dictionary/insertDictionaryType")
-    public GeneralVo insertDictionaryType(@RequestBody DictionaryTypeVo dictionaryTypeVo){
-        dictionaryTypeService.insertDictionaryType(dictionaryTypeVo);
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+    public GeneralVo insertDictionaryType(HttpServletRequest request,HttpServletResponse response, @RequestBody DictionaryTypeVo dictionaryTypeVo){
+        logger.info("插入数据字典类型：{}",dictionaryTypeVo);
+        //数据字典类型名称校验
+        if(null == dictionaryTypeVo.getTypeName() || Constant.EMPTY_INTEGER_VALUE == dictionaryTypeVo.getTypeName().trim().length()){
+            return new GeneralVo(ErrorListEnum.DICTIONARY_TYPE_NAME_NOT_BLANK,null);
+        }
+        DictionaryTypeVo queryResult = dictionaryTypeService.queryDictionaryTypeInfoByName(dictionaryTypeVo.getTypeName());
+        int result;
+        if(null == queryResult){
+            initOperateParam(request,response,dictionaryTypeVo,Constant.CREATE_TYPE);
+            result = dictionaryTypeService.insertDictionaryType(dictionaryTypeVo);
+        }else{
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        }
+        if(Constant.OPERATE_SUCCESS == result){
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        }else{
+            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        }
     }
 
     /**
