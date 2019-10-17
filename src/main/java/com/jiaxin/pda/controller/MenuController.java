@@ -7,6 +7,8 @@ import com.jiaxin.pda.entity.vo.GeneralVo;
 import com.jiaxin.pda.entity.vo.MenuVo;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.service.MenuService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author milo
  */
 @RestController
+@Api(value = "menu",tags = {"菜单控制器"})
+@RequestMapping("/menu")
 public class MenuController extends BaseController{
 
     @Autowired
@@ -28,7 +32,8 @@ public class MenuController extends BaseController{
      * @param menuVo 菜单对象
      * @return 响应结果
      */
-    @PutMapping("/menu/insertMenu")
+    @PutMapping("/insertMenu")
+    @ApiOperation(value = "插入菜单信息",notes = "")
     public GeneralVo insertMenu(HttpServletRequest request, HttpServletResponse response,@RequestBody MenuVo menuVo){
         logger.info("菜单信息：{}",menuVo);
         int result;
@@ -54,7 +59,7 @@ public class MenuController extends BaseController{
      * @param menuVo 菜单
      * @return 响应结果
      */
-    @DeleteMapping("/menu/delete")
+    @DeleteMapping("/delete")
     public GeneralVo deleteMenu(HttpServletRequest request, HttpServletResponse response,@RequestBody MenuVo menuVo){
         logger.info("删除菜单，入参为：{}",menuVo);
         initOperateParam(request,response,menuVo,Constant.UPDATE_TYPE);
@@ -71,7 +76,7 @@ public class MenuController extends BaseController{
      * @param menuVo 菜单对象
      * @return 响应对象
      */
-    @PostMapping("/menu/updateMenuName")
+    @PostMapping("/updateMenuName")
     public GeneralVo updateMenuName(HttpServletRequest request, HttpServletResponse response,@RequestBody MenuVo menuVo){
         logger.info("修改菜单名称，入参为:{}",menuVo);
         if(null == menuVo.getMenuName() || Constant.EMPTY_INTEGER_VALUE == menuVo.getMenuName().trim().length()){
@@ -97,7 +102,7 @@ public class MenuController extends BaseController{
      * @param menuDto 菜单数据传输对象
      * @return 查询对象
      */
-    @PostMapping("/menu/queryMenuListByPage")
+    @PostMapping("/queryMenuListByPage")
     public ListPageVo queryMenuListByPage(@RequestBody MenuDto menuDto){
         menuDto.build();
         logger.info("分页查询菜单信息，入参为：{}",menuDto);

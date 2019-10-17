@@ -96,4 +96,9 @@ public class Constant {
      * 修改
      */
     public static final int UPDATE_TYPE = 2;
+
+    /**
+     * 版本
+     */
+    public static final int CODE_VERSION = 1;
 }

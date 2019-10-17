@@ -29,7 +29,7 @@ public class TokenFilter implements Filter {
     /**
      * 排除不拦截的url
      */
-    private static final String[] EXCLUDE_PATH_PATTENS = { "/user/registerUser","/user/login"};
+    private static final String[] EXCLUDE_PATH_PATTENS = { "/user/registerUser","/user/login","/swagger-ui.html"};
 
     @Autowired
     private UserService userService;
