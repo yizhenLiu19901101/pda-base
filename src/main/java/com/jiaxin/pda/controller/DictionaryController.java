@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author milo
  */
 @RestController
-@Api(value = "dictionary",tags = {"数据字典控制器"})
+@Api(value = "dictionary",tags = {"dictionary_controller"})
 @RequestMapping("/dictionary")
 public class DictionaryController extends BaseController{
 

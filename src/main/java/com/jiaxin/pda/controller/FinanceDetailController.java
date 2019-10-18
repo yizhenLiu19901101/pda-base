@@ -7,7 +7,9 @@ import com.jiaxin.pda.entity.vo.FinanceDetailVo;
 import com.jiaxin.pda.entity.vo.GeneralVo;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.service.FinanceDetailService;
+import com.jiaxin.pda.swagger.note.FinanceDetailNote;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @RestController
 @RequestMapping(value = "/finance")
-@Api(value = "finance",tags = {"财务"})
+@Api(value = "finance",tags = {"finance_controller"})
 public class FinanceDetailController extends BaseController{
     @Autowired
     private FinanceDetailService financeDetailService;
@@ -32,7 +34,8 @@ public class FinanceDetailController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/finance/insertFinanceDetail")
-    @ApiOperation(value = "插入财务详情",notes = "")
+    @ApiImplicitParam(name = "financeDetailVo", value = FinanceDetailNote.INSERT_VALUE, required = true, dataType = "financeDetailVo")
+    @ApiOperation(value = "插入财务详情",notes = FinanceDetailNote.INSERT_NOTE)
     public GeneralVo insertFinanceDetail(HttpServletRequest request, HttpServletResponse response, @RequestBody FinanceDetailVo financeDetailVo){
         logger.info("插入财务信息，入参为：{}",financeDetailVo);
         initOperateParam(request,response,financeDetailVo, Constant.CREATE_TYPE);
@@ -50,7 +53,8 @@ public class FinanceDetailController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/finance/updateFinanceDetail")
-    @ApiOperation(value = "修改财务详情",notes = "")
+    @ApiImplicitParam(name = "financeDetailVo", value = FinanceDetailNote.UPDATE_VALUE, required = true, dataType = "financeDetailVo")
+    @ApiOperation(value = "修改财务详情",notes = FinanceDetailNote.UPDATE_NOTE)
     public GeneralVo updateFinanceDetail(HttpServletRequest request, HttpServletResponse response,@RequestBody FinanceDetailVo financeDetailVo){
         logger.info("修改财务信息，入参为：{}",financeDetailVo);
         initOperateParam(request,response,financeDetailVo, Constant.UPDATE_TYPE);
@@ -68,7 +72,8 @@ public class FinanceDetailController extends BaseController{
      * @return 响应结果
      */
     @DeleteMapping("/finance/deleteFinanceDetail")
-    @ApiOperation(value = "删除财务详情",notes = "")
+    @ApiImplicitParam(name = "financeDetailVo", value = FinanceDetailNote.DELETE_VALUE, required = true, dataType = "financeDetailVo")
+    @ApiOperation(value = "删除财务详情",notes = FinanceDetailNote.DELETE_NOTE)
     public GeneralVo deleteFinanceDetail(HttpServletRequest request, HttpServletResponse response,@RequestBody FinanceDetailVo financeDetailVo){
         logger.info("删除财务信息，入参为：{}",financeDetailVo);
         initOperateParam(request,response,financeDetailVo, Constant.UPDATE_TYPE);
@@ -84,7 +89,8 @@ public class FinanceDetailController extends BaseController{
      * 按照条件分页查找财务信息
      * @return
      */
-    @ApiOperation(value = "分页查询财务详情",notes = "")
+    @ApiOperation(value = "分页查询财务详情",notes = FinanceDetailNote.QUERY_BY_PAGE_NOTE)
+    @ApiImplicitParam(name = "financeDetailDto", value = FinanceDetailNote.QUERY_BY_PAGE_VALUE, required = true, dataType = "financeDetailDto")
     @PostMapping("/finance/queryFinanceDetailByPage")
     public ListPageVo queryFinanceDetailByPage(@RequestBody FinanceDetailDto financeDetailDto){
         financeDetailDto.build();

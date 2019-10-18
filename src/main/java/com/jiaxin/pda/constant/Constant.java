@@ -100,5 +100,17 @@ public class Constant {
     /**
      * 版本
      */
-    public static final int CODE_VERSION = 1;
+    public static final String CODE_VERSION = "1.0";
+
+    /**
+     * 基础包
+     */
+    public static final String BASE_PACKAGE = "com.jiaxin.pda";
+
+    /**
+     * 项目标题
+     */
+    public static final String TITLE = "pda";
+
+
 }

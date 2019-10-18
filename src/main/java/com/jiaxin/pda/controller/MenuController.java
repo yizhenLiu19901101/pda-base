@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author milo
  */
 @RestController
-@Api(value = "menu",tags = {"菜单控制器"})
+@Api(value = "menu",tags = {"menu_controller"})
 @RequestMapping("/menu")
 public class MenuController extends BaseController{
 

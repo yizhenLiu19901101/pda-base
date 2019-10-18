@@ -23,7 +23,7 @@ import java.security.NoSuchAlgorithmException;
  * @author milo
  */
 @RestController
-@Api(value = "user",tags = {"用户控制器"})
+@Api(value = "user",tags = {"user_controller"})
 @RequestMapping("/user")
 public class UserController extends BaseController{
     @Autowired
