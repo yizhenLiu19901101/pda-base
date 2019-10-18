@@ -8,7 +8,10 @@ import com.jiaxin.pda.entity.vo.RolePrivilegeVo;
 import com.jiaxin.pda.entity.vo.RoleVo;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.service.RoleService;
+import com.jiaxin.pda.swagger.note.MenuNote;
+import com.jiaxin.pda.swagger.note.RoleNote;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,7 +47,8 @@ public class RoleController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/role/insertRole")
-    @ApiOperation(value = "插入角色")
+    @ApiImplicitParam(name = "roleVo", value = RoleNote.INSERT_VALUE, required = true, dataType = "RoleVo")
+    @ApiOperation(value = "插入角色",notes = RoleNote.INSERT_NOTE)
     public GeneralVo insertRole(HttpServletRequest request, HttpServletResponse response,@RequestBody RoleVo roleVo, BindingResult result){
         if(null == roleVo.getRoleName() || roleVo.getRoleName().trim().length() == 0){
             return new GeneralVo(ErrorListEnum.ROLE_NAME_NOT_EXIST,null);
@@ -68,7 +72,8 @@ public class RoleController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/role/updateRoleName")
-    @ApiOperation(value = "修改角色姓名")
+    @ApiImplicitParam(name = "roleVo", value = RoleNote.UPDATE_VALUE, required = true, dataType = "RoleVo")
+    @ApiOperation(value = "修改角色姓名",notes = RoleNote.UPDATE_NOTE)
     public GeneralVo updateRoleName(HttpServletRequest request, HttpServletResponse response,@RequestBody @Valid RoleVo roleVo, BindingResult result){
         if(null == roleVo.getRoleName() || roleVo.getRoleName().trim().length() == 0){
             return new GeneralVo(ErrorListEnum.ROLE_NAME_NOT_EXIST,null);
@@ -91,7 +96,8 @@ public class RoleController extends BaseController{
      * @return 响应结果
      */
     @DeleteMapping("/role/deleteRole")
-    @ApiOperation(value = "删除角色")
+    @ApiImplicitParam(name = "roleVo", value = RoleNote.DELETE_VALUE, required = true, dataType = "RoleVo")
+    @ApiOperation(value = "删除角色",notes = RoleNote.DELETE_NOTE)
     public GeneralVo deleteRole(HttpServletRequest request, HttpServletResponse response,@RequestBody RoleVo roleVo){
         RoleVo queryResult = roleService.queryById(roleVo.getId());
         if(null == queryResult ||(null != queryResult && queryResult.isDeleteFlag())){
@@ -113,8 +119,9 @@ public class RoleController extends BaseController{
      * @param roleDto 角色对象
      * @return 响应结果
      */
-    @PostMapping("/role/selectRoleByPage")
-    @ApiOperation(value = "分页查找角色信息")
+    @PostMapping(value = "/role/selectRoleByPage")
+    @ApiImplicitParam(name = "roleDto", value = RoleNote.QUERY_BY_PAGE_VALUE, required = true, dataType = "RoleDto")
+    @ApiOperation(value = "分页查找角色信息",notes = RoleNote.QUERY_BY_PAGE_NOTE)
     public ListPageVo selectRoleByPage(@RequestBody RoleDto roleDto){
         roleDto.build();
         return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,roleService.selectRoleByPage(roleDto),roleDto.getPageInfo());
@@ -126,7 +133,8 @@ public class RoleController extends BaseController{
      * @return 响应结果
      */
     @PostMapping("/role/givePrivilege")
-    @ApiOperation(value = "角色授权")
+    @ApiImplicitParam(name = "rolePrivilegeVo", value = RoleNote.GIVE_PRIVILEGE_VALUE, required = true, dataType = "RolePrivilegeVo")
+    @ApiOperation(value = "角色授权",notes = RoleNote.GIVE_PRIVILEGE_NOTE)
     public GeneralVo givePrivilege(HttpServletRequest request, HttpServletResponse response,@RequestBody RolePrivilegeVo rolePrivilegeVo){
         int result = roleService.queryMenuAuthorityByCondition(rolePrivilegeVo.getMenuId(),rolePrivilegeVo.getRoleId());
         if(Constant.EMPTY_INTEGER_VALUE == result){
@@ -145,7 +153,8 @@ public class RoleController extends BaseController{
      * @return 响应结果
      */
     @DeleteMapping("/role/cancelPrivilege")
-    @ApiOperation(value = "角色取消授权")
+    @ApiImplicitParam(name = "rolePrivilegeVo", value = RoleNote.GIVE_PRIVILEGE_VALUE, required = true, dataType = "RolePrivilegeVo")
+    @ApiOperation(value = "角色取消授权",notes = RoleNote.GIVE_PRIVILEGE_NOTE)
     public GeneralVo cancelPrivilege(HttpServletRequest request, HttpServletResponse response,@RequestBody RolePrivilegeVo rolePrivilegeVo){
         //初始化创建参数
         initSimpleOperateParam(request,response,rolePrivilegeVo, Constant.UPDATE_TYPE);

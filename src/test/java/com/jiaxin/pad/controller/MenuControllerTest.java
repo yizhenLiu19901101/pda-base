@@ -71,23 +71,6 @@ public class MenuControllerTest {
     }
 
     @Test
-    public void insertMenuWithNullMenuName() throws Exception{
-        logger.info("插入菜单信息");
-        //设置查询条件
-        JSONObject userCondition = new JSONObject();
-        userCondition.put("menuName","");
-        userCondition.put("parentMenuId",0);
-        userCondition.put("menuLevel",1);
-        logger.info("插入菜单信息条件: " + userCondition.toJSONString());
-        //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.put("/menu/insertMenu")
-                .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
-                .andExpect(MockMvcResultMatchers.status().isOk());
-    }
-
-    @Test
     public void updateMenuName() throws Exception{
         logger.info("修改菜单名称");
         //设置查询条件
