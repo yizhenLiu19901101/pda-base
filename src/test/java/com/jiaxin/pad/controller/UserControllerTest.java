@@ -85,7 +85,6 @@ public class UserControllerTest {
         //设置查询条件
         JSONObject userCondition = new JSONObject();
         userCondition.put("id","a8f67c704e9f4dc981698084dffe4ce8");
-        userCondition.put("userId",11);
         userCondition.put("reversion",1);
         logger.info("删除用户信息条件: " + userCondition.toJSONString());
         //执行测试

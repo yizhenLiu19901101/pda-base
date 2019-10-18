@@ -7,7 +7,10 @@ import com.jiaxin.pda.entity.dto.UserDto;
 import com.jiaxin.pda.entity.vo.*;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.service.UserService;
+import com.jiaxin.pda.swagger.note.RoleNote;
+import com.jiaxin.pda.swagger.note.UserNote;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
@@ -52,7 +55,8 @@ public class UserController extends BaseController{
      * @return
      */
     @PutMapping("/registerUser")
-    @ApiOperation(value = "注册用户")
+    @ApiOperation(value = "注册用户",notes = UserNote.REGISTER_NOTE)
+    @ApiImplicitParam(name = "userVo", value = UserNote.REGISTER_VALUE, required = true, dataType = "UserVo")
     public GeneralVo insertUser(HttpServletRequest request, HttpServletResponse response,@RequestBody UserVo userVo){
         try{
             logger.info("插入用户-参数,{}",userVo);
@@ -87,7 +91,8 @@ public class UserController extends BaseController{
      * @return
      */
     @PutMapping("/updateUserName")
-    @ApiOperation(value = "修改用户名")
+    @ApiImplicitParam(name = "userVo", value = UserNote.UPDATE_USER_NAME_VALUE, required = true, dataType = "UserVo")
+    @ApiOperation(value = "修改用户名",notes = UserNote.UPDATE_USER_NAME_NOTE)
     public GeneralVo updateUserName(HttpServletRequest request, HttpServletResponse response,@RequestBody @Valid UserVo userVo, BindingResult result){
         logger.info("修改用户-参数,{}",userVo);
         //用户名不能为空/重复
@@ -113,7 +118,8 @@ public class UserController extends BaseController{
      * @return
      */
     @PutMapping("/updateUserPassword")
-    @ApiOperation(value = "修改密码")
+    @ApiImplicitParam(name = "userVo", value = UserNote.UPDATE_USER_PASSWORD_VALUE, required = true, dataType = "UserVo")
+    @ApiOperation(value = "修改密码",notes = UserNote.UPDATE_USER_PASSWORD_NOTE)
     public GeneralVo updateUserPassword(HttpServletRequest request, HttpServletResponse response,@RequestBody UserVo userVo){
         try{
             //修改修改人
@@ -133,7 +139,8 @@ public class UserController extends BaseController{
      * @return
      */
     @DeleteMapping("/deleteUser")
-    @ApiOperation(value = "删除用户")
+    @ApiImplicitParam(name = "userVo", value = UserNote.DELETE_USER_VALUE, required = true, dataType = "UserVo")
+    @ApiOperation(value = "删除用户",notes = UserNote.DELETE_USER_NOTE)
     public GeneralVo deleteUser(HttpServletRequest request, HttpServletResponse response,@RequestBody UserVo userVo){
         UserVo checkResult = userService.findUserById(userVo.getId());
         if(null == checkResult || checkResult.isDeleteFlag()){
@@ -154,7 +161,8 @@ public class UserController extends BaseController{
      * @return
      */
     @PostMapping("/login")
-    @ApiOperation(value = "用户登陆")
+    @ApiOperation(value = "用户登陆",notes = UserNote.REGISTER_NOTE)
+    @ApiImplicitParam(name = "userVo", value = UserNote.REGISTER_VALUE, required = true, dataType = "UserVo")
     public GeneralVo login(@RequestBody UserVo userVo){
         try{
             return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,userService.userLogin(userVo));
@@ -170,7 +178,8 @@ public class UserController extends BaseController{
      * @return0
      */
     @PostMapping("/logout")
-    @ApiOperation(value = "用户退出")
+    @ApiOperation(value = "用户退出",notes = UserNote.USER_EXIT_NOTE)
+    @ApiImplicitParam(name = "userTokenVo", value = UserNote.USER_EXIT_VALUE, required = true, dataType = "UserTokenVo")
     public GeneralVo logout(@RequestBody UserTokenVo userTokenVo){
         int result = userService.userLogout(userTokenVo);
         if(result == Constant.OPERATE_SUCCESS){
@@ -186,7 +195,8 @@ public class UserController extends BaseController{
      * @return 响应结果
      */
     @PostMapping("/queryUserListByPage")
-    @ApiOperation(value = "分页查询用户信息")
+    @ApiImplicitParam(name = "userDto", value = UserNote.QUERY_BY_PAGE_VALUE, required = true, dataType = "UserDto")
+    @ApiOperation(value = "分页查询用户信息",notes = UserNote.QUERY_BY_PAGE_NOTE)
     public ListPageVo queryUserListByPage(@RequestBody UserDto userDto){
         userDto.build();
         return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,userService.queryUserListByPage(userDto),userDto.getPageInfo());
@@ -198,7 +208,8 @@ public class UserController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/insertUserRole")
-    @ApiOperation(value = "给用户赋予角色")
+    @ApiImplicitParam(name = "userPrivilegeVo", value = UserNote.GIVE_USER_ROLE_VALUE, required = true, dataType = "UserPrivilegeVo")
+    @ApiOperation(value = "给用户赋予角色",notes = UserNote.GIVE_USER_ROLE_NOTE)
     public GeneralVo insertUserRole(HttpServletRequest request, HttpServletResponse response,@RequestBody UserPrivilegeVo userPrivilegeVo){
         UserPrivilegeVo queryResult = userService.selectByUserId(userPrivilegeVo.getUserId());
         if(null == queryResult || queryResult.isDeleteFlag()){
@@ -217,8 +228,9 @@ public class UserController extends BaseController{
      * @param userPrivilegeVo 用户角色对象
      * @return 响应结果
      */
-    @ApiOperation(value = "取消用户的角色")
-    @DeleteMapping("/deleteUserRole")
+    @ApiImplicitParam(name = "userPrivilegeVo", value = UserNote.GIVE_USER_ROLE_VALUE, required = true, dataType = "UserPrivilegeVo")
+    @ApiOperation(value = "取消用户的角色",notes = UserNote.GIVE_USER_ROLE_NOTE)
+    @DeleteMapping(value = "/deleteUserRole")
     public GeneralVo deleteUserRole(HttpServletRequest request, HttpServletResponse response,@RequestBody UserPrivilegeVo userPrivilegeVo){
         //初始化创建人和修改人
         initOperateParam(request,response,userPrivilegeVo, Constant.UPDATE_TYPE);
