@@ -9,11 +9,12 @@ import com.jiaxin.pda.entity.vo.DictionaryVo;
 import com.jiaxin.pda.entity.vo.GeneralVo;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.service.DictionaryTypeService;
+import com.jiaxin.pda.swagger.note.DictionaryNote;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -35,7 +36,8 @@ public class DictionaryController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/insertDictionaryType")
-    @ApiOperation(value = "插入字典类型")
+    @ApiImplicitParam(name = "dictionaryTypeVo", value = DictionaryNote.TYPE_INSERT_VALUE, required = true, dataType = "DictionaryTypeVo")
+    @ApiOperation(value = "插入字典类型",notes = DictionaryNote.TYPE_INSERT_NOTE)
     public GeneralVo insertDictionaryType(HttpServletRequest request,HttpServletResponse response, @RequestBody DictionaryTypeVo dictionaryTypeVo){
         logger.info("插入数据字典类型：{}",dictionaryTypeVo);
         //数据字典类型名称校验
@@ -63,7 +65,8 @@ public class DictionaryController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/insertDictionary")
-    @ApiOperation(value = "插入字典项")
+    @ApiImplicitParam(name = "dictionaryVo", value = DictionaryNote.ITEM_INSERT_VALUE, required = true, dataType = "DictionaryVo")
+    @ApiOperation(value = "插入字典项",notes = DictionaryNote.ITEM_INSERT_NOTE)
     public GeneralVo insertDictionaryType(HttpServletRequest request,HttpServletResponse response,@RequestBody DictionaryVo dictionaryVo){
         logger.info("插入字典项，参数信息为：{}",dictionaryVo);
         int result = 0;
@@ -91,7 +94,8 @@ public class DictionaryController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/updateDictionaryType")
-    @ApiOperation(value = "修改字典类型")
+    @ApiImplicitParam(name = "dictionaryTypeVo", value = DictionaryNote.TYPE_UPDATE_VALUE, required = true, dataType = "DictionaryTypeVo")
+    @ApiOperation(value = "修改字典类型",notes = DictionaryNote.TYPE_UPDATE_NOTE)
     public GeneralVo updateDictionaryType(HttpServletRequest request,HttpServletResponse response,@RequestBody DictionaryTypeVo dictionaryTypeVo){
         logger.info("修改字典类型，入参为:{}",dictionaryTypeVo);
         //数据字典类型名称校验
@@ -118,7 +122,8 @@ public class DictionaryController extends BaseController{
      * @return 响应结果
      */
     @DeleteMapping("/deleteDictionaryType")
-    @ApiOperation(value = "删除字典类型")
+    @ApiImplicitParam(name = "dictionaryTypeVo", value = DictionaryNote.TYPE_DELETE_VALUE, required = true, dataType = "DictionaryTypeVo")
+    @ApiOperation(value = "删除字典类型",notes = DictionaryNote.TYPE_DELETE_NOTE)
     public GeneralVo deleteDictionaryType(HttpServletRequest request,HttpServletResponse response,@RequestBody DictionaryTypeVo dictionaryTypeVo){
         int result = dictionaryTypeService.deleteDictionaryType(dictionaryTypeVo);
         if(Constant.OPERATE_SUCCESS == result){
@@ -133,7 +138,8 @@ public class DictionaryController extends BaseController{
      * @return
      */
     @PostMapping("/queryDictionaryTypeByPage")
-    @ApiOperation(value = "分页查找字典类型")
+    @ApiImplicitParam(name = "dictionaryTypeDto", value = DictionaryNote.TYPE_QUERY_BY_PAGE_VALUE, required = true, dataType = "DictionaryVo")
+    @ApiOperation(value = "分页查找字典类型",notes = DictionaryNote.TYPE_QUERY_BY_PAGE_NOTE)
     public ListPageVo queryDictionaryTypeByPage(@RequestBody DictionaryTypeDto dictionaryTypeDto){
         logger.info("分页查询字典类型，入参为：{}",dictionaryTypeDto);
         dictionaryTypeDto.build();
@@ -146,7 +152,8 @@ public class DictionaryController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/updateDictionary")
-    @ApiOperation(value = "修改字典项")
+    @ApiImplicitParam(name = "dictionaryVo", value = DictionaryNote.ITEM_UPDATE_VALUE, required = true, dataType = "DictionaryVo")
+    @ApiOperation(value = "修改字典项",notes = DictionaryNote.ITEM_UPDATE_NOTE)
     public GeneralVo updateDictionaryType(HttpServletRequest request,HttpServletResponse response,@RequestBody DictionaryVo dictionaryVo){
         logger.info("修改字典条目信息，入参为：{}",dictionaryVo);
         //数据字典类型名称校验
@@ -172,7 +179,8 @@ public class DictionaryController extends BaseController{
      * 删除字典信息
      * @return 响应结果
      */
-    @ApiOperation(value = "删除字典项")
+    @ApiImplicitParam(name = "dictionaryVo", value = DictionaryNote.ITEM_DELETE_VALUE, required = true, dataType = "DictionaryVo")
+    @ApiOperation(value = "删除字典项",notes = DictionaryNote.ITEM_DELETE_NOTE)
     @DeleteMapping("/deleteDictionaryItem")
     public GeneralVo deleteDictionary(HttpServletRequest request,HttpServletResponse response,@RequestBody DictionaryVo dictionaryVo){
         logger.info("删除字典条目信息，入参为：{}",dictionaryVo);
@@ -189,7 +197,8 @@ public class DictionaryController extends BaseController{
      * @return
      */
     @PostMapping("/queryDictionaryByPage")
-    @ApiOperation(value = "分页查询字典项")
+    @ApiImplicitParam(name = "dictionaryDto", value = DictionaryNote.ITEM_QUERY_BY_PAGE_VALUE, required = true, dataType = "DictionaryDto")
+    @ApiOperation(value = "分页查询字典项",notes = DictionaryNote.ITEM_QUERY_BY_PAGE_NOTE)
     public ListPageVo queryDictionaryByPage(@RequestBody DictionaryDto dictionaryDto){
         logger.info("分页查询字典项，入参为：{}",dictionaryDto);
         dictionaryDto.build();

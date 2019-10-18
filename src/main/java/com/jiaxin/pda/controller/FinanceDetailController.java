@@ -34,7 +34,7 @@ public class FinanceDetailController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/finance/insertFinanceDetail")
-    @ApiImplicitParam(name = "financeDetailVo", value = FinanceDetailNote.INSERT_VALUE, required = true, dataType = "financeDetailVo")
+    @ApiImplicitParam(name = "financeDetailVo", value = FinanceDetailNote.INSERT_VALUE, required = true, dataType = "FinanceDetailVo")
     @ApiOperation(value = "插入财务详情",notes = FinanceDetailNote.INSERT_NOTE)
     public GeneralVo insertFinanceDetail(HttpServletRequest request, HttpServletResponse response, @RequestBody FinanceDetailVo financeDetailVo){
         logger.info("插入财务信息，入参为：{}",financeDetailVo);
@@ -53,7 +53,7 @@ public class FinanceDetailController extends BaseController{
      * @return 响应结果
      */
     @PutMapping("/finance/updateFinanceDetail")
-    @ApiImplicitParam(name = "financeDetailVo", value = FinanceDetailNote.UPDATE_VALUE, required = true, dataType = "financeDetailVo")
+    @ApiImplicitParam(name = "financeDetailVo", value = FinanceDetailNote.UPDATE_VALUE, required = true, dataType = "FinanceDetailVo")
     @ApiOperation(value = "修改财务详情",notes = FinanceDetailNote.UPDATE_NOTE)
     public GeneralVo updateFinanceDetail(HttpServletRequest request, HttpServletResponse response,@RequestBody FinanceDetailVo financeDetailVo){
         logger.info("修改财务信息，入参为：{}",financeDetailVo);
@@ -72,7 +72,7 @@ public class FinanceDetailController extends BaseController{
      * @return 响应结果
      */
     @DeleteMapping("/finance/deleteFinanceDetail")
-    @ApiImplicitParam(name = "financeDetailVo", value = FinanceDetailNote.DELETE_VALUE, required = true, dataType = "financeDetailVo")
+    @ApiImplicitParam(name = "financeDetailVo", value = FinanceDetailNote.DELETE_VALUE, required = true, dataType = "FinanceDetailVo")
     @ApiOperation(value = "删除财务详情",notes = FinanceDetailNote.DELETE_NOTE)
     public GeneralVo deleteFinanceDetail(HttpServletRequest request, HttpServletResponse response,@RequestBody FinanceDetailVo financeDetailVo){
         logger.info("删除财务信息，入参为：{}",financeDetailVo);
@@ -90,7 +90,7 @@ public class FinanceDetailController extends BaseController{
      * @return
      */
     @ApiOperation(value = "分页查询财务详情",notes = FinanceDetailNote.QUERY_BY_PAGE_NOTE)
-    @ApiImplicitParam(name = "financeDetailDto", value = FinanceDetailNote.QUERY_BY_PAGE_VALUE, required = true, dataType = "financeDetailDto")
+    @ApiImplicitParam(name = "financeDetailDto", value = FinanceDetailNote.QUERY_BY_PAGE_VALUE, required = true, dataType = "FinanceDetailDto")
     @PostMapping("/finance/queryFinanceDetailByPage")
     public ListPageVo queryFinanceDetailByPage(@RequestBody FinanceDetailDto financeDetailDto){
         financeDetailDto.build();

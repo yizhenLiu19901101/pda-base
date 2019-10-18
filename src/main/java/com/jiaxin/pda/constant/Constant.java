@@ -111,6 +111,11 @@ public class Constant {
      * 项目标题
      */
     public static final String TITLE = "pda";
+    /**
+     * 项目描述
+     */
+    public static final String DESCRIPTION = "personal data assistant";
+
 
 
 }
