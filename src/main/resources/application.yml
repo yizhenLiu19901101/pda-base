@@ -27,3 +27,6 @@ liquibase:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   config-location: classpath:pageInterceptor/page-Interceptor.xml
+#是否展示swagger接口
+swagger:
+  enable: true
