@@ -13,16 +13,18 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 财务详情控制器类
+ * 财务详情控制器类(业务数据，被该微服务忽略)
  * @author milo
  */
 @RestController
 @RequestMapping(value = "/finance")
+@ApiIgnore
 @Api(value = "finance",tags = {"finance_controller"})
 public class FinanceDetailController extends BaseController{
     @Autowired

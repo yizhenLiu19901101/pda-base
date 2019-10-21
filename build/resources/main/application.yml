@@ -29,4 +29,4 @@ mybatis:
   config-location: classpath:pageInterceptor/page-Interceptor.xml
 #是否展示swagger接口
 swagger:
-  enable: false
+  enable: true
