@@ -6,6 +6,7 @@ import com.jiaxin.pda.entity.ListPageVo;
 import com.jiaxin.pda.entity.dto.UserDto;
 import com.jiaxin.pda.entity.vo.*;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
+import com.jiaxin.pda.enumeration.LoginStatusEnum;
 import com.jiaxin.pda.service.UserService;
 import com.jiaxin.pda.swagger.note.RoleNote;
 import com.jiaxin.pda.swagger.note.UserNote;
@@ -165,7 +166,12 @@ public class UserController extends BaseController{
     @ApiImplicitParam(name = "userVo", value = UserNote.REGISTER_VALUE, required = true, dataType = "UserVo")
     public GeneralVo login(@RequestBody UserVo userVo){
         try{
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,userService.userLogin(userVo));
+            String result = userService.userLogin(userVo);
+            if(null != result && (!result.equals(LoginStatusEnum.USER_NOT_EXIST.getValue()) && !result.equals(LoginStatusEnum.PASSWORD_ERROR.getValue()))){
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,result);
+            }else{
+                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,result);
+            }
         }catch(NoSuchAlgorithmException e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
