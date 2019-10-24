@@ -116,7 +116,7 @@
             tr.updated_time AS updatedTime
         FROM
             tb_role tr
-        WHERE tr.role_name = #{roleName}
+        WHERE tr.role_name = #{roleName} and tr.delete_flag = 0
     </select>
 
     <!-- 根据角色名称查询的角色信息 -->

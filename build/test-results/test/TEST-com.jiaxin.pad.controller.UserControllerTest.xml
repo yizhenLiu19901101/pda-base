@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.jiaxin.pad.controller.UserControllerTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2019-10-24T06:00:17" hostname="milos-computer.local" time="1.905">
+  <properties/>
+  <testcase name="updateUserPassword" classname="com.jiaxin.pad.controller.UserControllerTest" time="0.304"/>
+  <testcase name="queryUserInfoByPage" classname="com.jiaxin.pad.controller.UserControllerTest" time="0.503"/>
+  <testcase name="userLogin" classname="com.jiaxin.pad.controller.UserControllerTest" time="0.545"/>
+  <testcase name="updateUserName" classname="com.jiaxin.pad.controller.UserControllerTest" time="0.098"/>
+  <testcase name="giveUserRole" classname="com.jiaxin.pad.controller.UserControllerTest" time="0.041"/>
+  <testcase name="insertUser" classname="com.jiaxin.pad.controller.UserControllerTest" time="0.041"/>
+  <testcase name="userLogout" classname="com.jiaxin.pad.controller.UserControllerTest" time="0.037"/>
+  <testcase name="queryUserInfoById" classname="com.jiaxin.pad.controller.UserControllerTest" time="0.112"/>
+  <testcase name="deleteUser" classname="com.jiaxin.pad.controller.UserControllerTest" time="0.113"/>
+  <testcase name="queryRoleByUserId" classname="com.jiaxin.pad.controller.UserControllerTest" time="0.04"/>
+  <testcase name="cancelUserRole" classname="com.jiaxin.pad.controller.UserControllerTest" time="0.063"/>
+  <system-out><![CDATA[13:59:38.061 [Test worker] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.jiaxin.pad.controller.UserControllerTest]
+13:59:38.069 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+13:59:38.078 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+13:59:38.097 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.jiaxin.pad.controller.UserControllerTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+13:59:38.109 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.jiaxin.pad.controller.UserControllerTest], using SpringBootContextLoader
+13:59:38.116 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.jiaxin.pad.controller.UserControllerTest]: class path resource [com/jiaxin/pad/controller/UserControllerTest-context.xml] does not exist
+13:59:38.117 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.jiaxin.pad.controller.UserControllerTest]: class path resource [com/jiaxin/pad/controller/UserControllerTestContext.groovy] does not exist
+13:59:38.118 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.jiaxin.pad.controller.UserControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+13:59:38.165 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.jiaxin.pad.controller.UserControllerTest]
+13:59:38.190 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.jiaxin.pad.controller.UserControllerTest]: using defaults.
+13:59:38.194 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+13:59:38.212 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@ba44d85, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6519136d, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@78e86b73, org.springframework.test.context.support.DirtiesContextTestExecutionListener@159216b7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@3cf3b9e5, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@11dc576d, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2ad415d6, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2f768995, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@e6b210f, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7dff7890, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@778fb85c, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6c2ebd19]
+13:59:38.215 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.jiaxin.pad.controller.UserControllerTest]
+13:59:38.215 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.jiaxin.pad.controller.UserControllerTest]
+13:59:38.216 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.jiaxin.pad.controller.UserControllerTest]
+13:59:38.216 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.jiaxin.pad.controller.UserControllerTest]
+13:59:38.220 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@34072915 testClass = UserControllerTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@5c96f0b1 testClass = UserControllerTest, locations = '{}', classes = '{class com.jiaxin.pda.PdaApplication, class com.jiaxin.pda.PdaApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@24def522, org.springframework.boot.test.context.SpringBootTestContextCustomizer@22184d62, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@4875156, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.test.context.web.socket.MockServerContainerContextCustomizer@78c40c12], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
+13:59:38.221 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.jiaxin.pad.controller.UserControllerTest]
+13:59:38.221 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.jiaxin.pad.controller.UserControllerTest]
+13:59:38.265 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+13:59:38.266 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+13:59:38.266 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+13:59:38.268 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=-1}
+13:59:38.269 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [Inlined Test Properties] PropertySource with highest search precedence
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.4.3.RELEASE)
+
+2019-10-24 13:59:58 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | Starting UserControllerTest on milos-computer.local with PID 47784 (started by mac in /Users/mac/gitHubRepository/pda)
+2019-10-24 13:59:58 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | No active profile set, falling back to default profiles: default
+2019-10-24 13:59:58 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.context.support.GenericWebApplicationContext?[0;39m | Refreshing org.springframework.web.context.support.GenericWebApplicationContext@3d1b95a5: startup date [Thu Oct 24 13:59:58 CST 2019]; root of context hierarchy
+2019-10-24 14:00:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.data.repository.config.RepositoryConfigurationDelegate?[0;39m | Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-10-24 14:00:00 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker?[0;39m | Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$fcfb1719] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-24 14:00:01 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure?[0;39m | Init DruidDataSource
+2019-10-24 14:00:01 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.alibaba.druid.pool.DruidDataSource?[0;39m | {dataSource-1} inited
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/dictionary/insertDictionary],methods=[PUT]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.DictionaryController.insertDictionaryType(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.DictionaryVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/dictionary/insertDictionaryType],methods=[PUT]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.DictionaryController.insertDictionaryType(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.DictionaryTypeVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/dictionary/updateDictionary],methods=[PUT]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.DictionaryController.updateDictionaryType(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.DictionaryVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/dictionary/updateDictionaryType],methods=[PUT]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.DictionaryController.updateDictionaryType(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.DictionaryTypeVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/dictionary/deleteDictionaryType],methods=[DELETE]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.DictionaryController.deleteDictionaryType(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.DictionaryTypeVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/dictionary/queryDictionaryTypeByPage],methods=[POST]}" onto public com.jiaxin.pda.entity.ListPageVo com.jiaxin.pda.controller.DictionaryController.queryDictionaryTypeByPage(com.jiaxin.pda.entity.dto.DictionaryTypeDto)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/dictionary/deleteDictionaryItem],methods=[DELETE]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.DictionaryController.deleteDictionary(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.DictionaryVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/dictionary/queryDictionaryByTypeId/{typeId}],methods=[GET]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.DictionaryController.queryDictionaryByPage(java.lang.Integer)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/dictionary/queryDictionaryByPage],methods=[POST]}" onto public com.jiaxin.pda.entity.ListPageVo com.jiaxin.pda.controller.DictionaryController.queryDictionaryByPage(com.jiaxin.pda.entity.dto.DictionaryDto)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/finance/insertFinanceDetail],methods=[PUT]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.FinanceDetailController.insertFinanceDetail(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.FinanceDetailVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/finance/updateFinanceDetail],methods=[PUT]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.FinanceDetailController.updateFinanceDetail(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.FinanceDetailVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/finance/deleteFinanceDetail],methods=[DELETE]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.FinanceDetailController.deleteFinanceDetail(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.FinanceDetailVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/finance/queryFinanceDetailByPage],methods=[POST]}" onto public com.jiaxin.pda.entity.ListPageVo com.jiaxin.pda.controller.FinanceDetailController.queryFinanceDetailByPage(com.jiaxin.pda.entity.dto.FinanceDetailDto)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/menu/insertMenu],methods=[PUT]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.MenuController.insertMenu(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.MenuVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/menu/delete],methods=[DELETE]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.MenuController.deleteMenu(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.MenuVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/menu/updateMenuName],methods=[POST]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.MenuController.updateMenuName(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.MenuVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/menu/queryMenuListByPage],methods=[POST]}" onto public com.jiaxin.pda.entity.ListPageVo com.jiaxin.pda.controller.MenuController.queryMenuListByPage(com.jiaxin.pda.entity.dto.MenuDto)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/role/insertRole],methods=[PUT]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.RoleController.insertRole(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.RoleVo,org.springframework.validation.BindingResult)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/role/updateRoleName],methods=[PUT]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.RoleController.updateRoleName(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.RoleVo,org.springframework.validation.BindingResult)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/role/deleteRole],methods=[DELETE]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.RoleController.deleteRole(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.RoleVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/role/selectRoleByPage],methods=[POST]}" onto public com.jiaxin.pda.entity.ListPageVo com.jiaxin.pda.controller.RoleController.selectRoleByPage(com.jiaxin.pda.entity.dto.RoleDto)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/role/givePrivilege],methods=[POST]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.RoleController.givePrivilege(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.RolePrivilegeVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/role/cancelPrivilege],methods=[DELETE]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.RoleController.cancelPrivilege(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.RolePrivilegeVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/role/queryPrivilegeByRoleId/{roleId}],methods=[GET]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.RoleController.queryPrivilegeByRoleId(java.lang.Integer)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/user/deleteUser],methods=[DELETE]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.deleteUser(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.UserVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/user/updateUserName],methods=[PUT]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.updateUserName(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.UserVo,org.springframework.validation.BindingResult)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/user/updateUserPassword],methods=[PUT]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.updateUserPassword(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.UserVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/user/queryRoleByUserId/{userId}],methods=[GET]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.queryRoleByUserId(int)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/user/registerUser],methods=[PUT]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.insertUser(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.UserVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/user/login],methods=[POST]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.login(com.jiaxin.pda.entity.vo.UserVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/user/logout],methods=[POST]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.logout(com.jiaxin.pda.entity.vo.UserTokenVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/user/findById/{id}],methods=[GET]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.findById(java.lang.String)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/user/queryUserListByPage],methods=[POST]}" onto public com.jiaxin.pda.entity.ListPageVo com.jiaxin.pda.controller.UserController.queryUserListByPage(com.jiaxin.pda.entity.dto.UserDto)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/user/insertUserRole],methods=[PUT]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.insertUserRole(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.UserPrivilegeVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/user/deleteUserRole],methods=[DELETE]}" onto public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.deleteUserRole(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.UserPrivilegeVo)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/v2/api-docs],methods=[GET],produces=[application/json || application/hal+json]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/swagger-resources/configuration/ui]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/swagger-resources/configuration/security]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/swagger-resources]}" onto org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-10-24 14:00:03 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping?[0;39m | Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-10-24 14:00:14 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mliquibase.executor.jvm.JdbcExecutor?[0;39m | SELECT COUNT(*) FROM pda.DATABASECHANGELOGLOCK
+2019-10-24 14:00:14 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mliquibase.executor.jvm.JdbcExecutor?[0;39m | SELECT COUNT(*) FROM pda.DATABASECHANGELOGLOCK
+2019-10-24 14:00:14 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mliquibase.executor.jvm.JdbcExecutor?[0;39m | SELECT `LOCKED` FROM pda.DATABASECHANGELOGLOCK WHERE ID=1
+2019-10-24 14:00:14 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mliquibase.lockservice.StandardLockService?[0;39m | Successfully acquired change log lock
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mliquibase.executor.jvm.JdbcExecutor?[0;39m | SELECT MD5SUM FROM pda.DATABASECHANGELOG WHERE MD5SUM IS NOT NULL LIMIT 1
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mliquibase.executor.jvm.JdbcExecutor?[0;39m | SELECT COUNT(*) FROM pda.DATABASECHANGELOG
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mliquibase.changelog.StandardChangeLogHistoryService?[0;39m | Reading from pda.DATABASECHANGELOG
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mliquibase.executor.jvm.JdbcExecutor?[0;39m | SELECT * FROM pda.DATABASECHANGELOG ORDER BY DATEEXECUTED ASC, ORDEREXECUTED ASC
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mliquibase.lockservice.StandardLockService?[0;39m | Successfully released change log lock
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping?[0;39m | Mapped "{[/heapdump || /heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping?[0;39m | Mapped "{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping?[0;39m | Mapped "{[/info || /info.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping?[0;39m | Mapped "{[/beans || /beans.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping?[0;39m | Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping?[0;39m | Mapped "{[/liquibase || /liquibase.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping?[0;39m | Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping?[0;39m | Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping?[0;39m | Mapped "{[/mappings || /mappings.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping?[0;39m | Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping?[0;39m | Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping?[0;39m | Mapped "{[/env || /env.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping?[0;39m | Mapped "{[/health || /health.json],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(java.security.Principal)
+2019-10-24 14:00:15 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping?[0;39m | Mapped "{[/configprops || /configprops.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2019-10-24 14:00:16 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter?[0;39m | Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@3d1b95a5: startup date [Thu Oct 24 13:59:58 CST 2019]; root of context hierarchy
+2019-10-24 14:00:16 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.handler.SimpleUrlHandlerMapping?[0;39m | Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-24 14:00:16 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.handler.SimpleUrlHandlerMapping?[0;39m | Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-24 14:00:16 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.handler.SimpleUrlHandlerMapping?[0;39m | Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-10-24 14:00:16 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.ui.freemarker.SpringTemplateLoader?[0;39m | SpringTemplateLoader for FreeMarker: using resource loader [org.springframework.web.context.support.GenericWebApplicationContext@3d1b95a5: startup date [Thu Oct 24 13:59:58 CST 2019]; root of context hierarchy] and template loader path [classpath:/templates/]
+2019-10-24 14:00:16 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer?[0;39m | ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-10-24 14:00:16 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration?[0;39m | Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2019-10-24 14:00:16 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.context.support.DefaultLifecycleProcessor?[0;39m | Starting beans in phase 2147483647
+2019-10-24 14:00:16 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper?[0;39m | Context refreshed
+2019-10-24 14:00:16 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper?[0;39m | Found 1 custom documentation plugin(s)
+2019-10-24 14:00:16 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.spring.web.scanners.ApiListingReferenceScanner?[0;39m | Scanning for api listing references
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator?[0;39m | Generating unique operation named: insertDictionaryTypeUsingPUT_1
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator?[0;39m | Generating unique operation named: updateDictionaryTypeUsingPUT_1
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[31mWARN ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mspringfox.documentation.swagger.readers.operation.OperationImplicitParameterReader?[0;39m | Coercing to be of type string. This may not even be a scalar type in actuality
+2019-10-24 14:00:17 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | Started UserControllerTest in 39.06 seconds (JVM running for 39.993)
+2019-10-24 14:00:17 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:17 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:17 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 14 ms
+2019-10-24 14:00:17 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | 修改用户密码条件: {"reversion":2,"password":"999999","id":"80bc9bf1702040f884a52fa0c4c0b4e9"}
+2019-10-24 14:00:17 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.updateUserPassword?[0;39m | ==>  Preparing: UPDATE tb_user SET updated_by = ?, updated_time = ?, password = ?, reversion = reversion + 1 WHERE id = ? AND reversion = ? 
+2019-10-24 14:00:17 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.updateUserPassword?[0;39m | ==> Parameters: -1(Integer), 2019-10-24 14:00:17.523(Timestamp), 52C69E3A57331081823331C4E69D3F2E(String), 80bc9bf1702040f884a52fa0c4c0b4e9(String), 2(Integer)
+2019-10-24 14:00:17 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.updateUserPassword?[0;39m | <==    Updates: 0
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /user/updateUserPassword
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.UserController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.updateUserPassword(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.UserVo)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":200,"msg":"操作成功","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-24 14:00:17 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:17 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:17 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 3 ms
+2019-10-24 14:00:17 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | 分页查询条件: {"current":1,"offset":10}
+2019-10-24 14:00:17 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.service.impl.UserServiceImpl?[0;39m | 从mysql中获得数据
+2019-10-24 14:00:17 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.queryUserListByPage?[0;39m | ==>  Preparing: select count(0) from (SELECT tu.id, tu.user_id AS userId, tu.`password`, tu.reversion, tu.user_name AS userName, tu.created_by AS createdBy, tu.created_time AS createdTime, tu.updated_by AS updatedBy, tu.updated_time AS updatedTime FROM tb_user tu WHERE tu.delete_flag = 0) as total 
+2019-10-24 14:00:17 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.queryUserListByPage?[0;39m | ==> Parameters: 
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.queryUserListByPage?[0;39m | ==>  Preparing: SELECT tu.id, tu.user_id AS userId, tu.`password`, tu.reversion, tu.user_name AS userName, tu.created_by AS createdBy, tu.created_time AS createdTime, tu.updated_by AS updatedBy, tu.updated_time AS updatedTime FROM tb_user tu WHERE tu.delete_flag = 0 limit 0,10 
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.queryUserListByPage?[0;39m | ==> Parameters: 
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.queryUserListByPage?[0;39m | <==      Total: 10
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /user/queryUserListByPage
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.UserController
+           Method = public com.jiaxin.pda.entity.ListPageVo com.jiaxin.pda.controller.UserController.queryUserListByPage(com.jiaxin.pda.entity.dto.UserDto)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":200,"msg":"操作成功","body":{"rows":[{"createdTime":1567738572000,"createdBy":-1,"updatedTime":1567738572000,"updatedBy":-1,"reversion":1,"deleteFlag":false,"id":"21ef8c4191794f70acd7769160870620","userId":5,"userName":"jack","password":"E10ADC3949BA59ABBE56E057F20F883E"},{"createdTime":1567738496000,"createdBy":-1,"updatedTime":1567738496000,"updatedBy":-1,"reversion":1,"deleteFlag":false,"id":"25b957908a1d4612807e0a8f6f0e88e5","userId":3,"userName":"milo","password":"E10ADC3949BA59ABBE56E057F20F883E"},{"createdTime":1567650344000,"createdBy":-1,"updatedTime":1570778793000,"updatedBy":-1,"reversion":3,"deleteFlag":false,"id":"27d98c37195e448193639c9c382235ef","userId":2,"userName":"lele","password":"E10ADC3949BA59ABBE56E057F20F883E"},{"createdTime":1567738914000,"createdBy":-1,"updatedTime":1567738914000,"updatedBy":-1,"reversion":1,"deleteFlag":false,"id":"3cfe5f0a9e6d42da9226f3aae6c4d5ac","userId":9,"userName":"amanda","password":"E10ADC3949BA59ABBE56E057F20F883E"},{"createdTime":1567738880000,"createdBy":-1,"updatedTime":1567738880000,"updatedBy":-1,"reversion":1,"deleteFlag":false,"id":"7d21ff0aa7a9424897b544f2e5df5f30","userId":8,"userName":"liming","password":"E10ADC3949BA59ABBE56E057F20F883E"},{"createdTime":1567586947000,"createdBy":-1,"updatedTime":1567588995000,"updatedBy":-1,"reversion":3,"deleteFlag":false,"id":"80bc9bf1702040f884a52fa0c4c0b4e9","userId":1,"userName":"xuexue","password":"52C69E3A57331081823331C4E69D3F2E"},{"createdTime":1567738536000,"createdBy":-1,"updatedTime":1567738536000,"updatedBy":-1,"reversion":1,"deleteFlag":false,"id":"8f36a8f2f44f46da81749fb8fa26869e","userId":4,"userName":"danny","password":"E10ADC3949BA59ABBE56E057F20F883E"},{"createdTime":1567738650000,"createdBy":-1,"updatedTime":1567738650000,"updatedBy":-1,"reversion":1,"deleteFlag":false,"id":"92598f2c8d5149a2b666d4fe6a0c3921","userId":7,"userName":"joe","password":"E10ADC3949BA59ABBE56E057F20F883E"},{"createdTime":1567738610000,"createdBy":-1,"updatedTime":1567738610000,"updatedBy":-1,"reversion":1,"deleteFlag":false,"id":"e1b292929aa146bda754dd143ab5b3e4","userId":6,"userName":"jone","password":"E10ADC3949BA59ABBE56E057F20F883E"},{"createdTime":1567738956000,"createdBy":-1,"updatedTime":1567738956000,"updatedBy":-1,"reversion":1,"deleteFlag":false,"id":"f97baf988b774a52ab2978214ff560b3","userId":10,"userName":"ivone","password":"E10ADC3949BA59ABBE56E057F20F883E"}],"page":{"offset":10,"current":1,"pages":2,"rows":11}}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 4 ms
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | 登录条件: {"password":"999999","userName":"xuexue"}
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.findUserInfoByUserName?[0;39m | ==>  Preparing: SELECT tu.id, tu.user_id AS userId, tu.`password`, tu.reversion, tu.user_name AS userName, tu.created_by AS createdBy, tu.created_time AS createdTime, tu.updated_by AS updatedBy, tu.updated_time AS updatedTime FROM tb_user tu WHERE tu.user_name = ? and tu.delete_flag = 0 
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.findUserInfoByUserName?[0;39m | ==> Parameters: xuexue(String)
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.findUserInfoByUserName?[0;39m | <==      Total: 1
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserTokenMapper.selectMaxTokenId?[0;39m | ==>  Preparing: SELECT IFNULL( max( tut.id ), 0 ) FROM tb_user_token tut 
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserTokenMapper.selectMaxTokenId?[0;39m | ==> Parameters: 
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserTokenMapper.selectMaxTokenId?[0;39m | <==      Total: 1
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserTokenMapper.insertUserToken?[0;39m | ==>  Preparing: INSERT INTO tb_user_token ( id, user_id, user_token, delete_flag, reversion, created_by, created_time, updated_by, updated_time ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserTokenMapper.insertUserToken?[0;39m | ==> Parameters: 11(Integer), 80bc9bf1702040f884a52fa0c4c0b4e9(String), eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzI1MDE2MTg0NDMsInBheWxvYWQiOiJcIjgwYmM5YmYxNzAyMDQwZjg4NGE1MmZhMGM0YzBiNGU5XCIifQ.-xhy3v_N-1SE21vxDYDKGOqKaVqd404PLdFYnNjWZ38(String), false(Boolean), 1(Integer), -1(Integer), 2019-10-24 14:00:17.523(Timestamp), -1(Integer), 2019-10-24 14:00:17.523(Timestamp)
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserTokenMapper.insertUserToken?[0;39m | <==    Updates: 1
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.service.impl.UserServiceImpl?[0;39m | 将对象放入redis
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /user/login
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.UserController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.login(com.jiaxin.pda.entity.vo.UserVo)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":200,"msg":"操作成功","body":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzI1MDE2MTg0NDMsInBheWxvYWQiOiJcIjgwYmM5YmYxNzAyMDQwZjg4NGE1MmZhMGM0YzBiNGU5XCIifQ.-xhy3v_N-1SE21vxDYDKGOqKaVqd404PLdFYnNjWZ38"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 4 ms
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | 修改用户姓名条件: {"reversion":2,"id":"27d98c37195e448193639c9c382235ef","userName":"lele"}
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.controller.BaseController?[0;39m | 修改用户-参数,UserVo(id=27d98c37195e448193639c9c382235ef, userId=0, userName=lele, password=null)
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.findUserByName?[0;39m | ==>  Preparing: SELECT tu.id, tu.user_id AS userId, tu.`password`, tu.reversion, tu.user_name AS userName, tu.created_by AS createdBy, tu.created_time AS createdTime, tu.updated_by AS updatedBy, tu.updated_time AS updatedTime FROM tb_user tu WHERE tu.delete_flag = 0 and tu.user_name = ? 
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.findUserByName?[0;39m | ==> Parameters: lele(String)
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.findUserByName?[0;39m | <==      Total: 1
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.updateUserName?[0;39m | ==>  Preparing: UPDATE tb_user SET updated_by = ?, updated_time = ?, user_name = ?, reversion = reversion + 1 WHERE id = ? AND reversion = ? 
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.updateUserName?[0;39m | ==> Parameters: -1(Integer), 2019-10-24 14:00:17.523(Timestamp), lele(String), 27d98c37195e448193639c9c382235ef(String), 2(Integer)
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.updateUserName?[0;39m | <==    Updates: 0
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /user/updateUserName
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.UserController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.updateUserName(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.UserVo,org.springframework.validation.BindingResult)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":200,"msg":"操作成功","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 4 ms
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | 插入添加用户权限条件: {"roleId":1,"userId":8}
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserPrivilegeMapper.selectByUserId?[0;39m | ==>  Preparing: SELECT id, role_id AS roleId, user_id AS userId, created_by AS createdBy, created_time AS createdTime, updated_by AS updatedBy, updated_time AS updatedTime FROM tb_role_user WHERE user_id = ? 
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserPrivilegeMapper.selectByUserId?[0;39m | ==> Parameters: 8(Integer)
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserPrivilegeMapper.selectByUserId?[0;39m | <==      Total: 1
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /user/insertUserRole
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.UserController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.insertUserRole(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.UserPrivilegeVo)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":210,"msg":"用户角色已存在","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 4 ms
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | 插入用户信息条件: {"password":"999999","userName":"danny"}
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.controller.BaseController?[0;39m | 插入用户-参数,UserVo(id=null, userId=0, userName=danny, password=999999)
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.findUserByName?[0;39m | ==>  Preparing: SELECT tu.id, tu.user_id AS userId, tu.`password`, tu.reversion, tu.user_name AS userName, tu.created_by AS createdBy, tu.created_time AS createdTime, tu.updated_by AS updatedBy, tu.updated_time AS updatedTime FROM tb_user tu WHERE tu.delete_flag = 0 and tu.user_name = ? 
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.findUserByName?[0;39m | ==> Parameters: danny(String)
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.findUserByName?[0;39m | <==      Total: 1
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /user/registerUser
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.UserController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.insertUser(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.UserVo)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":208,"msg":"用户名不能重复","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 3 ms
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | 退出条件: {"userToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Njg2OTA5NTUwNjgsInBheWxvYWQiOiIxIn0.lBt7srIZJ-YuvAirDo36kwjuk8BWs73gtJQqrk12AG4"}
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /user/logout
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.UserController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.logout(com.jiaxin.pda.entity.vo.UserTokenVo)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":205,"msg":"token不存在","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 3 ms
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | 根据ID查询用户信息
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.controller.BaseController?[0;39m | 用户的ID为 28d98c37195e448193639c9c382235ef
+2019-10-24 14:00:18 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.service.impl.UserServiceImpl?[0;39m | 从mysql中获得数据
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.findUserById?[0;39m | ==>  Preparing: SELECT tu.id, tu.user_id AS userId, tu.`password`, tu.reversion, tu.user_name AS userName, tu.delete_flag as deleteFlag, tu.created_by AS createdBy, tu.created_time AS createdTime, tu.updated_by AS updatedBy, tu.updated_time AS updatedTime FROM tb_user tu WHERE tu.id = ? 
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.findUserById?[0;39m | ==> Parameters: 28d98c37195e448193639c9c382235ef(String)
+2019-10-24 14:00:18 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.findUserById?[0;39m | <==      Total: 0
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /user/findById/28d98c37195e448193639c9c382235ef
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.UserController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.findById(java.lang.String)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":204,"msg":"用户不存在或者已被删除","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-24 14:00:19 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:19 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:19 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 4 ms
+2019-10-24 14:00:19 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | 删除用户信息条件: {"reversion":1,"id":"a8f67c704e9f4dc981698084dffe4ce8"}
+2019-10-24 14:00:19 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.service.impl.UserServiceImpl?[0;39m | 从mysql中获得数据
+2019-10-24 14:00:19 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.findUserById?[0;39m | ==>  Preparing: SELECT tu.id, tu.user_id AS userId, tu.`password`, tu.reversion, tu.user_name AS userName, tu.delete_flag as deleteFlag, tu.created_by AS createdBy, tu.created_time AS createdTime, tu.updated_by AS updatedBy, tu.updated_time AS updatedTime FROM tb_user tu WHERE tu.id = ? 
+2019-10-24 14:00:19 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.findUserById?[0;39m | ==> Parameters: a8f67c704e9f4dc981698084dffe4ce8(String)
+2019-10-24 14:00:19 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserMapper.findUserById?[0;39m | <==      Total: 1
+
+MockHttpServletRequest:
+      HTTP Method = DELETE
+      Request URI = /user/deleteUser
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.UserController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.deleteUser(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.UserVo)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":204,"msg":"用户不存在或者已被删除","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-24 14:00:19 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:19 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:19 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 3 ms
+2019-10-24 14:00:19 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserPrivilegeMapper.selectByUserId?[0;39m | ==>  Preparing: SELECT id, role_id AS roleId, user_id AS userId, created_by AS createdBy, created_time AS createdTime, updated_by AS updatedBy, updated_time AS updatedTime FROM tb_role_user WHERE user_id = ? 
+2019-10-24 14:00:19 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserPrivilegeMapper.selectByUserId?[0;39m | ==> Parameters: 8(Integer)
+2019-10-24 14:00:19 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserPrivilegeMapper.selectByUserId?[0;39m | <==      Total: 1
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /user/queryRoleByUserId/8
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.UserController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.queryRoleByUserId(int)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":200,"msg":"操作成功","body":{"createdTime":1570780670000,"createdBy":-1,"updatedTime":1570780670000,"updatedBy":-1,"reversion":0,"deleteFlag":false,"id":"0e72f8d6bf7a42be9521e3f1678cdce8","userId":8,"roleId":"1"}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-24 14:00:19 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:19 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:19 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 3 ms
+2019-10-24 14:00:19 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.UserControllerTest?[0;39m | 删除用户权限条件: {"roleId":1,"userId":1}
+2019-10-24 14:00:19 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserPrivilegeMapper.deleteUserRole?[0;39m | ==>  Preparing: DELETE FROM tb_role_user WHERE user_id = ? AND role_id = ? 
+2019-10-24 14:00:19 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserPrivilegeMapper.deleteUserRole?[0;39m | ==> Parameters: 1(Integer), 1(String)
+2019-10-24 14:00:19 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.UserPrivilegeMapper.deleteUserRole?[0;39m | <==    Updates: 0
+
+MockHttpServletRequest:
+      HTTP Method = DELETE
+      Request URI = /user/deleteUserRole
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.UserController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.UserController.deleteUserRole(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.UserPrivilegeVo)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":200,"msg":"操作成功","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

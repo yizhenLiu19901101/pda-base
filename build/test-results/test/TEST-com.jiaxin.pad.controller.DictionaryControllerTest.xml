@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.jiaxin.pad.controller.DictionaryControllerTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2019-10-24T06:00:20" hostname="milos-computer.local" time="0.456">
+  <properties/>
+  <testcase name="queryDictionaryByTypeId" classname="com.jiaxin.pad.controller.DictionaryControllerTest" time="0.039"/>
+  <testcase name="queryDictionaryTypeByPage" classname="com.jiaxin.pad.controller.DictionaryControllerTest" time="0.065"/>
+  <testcase name="insertDictionaryItem" classname="com.jiaxin.pad.controller.DictionaryControllerTest" time="0.039"/>
+  <testcase name="insertDictionaryType" classname="com.jiaxin.pad.controller.DictionaryControllerTest" time="0.043"/>
+  <testcase name="queryDictionaryByPage" classname="com.jiaxin.pad.controller.DictionaryControllerTest" time="0.068"/>
+  <testcase name="updateDictionaryItem" classname="com.jiaxin.pad.controller.DictionaryControllerTest" time="0.037"/>
+  <testcase name="updateDictionaryType" classname="com.jiaxin.pad.controller.DictionaryControllerTest" time="0.037"/>
+  <testcase name="deleteDictionaryItem" classname="com.jiaxin.pad.controller.DictionaryControllerTest" time="0.063"/>
+  <testcase name="deleteDictionaryType" classname="com.jiaxin.pad.controller.DictionaryControllerTest" time="0.062"/>
+  <system-out><![CDATA[2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.context.SpringBootTestContextBootstrapper?[0;39m | Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.jiaxin.pad.controller.DictionaryControllerTest], using SpringBootContextLoader
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.context.support.AbstractContextLoader?[0;39m | Could not detect default resource locations for test class [com.jiaxin.pad.controller.DictionaryControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.context.SpringBootTestContextBootstrapper?[0;39m | Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.context.SpringBootTestContextBootstrapper?[0;39m | Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@14626125, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2b0f2989, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@28750593, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2456bca, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5a949ee, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@57387bb3, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@5761b55a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7e539f47, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@317a4f5a, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@250b5f25, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@7f9af5bb, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@1dd1f4a8]
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 4 ms
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.DictionaryControllerTest?[0;39m | 根据typeId查找字典信息
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.controller.BaseController?[0;39m | 根据字典类型ID查询字典项，入参为：2
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryMapper.queryDictionaryByTypeId?[0;39m | ==>  Preparing: SELECT td.id, td.uuid, td.reversion, td.created_by AS createdBy, td.created_time AS createdTime, td.updated_by AS updatedBy, td.updated_time AS updatedTime, td.item_name AS itemName, td.order_no as orderNo, td.delete_flag as deleteFlag FROM tb_dictionary td WHERE td.delete_flag = 0 and td.dictionary_type_id = ? order by td.order_no asc 
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryMapper.queryDictionaryByTypeId?[0;39m | ==> Parameters: 2(Integer)
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryMapper.queryDictionaryByTypeId?[0;39m | <==      Total: 0
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /dictionary/queryDictionaryByTypeId/2
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.DictionaryController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.DictionaryController.queryDictionaryByPage(java.lang.Integer)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":200,"msg":"操作成功","body":[]}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 4 ms
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.DictionaryControllerTest?[0;39m | 分页查找字典类型信息
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.DictionaryControllerTest?[0;39m | 分页查找字典信息条件: {"current":"1","offset":"10"}
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.controller.BaseController?[0;39m | 分页查询字典类型，入参为：DictionaryTypeDto(typeName=null)
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryTypeMapper.queryDictionaryTypeByPage?[0;39m | ==>  Preparing: select count(0) from (SELECT tdt.id, tdt.uuid, tdt.reversion, tdt.created_by AS createdBy, tdt.created_time AS createdTime, tdt.updated_by AS updatedBy, tdt.updated_time AS updatedTime, tdt.type_name AS typeName, tdt.delete_flag as deleteFlag FROM tb_dictionary_type tdt WHERE tdt.delete_flag = 0) as total 
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryTypeMapper.queryDictionaryTypeByPage?[0;39m | ==> Parameters: 
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryTypeMapper.queryDictionaryTypeByPage?[0;39m | ==>  Preparing: SELECT tdt.id, tdt.uuid, tdt.reversion, tdt.created_by AS createdBy, tdt.created_time AS createdTime, tdt.updated_by AS updatedBy, tdt.updated_time AS updatedTime, tdt.type_name AS typeName, tdt.delete_flag as deleteFlag FROM tb_dictionary_type tdt WHERE tdt.delete_flag = 0 limit 0,10 
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryTypeMapper.queryDictionaryTypeByPage?[0;39m | ==> Parameters: 
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryTypeMapper.queryDictionaryTypeByPage?[0;39m | <==      Total: 2
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /dictionary/queryDictionaryTypeByPage
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.DictionaryController
+           Method = public com.jiaxin.pda.entity.ListPageVo com.jiaxin.pda.controller.DictionaryController.queryDictionaryTypeByPage(com.jiaxin.pda.entity.dto.DictionaryTypeDto)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":200,"msg":"操作成功","body":{"rows":[{"createdTime":1570783652000,"createdBy":-1,"updatedTime":1571283165000,"updatedBy":-1,"reversion":2,"deleteFlag":false,"id":"27ffdd89da5f447bb3f6c89ba53c912a","uuid":3,"typeName":"餐饮"},{"createdTime":1571896370000,"createdBy":-1,"updatedTime":1571896370000,"updatedBy":-1,"reversion":1,"deleteFlag":false,"id":"5efbffbfed844d7289ae373fba084394","uuid":4,"typeName":"交通"}],"page":{"offset":10,"current":1,"pages":1,"rows":2}}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 3 ms
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.DictionaryControllerTest?[0;39m | 插入字典信息
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.DictionaryControllerTest?[0;39m | 插入字典信息条件: {"itemName":"饮料","orderNo":3,"dictionaryTypeId":3}
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.controller.BaseController?[0;39m | 插入字典项，参数信息为：DictionaryVo(id=null, uuid=0, itemName=饮料, dictionaryTypeId=3, orderNo=3)
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryMapper.queryDictionaryItemInfoByName?[0;39m | ==>  Preparing: SELECT td.id, td.uuid, td.reversion, td.created_by AS createdBy, td.created_time AS createdTime, td.updated_by AS updatedBy, td.updated_time AS updatedTime, td.item_name AS itemName, td.order_no as orderNo, td.delete_flag as deleteFlag FROM tb_dictionary td WHERE td.delete_flag = 0 and td.item_name = ? 
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryMapper.queryDictionaryItemInfoByName?[0;39m | ==> Parameters: 饮料(String)
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryMapper.queryDictionaryItemInfoByName?[0;39m | <==      Total: 1
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /dictionary/insertDictionary
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.DictionaryController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.DictionaryController.insertDictionaryType(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.DictionaryVo)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":219,"msg":"字典项名称重复","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 4 ms
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.DictionaryControllerTest?[0;39m | 插入字典类型信息
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.DictionaryControllerTest?[0;39m | 插入字典信息条件: {"typeName":"交通"}
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.controller.BaseController?[0;39m | 插入数据字典类型：DictionaryTypeVo(id=null, uuid=0, typeName=交通)
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryTypeMapper.queryDictionaryTypeInfoByName?[0;39m | ==>  Preparing: SELECT tdt.id, tdt.uuid, tdt.reversion, tdt.created_by AS createdBy, tdt.created_time AS createdTime, tdt.updated_by AS updatedBy, tdt.updated_time AS updatedTime, tdt.type_name AS typeName, tdt.delete_flag as deleteFlag FROM tb_dictionary_type tdt WHERE tdt.delete_flag = 0 and tdt.type_name =? 
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryTypeMapper.queryDictionaryTypeInfoByName?[0;39m | ==> Parameters: 交通(String)
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryTypeMapper.queryDictionaryTypeInfoByName?[0;39m | <==      Total: 1
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /dictionary/insertDictionaryType
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.DictionaryController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.DictionaryController.insertDictionaryType(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.DictionaryTypeVo)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":217,"msg":"数据字典类型名称重复","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 4 ms
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.DictionaryControllerTest?[0;39m | 分页查找字典信息
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.DictionaryControllerTest?[0;39m | 分页查找字典信息条件: {"current":"1","offset":"10"}
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.controller.BaseController?[0;39m | 分页查询字典项，入参为：DictionaryDto(itemName=null)
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryMapper.queryDictionaryByPage?[0;39m | ==>  Preparing: select count(0) from (SELECT td.id, td.uuid, td.reversion, td.created_by AS createdBy, td.created_time AS createdTime, td.updated_by AS updatedBy, td.updated_time AS updatedTime, td.item_name AS itemName, td.order_no as orderNo, td.delete_flag as deleteFlag FROM tb_dictionary td WHERE td.delete_flag = 0) as total 
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryMapper.queryDictionaryByPage?[0;39m | ==> Parameters: 
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryMapper.queryDictionaryByPage?[0;39m | ==>  Preparing: SELECT td.id, td.uuid, td.reversion, td.created_by AS createdBy, td.created_time AS createdTime, td.updated_by AS updatedBy, td.updated_time AS updatedTime, td.item_name AS itemName, td.order_no as orderNo, td.delete_flag as deleteFlag FROM tb_dictionary td WHERE td.delete_flag = 0 limit 0,10 
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryMapper.queryDictionaryByPage?[0;39m | ==> Parameters: 
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryMapper.queryDictionaryByPage?[0;39m | <==      Total: 5
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /dictionary/queryDictionaryByPage
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.DictionaryController
+           Method = public com.jiaxin.pda.entity.ListPageVo com.jiaxin.pda.controller.DictionaryController.queryDictionaryByPage(com.jiaxin.pda.entity.dto.DictionaryDto)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":200,"msg":"操作成功","body":{"rows":[{"createdTime":1569394664000,"createdBy":-1,"updatedTime":1569394664000,"updatedBy":-1,"reversion":1,"deleteFlag":false,"id":"048d9d027d2e4ec9bb1c5e0493705269","uuid":2,"itemName":"小吃","dictionaryTypeId":0,"orderNo":2},{"createdTime":1569726221000,"createdBy":-1,"updatedTime":1569726221000,"updatedBy":-1,"reversion":1,"deleteFlag":false,"id":"373e29e3c2bd49e58ba5fd3cfd2a2fd8","uuid":4,"itemName":"地铁","dictionaryTypeId":0,"orderNo":1},{"createdTime":1570512932000,"createdBy":-1,"updatedTime":1570512932000,"updatedBy":-1,"reversion":1,"deleteFlag":false,"id":"3c96ce58ca394e4098f4e09ffc8d3d80","uuid":7,"itemName":"出租车","dictionaryTypeId":0,"orderNo":3},{"createdTime":1569726183000,"createdBy":-1,"updatedTime":1569726183000,"updatedBy":-1,"reversion":1,"deleteFlag":false,"id":"64178ca0622d41fcb66c1befaef96646","uuid":3,"itemName":"公交车","dictionaryTypeId":0,"orderNo":2},{"createdTime":1571281944000,"createdBy":-1,"updatedTime":1571281944000,"updatedBy":-1,"reversion":1,"deleteFlag":false,"id":"9a64b39ad9a64bd7b6e4bfb188504f5f","uuid":8,"itemName":"饮料","dictionaryTypeId":0,"orderNo":3}],"page":{"offset":10,"current":1,"pages":1,"rows":5}}}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 3 ms
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.DictionaryControllerTest?[0;39m | 修改字典信息
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.DictionaryControllerTest?[0;39m | 修改字典信息条件: {"reversion":15,"itemName":"饮料","orderNo":1,"id":"048d9d027d2e4ec9bb1c5e0493705260"}
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.controller.BaseController?[0;39m | 修改字典条目信息，入参为：DictionaryVo(id=048d9d027d2e4ec9bb1c5e0493705260, uuid=0, itemName=饮料, dictionaryTypeId=0, orderNo=1)
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryMapper.queryDictionaryItemInfoByName?[0;39m | ==>  Preparing: SELECT td.id, td.uuid, td.reversion, td.created_by AS createdBy, td.created_time AS createdTime, td.updated_by AS updatedBy, td.updated_time AS updatedTime, td.item_name AS itemName, td.order_no as orderNo, td.delete_flag as deleteFlag FROM tb_dictionary td WHERE td.delete_flag = 0 and td.item_name = ? 
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryMapper.queryDictionaryItemInfoByName?[0;39m | ==> Parameters: 饮料(String)
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryMapper.queryDictionaryItemInfoByName?[0;39m | <==      Total: 1
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /dictionary/updateDictionary
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.DictionaryController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.DictionaryController.updateDictionaryType(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.DictionaryVo)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":219,"msg":"字典项名称重复","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 3 ms
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.DictionaryControllerTest?[0;39m | 修改字典类型信息
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.DictionaryControllerTest?[0;39m | 修改字典信息条件: {"reversion":2,"typeName":"交通","id":"27ffdd89da5f447bb3f6c89ba53c912a"}
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.controller.BaseController?[0;39m | 修改字典类型，入参为:DictionaryTypeVo(id=27ffdd89da5f447bb3f6c89ba53c912a, uuid=0, typeName=交通)
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryTypeMapper.queryDictionaryTypeInfoByName?[0;39m | ==>  Preparing: SELECT tdt.id, tdt.uuid, tdt.reversion, tdt.created_by AS createdBy, tdt.created_time AS createdTime, tdt.updated_by AS updatedBy, tdt.updated_time AS updatedTime, tdt.type_name AS typeName, tdt.delete_flag as deleteFlag FROM tb_dictionary_type tdt WHERE tdt.delete_flag = 0 and tdt.type_name =? 
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryTypeMapper.queryDictionaryTypeInfoByName?[0;39m | ==> Parameters: 交通(String)
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryTypeMapper.queryDictionaryTypeInfoByName?[0;39m | <==      Total: 1
+
+MockHttpServletRequest:
+      HTTP Method = PUT
+      Request URI = /dictionary/updateDictionaryType
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.DictionaryController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.DictionaryController.updateDictionaryType(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.DictionaryTypeVo)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":217,"msg":"数据字典类型名称重复","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 2 ms
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.DictionaryControllerTest?[0;39m | 删除字典信息
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.controller.BaseController?[0;39m | 删除字典条目信息，入参为：DictionaryVo(id=048d9d027d2e4ec9bb1c5e0493705260, uuid=0, itemName=null, dictionaryTypeId=0, orderNo=0)
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryMapper.deleteDictionaryItem?[0;39m | ==>  Preparing: UPDATE tb_dictionary SET item_name = ?, delete_flag = ?, reversion = reversion + 1, updated_by = ?, updated_time = ? WHERE id = ? and reversion = ? 
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryMapper.deleteDictionaryItem?[0;39m | ==> Parameters: null, true(Boolean), 0(Integer), null, 048d9d027d2e4ec9bb1c5e0493705260(String), 15(Integer)
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryMapper.deleteDictionaryItem?[0;39m | <==    Updates: 0
+
+MockHttpServletRequest:
+      HTTP Method = DELETE
+      Request URI = /dictionary/deleteDictionaryItem
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.DictionaryController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.DictionaryController.deleteDictionary(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.DictionaryVo)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":201,"msg":"操作失败","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.boot.test.mock.web.SpringBootMockServletContext?[0;39m | Initializing Spring FrameworkServlet ''
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization started
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32morg.springframework.test.web.servlet.TestDispatcherServlet?[0;39m | FrameworkServlet '': initialization completed in 4 ms
+2019-10-24 14:00:20 | ?[34mINFO ?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pad.controller.DictionaryControllerTest?[0;39m | 删除字典类型信息
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryTypeMapper.deleteDictionaryType?[0;39m | ==>  Preparing: UPDATE tb_dictionary_type SET updated_by = ?, updated_time = ?, reversion = reversion + 1, delete_flag = ? WHERE id = ? AND reversion = ? 
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryTypeMapper.deleteDictionaryType?[0;39m | ==> Parameters: 0(Integer), null, true(Boolean), 404e5b9ed6154ff78d0a0d531af55950(String), 1(Integer)
+2019-10-24 14:00:20 | ?[39mDEBUG?[0;39m | ?[1;33mTest worker?[0;39m | ?[1;32mcom.jiaxin.pda.mapper.DictionaryTypeMapper.deleteDictionaryType?[0;39m | <==    Updates: 0
+
+MockHttpServletRequest:
+      HTTP Method = DELETE
+      Request URI = /dictionary/deleteDictionaryType
+       Parameters = {}
+          Headers = {Accept=[application/json], Content-Type=[application/json;charset=utf-8]}
+
+Handler:
+             Type = com.jiaxin.pda.controller.DictionaryController
+           Method = public com.jiaxin.pda.entity.vo.GeneralVo com.jiaxin.pda.controller.DictionaryController.deleteDictionaryType(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,com.jiaxin.pda.entity.vo.DictionaryTypeVo)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = {Content-Type=[application/json;charset=UTF-8]}
+     Content type = application/json;charset=UTF-8
+             Body = {"code":201,"msg":"操作失败","body":null}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
