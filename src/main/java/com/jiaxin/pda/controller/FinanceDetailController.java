@@ -35,7 +35,7 @@ public class FinanceDetailController extends BaseController{
      * @param financeDetailVo 财务对象
      * @return 响应结果
      */
-    @PutMapping("/finance/insertFinanceDetail")
+    @PutMapping("/insertFinanceDetail")
     @ApiImplicitParam(name = "financeDetailVo", value = FinanceDetailNote.INSERT_VALUE, required = true, dataType = "FinanceDetailVo")
     @ApiOperation(value = "插入财务详情",notes = FinanceDetailNote.INSERT_NOTE)
     public GeneralVo insertFinanceDetail(HttpServletRequest request, HttpServletResponse response, @RequestBody FinanceDetailVo financeDetailVo){
@@ -54,7 +54,7 @@ public class FinanceDetailController extends BaseController{
      * @param financeDetailVo 财务对象
      * @return 响应结果
      */
-    @PutMapping("/finance/updateFinanceDetail")
+    @PutMapping("/updateFinanceDetail")
     @ApiImplicitParam(name = "financeDetailVo", value = FinanceDetailNote.UPDATE_VALUE, required = true, dataType = "FinanceDetailVo")
     @ApiOperation(value = "修改财务详情",notes = FinanceDetailNote.UPDATE_NOTE)
     public GeneralVo updateFinanceDetail(HttpServletRequest request, HttpServletResponse response,@RequestBody FinanceDetailVo financeDetailVo){
@@ -73,7 +73,7 @@ public class FinanceDetailController extends BaseController{
      * @param financeDetailVo
      * @return 响应结果
      */
-    @DeleteMapping("/finance/deleteFinanceDetail")
+    @DeleteMapping("/deleteFinanceDetail")
     @ApiImplicitParam(name = "financeDetailVo", value = FinanceDetailNote.DELETE_VALUE, required = true, dataType = "FinanceDetailVo")
     @ApiOperation(value = "删除财务详情",notes = FinanceDetailNote.DELETE_NOTE)
     public GeneralVo deleteFinanceDetail(HttpServletRequest request, HttpServletResponse response,@RequestBody FinanceDetailVo financeDetailVo){
@@ -93,7 +93,7 @@ public class FinanceDetailController extends BaseController{
      */
     @ApiOperation(value = "分页查询财务详情",notes = FinanceDetailNote.QUERY_BY_PAGE_NOTE)
     @ApiImplicitParam(name = "financeDetailDto", value = FinanceDetailNote.QUERY_BY_PAGE_VALUE, required = true, dataType = "FinanceDetailDto")
-    @PostMapping("/finance/queryFinanceDetailByPage")
+    @PostMapping("/queryFinanceDetailByPage")
     public ListPageVo queryFinanceDetailByPage(@RequestBody FinanceDetailDto financeDetailDto){
         financeDetailDto.build();
         return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,financeDetailService.queryFinanceDetailByPage(financeDetailDto),financeDetailDto.getPageInfo());

@@ -46,7 +46,7 @@ public class RoleController extends BaseController{
      * @param result 校验对象
      * @return 响应结果
      */
-    @PutMapping("/role/insertRole")
+    @PutMapping("/insertRole")
     @ApiImplicitParam(name = "roleVo", value = RoleNote.INSERT_VALUE, required = true, dataType = "RoleVo")
     @ApiOperation(value = "插入角色",notes = RoleNote.INSERT_NOTE)
     public GeneralVo insertRole(HttpServletRequest request, HttpServletResponse response,@RequestBody RoleVo roleVo, BindingResult result){
@@ -71,7 +71,7 @@ public class RoleController extends BaseController{
      * @param result 校验对象
      * @return 响应结果
      */
-    @PutMapping("/role/updateRoleName")
+    @PutMapping("/updateRoleName")
     @ApiImplicitParam(name = "roleVo", value = RoleNote.UPDATE_VALUE, required = true, dataType = "RoleVo")
     @ApiOperation(value = "修改角色姓名",notes = RoleNote.UPDATE_NOTE)
     public GeneralVo updateRoleName(HttpServletRequest request, HttpServletResponse response,@RequestBody @Valid RoleVo roleVo, BindingResult result){
@@ -95,7 +95,7 @@ public class RoleController extends BaseController{
      * @param roleVo
      * @return 响应结果
      */
-    @DeleteMapping("/role/deleteRole")
+    @DeleteMapping("/deleteRole")
     @ApiImplicitParam(name = "roleVo", value = RoleNote.DELETE_VALUE, required = true, dataType = "RoleVo")
     @ApiOperation(value = "删除角色",notes = RoleNote.DELETE_NOTE)
     public GeneralVo deleteRole(HttpServletRequest request, HttpServletResponse response,@RequestBody RoleVo roleVo){
@@ -119,7 +119,7 @@ public class RoleController extends BaseController{
      * @param roleDto 角色对象
      * @return 响应结果
      */
-    @PostMapping(value = "/role/selectRoleByPage")
+    @PostMapping(value = "/selectRoleByPage")
     @ApiImplicitParam(name = "roleDto", value = RoleNote.QUERY_BY_PAGE_VALUE, required = true, dataType = "RoleDto")
     @ApiOperation(value = "分页查找角色信息",notes = RoleNote.QUERY_BY_PAGE_NOTE)
     public ListPageVo selectRoleByPage(@RequestBody RoleDto roleDto){
@@ -132,7 +132,7 @@ public class RoleController extends BaseController{
      * @param rolePrivilegeVo 角色权限对象
      * @return 响应结果
      */
-    @PostMapping("/role/givePrivilege")
+    @PostMapping("/givePrivilege")
     @ApiImplicitParam(name = "rolePrivilegeVo", value = RoleNote.GIVE_PRIVILEGE_VALUE, required = true, dataType = "RolePrivilegeVo")
     @ApiOperation(value = "角色授权",notes = RoleNote.GIVE_PRIVILEGE_NOTE)
     public GeneralVo givePrivilege(HttpServletRequest request, HttpServletResponse response,@RequestBody RolePrivilegeVo rolePrivilegeVo){
@@ -152,7 +152,7 @@ public class RoleController extends BaseController{
      * @param rolePrivilegeVo 角色权限对象
      * @return 响应结果
      */
-    @DeleteMapping("/role/cancelPrivilege")
+    @DeleteMapping("/cancelPrivilege")
     @ApiImplicitParam(name = "rolePrivilegeVo", value = RoleNote.GIVE_PRIVILEGE_VALUE, required = true, dataType = "RolePrivilegeVo")
     @ApiOperation(value = "角色取消授权",notes = RoleNote.GIVE_PRIVILEGE_NOTE)
     public GeneralVo cancelPrivilege(HttpServletRequest request, HttpServletResponse response,@RequestBody RolePrivilegeVo rolePrivilegeVo){
@@ -172,7 +172,7 @@ public class RoleController extends BaseController{
      * @return 响应结果
      */
     @ApiOperation(value = "根据角色信息查询权限信息")
-    @GetMapping("/role/queryPrivilegeByRoleId/{roleId}")
+    @GetMapping("/queryPrivilegeByRoleId/{roleId}")
     public GeneralVo queryPrivilegeByRoleId(@PathVariable("roleId") Integer roleId){
         return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,roleService.selectByRoleId(roleId));
     }
