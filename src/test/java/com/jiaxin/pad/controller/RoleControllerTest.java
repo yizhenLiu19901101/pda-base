@@ -143,7 +143,7 @@ public class RoleControllerTest {
     }
 
     @Test
-    public void sevenCase() throws Exception{
+    public void queryPrivilegeByRoleId() throws Exception{
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.get("/role/queryPrivilegeByRoleId/1")
                 .accept(MediaType.APPLICATION_JSON)
