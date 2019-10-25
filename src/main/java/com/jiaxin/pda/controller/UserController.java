@@ -1,12 +1,15 @@
 package com.jiaxin.pda.controller;
 
 
+import com.auth0.jwt.internal.org.apache.commons.lang3.ArrayUtils;
 import com.jiaxin.pda.constant.Constant;
 import com.jiaxin.pda.entity.ListPageVo;
 import com.jiaxin.pda.entity.dto.UserDto;
 import com.jiaxin.pda.entity.vo.*;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.enumeration.LoginStatusEnum;
+import com.jiaxin.pda.service.MenuService;
+import com.jiaxin.pda.service.RoleService;
 import com.jiaxin.pda.service.UserService;
 import com.jiaxin.pda.swagger.note.RoleNote;
 import com.jiaxin.pda.swagger.note.UserNote;
@@ -21,6 +24,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 用户控制器类
@@ -32,7 +37,10 @@ import java.security.NoSuchAlgorithmException;
 public class UserController extends BaseController{
     @Autowired
     private UserService userService;
-
+    @Autowired
+    private RoleService roleService;
+    @Autowired
+    private MenuService menuService;
     /**
      * 根据ID查找用户信息
      * @param id
@@ -254,5 +262,27 @@ public class UserController extends BaseController{
     @GetMapping("/queryRoleByUserId/{userId}")
     public GeneralVo queryRoleByUserId(@PathVariable("userId") int  userId){
         return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS, userService.selectByUserId(userId));
+    }
+
+    /**
+     * 根据用户ID查询授权的菜单列表
+     */
+    @ApiOperation(value = "根据token查看授权的菜单列表")
+    @GetMapping("/queryUserPrivileges")
+    public GeneralVo queryUserPrivileges(HttpServletRequest request, HttpServletResponse response){
+        int userId = getCurrentUserId(request,response);
+        UserPrivilegeVo userPrivilegeVo = userService.selectByUserId(userId);
+        if(null != userPrivilegeVo){
+            List<RolePrivilegeVo> rolePrivilegeVoList = roleService.selectByRoleId(Integer.valueOf(userPrivilegeVo.getRoleId()));
+            if(null != rolePrivilegeVoList && Constant.EMPTY_INTEGER_VALUE < rolePrivilegeVoList.size()){
+                List<String> menuIdList = new ArrayList<>();
+                for(RolePrivilegeVo rolePrivilegeVo:rolePrivilegeVoList){
+                    menuIdList.add(rolePrivilegeVo.getMenuId());
+                }
+                List<MenuVo> menuVoList = menuService.queryMenuListByMenuIdList(menuIdList);
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,menuVoList);
+            }
+        }
+        return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
     }
 }

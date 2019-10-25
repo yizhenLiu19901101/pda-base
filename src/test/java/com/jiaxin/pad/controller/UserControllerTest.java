@@ -149,7 +149,7 @@ public class UserControllerTest {
     public void userLogout() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
-        userCondition.put("userToken","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Njg2OTA5NTUwNjgsInBheWxvYWQiOiIxIn0.lBt7srIZJ-YuvAirDo36kwjuk8BWs73gtJQqrk12AG4");
+        userCondition.put("userToken","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzI2MDQxNTk3MzgsInBheWxvYWQiOiJcIjgwYmM5YmYxNzAyMDQwZjg4NGE1MmZhMGM0YzBiNGU5XCIifQ.ofMimL6pwy4ZXz2uon27urLlLlJJSClJiliUb7OBGOg");
         logger.info("退出条件: " + userCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.post("/user/logout")
@@ -208,6 +208,16 @@ public class UserControllerTest {
     public void queryRoleByUserId() throws Exception{
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.get("/user/queryRoleByUserId/8")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void queryMenuListByUserToken() throws Exception{
+        //执行测试
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/queryUserPrivileges")
+                .header("token","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzI2MDQxNTk3MzgsInBheWxvYWQiOiJcIjgwYmM5YmYxNzAyMDQwZjg4NGE1MmZhMGM0YzBiNGU5XCIifQ.ofMimL6pwy4ZXz2uon27urLlLlJJSClJiliUb7OBGOg")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());

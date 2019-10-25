@@ -4,6 +4,7 @@ import com.jiaxin.pda.entity.dto.MenuDto;
 import com.jiaxin.pda.entity.vo.MenuVo;
 import com.jiaxin.pda.entity.vo.UserVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -69,4 +70,11 @@ public interface MenuMapper {
      * @return
      */
     MenuVo queryMenuInfoByMenuName(String menuName);
+
+    /**
+     * 根据ID列表查询菜单信息
+     * @param menuIdList
+     * @return
+     */
+    List<MenuVo> queryMenuListByMenuIdList(@Param("menuIdList") List<String> menuIdList);
 }

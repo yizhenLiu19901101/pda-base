@@ -59,4 +59,11 @@ public class MenuServiceImpl implements MenuService {
     public MenuVo queryMenuInfoByMenuName(String menuName) {
         return menuMapper.queryMenuInfoByMenuName(menuName);
     }
+
+    @Override
+    public List<MenuVo> queryMenuListByMenuIdList(List<String> menuIdList) {
+        return menuMapper.queryMenuListByMenuIdList(menuIdList);
+    }
+
+
 }
