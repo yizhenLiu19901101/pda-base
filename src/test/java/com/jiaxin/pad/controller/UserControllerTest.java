@@ -203,6 +203,7 @@ public class UserControllerTest {
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
+
     @Test
     public void queryRoleByUserId() throws Exception{
         //执行测试

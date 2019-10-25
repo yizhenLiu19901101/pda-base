@@ -7,8 +7,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af92b1f6-cbf2-4c80-8b77-49a8b22389c3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/component/RequestIntercept.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/RoleControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/RoleControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/config/CrossOriginResourceSharingConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/BaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/UserControllerTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,22 +77,22 @@
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/sql" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.jiaxin.pda.component" />
+      <recent name="com.jiaxin.pda.config" />
+      <recent name="com.jiaxin.pda.conponent" />
+      <recent name="com.jiaxin.pda.entity.vo" />
+      <recent name="com.jiaxin.pda.entity.dto" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/resources/sql" />
       <recent name="$PROJECT_DIR$/src/main/resources/pageInterceptor" />
       <recent name="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/entity" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.jiaxin.pda.config" />
-      <recent name="com.jiaxin.pda.conponent" />
-      <recent name="com.jiaxin.pda.entity.vo" />
-      <recent name="com.jiaxin.pda.entity.dto" />
-      <recent name="com.jiaxin.pda.util" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/sql" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -94,7 +107,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.RoleControllerTest.insertRole">
+  <component name="RunManager" selected="Gradle.UserControllerTest.insertUser">
     <configuration name="pda" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -103,46 +116,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration name="DictionaryControllerTest.deleteDictionaryItem" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.DictionaryControllerTest.deleteDictionaryItem&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":cleanTest" />
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="DictionaryControllerTest.sevenCase" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.DictionaryControllerTest.sevenCase&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":cleanTest" />
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
     </configuration>
     <configuration name="FinanceDetailControllerTest.deleteFinanceDetail" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -204,21 +177,61 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="UserControllerTest.insertUser" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.UserControllerTest.insertUser&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="UserControllerTest.queryUserInfoById" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.UserControllerTest.queryUserInfoById&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.pda" />
-      <item itemvalue="Gradle.DictionaryControllerTest.sevenCase" />
-      <item itemvalue="Gradle.DictionaryControllerTest.deleteDictionaryItem" />
       <item itemvalue="Gradle.FinanceDetailControllerTest.deleteFinanceDetail" />
       <item itemvalue="Gradle.RoleControllerTest.cancelPrivilege" />
       <item itemvalue="Gradle.RoleControllerTest.insertRole" />
+      <item itemvalue="Gradle.UserControllerTest.queryUserInfoById" />
+      <item itemvalue="Gradle.UserControllerTest.insertUser" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.UserControllerTest.insertUser" />
+        <item itemvalue="Gradle.UserControllerTest.queryUserInfoById" />
         <item itemvalue="Gradle.RoleControllerTest.insertRole" />
         <item itemvalue="Gradle.RoleControllerTest.cancelPrivilege" />
         <item itemvalue="Gradle.FinanceDetailControllerTest.deleteFinanceDetail" />
-        <item itemvalue="Gradle.DictionaryControllerTest.deleteDictionaryItem" />
-        <item itemvalue="Gradle.DictionaryControllerTest.sevenCase" />
       </list>
     </recent_temporary>
   </component>
@@ -238,6 +251,31 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:/Users/mac/gitHubRepository/pda/src/main/java/com/jiaxin/pda/config" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State>
@@ -246,6 +284,11 @@
           </value>
         </entry>
       </map>
+    </option>
+    <option name="OPEN_TABS">
+      <set>
+        <option value="1" />
+      </set>
     </option>
   </component>
   <component name="debuggerHistoryManager">

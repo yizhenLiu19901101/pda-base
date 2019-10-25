@@ -26,7 +26,7 @@ public class SwaggerConfig {
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
+                .apiInfo(this.apiInfo())
                 .enable(enable)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(Constant.BASE_PACKAGE))

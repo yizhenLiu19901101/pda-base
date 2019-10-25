@@ -28,7 +28,7 @@ public class BaseController {
      */
     public static int getCurrentUserId(HttpServletRequest request, HttpServletResponse response){
         if(null != request && null != request.getAttribute(Constant.USER_ID)){
-            return (int)request.getAttribute(Constant.USER_ID);
+            return (int)request.getSession().getAttribute(Constant.USER_ID);
         }else{
             return Constant.SUPER_ADMIN;
         }
