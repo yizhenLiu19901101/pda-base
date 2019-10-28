@@ -2,7 +2,6 @@ package com.jiaxin.pad.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jiaxin.pda.PdaApplication;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -217,7 +215,7 @@ public class UserControllerTest {
     public void queryMenuListByUserToken() throws Exception{
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.get("/user/queryUserPrivileges")
-                .header("token","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzI2MDQxNTk3MzgsInBheWxvYWQiOiJcIjgwYmM5YmYxNzAyMDQwZjg4NGE1MmZhMGM0YzBiNGU5XCIifQ.ofMimL6pwy4ZXz2uon27urLlLlJJSClJiliUb7OBGOg")
+                .header("token","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzI4Mzg5OTEyMTMsInBheWxvYWQiOiJcIjhmMzZhOGYyZjQ0ZjQ2ZGE4MTc0OWZiOGZhMjY4NjllXCIifQ.g9kVX6VvQNxEy6s-i0fwR-uhKvBRYIL9-s6Jdf0uOxY")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
