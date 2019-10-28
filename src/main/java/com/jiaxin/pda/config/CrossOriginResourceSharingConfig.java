@@ -39,7 +39,8 @@ public class CrossOriginResourceSharingConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(requestIntercept).addPathPatterns("/**/**")
-                .excludePathPatterns("/user/registerUser","/user/login");
+                .excludePathPatterns("/user/registerUser","/v2/*",
+                        "/swagger-resources","/swagger-resources/*/*","/user/login");
         super.addInterceptors(registry);
     }
 }

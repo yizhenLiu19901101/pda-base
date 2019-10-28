@@ -36,7 +36,7 @@ public class RequestIntercept implements HandlerInterceptor {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/json");
         if(null == token || Constant.EMPTY_INTEGER_VALUE == token.trim().length()){
-            logger.info("被拦截......");
+            logger.info(request.getRequestURL().toString() +"被拦截......");
             GeneralVo result = new GeneralVo(ErrorListEnum.INVALID_TOKEN,null);
             OutputStream out = response.getOutputStream();
             out.write(JSON.toJSONString(result).getBytes("utf-8"));
@@ -45,7 +45,7 @@ public class RequestIntercept implements HandlerInterceptor {
         }else{
             UserTokenVo userToken = userService.findUserToken(token);
             if(null == userToken){
-                logger.info("被拦截......");
+                logger.info(request.getRequestURL().toString() +"被拦截......");
                 GeneralVo result = new GeneralVo(ErrorListEnum.INVALID_TOKEN,null);
                 OutputStream out = response.getOutputStream();
                 out.write(JSON.toJSONString(result).getBytes("utf-8"));
@@ -64,7 +64,7 @@ public class RequestIntercept implements HandlerInterceptor {
             out.flush();
             return false;
         }
-        logger.info("没有被拦截......");
+        logger.info(request.getRequestURL().toString() +"没有被拦截......");
         return true;
     }
 
