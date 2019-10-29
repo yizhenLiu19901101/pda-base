@@ -2,6 +2,7 @@ package com.jiaxin.pad.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jiaxin.pda.PdaApplication;
+import com.jiaxin.pda.constant.Constant;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -61,6 +62,7 @@ public class DictionaryControllerTest {
         logger.info("插入字典信息条件: " + dictionaryTypeCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.put("/dictionary/insertDictionaryType")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(dictionaryTypeCondition.toString().getBytes()))
@@ -78,6 +80,7 @@ public class DictionaryControllerTest {
         logger.info("修改字典信息条件: " + dictionaryTypeCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.put("/dictionary/updateDictionaryType")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(dictionaryTypeCondition.toString().getBytes()))
@@ -93,6 +96,7 @@ public class DictionaryControllerTest {
         dictionaryTypeCondition.put("reversion",1);
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.delete("/dictionary/deleteDictionaryType")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(dictionaryTypeCondition.toString().getBytes()))
@@ -109,6 +113,7 @@ public class DictionaryControllerTest {
         logger.info("分页查找字典信息条件: " + dictionaryTypeCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.post("/dictionary/queryDictionaryTypeByPage")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(dictionaryTypeCondition.toString().getBytes()))
@@ -127,6 +132,7 @@ public class DictionaryControllerTest {
         logger.info("插入字典信息条件: " + dictionaryTypeCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.put("/dictionary/insertDictionary")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(dictionaryTypeCondition.toString().getBytes()))
@@ -145,6 +151,7 @@ public class DictionaryControllerTest {
         logger.info("修改字典信息条件: " + dictionaryTypeCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.put("/dictionary/updateDictionary")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(dictionaryTypeCondition.toString().getBytes()))
@@ -160,6 +167,7 @@ public class DictionaryControllerTest {
         dictionaryTypeCondition.put("reversion",15);
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.delete("/dictionary/deleteDictionaryItem")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(dictionaryTypeCondition.toString().getBytes()))
@@ -176,6 +184,7 @@ public class DictionaryControllerTest {
         logger.info("分页查找字典信息条件: " + dictionaryTypeCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.post("/dictionary/queryDictionaryByPage")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(dictionaryTypeCondition.toString().getBytes()))
@@ -187,6 +196,7 @@ public class DictionaryControllerTest {
         logger.info("根据typeId查找字典信息");
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.get("/dictionary/queryDictionaryByTypeId/2")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());

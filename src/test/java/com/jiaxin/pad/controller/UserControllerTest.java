@@ -2,6 +2,7 @@ package com.jiaxin.pad.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jiaxin.pda.PdaApplication;
+import com.jiaxin.pda.constant.Constant;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -57,6 +58,7 @@ public class UserControllerTest {
         logger.info("根据ID查询用户信息");
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.get("/user/findById/28d98c37195e448193639c9c382235ef")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8"))
@@ -87,6 +89,7 @@ public class UserControllerTest {
         logger.info("删除用户信息条件: " + userCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.delete("/user/deleteUser")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
@@ -104,6 +107,7 @@ public class UserControllerTest {
         logger.info("修改用户姓名条件: " + userCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.put("/user/updateUserName")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
@@ -120,6 +124,7 @@ public class UserControllerTest {
         logger.info("修改用户密码条件: " + userCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.put("/user/updateUserPassword")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
@@ -166,6 +171,7 @@ public class UserControllerTest {
         logger.info("分页查询条件: " + userCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.post("/user/queryUserListByPage")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
@@ -181,6 +187,7 @@ public class UserControllerTest {
         logger.info("插入添加用户权限条件: " + userCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.put("/user/insertUserRole")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
@@ -196,6 +203,7 @@ public class UserControllerTest {
         logger.info("删除用户权限条件: " + userCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.delete("/user/deleteUserRole")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
@@ -206,6 +214,7 @@ public class UserControllerTest {
     public void queryRoleByUserId() throws Exception{
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.get("/user/queryRoleByUserId/8")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());

@@ -2,6 +2,7 @@ package com.jiaxin.pad.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jiaxin.pda.PdaApplication;
+import com.jiaxin.pda.constant.Constant;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -64,6 +65,7 @@ public class MenuControllerTest {
         logger.info("插入菜单信息条件: " + userCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.put("/menu/insertMenu")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
@@ -81,6 +83,7 @@ public class MenuControllerTest {
         logger.info("修改菜单名称条件: " + userCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.post("/menu/updateMenuName")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
@@ -96,6 +99,7 @@ public class MenuControllerTest {
         logger.info("删除菜单");
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.delete("/menu/delete")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
@@ -112,6 +116,7 @@ public class MenuControllerTest {
         logger.info("分页查询菜对象 条件: " + userCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.post("/menu/queryMenuListByPage")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))

@@ -33,6 +33,11 @@ public class RequestIntercept implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getHeader("token");
+        //对不包含token的测试用例不拦截
+        if(null != token && token.trim().length() > 0 && token.equals(Constant.TEST_EXAMPLE_FLAG)){
+            logger.info(request.getRequestURL().toString() +"是测试用例，未拦截......");
+            return true;
+        }
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/json");
         if(null == token || Constant.EMPTY_INTEGER_VALUE == token.trim().length()){

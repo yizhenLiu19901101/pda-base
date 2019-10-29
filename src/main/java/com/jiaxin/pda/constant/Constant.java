@@ -116,6 +116,8 @@ public class Constant {
      */
     public static final String DESCRIPTION = "personal data assistant";
 
-
-
+    /**
+     * 测试用例的标志
+     */
+    public static final String TEST_EXAMPLE_FLAG = "-1";
 }

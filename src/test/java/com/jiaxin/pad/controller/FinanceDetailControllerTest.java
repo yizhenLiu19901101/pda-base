@@ -2,6 +2,7 @@ package com.jiaxin.pad.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jiaxin.pda.PdaApplication;
+import com.jiaxin.pda.constant.Constant;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -63,6 +64,7 @@ public class FinanceDetailControllerTest {
         logger.info("插入财务信息条件: " + financeDetailCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.put("/finance/insertFinanceDetail")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(financeDetailCondition.toString().getBytes()))
@@ -81,6 +83,7 @@ public class FinanceDetailControllerTest {
         logger.info("修改财务信息条件: " + financeDetailCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.put("/finance/updateFinanceDetail")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(financeDetailCondition.toString().getBytes()))
@@ -96,6 +99,7 @@ public class FinanceDetailControllerTest {
         financeDetailCondition.put("reversion","17");
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.delete("/finance/deleteFinanceDetail")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(financeDetailCondition.toString().getBytes()))
@@ -113,6 +117,7 @@ public class FinanceDetailControllerTest {
         logger.info("分页查询财务信息 条件: " + userCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.post("/finance/queryFinanceDetailByPage")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
