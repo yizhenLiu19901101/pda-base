@@ -18,6 +18,7 @@ import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
 import org.apache.ibatis.scripting.defaults.DefaultParameterHandler;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.RowBounds;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,6 +31,7 @@ import java.util.Properties;
  * 老规矩，签名里要拦截的类型只能是接口。
  * @author futeng.xiongzhe
  */
+@Component
 @Intercepts({@Signature(type = StatementHandler.class, method = "prepare", args = { Connection.class, Integer.class }) })
 public class PageInterceptor implements Interceptor {
     private static final Log logger = LogFactory.getLog(PageInterceptor.class);
@@ -61,16 +63,8 @@ public class PageInterceptor implements Interceptor {
             metaStatementHandler = SystemMetaObject.forObject(statementHandler);
         }
         Configuration configuration = (Configuration) metaStatementHandler.getValue("delegate.configuration");
-        dialect = configuration.getVariables().getProperty("dialect");
-        if (null == dialect || "".equals(dialect)) {
-            logger.warn("Property dialect is not setted,use default 'mysql' ");
-            dialect = defaultDialect;
-        }
-        pageSqlId = configuration.getVariables().getProperty("pageSqlId");
-        if (null == pageSqlId || "".equals(pageSqlId)) {
-            logger.warn("Property pageSqlId is not setted,use default '.*Page$' ");
-            pageSqlId = defaultPageSqlId;
-        }
+        dialect = defaultDialect;
+        pageSqlId = defaultPageSqlId;
         MappedStatement mappedStatement = (MappedStatement) metaStatementHandler.getValue("delegate.mappedStatement");
         // 只重写需要分页的sql语句。通过MappedStatement的ID匹配，默认重写以Page结尾的MappedStatement的sql
         if (mappedStatement.getId().matches(pageSqlId)) {

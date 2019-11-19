@@ -69,10 +69,10 @@ public class UserServiceImpl implements UserService {
         userVo.setPassword(Md5Util.MD5Encode(userVo.getPassword()));
         result = userMapper.insertUser(userVo);
         //成功将数据插入mysql数据库后，再将对象放到redis中
-        if(Constant.OPERATE_SUCCESS == result){
-            redisTemplate.opsForHash().put(userVo.getId(),Constant.USER_KEY,userVo);
-            logger.info("将对象放入redis");
-        }
+//        if(Constant.OPERATE_SUCCESS == result){
+//            redisTemplate.opsForHash().put(userVo.getId(),Constant.USER_KEY,userVo);
+//            logger.info("将对象放入redis");
+//        }
         return result;
     }
 

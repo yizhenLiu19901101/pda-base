@@ -69,11 +69,12 @@ public class UserControllerTest {
     public void insertUser() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
-        userCondition.put("userName","danny");
+        userCondition.put("userName","<name>peter<name>");
         userCondition.put("password","999999");
         logger.info("插入用户信息条件: " + userCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.put("/user/registerUser")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
