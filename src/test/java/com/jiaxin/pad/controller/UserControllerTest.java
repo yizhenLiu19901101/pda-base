@@ -225,7 +225,7 @@ public class UserControllerTest {
     public void queryMenuListByUserToken() throws Exception{
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.get("/user/queryUserPrivileges")
-                .header("token","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzI4Mzg5OTEyMTMsInBheWxvYWQiOiJcIjhmMzZhOGYyZjQ0ZjQ2ZGE4MTc0OWZiOGZhMjY4NjllXCIifQ.g9kVX6VvQNxEy6s-i0fwR-uhKvBRYIL9-s6Jdf0uOxY")
+                .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
