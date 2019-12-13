@@ -3,15 +3,13 @@ package com.jiaxin.pad.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.jiaxin.pda.PdaApplication;
 import com.jiaxin.pda.constant.Constant;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -19,15 +17,16 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 /**
  * 用户控制器测试类
  * @author milo
  */
-@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = PdaApplication.class)
 @WebAppConfiguration
-public class UserControllerTest {
+public class UserControllerTest extends AbstractTestNGSpringContextTests {
     /**
      * 注入网络应用环境
      */
@@ -46,18 +45,18 @@ public class UserControllerTest {
     /**
      * 测试之前需要完成的动作
      */
-    @Before
+    @BeforeClass
     public void setup() {
         //构造MockMvc
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).alwaysDo(MockMvcResultHandlers.print())
                 .build();
     }
 
-    @Test
+    @Test(threadPoolSize = 2,invocationCount = 4)
     public void queryUserInfoById() throws Exception{
         logger.info("根据ID查询用户信息");
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.get("/user/findById/28d98c37195e448193639c9c382235ef")
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/findById/fb8529492ace4c749081a1803bbdabd6")
                 .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
