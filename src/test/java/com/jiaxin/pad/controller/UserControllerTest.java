@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -52,7 +51,11 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
                 .build();
     }
 
-    @Test(threadPoolSize = 2,invocationCount = 4)
+    /**
+     * 使用1个线程执行1000次
+     * @throws Exception
+     */
+    @Test(threadPoolSize = 1,invocationCount = 3000)
     public void queryUserInfoById() throws Exception{
         logger.info("根据ID查询用户信息");
         //执行测试

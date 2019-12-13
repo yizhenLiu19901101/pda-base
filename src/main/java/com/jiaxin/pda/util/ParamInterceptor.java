@@ -11,7 +11,6 @@ import org.apache.ibatis.mapping.SqlCommandType;
 import org.apache.ibatis.plugin.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
-
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
 import java.util.Properties;
@@ -50,7 +49,8 @@ public class ParamInterceptor implements Interceptor {
                 String valueWithoutJS = StringEscapeUtils.escapeJavaScript(originValue);
                 String valueWithoutHtml = StringEscapeUtils.escapeHtml(valueWithoutJS);
                 logger.info(valueWithoutHtml);
-                ps.getWriteMethod().invoke(paramObj,valueWithoutHtml);
+                String value = StringEscapeUtils.unescapeJava(valueWithoutHtml);
+                ps.getWriteMethod().invoke(paramObj,value);
             }
         }
         return executor.update(ms, paramObj);
