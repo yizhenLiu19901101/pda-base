@@ -69,6 +69,16 @@
         and reversion = #{reversion}
     </update>
 
+    <!-- 根据字典类型ID删除字典项ID-->
+    <update id="deleteDictionaryByTypeId" parameterType="java.lang.Integer">
+        UPDATE tb_dictionary
+        SET delete_flag = 1,
+        reversion = reversion + 1,
+        updated_time = now()
+        WHERE
+        dictionary_type_id = #{dictionaryTypeId}
+    </update>
+
     <!-- 根据ID查询字典项 -->
     <select id="findById" parameterType="java.lang.String" resultType="com.jiaxin.pda.entity.vo.DictionaryVo">
         SELECT

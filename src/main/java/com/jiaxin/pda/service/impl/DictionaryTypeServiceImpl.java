@@ -11,6 +11,8 @@ import com.jiaxin.pda.service.DictionaryTypeService;
 import com.jiaxin.pda.util.GenerateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -38,10 +40,21 @@ public class DictionaryTypeServiceImpl implements DictionaryTypeService {
         return dictionaryTypeMapper.updateDictionaryType(dictionaryTypeVo);
     }
 
+    /**
+     * 删除字典类型，发生异常的时候回滚
+     * @param dictionaryTypeVo
+     * @return
+     */
     @Override
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
     public int deleteDictionaryType(DictionaryTypeVo dictionaryTypeVo) {
         dictionaryTypeVo.setDeleteFlag(true);
-        return dictionaryTypeMapper.deleteDictionaryType(dictionaryTypeVo);
+        int result = dictionaryTypeMapper.deleteDictionaryType(dictionaryTypeVo);
+        //删掉字典项
+        if(Constant.OPERATE_SUCCESS == result){
+            dictionaryMapper.deleteDictionaryByTypeId(dictionaryTypeVo.getUuid());
+        }
+        return result;
     }
 
     @Override

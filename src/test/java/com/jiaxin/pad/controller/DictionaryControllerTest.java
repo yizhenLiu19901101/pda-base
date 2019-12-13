@@ -91,8 +91,9 @@ public class DictionaryControllerTest extends AbstractTestNGSpringContextTests {
         logger.info("删除字典类型信息");
         //设置查询条件
         JSONObject dictionaryTypeCondition = new JSONObject();
-        dictionaryTypeCondition.put("id","404e5b9ed6154ff78d0a0d531af55950");
-        dictionaryTypeCondition.put("reversion",1);
+        dictionaryTypeCondition.put("id","27ffdd89da5f447bb3f6c89ba53c912a");
+        dictionaryTypeCondition.put("uuid","3");
+        dictionaryTypeCondition.put("reversion",2);
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.delete("/dictionary/deleteDictionaryType")
                 .header("token", Constant.TEST_EXAMPLE_FLAG)
