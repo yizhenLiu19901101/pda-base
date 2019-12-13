@@ -8,6 +8,7 @@ import com.jiaxin.pda.entity.dto.UserDto;
 import com.jiaxin.pda.entity.vo.*;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.enumeration.LoginStatusEnum;
+import com.jiaxin.pda.exception.PDAException;
 import com.jiaxin.pda.service.MenuService;
 import com.jiaxin.pda.service.RoleService;
 import com.jiaxin.pda.service.UserService;
@@ -49,12 +50,17 @@ public class UserController extends BaseController{
     @GetMapping("/findById/{id}")
     @ApiOperation(value = "根据ID查找用户信息")
     public GeneralVo findById(@PathVariable("id") String id){
-        logger.info("用户的ID为 {}",id);
-        UserVo userVo = userService.findUserById(id);
-        if(null == userVo){
-            return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
-        }else{
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,userVo);
+        try{
+            logger.info("用户的ID为 {}",id);
+            UserVo userVo = userService.findUserById(id);
+            if(null == userVo){
+                return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,userVo);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
 
@@ -90,7 +96,7 @@ public class UserController extends BaseController{
             return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
         }catch(NoSuchAlgorithmException e){
             e.printStackTrace();
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
 
@@ -103,22 +109,27 @@ public class UserController extends BaseController{
     @ApiImplicitParam(name = "userVo", value = UserNote.UPDATE_USER_NAME_VALUE, required = true, dataType = "UserVo")
     @ApiOperation(value = "修改用户名",notes = UserNote.UPDATE_USER_NAME_NOTE)
     public GeneralVo updateUserName(HttpServletRequest request, HttpServletResponse response,@RequestBody @Valid UserVo userVo, BindingResult result){
-        logger.info("修改用户-参数,{}",userVo);
-        //用户名不能为空/重复
-        if(null == userVo.getUserName() || userVo.getUserName().trim().length() == 0){
-            return new GeneralVo(ErrorListEnum.USERNAME_NOT_EMPTY,null);
-        }else{
-            //根据用户名查找用户信息
-            UserVo queryResult = userService.findUserByName(userVo.getUserName());
-            if(null != queryResult && (!userVo.getId().equals(queryResult.getId()))){
-                return new GeneralVo(ErrorListEnum.USERNAME_REPEAT,null);
+        try{
+            logger.info("修改用户-参数,{}",userVo);
+            //用户名不能为空/重复
+            if(null == userVo.getUserName() || userVo.getUserName().trim().length() == 0){
+                return new GeneralVo(ErrorListEnum.USERNAME_NOT_EMPTY,null);
+            }else{
+                //根据用户名查找用户信息
+                UserVo queryResult = userService.findUserByName(userVo.getUserName());
+                if(null != queryResult && (!userVo.getId().equals(queryResult.getId()))){
+                    return new GeneralVo(ErrorListEnum.USERNAME_REPEAT,null);
+                }
             }
+            //修改修改人
+            initOperateParam(request,response,userVo,Constant.UPDATE_TYPE);
+            //修改用户名
+            userService.updateUserName(userVo);
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
-        //修改修改人
-        initOperateParam(request,response,userVo,Constant.UPDATE_TYPE);
-        //修改用户名
-        userService.updateUserName(userVo);
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
     }
 
     /**
@@ -135,11 +146,14 @@ public class UserController extends BaseController{
             initOperateParam(request,response,userVo, Constant.UPDATE_TYPE);
             //修改用户密码
             userService.updateUserPassword(userVo);
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
         }catch(NoSuchAlgorithmException e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
     }
 
     /**
@@ -151,17 +165,22 @@ public class UserController extends BaseController{
     @ApiImplicitParam(name = "userVo", value = UserNote.DELETE_USER_VALUE, required = true, dataType = "UserVo")
     @ApiOperation(value = "删除用户",notes = UserNote.DELETE_USER_NOTE)
     public GeneralVo deleteUser(HttpServletRequest request, HttpServletResponse response,@RequestBody UserVo userVo){
-        UserVo checkResult = userService.findUserById(userVo.getId());
-        if(null == checkResult || checkResult.isDeleteFlag()){
-            return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
+        try{
+            UserVo checkResult = userService.findUserById(userVo.getId());
+            if(null == checkResult || checkResult.isDeleteFlag()){
+                return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
+            }
+            //修改修改人
+            initOperateParam(request,response,userVo, Constant.UPDATE_TYPE);
+            int operateResult = userService.deleteUserInfo(userVo);
+            if(Constant.OPERATE_FAIL == operateResult){
+                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+            }
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
-        //修改修改人
-        initOperateParam(request,response,userVo, Constant.UPDATE_TYPE);
-        int operateResult = userService.deleteUserInfo(userVo);
-        if(Constant.OPERATE_FAIL == operateResult){
-            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
-        }
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
     }
 
     /**
@@ -195,11 +214,16 @@ public class UserController extends BaseController{
     @ApiOperation(value = "用户退出",notes = UserNote.USER_EXIT_NOTE)
     @ApiImplicitParam(name = "userTokenVo", value = UserNote.USER_EXIT_VALUE, required = true, dataType = "UserTokenVo")
     public GeneralVo logout(@RequestBody UserTokenVo userTokenVo){
-        int result = userService.userLogout(userTokenVo);
-        if(result == Constant.OPERATE_SUCCESS){
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-        }else{
-            return new GeneralVo(ErrorListEnum.INVALID_TOKEN,null);
+        try{
+            int result = userService.userLogout(userTokenVo);
+            if(result == Constant.OPERATE_SUCCESS){
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.INVALID_TOKEN,null);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
 
@@ -212,8 +236,13 @@ public class UserController extends BaseController{
     @ApiImplicitParam(name = "userDto", value = UserNote.QUERY_BY_PAGE_VALUE, required = true, dataType = "UserDto")
     @ApiOperation(value = "分页查询用户信息",notes = UserNote.QUERY_BY_PAGE_NOTE)
     public ListPageVo queryUserListByPage(@RequestBody UserDto userDto){
-        userDto.build();
-        return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,userService.queryUserListByPage(userDto),userDto.getPageInfo());
+        try{
+            userDto.build();
+            return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,userService.queryUserListByPage(userDto),userDto.getPageInfo());
+        }catch(Exception e){
+            e.printStackTrace();
+            return new ListPageVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null,null);
+        }
     }
 
     /**
@@ -225,15 +254,20 @@ public class UserController extends BaseController{
     @ApiImplicitParam(name = "userPrivilegeVo", value = UserNote.GIVE_USER_ROLE_VALUE, required = true, dataType = "UserPrivilegeVo")
     @ApiOperation(value = "给用户赋予角色",notes = UserNote.GIVE_USER_ROLE_NOTE)
     public GeneralVo insertUserRole(HttpServletRequest request, HttpServletResponse response,@RequestBody UserPrivilegeVo userPrivilegeVo){
-        UserPrivilegeVo queryResult = userService.selectByUserId(userPrivilegeVo.getUserId());
-        if(null == queryResult || queryResult.isDeleteFlag()){
-            //初始化创建人和修改人
-            initOperateParam(request,response,userPrivilegeVo, Constant.CREATE_TYPE);
-            //插入用户角色信息
-            userService.insertUserRole(userPrivilegeVo);
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-        }else{
-            return new GeneralVo(ErrorListEnum.USER_ROLE_EXIST,null);
+        try{
+            UserPrivilegeVo queryResult = userService.selectByUserId(userPrivilegeVo.getUserId());
+            if(null == queryResult || queryResult.isDeleteFlag()){
+                //初始化创建人和修改人
+                initOperateParam(request,response,userPrivilegeVo, Constant.CREATE_TYPE);
+                //插入用户角色信息
+                userService.insertUserRole(userPrivilegeVo);
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.USER_ROLE_EXIST,null);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
 
@@ -246,11 +280,16 @@ public class UserController extends BaseController{
     @ApiOperation(value = "取消用户的角色",notes = UserNote.GIVE_USER_ROLE_NOTE)
     @DeleteMapping(value = "/deleteUserRole")
     public GeneralVo deleteUserRole(HttpServletRequest request, HttpServletResponse response,@RequestBody UserPrivilegeVo userPrivilegeVo){
-        //初始化创建人和修改人
-        initOperateParam(request,response,userPrivilegeVo, Constant.UPDATE_TYPE);
-        //删除用户角色信息
-        userService.deleteUserRole(userPrivilegeVo);
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        try{
+            //初始化创建人和修改人
+            initOperateParam(request,response,userPrivilegeVo, Constant.UPDATE_TYPE);
+            //删除用户角色信息
+            userService.deleteUserRole(userPrivilegeVo);
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
+        }
     }
 
     /**
@@ -261,7 +300,12 @@ public class UserController extends BaseController{
     @ApiOperation(value = "根据用户ID查询角色信息")
     @GetMapping("/queryRoleByUserId/{userId}")
     public GeneralVo queryRoleByUserId(@PathVariable("userId") int  userId){
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS, userService.selectByUserId(userId));
+        try{
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS, userService.selectByUserId(userId));
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
+        }
     }
 
     /**
@@ -269,20 +313,25 @@ public class UserController extends BaseController{
      */
     @ApiOperation(value = "根据token查看授权的菜单列表")
     @GetMapping("/queryUserPrivileges")
-    public GeneralVo queryUserPrivileges(HttpServletRequest request, HttpServletResponse response){
-        int userId = getCurrentUserId(request,response);
-        UserPrivilegeVo userPrivilegeVo = userService.selectByUserId(userId);
-        if(null != userPrivilegeVo){
-            List<RolePrivilegeVo> rolePrivilegeVoList = roleService.selectByRoleId(Integer.valueOf(userPrivilegeVo.getRoleId()));
-            if(null != rolePrivilegeVoList && Constant.EMPTY_INTEGER_VALUE < rolePrivilegeVoList.size()){
-                List<String> menuIdList = new ArrayList<>();
-                for(RolePrivilegeVo rolePrivilegeVo:rolePrivilegeVoList){
-                    menuIdList.add(rolePrivilegeVo.getMenuId());
+    public GeneralVo queryUserPrivileges(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            int userId = getCurrentUserId(request, response);
+            UserPrivilegeVo userPrivilegeVo = userService.selectByUserId(userId);
+            if (null != userPrivilegeVo) {
+                List<RolePrivilegeVo> rolePrivilegeVoList = roleService.selectByRoleId(Integer.valueOf(userPrivilegeVo.getRoleId()));
+                if (null != rolePrivilegeVoList && Constant.EMPTY_INTEGER_VALUE < rolePrivilegeVoList.size()) {
+                    List<String> menuIdList = new ArrayList<>();
+                    for (RolePrivilegeVo rolePrivilegeVo : rolePrivilegeVoList) {
+                        menuIdList.add(rolePrivilegeVo.getMenuId());
+                    }
+                    List<MenuVo> menuVoList = menuService.queryMenuListByMenuIdList(menuIdList);
+                    return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS, menuVoList);
                 }
-                List<MenuVo> menuVoList = menuService.queryMenuListByMenuIdList(menuIdList);
-                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,menuVoList);
             }
+            return new GeneralVo(ErrorListEnum.OPERATE_FAIL, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
-        return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
     }
 }

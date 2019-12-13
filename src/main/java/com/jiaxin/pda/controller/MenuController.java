@@ -39,22 +39,27 @@ public class MenuController extends BaseController{
     @ApiImplicitParam(name = "menuVo", value = MenuNote.INSERT_VALUE, required = true, dataType = "MenuVo")
     @ApiOperation(value = "插入菜单信息",notes = MenuNote.INSERT_NOTE)
     public GeneralVo insertMenu(HttpServletRequest request, HttpServletResponse response,@RequestBody MenuVo menuVo){
-        logger.info("菜单信息：{}",menuVo);
-        int result;
-        if(null == menuVo.getMenuName() || Constant.EMPTY_INTEGER_VALUE == menuVo.getMenuName().trim().length()){
-            return new GeneralVo(ErrorListEnum.MENU_NAME_NOT_BLANK,null);
-        }
-        int count = menuService.queryMenuCountByMenuName(menuVo.getMenuName());
-        if(count != Constant.EMPTY_INTEGER_VALUE){
-            return new GeneralVo(ErrorListEnum.MENU_NAME_REPEAT,null);
-        }else{
-            initOperateParam(request,response,menuVo,Constant.CREATE_TYPE);
-            result = menuService.insertMenu(menuVo);
-        }
-        if(Constant.OPERATE_SUCCESS == result){
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-        }else{
-            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        try{
+            logger.info("菜单信息：{}",menuVo);
+            int result;
+            if(null == menuVo.getMenuName() || Constant.EMPTY_INTEGER_VALUE == menuVo.getMenuName().trim().length()){
+                return new GeneralVo(ErrorListEnum.MENU_NAME_NOT_BLANK,null);
+            }
+            int count = menuService.queryMenuCountByMenuName(menuVo.getMenuName());
+            if(count != Constant.EMPTY_INTEGER_VALUE){
+                return new GeneralVo(ErrorListEnum.MENU_NAME_REPEAT,null);
+            }else{
+                initOperateParam(request,response,menuVo,Constant.CREATE_TYPE);
+                result = menuService.insertMenu(menuVo);
+            }
+            if(Constant.OPERATE_SUCCESS == result){
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
 
@@ -67,13 +72,18 @@ public class MenuController extends BaseController{
     @ApiImplicitParam(name = "menuVo", value = MenuNote.DELETE_VALUE, required = true, dataType = "MenuVo")
     @ApiOperation(value = "删除菜单信息",notes = MenuNote.DELETE_NOTE)
     public GeneralVo deleteMenu(HttpServletRequest request, HttpServletResponse response,@RequestBody MenuVo menuVo){
-        logger.info("删除菜单，入参为：{}",menuVo);
-        initOperateParam(request,response,menuVo,Constant.UPDATE_TYPE);
-        int result = menuService.deleteMenu(menuVo);
-        if(Constant.OPERATE_SUCCESS == result){
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-        }else{
-            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        try{
+            logger.info("删除菜单，入参为：{}",menuVo);
+            initOperateParam(request,response,menuVo,Constant.UPDATE_TYPE);
+            int result = menuService.deleteMenu(menuVo);
+            if(Constant.OPERATE_SUCCESS == result){
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
 
@@ -86,22 +96,27 @@ public class MenuController extends BaseController{
     @ApiImplicitParam(name = "menuVo", value = MenuNote.UPDATE_VALUE, required = true, dataType = "MenuVo")
     @ApiOperation(value = "修改菜单信息",notes = MenuNote.UPDATE_NOTE)
     public GeneralVo updateMenuName(HttpServletRequest request, HttpServletResponse response,@RequestBody MenuVo menuVo){
-        logger.info("修改菜单名称，入参为:{}",menuVo);
-        if(null == menuVo.getMenuName() || Constant.EMPTY_INTEGER_VALUE == menuVo.getMenuName().trim().length()){
-            return new GeneralVo(ErrorListEnum.MENU_NAME_NOT_BLANK,null);
-        }
-        MenuVo queryResult = menuService.queryMenuInfoByMenuName(menuVo.getMenuName());
-        int result;
-        if(null != queryResult && (!queryResult.getId().equals(menuVo.getId()))){
-            return new GeneralVo(ErrorListEnum.MENU_NAME_REPEAT,null);
-        }else{
-            initOperateParam(request,response,menuVo,Constant.UPDATE_TYPE);
-            result = menuService.updateMenuName(menuVo);
-        }
-        if(Constant.OPERATE_SUCCESS == result){
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-        }else{
-            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        try{
+            logger.info("修改菜单名称，入参为:{}",menuVo);
+            if(null == menuVo.getMenuName() || Constant.EMPTY_INTEGER_VALUE == menuVo.getMenuName().trim().length()){
+                return new GeneralVo(ErrorListEnum.MENU_NAME_NOT_BLANK,null);
+            }
+            MenuVo queryResult = menuService.queryMenuInfoByMenuName(menuVo.getMenuName());
+            int result;
+            if(null != queryResult && (!queryResult.getId().equals(menuVo.getId()))){
+                return new GeneralVo(ErrorListEnum.MENU_NAME_REPEAT,null);
+            }else{
+                initOperateParam(request,response,menuVo,Constant.UPDATE_TYPE);
+                result = menuService.updateMenuName(menuVo);
+            }
+            if(Constant.OPERATE_SUCCESS == result){
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
 
@@ -114,8 +129,13 @@ public class MenuController extends BaseController{
     @ApiImplicitParam(name = "menuDto", value = MenuNote.QUERY_BY_PAGE_VALUE, required = true, dataType = "MenuDto")
     @ApiOperation(value = "分页查找菜单信息",notes = MenuNote.QUERY_BY_PAGE_NOTE)
     public ListPageVo queryMenuListByPage(@RequestBody MenuDto menuDto){
-        menuDto.build();
-        logger.info("分页查询菜单信息，入参为：{}",menuDto);
-        return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,menuService.queryMenuListByPage(menuDto),menuDto.getPageInfo());
+        try{
+            menuDto.build();
+            logger.info("分页查询菜单信息，入参为：{}",menuDto);
+            return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,menuService.queryMenuListByPage(menuDto),menuDto.getPageInfo());
+        }catch(Exception e){
+            e.printStackTrace();
+            return new ListPageVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null,null);
+        }
     }
 }

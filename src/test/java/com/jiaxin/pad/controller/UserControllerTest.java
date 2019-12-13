@@ -55,7 +55,7 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
      * 使用1个线程执行1000次
      * @throws Exception
      */
-    @Test(threadPoolSize = 1,invocationCount = 3000)
+    @Test(threadPoolSize = 1,invocationCount = 1)
     public void queryUserInfoById() throws Exception{
         logger.info("根据ID查询用户信息");
         //执行测试
@@ -71,7 +71,7 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
     public void insertUser() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
-        userCondition.put("userName","<name>peter<name>");
+        userCondition.put("userName","<name>嘉义<name>");
         userCondition.put("password","999999");
         logger.info("插入用户信息条件: " + userCondition.toJSONString());
         //执行测试

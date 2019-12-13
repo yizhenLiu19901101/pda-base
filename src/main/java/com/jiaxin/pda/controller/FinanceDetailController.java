@@ -39,13 +39,18 @@ public class FinanceDetailController extends BaseController{
     @ApiImplicitParam(name = "financeDetailVo", value = FinanceDetailNote.INSERT_VALUE, required = true, dataType = "FinanceDetailVo")
     @ApiOperation(value = "插入财务详情",notes = FinanceDetailNote.INSERT_NOTE)
     public GeneralVo insertFinanceDetail(HttpServletRequest request, HttpServletResponse response, @RequestBody FinanceDetailVo financeDetailVo){
-        logger.info("插入财务信息，入参为：{}",financeDetailVo);
-        initOperateParam(request,response,financeDetailVo, Constant.CREATE_TYPE);
-        int result = financeDetailService.insertFinanceDetail(financeDetailVo);
-        if(Constant.OPERATE_SUCCESS == result){
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-        }else{
-            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        try{
+            logger.info("插入财务信息，入参为：{}",financeDetailVo);
+            initOperateParam(request,response,financeDetailVo, Constant.CREATE_TYPE);
+            int result = financeDetailService.insertFinanceDetail(financeDetailVo);
+            if(Constant.OPERATE_SUCCESS == result){
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
 
@@ -58,13 +63,18 @@ public class FinanceDetailController extends BaseController{
     @ApiImplicitParam(name = "financeDetailVo", value = FinanceDetailNote.UPDATE_VALUE, required = true, dataType = "FinanceDetailVo")
     @ApiOperation(value = "修改财务详情",notes = FinanceDetailNote.UPDATE_NOTE)
     public GeneralVo updateFinanceDetail(HttpServletRequest request, HttpServletResponse response,@RequestBody FinanceDetailVo financeDetailVo){
-        logger.info("修改财务信息，入参为：{}",financeDetailVo);
-        initOperateParam(request,response,financeDetailVo, Constant.UPDATE_TYPE);
-        int result = financeDetailService.updateFinanceDetail(financeDetailVo);
-        if(Constant.OPERATE_SUCCESS == result){
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-        }else{
-            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        try{
+            logger.info("修改财务信息，入参为：{}",financeDetailVo);
+            initOperateParam(request,response,financeDetailVo, Constant.UPDATE_TYPE);
+            int result = financeDetailService.updateFinanceDetail(financeDetailVo);
+            if(Constant.OPERATE_SUCCESS == result){
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
 
@@ -77,13 +87,18 @@ public class FinanceDetailController extends BaseController{
     @ApiImplicitParam(name = "financeDetailVo", value = FinanceDetailNote.DELETE_VALUE, required = true, dataType = "FinanceDetailVo")
     @ApiOperation(value = "删除财务详情",notes = FinanceDetailNote.DELETE_NOTE)
     public GeneralVo deleteFinanceDetail(HttpServletRequest request, HttpServletResponse response,@RequestBody FinanceDetailVo financeDetailVo){
-        logger.info("删除财务信息，入参为：{}",financeDetailVo);
-        initOperateParam(request,response,financeDetailVo, Constant.UPDATE_TYPE);
-        int result = financeDetailService.deleteFinanceDetail(financeDetailVo);
-        if(Constant.OPERATE_SUCCESS == result){
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-        }else{
-            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        try{
+            logger.info("删除财务信息，入参为：{}",financeDetailVo);
+            initOperateParam(request,response,financeDetailVo, Constant.UPDATE_TYPE);
+            int result = financeDetailService.deleteFinanceDetail(financeDetailVo);
+            if(Constant.OPERATE_SUCCESS == result){
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
 
@@ -95,7 +110,12 @@ public class FinanceDetailController extends BaseController{
     @ApiImplicitParam(name = "financeDetailDto", value = FinanceDetailNote.QUERY_BY_PAGE_VALUE, required = true, dataType = "FinanceDetailDto")
     @PostMapping("/queryFinanceDetailByPage")
     public ListPageVo queryFinanceDetailByPage(@RequestBody FinanceDetailDto financeDetailDto){
-        financeDetailDto.build();
-        return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,financeDetailService.queryFinanceDetailByPage(financeDetailDto),financeDetailDto.getPageInfo());
+        try{
+            financeDetailDto.build();
+            return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,financeDetailService.queryFinanceDetailByPage(financeDetailDto),financeDetailDto.getPageInfo());
+        }catch(Exception e){
+            e.printStackTrace();
+            return new ListPageVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null,null);
+        }
     }
 }

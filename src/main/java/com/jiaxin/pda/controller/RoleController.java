@@ -50,19 +50,24 @@ public class RoleController extends BaseController{
     @ApiImplicitParam(name = "roleVo", value = RoleNote.INSERT_VALUE, required = true, dataType = "RoleVo")
     @ApiOperation(value = "插入角色",notes = RoleNote.INSERT_NOTE)
     public GeneralVo insertRole(HttpServletRequest request, HttpServletResponse response,@RequestBody RoleVo roleVo, BindingResult result){
-        if(null == roleVo.getRoleName() || roleVo.getRoleName().trim().length() == 0){
-            return new GeneralVo(ErrorListEnum.ROLE_NAME_NOT_EXIST,null);
-        }else{
-            RoleVo queryResult = roleService.selectByRoleName(roleVo.getRoleName());
-            if(null != queryResult && (!queryResult.isDeleteFlag())){
-                return new GeneralVo(ErrorListEnum.ROLE_NAME_REPEAT,null);
+        try{
+            if(null == roleVo.getRoleName() || roleVo.getRoleName().trim().length() == 0){
+                return new GeneralVo(ErrorListEnum.ROLE_NAME_NOT_EXIST,null);
+            }else{
+                RoleVo queryResult = roleService.selectByRoleName(roleVo.getRoleName());
+                if(null != queryResult && (!queryResult.isDeleteFlag())){
+                    return new GeneralVo(ErrorListEnum.ROLE_NAME_REPEAT,null);
+                }
             }
+            //初始化创建参数
+            initOperateParam(request,response,roleVo, Constant.CREATE_TYPE);
+            //插入角色
+            roleService.insertRole(roleVo);
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
-        //初始化创建参数
-        initOperateParam(request,response,roleVo, Constant.CREATE_TYPE);
-        //插入角色
-        roleService.insertRole(roleVo);
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
     }
 
     /**
@@ -75,19 +80,24 @@ public class RoleController extends BaseController{
     @ApiImplicitParam(name = "roleVo", value = RoleNote.UPDATE_VALUE, required = true, dataType = "RoleVo")
     @ApiOperation(value = "修改角色姓名",notes = RoleNote.UPDATE_NOTE)
     public GeneralVo updateRoleName(HttpServletRequest request, HttpServletResponse response,@RequestBody @Valid RoleVo roleVo, BindingResult result){
-        if(null == roleVo.getRoleName() || roleVo.getRoleName().trim().length() == 0){
-            return new GeneralVo(ErrorListEnum.ROLE_NAME_NOT_EXIST,null);
-        }else{
-            RoleVo queryResult = roleService.selectByRoleName(roleVo.getRoleName());
-            if(null != queryResult && (!queryResult.isDeleteFlag()) && (!queryResult.getId().equals(roleVo.getId()))){
-                return new GeneralVo(ErrorListEnum.ROLE_NAME_REPEAT,null);
+        try{
+            if(null == roleVo.getRoleName() || roleVo.getRoleName().trim().length() == 0){
+                return new GeneralVo(ErrorListEnum.ROLE_NAME_NOT_EXIST,null);
+            }else{
+                RoleVo queryResult = roleService.selectByRoleName(roleVo.getRoleName());
+                if(null != queryResult && (!queryResult.isDeleteFlag()) && (!queryResult.getId().equals(roleVo.getId()))){
+                    return new GeneralVo(ErrorListEnum.ROLE_NAME_REPEAT,null);
+                }
             }
+            //初始化创建参数
+            initOperateParam(request,response,roleVo, Constant.UPDATE_TYPE);
+            //修改角色名称
+            roleService.updateRoleName(roleVo);
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
-        //初始化创建参数
-        initOperateParam(request,response,roleVo, Constant.UPDATE_TYPE);
-        //修改角色名称
-        roleService.updateRoleName(roleVo);
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
     }
 
     /**
@@ -99,18 +109,23 @@ public class RoleController extends BaseController{
     @ApiImplicitParam(name = "roleVo", value = RoleNote.DELETE_VALUE, required = true, dataType = "RoleVo")
     @ApiOperation(value = "删除角色",notes = RoleNote.DELETE_NOTE)
     public GeneralVo deleteRole(HttpServletRequest request, HttpServletResponse response,@RequestBody RoleVo roleVo){
-        RoleVo queryResult = roleService.queryById(roleVo.getId());
-        if(null == queryResult ||(null != queryResult && queryResult.isDeleteFlag())){
-            return new GeneralVo(ErrorListEnum.ROLE_NOT_EXIST,null);
-        }
-        //初始化创建参数
-        initOperateParam(request,response,roleVo, Constant.UPDATE_TYPE);
-        //删除角色名称
-        int result = roleService.deleteRole(roleVo);
-        if(Constant.OPERATE_SUCCESS == result){
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-        }else{
-            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        try{
+            RoleVo queryResult = roleService.queryById(roleVo.getId());
+            if(null == queryResult ||(null != queryResult && queryResult.isDeleteFlag())){
+                return new GeneralVo(ErrorListEnum.ROLE_NOT_EXIST,null);
+            }
+            //初始化创建参数
+            initOperateParam(request,response,roleVo, Constant.UPDATE_TYPE);
+            //删除角色名称
+            int result = roleService.deleteRole(roleVo);
+            if(Constant.OPERATE_SUCCESS == result){
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
 
@@ -123,8 +138,13 @@ public class RoleController extends BaseController{
     @ApiImplicitParam(name = "roleDto", value = RoleNote.QUERY_BY_PAGE_VALUE, required = true, dataType = "RoleDto")
     @ApiOperation(value = "分页查找角色信息",notes = RoleNote.QUERY_BY_PAGE_NOTE)
     public ListPageVo selectRoleByPage(@RequestBody RoleDto roleDto){
-        roleDto.build();
-        return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,roleService.selectRoleByPage(roleDto),roleDto.getPageInfo());
+        try{
+            roleDto.build();
+            return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,roleService.selectRoleByPage(roleDto),roleDto.getPageInfo());
+        }catch(Exception e){
+            e.printStackTrace();
+            return new ListPageVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null,null);
+        }
     }
 
     /**
@@ -136,15 +156,20 @@ public class RoleController extends BaseController{
     @ApiImplicitParam(name = "rolePrivilegeVo", value = RoleNote.GIVE_PRIVILEGE_VALUE, required = true, dataType = "RolePrivilegeVo")
     @ApiOperation(value = "角色授权",notes = RoleNote.GIVE_PRIVILEGE_NOTE)
     public GeneralVo givePrivilege(HttpServletRequest request, HttpServletResponse response,@RequestBody RolePrivilegeVo rolePrivilegeVo){
-        int result = roleService.queryMenuAuthorityByCondition(rolePrivilegeVo.getMenuId(),rolePrivilegeVo.getRoleId());
-        if(Constant.EMPTY_INTEGER_VALUE == result){
-            //初始化创建参数
-            initSimpleOperateParam(request,response,rolePrivilegeVo, Constant.UPDATE_TYPE);
-            roleService.insertRoleMenu(rolePrivilegeVo);
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-        }else{
-
-        }    return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        try{
+            int result = roleService.queryMenuAuthorityByCondition(rolePrivilegeVo.getMenuId(),rolePrivilegeVo.getRoleId());
+            if(Constant.EMPTY_INTEGER_VALUE == result){
+                //初始化创建参数
+                initSimpleOperateParam(request,response,rolePrivilegeVo, Constant.UPDATE_TYPE);
+                roleService.insertRoleMenu(rolePrivilegeVo);
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
+        }
     }
 
     /**
@@ -156,13 +181,18 @@ public class RoleController extends BaseController{
     @ApiImplicitParam(name = "rolePrivilegeVo", value = RoleNote.GIVE_PRIVILEGE_VALUE, required = true, dataType = "RolePrivilegeVo")
     @ApiOperation(value = "角色取消授权",notes = RoleNote.GIVE_PRIVILEGE_NOTE)
     public GeneralVo cancelPrivilege(HttpServletRequest request, HttpServletResponse response,@RequestBody RolePrivilegeVo rolePrivilegeVo){
-        //初始化创建参数
-        initSimpleOperateParam(request,response,rolePrivilegeVo, Constant.UPDATE_TYPE);
-        int result = roleService.deleteRoleMenu(rolePrivilegeVo);
-        if(Constant.EMPTY_INTEGER_VALUE == result){
-            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
-        }else{
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+        try{
+            //初始化创建参数
+            initSimpleOperateParam(request,response,rolePrivilegeVo, Constant.UPDATE_TYPE);
+            int result = roleService.deleteRoleMenu(rolePrivilegeVo);
+            if(Constant.EMPTY_INTEGER_VALUE == result){
+                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
 
@@ -174,6 +204,11 @@ public class RoleController extends BaseController{
     @ApiOperation(value = "根据角色信息查询权限信息")
     @GetMapping("/queryPrivilegeByRoleId/{roleId}")
     public GeneralVo queryPrivilegeByRoleId(@PathVariable("roleId") Integer roleId){
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,roleService.selectByRoleId(roleId));
+        try{
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,roleService.selectByRoleId(roleId));
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
+        }
     }
 }

@@ -39,23 +39,28 @@ public class DictionaryController extends BaseController{
     @ApiImplicitParam(name = "dictionaryTypeVo", value = DictionaryNote.TYPE_INSERT_VALUE, required = true, dataType = "DictionaryTypeVo")
     @ApiOperation(value = "插入字典类型",notes = DictionaryNote.TYPE_INSERT_NOTE)
     public GeneralVo insertDictionaryType(HttpServletRequest request,HttpServletResponse response, @RequestBody DictionaryTypeVo dictionaryTypeVo){
-        logger.info("插入数据字典类型：{}",dictionaryTypeVo);
-        //数据字典类型名称校验
-        if(null == dictionaryTypeVo.getTypeName() || Constant.EMPTY_INTEGER_VALUE == dictionaryTypeVo.getTypeName().trim().length()){
-            return new GeneralVo(ErrorListEnum.DICTIONARY_TYPE_NAME_NOT_BLANK,null);
-        }
-        DictionaryTypeVo queryResult = dictionaryTypeService.queryDictionaryTypeInfoByName(dictionaryTypeVo.getTypeName());
-        int result;
-        if(null == queryResult){
-            initOperateParam(request,response,dictionaryTypeVo,Constant.CREATE_TYPE);
-            result = dictionaryTypeService.insertDictionaryType(dictionaryTypeVo);
-        }else{
-            return new GeneralVo(ErrorListEnum.DICTIONARY_TYPE_NAME_REPEAT,null);
-        }
-        if(Constant.OPERATE_SUCCESS == result){
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-        }else{
-            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        try{
+            logger.info("插入数据字典类型：{}",dictionaryTypeVo);
+            //数据字典类型名称校验
+            if(null == dictionaryTypeVo.getTypeName() || Constant.EMPTY_INTEGER_VALUE == dictionaryTypeVo.getTypeName().trim().length()){
+                return new GeneralVo(ErrorListEnum.DICTIONARY_TYPE_NAME_NOT_BLANK,null);
+            }
+            DictionaryTypeVo queryResult = dictionaryTypeService.queryDictionaryTypeInfoByName(dictionaryTypeVo.getTypeName());
+            int result;
+            if(null == queryResult){
+                initOperateParam(request,response,dictionaryTypeVo,Constant.CREATE_TYPE);
+                result = dictionaryTypeService.insertDictionaryType(dictionaryTypeVo);
+            }else{
+                return new GeneralVo(ErrorListEnum.DICTIONARY_TYPE_NAME_REPEAT,null);
+            }
+            if(Constant.OPERATE_SUCCESS == result){
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
 
@@ -68,23 +73,28 @@ public class DictionaryController extends BaseController{
     @ApiImplicitParam(name = "dictionaryVo", value = DictionaryNote.ITEM_INSERT_VALUE, required = true, dataType = "DictionaryVo")
     @ApiOperation(value = "插入字典项",notes = DictionaryNote.ITEM_INSERT_NOTE)
     public GeneralVo insertDictionaryType(HttpServletRequest request,HttpServletResponse response,@RequestBody DictionaryVo dictionaryVo){
-        logger.info("插入字典项，参数信息为：{}",dictionaryVo);
-        int result = 0;
-        //数据字典类型名称校验
-        if(null == dictionaryVo.getItemName() || Constant.EMPTY_INTEGER_VALUE == dictionaryVo.getItemName().trim().length()){
-            return new GeneralVo(ErrorListEnum.ITEM_NAME_NOT_BLANK,null);
-        }
-        DictionaryVo queryResult = dictionaryTypeService.queryDictionaryItemInfoByName(dictionaryVo.getItemName());
-        if(null == queryResult){
-            initOperateParam(request,response,dictionaryVo,Constant.CREATE_TYPE);
-            result = dictionaryTypeService.insertDictionaryItem(dictionaryVo);
-        }else{
-            return new GeneralVo(ErrorListEnum.ITEM_NAME_REPEAT,null);
-        }
-        if(Constant.OPERATE_SUCCESS == result){
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-        }else{
-            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        try{
+            logger.info("插入字典项，参数信息为：{}",dictionaryVo);
+            int result = 0;
+            //数据字典类型名称校验
+            if(null == dictionaryVo.getItemName() || Constant.EMPTY_INTEGER_VALUE == dictionaryVo.getItemName().trim().length()){
+                return new GeneralVo(ErrorListEnum.ITEM_NAME_NOT_BLANK,null);
+            }
+            DictionaryVo queryResult = dictionaryTypeService.queryDictionaryItemInfoByName(dictionaryVo.getItemName());
+            if(null == queryResult){
+                initOperateParam(request,response,dictionaryVo,Constant.CREATE_TYPE);
+                result = dictionaryTypeService.insertDictionaryItem(dictionaryVo);
+            }else{
+                return new GeneralVo(ErrorListEnum.ITEM_NAME_REPEAT,null);
+            }
+            if(Constant.OPERATE_SUCCESS == result){
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
 
@@ -97,23 +107,28 @@ public class DictionaryController extends BaseController{
     @ApiImplicitParam(name = "dictionaryTypeVo", value = DictionaryNote.TYPE_UPDATE_VALUE, required = true, dataType = "DictionaryTypeVo")
     @ApiOperation(value = "修改字典类型",notes = DictionaryNote.TYPE_UPDATE_NOTE)
     public GeneralVo updateDictionaryType(HttpServletRequest request,HttpServletResponse response,@RequestBody DictionaryTypeVo dictionaryTypeVo){
-        logger.info("修改字典类型，入参为:{}",dictionaryTypeVo);
-        //数据字典类型名称校验
-        if(null == dictionaryTypeVo.getTypeName() || Constant.EMPTY_INTEGER_VALUE == dictionaryTypeVo.getTypeName().trim().length()){
-            return new GeneralVo(ErrorListEnum.DICTIONARY_TYPE_NAME_NOT_BLANK,null);
-        }
-        DictionaryTypeVo queryResult = dictionaryTypeService.queryDictionaryTypeInfoByName(dictionaryTypeVo.getTypeName());
-        int result;
-        if(null != queryResult && (!queryResult.getId().equals(dictionaryTypeVo.getId()))){
-            return new GeneralVo(ErrorListEnum.DICTIONARY_TYPE_NAME_REPEAT,null);
-        }else{
-            initOperateParam(request,response,dictionaryTypeVo,Constant.UPDATE_TYPE);
-            result = dictionaryTypeService.updateDictionaryType(dictionaryTypeVo);
-        }
-        if(Constant.OPERATE_SUCCESS == result){
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-        }else{
-            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        try{
+            logger.info("修改字典类型，入参为:{}",dictionaryTypeVo);
+            //数据字典类型名称校验
+            if(null == dictionaryTypeVo.getTypeName() || Constant.EMPTY_INTEGER_VALUE == dictionaryTypeVo.getTypeName().trim().length()){
+                return new GeneralVo(ErrorListEnum.DICTIONARY_TYPE_NAME_NOT_BLANK,null);
+            }
+            DictionaryTypeVo queryResult = dictionaryTypeService.queryDictionaryTypeInfoByName(dictionaryTypeVo.getTypeName());
+            int result;
+            if(null != queryResult && (!queryResult.getId().equals(dictionaryTypeVo.getId()))){
+                return new GeneralVo(ErrorListEnum.DICTIONARY_TYPE_NAME_REPEAT,null);
+            }else{
+                initOperateParam(request,response,dictionaryTypeVo,Constant.UPDATE_TYPE);
+                result = dictionaryTypeService.updateDictionaryType(dictionaryTypeVo);
+            }
+            if(Constant.OPERATE_SUCCESS == result){
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
 
@@ -125,11 +140,16 @@ public class DictionaryController extends BaseController{
     @ApiImplicitParam(name = "dictionaryTypeVo", value = DictionaryNote.TYPE_DELETE_VALUE, required = true, dataType = "DictionaryTypeVo")
     @ApiOperation(value = "删除字典类型",notes = DictionaryNote.TYPE_DELETE_NOTE)
     public GeneralVo deleteDictionaryType(HttpServletRequest request,HttpServletResponse response,@RequestBody DictionaryTypeVo dictionaryTypeVo){
-        int result = dictionaryTypeService.deleteDictionaryType(dictionaryTypeVo);
-        if(Constant.OPERATE_SUCCESS == result){
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-        }else{
-            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        try{
+            int result = dictionaryTypeService.deleteDictionaryType(dictionaryTypeVo);
+            if(Constant.OPERATE_SUCCESS == result){
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
 
@@ -141,9 +161,14 @@ public class DictionaryController extends BaseController{
     @ApiImplicitParam(name = "dictionaryTypeDto", value = DictionaryNote.TYPE_QUERY_BY_PAGE_VALUE, required = true, dataType = "DictionaryVo")
     @ApiOperation(value = "分页查找字典类型",notes = DictionaryNote.TYPE_QUERY_BY_PAGE_NOTE)
     public ListPageVo queryDictionaryTypeByPage(@RequestBody DictionaryTypeDto dictionaryTypeDto){
-        logger.info("分页查询字典类型，入参为：{}",dictionaryTypeDto);
-        dictionaryTypeDto.build();
-        return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,dictionaryTypeService.queryDictionaryTypeByPage(dictionaryTypeDto),dictionaryTypeDto.getPageInfo());
+        try{
+            logger.info("分页查询字典类型，入参为：{}",dictionaryTypeDto);
+            dictionaryTypeDto.build();
+            return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,dictionaryTypeService.queryDictionaryTypeByPage(dictionaryTypeDto),dictionaryTypeDto.getPageInfo());
+        }catch(Exception e){
+            e.printStackTrace();
+            return new ListPageVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null,null);
+        }
     }
 
     /**
@@ -155,23 +180,28 @@ public class DictionaryController extends BaseController{
     @ApiImplicitParam(name = "dictionaryVo", value = DictionaryNote.ITEM_UPDATE_VALUE, required = true, dataType = "DictionaryVo")
     @ApiOperation(value = "修改字典项",notes = DictionaryNote.ITEM_UPDATE_NOTE)
     public GeneralVo updateDictionaryType(HttpServletRequest request,HttpServletResponse response,@RequestBody DictionaryVo dictionaryVo){
-        logger.info("修改字典条目信息，入参为：{}",dictionaryVo);
-        //数据字典类型名称校验
-        if(null == dictionaryVo.getItemName() || Constant.EMPTY_INTEGER_VALUE == dictionaryVo.getItemName().trim().length()){
-            return new GeneralVo(ErrorListEnum.ITEM_NAME_NOT_BLANK,null);
-        }
-        DictionaryVo queryResult = dictionaryTypeService.queryDictionaryItemInfoByName(dictionaryVo.getItemName());
-        int result;
-        if(null != queryResult && (!queryResult.getId().equals(dictionaryVo.getId()))){
-            return new GeneralVo(ErrorListEnum.ITEM_NAME_REPEAT,null);
-        }else{
-            initOperateParam(request,response,dictionaryVo,Constant.UPDATE_TYPE);
-            result = dictionaryTypeService.updateDictionaryItem(dictionaryVo);
-        }
-        if(Constant.OPERATE_SUCCESS == result){
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-        }else{
-            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        try{
+            logger.info("修改字典条目信息，入参为：{}",dictionaryVo);
+            //数据字典类型名称校验
+            if(null == dictionaryVo.getItemName() || Constant.EMPTY_INTEGER_VALUE == dictionaryVo.getItemName().trim().length()){
+                return new GeneralVo(ErrorListEnum.ITEM_NAME_NOT_BLANK,null);
+            }
+            DictionaryVo queryResult = dictionaryTypeService.queryDictionaryItemInfoByName(dictionaryVo.getItemName());
+            int result;
+            if(null != queryResult && (!queryResult.getId().equals(dictionaryVo.getId()))){
+                return new GeneralVo(ErrorListEnum.ITEM_NAME_REPEAT,null);
+            }else{
+                initOperateParam(request,response,dictionaryVo,Constant.UPDATE_TYPE);
+                result = dictionaryTypeService.updateDictionaryItem(dictionaryVo);
+            }
+            if(Constant.OPERATE_SUCCESS == result){
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
 
@@ -183,12 +213,17 @@ public class DictionaryController extends BaseController{
     @ApiOperation(value = "删除字典项",notes = DictionaryNote.ITEM_DELETE_NOTE)
     @DeleteMapping("/deleteDictionaryItem")
     public GeneralVo deleteDictionary(HttpServletRequest request,HttpServletResponse response,@RequestBody DictionaryVo dictionaryVo){
-        logger.info("删除字典条目信息，入参为：{}",dictionaryVo);
-        int result = dictionaryTypeService.deleteDictionaryItem(dictionaryVo);
-        if(Constant.OPERATE_SUCCESS == result){
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-        }else{
-            return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+        try{
+            logger.info("删除字典条目信息，入参为：{}",dictionaryVo);
+            int result = dictionaryTypeService.deleteDictionaryItem(dictionaryVo);
+            if(Constant.OPERATE_SUCCESS == result){
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
 
@@ -200,9 +235,14 @@ public class DictionaryController extends BaseController{
     @ApiImplicitParam(name = "dictionaryDto", value = DictionaryNote.ITEM_QUERY_BY_PAGE_VALUE, required = true, dataType = "DictionaryDto")
     @ApiOperation(value = "分页查询字典项",notes = DictionaryNote.ITEM_QUERY_BY_PAGE_NOTE)
     public ListPageVo queryDictionaryByPage(@RequestBody DictionaryDto dictionaryDto){
-        logger.info("分页查询字典项，入参为：{}",dictionaryDto);
-        dictionaryDto.build();
-        return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,dictionaryTypeService.queryDictionaryByPage(dictionaryDto),dictionaryDto.getPageInfo());
+        try{
+            logger.info("分页查询字典项，入参为：{}",dictionaryDto);
+            dictionaryDto.build();
+            return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,dictionaryTypeService.queryDictionaryByPage(dictionaryDto),dictionaryDto.getPageInfo());
+        }catch(Exception e){
+            e.printStackTrace();
+            return new ListPageVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null,null);
+        }
     }
 
     /**
@@ -212,8 +252,13 @@ public class DictionaryController extends BaseController{
     @ApiOperation(value = "根据字典类型查询字典项信息")
     @GetMapping("/queryDictionaryByTypeId/{typeId}")
     public GeneralVo queryDictionaryByPage(@PathVariable("typeId") Integer typeId){
-        logger.info("根据字典类型ID查询字典项，入参为：{}",typeId);
-        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,dictionaryTypeService.queryDictionaryByTypeId(typeId));
+        try{
+            logger.info("根据字典类型ID查询字典项，入参为：{}",typeId);
+            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,dictionaryTypeService.queryDictionaryByTypeId(typeId));
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
+        }
     }
 
 }
