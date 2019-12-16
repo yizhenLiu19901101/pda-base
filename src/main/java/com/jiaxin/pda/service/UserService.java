@@ -60,10 +60,10 @@ public interface UserService {
 
     /**
      * 用户退出
-     * @param userTokenVo
+     * @param token
      * @return
      */
-    Integer userLogout(UserTokenVo userTokenVo);
+    Integer userLogout(String token);
 
     /**
      * 分页查询用户信息

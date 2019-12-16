@@ -140,15 +140,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer userLogout(UserTokenVo userTokenVo) {
-        UserTokenVo queryResult = (UserTokenVo) redisTemplate.opsForHash().get(userTokenVo.getUserToken(),Constant.USER_TOKEN_KEY);
+    public Integer userLogout(String token) {
+        UserTokenVo queryResult = (UserTokenVo) redisTemplate.opsForHash().get(token,Constant.USER_TOKEN_KEY);
         if(null != queryResult){
             queryResult.setDeleteFlag(true);
             queryResult.setUpdatedTime(Constant.NOW);
             queryResult.setUpdatedBy(Constant.SUPER_ADMIN);
             result = userTokenMapper.deleteUserToken(queryResult);
             if(Constant.OPERATE_SUCCESS == result){
-                redisTemplate.opsForHash().delete(userTokenVo.getUserToken(),Constant.USER_TOKEN_KEY);
+                redisTemplate.opsForHash().delete(token,Constant.USER_TOKEN_KEY);
                 logger.info("将对象从redis中移除");
             }
             return result;

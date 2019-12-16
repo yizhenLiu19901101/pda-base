@@ -14,6 +14,7 @@ import com.jiaxin.pda.service.RoleService;
 import com.jiaxin.pda.service.UserService;
 import com.jiaxin.pda.swagger.note.RoleNote;
 import com.jiaxin.pda.swagger.note.UserNote;
+import com.jiaxin.pda.util.JWT;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -207,15 +208,14 @@ public class UserController extends BaseController{
 
     /**
      * 用户退出
-     * @param userTokenVo
+     * @param token
      * @return0
      */
-    @PostMapping("/logout")
-    @ApiOperation(value = "用户退出",notes = UserNote.USER_EXIT_NOTE)
-    @ApiImplicitParam(name = "userTokenVo", value = UserNote.USER_EXIT_VALUE, required = true, dataType = "UserTokenVo")
-    public GeneralVo logout(@RequestBody UserTokenVo userTokenVo){
+    @GetMapping("/logout")
+    @ApiOperation(value = "用户退出")
+    public GeneralVo logout(@RequestHeader("token") String token){
         try{
-            int result = userService.userLogout(userTokenVo);
+            int result = userService.userLogout(token);
             if(result == Constant.OPERATE_SUCCESS){
                 return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
             }else{
@@ -313,10 +313,11 @@ public class UserController extends BaseController{
      */
     @ApiOperation(value = "根据token查看授权的菜单列表")
     @GetMapping("/queryUserPrivileges")
-    public GeneralVo queryUserPrivileges(HttpServletRequest request, HttpServletResponse response) {
+    public GeneralVo queryUserPrivileges(@RequestHeader("token") String token) {
         try {
-            int userId = getCurrentUserId(request, response);
-            UserPrivilegeVo userPrivilegeVo = userService.selectByUserId(userId);
+            String id = JWT.unsign(token,String.class);
+            UserVo userVo = userService.findUserById(id);
+            UserPrivilegeVo userPrivilegeVo = userService.selectByUserId(userVo.getUserId());
             if (null != userPrivilegeVo) {
                 List<RolePrivilegeVo> rolePrivilegeVoList = roleService.selectByRoleId(Integer.valueOf(userPrivilegeVo.getRoleId()));
                 if (null != rolePrivilegeVoList && Constant.EMPTY_INTEGER_VALUE < rolePrivilegeVoList.size()) {

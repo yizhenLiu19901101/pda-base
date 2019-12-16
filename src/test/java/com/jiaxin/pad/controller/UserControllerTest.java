@@ -139,8 +139,8 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
     public void userLogin() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
-        userCondition.put("userName","xuexue");
-        userCondition.put("password","999999");
+        userCondition.put("userName","lele");
+        userCondition.put("password","123456");
         logger.info("登录条件: " + userCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.post("/user/login")
@@ -153,15 +153,11 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
 
     @Test
     public void userLogout() throws Exception{
-        //设置查询条件
-        JSONObject userCondition = new JSONObject();
-        userCondition.put("userToken","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzI2MDQxNTk3MzgsInBheWxvYWQiOiJcIjgwYmM5YmYxNzAyMDQwZjg4NGE1MmZhMGM0YzBiNGU5XCIifQ.ofMimL6pwy4ZXz2uon27urLlLlJJSClJiliUb7OBGOg");
-        logger.info("退出条件: " + userCondition.toJSONString());
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.post("/user/logout")
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/logout")
+                .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzcwOTI4MzQ4MjEsInBheWxvYWQiOiJcIjhmMzZhOGYyZjQ0ZjQ2ZGE4MTc0OWZiOGZhMjY4NjllXCIifQ.pnKzFRkSr6XsSDnUUKUjV1psCmrn9iVthQc_LD7r0L8")
                 .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
@@ -227,7 +223,7 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
     public void queryMenuListByUserToken() throws Exception{
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.get("/user/queryUserPrivileges")
-                .header("token", Constant.TEST_EXAMPLE_FLAG)
+                .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzcwOTMwMjcxMzIsInBheWxvYWQiOiJcIjhmMzZhOGYyZjQ0ZjQ2ZGE4MTc0OWZiOGZhMjY4NjllXCIifQ.W0mqGcoAJBrLlPV2keIC473EQrv8W25A-cRuzPUxaJE")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
