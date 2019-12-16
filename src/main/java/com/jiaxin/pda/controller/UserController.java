@@ -195,7 +195,7 @@ public class UserController extends BaseController{
         try{
             String result = userService.userLogin(userVo);
             if(null != result && (!result.equals(LoginStatusEnum.USER_NOT_EXIST.getValue()) && !result.equals(LoginStatusEnum.PASSWORD_ERROR.getValue()))){
-                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,result);
             }else{
                 return new GeneralVo(ErrorListEnum.OPERATE_FAIL.getKey(),result,null);
             }

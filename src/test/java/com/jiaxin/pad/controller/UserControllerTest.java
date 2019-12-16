@@ -55,7 +55,7 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
      * 使用1个线程执行1000次
      * @throws Exception
      */
-    @Test(threadPoolSize = 1,invocationCount = 1)
+    @Test(threadPoolSize = 100,invocationCount = 7000)
     public void queryUserInfoById() throws Exception{
         logger.info("根据ID查询用户信息");
         //执行测试
