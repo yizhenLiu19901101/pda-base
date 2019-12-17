@@ -11,6 +11,7 @@ import com.jiaxin.pda.util.JWT;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,6 +38,11 @@ public class RequestIntercept implements HandlerInterceptor {
         if(null != token && token.trim().length() > 0 && token.equals(Constant.TEST_EXAMPLE_FLAG)){
             logger.info(request.getRequestURL().toString() +"是测试用例，未拦截......");
             return true;
+        }
+        if ("OPTIONS".equals(request.getMethod())){
+            logger.info("options请求，拦截......");
+            response.setStatus(HttpStatus.NO_CONTENT.value());
+            return false;
         }
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/json");
