@@ -246,4 +246,12 @@
     </sql>
 </changeSet>
 
+<changeSet id="tb_user_menu_change_column" author="milo">
+    <sql>
+        ALTER TABLE `tb_menu`
+        ADD COLUMN `menu_no` int(2) NULL COMMENT '菜单次序' AFTER `menu_id`,
+        ADD COLUMN `menu_path` varchar(64) NULL COMMENT '菜单路径' AFTER `parent_menu_id`;
+    </sql>
+</changeSet>
+
 </databaseChangeLog>

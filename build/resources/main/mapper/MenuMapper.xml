@@ -41,6 +41,8 @@
             id,
             menu_id,
             menu_name,
+            menu_path,
+            menu_no,
             parent_menu_id,
             menu_level,
             reversion,
@@ -55,6 +57,8 @@
             #{id},
             #{menuId},
             #{menuName},
+            #{menuPath},
+            #{menuNo},
             #{parentMenuId},
             #{menuLevel},
             #{reversion},
@@ -72,6 +76,8 @@
             tm.id,
             tm.menu_id AS menuId,
             tm.menu_name AS menuName,
+            tm.menu_path AS menuPath,
+            tm.menu_no AS menuNo,
             tm.menu_level AS menuLevel,
             tm.parent_menu_id AS parentMenuId,
             tm.delete_flag AS deleteFlag,
@@ -92,6 +98,8 @@
         tm.id,
         tm.menu_id AS menuId,
         tm.menu_name AS menuName,
+        tm.menu_path AS menuPath,
+        tm.menu_no AS menuNo,
         tm.menu_level AS menuLevel,
         tm.parent_menu_id AS parentMenuId,
         tm.delete_flag AS deleteFlag,
@@ -124,6 +132,8 @@
         tm.id,
         tm.menu_id AS menuId,
         tm.menu_name AS menuName,
+        tm.menu_path AS menuPath,
+        tm.menu_no AS menuNo,
         tm.menu_level AS menuLevel,
         tm.parent_menu_id AS parentMenuId,
         tm.delete_flag AS deleteFlag,
@@ -144,6 +154,8 @@
         tm.id,
         tm.menu_id AS menuId,
         tm.menu_name AS menuName,
+        tm.menu_path AS menuPath,
+        tm.menu_no AS menuNo,
         tm.menu_level AS menuLevel,
         tm.parent_menu_id AS parentMenuId,
         tm.delete_flag AS deleteFlag,
@@ -158,6 +170,7 @@
         <foreach collection="menuIdList" index="index" item="item" open="(" separator="," close=")">
             #{item}
         </foreach>
+        order by tm.menu_no asc
     </select>
 
 </mapper>

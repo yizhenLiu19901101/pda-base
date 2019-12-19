@@ -37,4 +37,14 @@ public class MenuVo extends OperateVo implements Serializable {
      * 菜单层级
      */
     private int menuLevel;
+
+    /**
+     * 菜单次序
+     */
+    private int menuNo;
+
+    /**
+     * 菜单路径
+     */
+    private String menuPath;
 }

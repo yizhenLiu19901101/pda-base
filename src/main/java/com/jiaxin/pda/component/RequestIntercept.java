@@ -39,13 +39,18 @@ public class RequestIntercept implements HandlerInterceptor {
             logger.info(request.getRequestURL().toString() +"是测试用例，未拦截......");
             return true;
         }
-        if ("OPTIONS".equals(request.getMethod())){
-            logger.info("options请求，拦截......");
-            response.setStatus(HttpStatus.NO_CONTENT.value());
-            return false;
-        }
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/json");
+        if ("OPTIONS".equals(request.getMethod())){
+            logger.info("options请求，拦截......");
+            response.setStatus(HttpStatus.OK.value());
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            response.setHeader("Access-Control-Allow-Credentials", "true");
+            response.setHeader("Access-Control-Allow-Methods", "*");
+            response.setHeader("Access-Control-Allow-Headers", "*");
+            response.setHeader("Access-Control-Expose-Headers", "*");
+            return false;
+        }
         if(null == token || Constant.EMPTY_INTEGER_VALUE == token.trim().length()){
             logger.info(request.getRequestURL().toString() +"被拦截......");
             GeneralVo result = new GeneralVo(ErrorListEnum.INVALID_TOKEN,null);

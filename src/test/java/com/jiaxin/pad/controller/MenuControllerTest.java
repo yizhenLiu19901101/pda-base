@@ -60,8 +60,10 @@ public class MenuControllerTest extends AbstractTestNGSpringContextTests {
         logger.info("插入菜单信息");
         //设置查询条件
         JSONObject userCondition = new JSONObject();
-        userCondition.put("menuName","大看版");
+        userCondition.put("menuName","我的");
         userCondition.put("parentMenuId",0);
+        userCondition.put("menuPath","/my");
+        userCondition.put("menuNo",4);
         userCondition.put("menuLevel",1);
         logger.info("插入菜单信息条件: " + userCondition.toJSONString());
         //执行测试
