@@ -47,4 +47,9 @@ public class MenuVo extends OperateVo implements Serializable {
      * 菜单路径
      */
     private String menuPath;
+
+    /**
+     * 菜单类型，1代表PC端，2代表移动端
+     */
+    private int menuType;
 }

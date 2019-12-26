@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author milo
  */
 @RestController
-@RequestMapping(value = "/finance")
+@RequestMapping(value = "/api/finance")
 @ApiIgnore
 @Api(value = "finance",tags = {"finance_controller"})
 public class FinanceDetailController extends BaseController{

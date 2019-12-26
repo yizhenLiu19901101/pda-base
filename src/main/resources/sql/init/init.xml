@@ -253,5 +253,42 @@
         ADD COLUMN `menu_path` varchar(64) NULL COMMENT '菜单路径' AFTER `parent_menu_id`;
     </sql>
 </changeSet>
+<changeSet id="tb_user_menu_add_column" author="milo">
+    <sql>
+        ALTER TABLE `tb_menu`
+        DROP COLUMN `menu_type`,
+        ADD COLUMN `menu_type` tinyint(1) NULL COMMENT '菜单类型，1代表PC端，2代表移动端' AFTER `menu_name`;
+    </sql>
+</changeSet>
+
+<changeSet id="tb_user_add_column" author="milo">
+    <sql>
+        ALTER TABLE `tb_user`
+        ADD COLUMN `image_url` varchar(128) NULL COMMENT '用户头像' AFTER `password`;
+    </sql>
+</changeSet>
+
+<changeSet id="tb_file" author="milo">
+    <preConditions onFail="MARK_RAN">
+        <not>
+            <tableExists tableName="tb_file" />
+        </not>
+    </preConditions>
+    <sql>
+        CREATE TABLE `tb_file`  (
+        `id` varchar(32) NOT NULL DEFAULT 0 COMMENT '数据库主键',
+        `uuid` int(11) NULL COMMENT '业务主键',
+        `file_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '文件名称',
+        `file_path` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '文件路径',
+        `delete_flag` tinyint(1) NULL DEFAULT 0 COMMENT '是否删除，0代表未删除,1代表已删除',
+        `reversion` tinyint(3) NULL DEFAULT NULL COMMENT '乐观锁',
+        `created_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '创建人',
+        `created_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+        `updated_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '修改人',
+        `updated_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
+        PRIMARY KEY (`id`) USING BTREE
+        ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin COMMENT = '文件信息表 ' ROW_FORMAT = Dynamic;
+    </sql>
+</changeSet>
 
 </databaseChangeLog>

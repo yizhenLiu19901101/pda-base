@@ -35,7 +35,7 @@ public class MenuController extends BaseController{
      * @param menuVo 菜单对象
      * @return 响应结果
      */
-    @PutMapping("/insertMenu")
+    @PutMapping("/api/insertMenu")
     @ApiImplicitParam(name = "menuVo", value = MenuNote.INSERT_VALUE, required = true, dataType = "MenuVo")
     @ApiOperation(value = "插入菜单信息",notes = MenuNote.INSERT_NOTE)
     public GeneralVo insertMenu(HttpServletRequest request, HttpServletResponse response,@RequestBody MenuVo menuVo){

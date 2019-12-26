@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @RestController
 @Api(value = "dictionary",tags = {"dictionary_controller"})
-@RequestMapping("/dictionary")
+@RequestMapping("/api/dictionary")
 public class DictionaryController extends BaseController{
 
     @Autowired

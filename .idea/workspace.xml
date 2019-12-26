@@ -7,22 +7,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af92b1f6-cbf2-4c80-8b77-49a8b22389c3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/FileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/entity/vo/FileVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/mapper/FileMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/service/FileService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/service/impl/FileServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/FileMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileContent/fileContent.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.7/fileContent/annotation-processors.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.7/fileContent/annotation-processors.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.7/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.7/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.7/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.7/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.7/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.7/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.7/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.7/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/jiaxin/pda/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/jiaxin/pda/controller/UserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/jiaxin/pda/entity/vo/MenuVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/jiaxin/pda/entity/vo/MenuVo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/pda-1.0.0.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/pda-1.0.0.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/component/RequestIntercept.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/component/RequestIntercept.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/mapper/MenuMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/mapper/MenuMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/sql/init/init.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/sql/init/init.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/config/CrossOriginResourceSharingConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/config/CrossOriginResourceSharingConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/DictionaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/DictionaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/FinanceDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/FinanceDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/RoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/entity/vo/MenuVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/entity/vo/MenuVo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/MenuMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/MenuMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/sql/init/init.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/init/init.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/MenuControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/MenuControllerTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +113,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/mapper" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.11187439" />
@@ -97,22 +121,22 @@
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/sql" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.jiaxin.pda.util" />
-      <recent name="com.jiaxin.pda.component" />
-      <recent name="com.jiaxin.pda.config" />
-      <recent name="com.jiaxin.pda.conponent" />
-      <recent name="com.jiaxin.pda.entity.vo" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/mapper" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/resources/sql" />
       <recent name="$PROJECT_DIR$/src/main/resources/pageInterceptor" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/entity" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.jiaxin.pda.mapper" />
+      <recent name="com.jiaxin.pda.util" />
+      <recent name="com.jiaxin.pda.component" />
+      <recent name="com.jiaxin.pda.config" />
+      <recent name="com.jiaxin.pda.conponent" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/sql" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -127,7 +151,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.MenuControllerTest.insertMenu">
+  <component name="RunManager" selected="Application.pda">
     <configuration name="pda" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -157,12 +181,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="UserControllerTest.queryMenuListByUserToken" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MenuControllerTest.queryByPage" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.UserControllerTest.queryMenuListByUserToken&quot;" />
+        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.MenuControllerTest.queryByPage&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -177,12 +201,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="UserControllerTest.queryUserInfoById" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UserControllerTest.queryMenuListByUserToken" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.UserControllerTest.queryUserInfoById&quot;" />
+        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.UserControllerTest.queryMenuListByUserToken&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -239,19 +263,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.pda" />
-      <item itemvalue="Gradle.UserControllerTest.queryUserInfoById" />
       <item itemvalue="Gradle.UserControllerTest.queryMenuListByUserToken" />
       <item itemvalue="Gradle.UserControllerTest.userLogin" />
       <item itemvalue="Gradle.UserControllerTest.userLogout" />
       <item itemvalue="Gradle.MenuControllerTest.insertMenu" />
+      <item itemvalue="Gradle.MenuControllerTest.queryByPage" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.MenuControllerTest.queryByPage" />
         <item itemvalue="Gradle.MenuControllerTest.insertMenu" />
         <item itemvalue="Gradle.UserControllerTest.queryMenuListByUserToken" />
         <item itemvalue="Gradle.UserControllerTest.userLogin" />
         <item itemvalue="Gradle.UserControllerTest.userLogout" />
-        <item itemvalue="Gradle.UserControllerTest.queryUserInfoById" />
       </list>
     </recent_temporary>
   </component>

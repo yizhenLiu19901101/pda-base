@@ -72,4 +72,6 @@ dependencies {
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.6.0'
     // https://mvnrepository.com/artifact/commons-lang/commons-lang
     compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
+    // https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload
+    compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
 }
