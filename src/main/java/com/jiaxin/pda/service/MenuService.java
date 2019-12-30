@@ -58,4 +58,11 @@ public interface MenuService {
      * @return
      */
     List<MenuVo> queryMenuListByMenuIdList(List<String> menuIdList);
+
+    /**
+     * 根据菜单ID查询菜单信息
+     * @param menuId
+     * @return
+     */
+    MenuVo selectMenuById(int menuId);
 }

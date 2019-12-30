@@ -179,4 +179,26 @@
         order by tm.menu_no asc
     </select>
 
+    <!-- 根据ID列表查询菜单信息 -->
+    <select id="selectMenuById" parameterType="java.lang.Integer" resultType="com.jiaxin.pda.entity.vo.MenuVo">
+        SELECT
+            tm.id,
+            tm.menu_id AS menuId,
+            tm.menu_name AS menuName,
+            tm.menu_path AS menuPath,
+            tm.menu_no AS menuNo,
+            tm.menu_level AS menuLevel,
+            tm.menu_type AS menuType,
+            tm.parent_menu_id AS parentMenuId,
+            tm.delete_flag AS deleteFlag,
+            tm.reversion,
+            tm.created_by AS createdBy,
+            tm.created_time AS createdTime,
+            tm.updated_by AS updatedBy,
+            tm.updated_time AS updatedTime
+        FROM
+            tb_menu tm
+        WHERE tm.delete_flag = 0 and tm.menu_id = #{menuId}
+    </select>
+
 </mapper>

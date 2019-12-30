@@ -77,4 +77,11 @@ public interface MenuMapper {
      * @return
      */
     List<MenuVo> queryMenuListByMenuIdList(@Param("menuIdList") List<String> menuIdList);
+
+    /**
+     * 根据菜单ID查询菜单信息
+     * @param menuId
+     * @return
+     */
+    MenuVo selectMenuById(int menuId);
 }

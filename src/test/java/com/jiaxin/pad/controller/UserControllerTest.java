@@ -55,11 +55,11 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
      * 使用1个线程执行1000次
      * @throws Exception
      */
-    @Test(threadPoolSize = 100,invocationCount = 7000)
+    @Test(threadPoolSize = 1,invocationCount = 1)
     public void queryUserInfoById() throws Exception{
         logger.info("根据ID查询用户信息");
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.get("/user/findById/fb8529492ace4c749081a1803bbdabd6")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/user/findById/25b957908a1d4612807e0a8f6f0e88e5")
                 .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -139,11 +139,11 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
     public void userLogin() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
-        userCondition.put("userName","lele");
+        userCondition.put("userName","milo");
         userCondition.put("password","123456");
         logger.info("登录条件: " + userCondition.toJSONString());
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.post("/user/login")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/user/login")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
@@ -222,8 +222,8 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
     @Test
     public void queryMenuListByUserToken() throws Exception{
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/user/queryUserPrivileges")
-                .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzcwOTMwMjcxMzIsInBheWxvYWQiOiJcIjhmMzZhOGYyZjQ0ZjQ2ZGE4MTc0OWZiOGZhMjY4NjllXCIifQ.W0mqGcoAJBrLlPV2keIC473EQrv8W25A-cRuzPUxaJE")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/user/queryUserPrivileges/6")
+                .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzgyODA4NzIzNTksInBheWxvYWQiOiJcIjI1Yjk1NzkwOGExZDQ2MTI4MDdlMGE4ZjZmMGU4OGU1XCIifQ.X-nBz7meYf8P28vlTNEMU3erLw4qnfHx5v0a6jAoB9Q")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());

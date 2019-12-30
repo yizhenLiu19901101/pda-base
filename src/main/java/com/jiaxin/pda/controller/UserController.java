@@ -312,18 +312,21 @@ public class UserController extends BaseController{
      * 根据用户ID查询授权的菜单列表
      */
     @ApiOperation(value = "根据token查看授权的菜单列表")
-    @GetMapping("/queryUserPrivileges")
-    public GeneralVo queryUserPrivileges(@RequestHeader("token") String token) {
+    @GetMapping("/queryUserPrivileges/{parentMenuId}")
+    public GeneralVo queryUserPrivileges(HttpServletRequest request, HttpServletResponse response,@PathVariable("parentMenuId") int parentMenuId) {
         try {
-            String id = JWT.unsign(token,String.class);
-            UserVo userVo = userService.findUserById(id);
-            UserPrivilegeVo userPrivilegeVo = userService.selectByUserId(userVo.getUserId());
+            int userId = getCurrentUserId(request,response);
+            UserPrivilegeVo userPrivilegeVo = userService.selectByUserId(userId);
             if (null != userPrivilegeVo) {
                 List<RolePrivilegeVo> rolePrivilegeVoList = roleService.selectByRoleId(Integer.valueOf(userPrivilegeVo.getRoleId()));
                 if (null != rolePrivilegeVoList && Constant.EMPTY_INTEGER_VALUE < rolePrivilegeVoList.size()) {
                     List<String> menuIdList = new ArrayList<>();
                     for (RolePrivilegeVo rolePrivilegeVo : rolePrivilegeVoList) {
-                        menuIdList.add(rolePrivilegeVo.getMenuId());
+                        int menuId = Integer.valueOf(rolePrivilegeVo.getMenuId()).intValue();
+                        MenuVo menuVo = menuService.selectMenuById(menuId);
+                        if(null != menuVo && menuVo.getParentMenuId() == parentMenuId){
+                            menuIdList.add(rolePrivilegeVo.getMenuId());
+                        }
                     }
                     List<MenuVo> menuVoList = menuService.queryMenuListByMenuIdList(menuIdList);
                     return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS, menuVoList);

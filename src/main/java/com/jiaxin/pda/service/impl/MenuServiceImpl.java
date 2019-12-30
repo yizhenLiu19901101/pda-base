@@ -65,5 +65,10 @@ public class MenuServiceImpl implements MenuService {
         return menuMapper.queryMenuListByMenuIdList(menuIdList);
     }
 
+    @Override
+    public MenuVo selectMenuById(int menuId) {
+        return menuMapper.selectMenuById(menuId);
+    }
+
 
 }

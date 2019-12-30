@@ -24,8 +24,8 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public String insertFile(MultipartFile fileVo,int userId) {
-            try {
-                String wholePath = File.separator+ "Users"+File.separator+ "mac"+File.separator+ "zhixuanda"+File.separator+"images";
+        try {
+                String wholePath = File.separator+"images";
                 File folder = new File(wholePath);
                 if (!folder.exists()){
                     folder.mkdirs();

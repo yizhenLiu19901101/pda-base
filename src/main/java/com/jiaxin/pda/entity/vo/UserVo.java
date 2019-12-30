@@ -38,5 +38,18 @@ public class UserVo extends OperateVo implements Serializable {
      */
     private String password;
 
+    /**
+     * 用户描述
+     */
+    private String userDesc;
 
+    /**
+     * 用户头像
+     */
+    private String imageUrl;
+
+    /**
+     * 用户等级
+     */
+    private int userLevel;
 }

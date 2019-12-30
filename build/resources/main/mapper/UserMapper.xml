@@ -12,6 +12,9 @@
             tu.user_name AS userName,
             tu.delete_flag as deleteFlag,
             tu.created_by AS createdBy,
+            tu.user_desc AS userDesc,
+            tu.image_url AS imageUrl,
+            tu.user_level AS userLevel,
             tu.created_time AS createdTime,
             tu.updated_by AS updatedBy,
             tu.updated_time AS updatedTime
@@ -39,6 +42,9 @@
             user_name,
             PASSWORD,
             delete_flag,
+            user_level,
+            user_desc,
+            image_url,
             reversion,
             created_by,
             created_time,
@@ -51,6 +57,9 @@
             #{userId},
             #{userName},
             #{password},
+            #{userLevel},
+            #{userDesc},
+            #{imageUrl},
             #{deleteFlag},
             #{reversion},
             #{createdBy},
@@ -104,7 +113,11 @@
         tu.`password`,
         tu.reversion,
         tu.user_name AS userName,
+        tu.delete_flag as deleteFlag,
         tu.created_by AS createdBy,
+        tu.user_desc AS userDesc,
+        tu.image_url AS imageUrl,
+        tu.user_level AS userLevel,
         tu.created_time AS createdTime,
         tu.updated_by AS updatedBy,
         tu.updated_time AS updatedTime
@@ -123,7 +136,11 @@
         tu.`password`,
         tu.reversion,
         tu.user_name AS userName,
+        tu.delete_flag as deleteFlag,
         tu.created_by AS createdBy,
+        tu.user_desc AS userDesc,
+        tu.image_url AS imageUrl,
+        tu.user_level AS userLevel,
         tu.created_time AS createdTime,
         tu.updated_by AS updatedBy,
         tu.updated_time AS updatedTime
@@ -138,15 +155,19 @@
     <!-- 根据条件分页查询用户对象 -->
     <select id="findUserByName" parameterType="java.lang.String" resultType="com.jiaxin.pda.entity.vo.UserVo">
         SELECT
-            tu.id,
-            tu.user_id AS userId,
-            tu.`password`,
-            tu.reversion,
-            tu.user_name AS userName,
-            tu.created_by AS createdBy,
-            tu.created_time AS createdTime,
-            tu.updated_by AS updatedBy,
-            tu.updated_time AS updatedTime
+        tu.id,
+        tu.user_id AS userId,
+        tu.`password`,
+        tu.reversion,
+        tu.user_name AS userName,
+        tu.delete_flag as deleteFlag,
+        tu.created_by AS createdBy,
+        tu.user_desc AS userDesc,
+        tu.image_url AS imageUrl,
+        tu.user_level AS userLevel,
+        tu.created_time AS createdTime,
+        tu.updated_by AS updatedBy,
+        tu.updated_time AS updatedTime
         FROM
             tb_user tu
         WHERE tu.delete_flag = 0
