@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @RestController
 @Api(value = "file",tags = {"file_controller"})
-@RequestMapping("/file")
+@RequestMapping("/api/file")
 public class FileController {
 
     @Autowired
@@ -25,7 +25,7 @@ public class FileController {
     @Autowired
     private UserService userService;
 
-    @ApiOperation(value = "设置用户头像", notes = "设置当前用户头像")
+    @ApiOperation(value = "上传图片", notes = "上传图片")
     @PutMapping("/uploadImage")
     public GeneralVo uploadImage(@RequestParam(required = true) MultipartFile file, @RequestHeader("token") String token) {
         String id = JWT.unsign(token,String.class);

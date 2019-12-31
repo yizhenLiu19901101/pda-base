@@ -304,5 +304,15 @@
         </sql>
     </changeSet>
 
-
+    <changeSet id="tb_menu_add_image" author="milo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName = "tb_menu" columnName = "menu_image" />
+            </not>
+        </preConditions>
+        <sql>
+            ALTER TABLE `tb_menu`
+            CHANGE COLUMN `menu_level` `menu_image` varchar(64) NULL DEFAULT NULL COMMENT '菜单图标' AFTER `menu_path`;
+        </sql>
+    </changeSet>
 </databaseChangeLog>
