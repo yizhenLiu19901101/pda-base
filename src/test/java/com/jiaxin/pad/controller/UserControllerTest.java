@@ -222,8 +222,8 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
     @Test
     public void queryMenuListByUserToken() throws Exception{
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/user/queryUserPrivileges/6")
-                .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzgyODA4NzIzNTksInBheWxvYWQiOiJcIjI1Yjk1NzkwOGExZDQ2MTI4MDdlMGE4ZjZmMGU4OGU1XCIifQ.X-nBz7meYf8P28vlTNEMU3erLw4qnfHx5v0a6jAoB9Q")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/user/queryUserPrivileges/0")
+                .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NzgzNjY1NjEyNzYsInBheWxvYWQiOiJcIjI1Yjk1NzkwOGExZDQ2MTI4MDdlMGE4ZjZmMGU4OGU1XCIifQ.vOUhzfDUKrG4GgxJQfmtp8rrfoA-ZizMkhDqvNx7fUM")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
