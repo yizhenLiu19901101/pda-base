@@ -78,6 +78,11 @@ public class Constant {
     public static final String USER_ID = "userId";
 
     /**
+     * ID
+     */
+    public static final String ID = "id";
+
+    /**
      * token有效时间
      */
     public static final long TOKEN_VALID_PERIOD = 60L* 1000L* 60L * 24L *7L;

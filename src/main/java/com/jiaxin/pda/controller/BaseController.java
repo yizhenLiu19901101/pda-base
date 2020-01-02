@@ -20,8 +20,9 @@ import javax.servlet.http.HttpServletResponse;
 public class BaseController {
 
      static final Logger logger = LoggerFactory.getLogger(BaseController.class);
+
     /**
-     * 获得当前用户的ID
+     * 获得当前用户的用户ID
      * @param request
      * @param response
      * @return
@@ -31,6 +32,20 @@ public class BaseController {
             return (int)request.getSession().getAttribute(Constant.USER_ID);
         }else{
             return Constant.SUPER_ADMIN;
+        }
+    }
+
+    /**
+     * 获得当前用户的ID
+     * @param request
+     * @param response
+     * @return
+     */
+    public static String getCurrentId(HttpServletRequest request, HttpServletResponse response){
+        if(null != request && null != request.getSession().getAttribute(Constant.ID)){
+            return (String)request.getSession().getAttribute(Constant.ID);
+        }else{
+            return null;
         }
     }
 

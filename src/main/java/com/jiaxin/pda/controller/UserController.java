@@ -66,6 +66,27 @@ public class UserController extends BaseController{
     }
 
     /**
+     * 根据token查找用户信息
+     * @return
+     */
+    @GetMapping("/findByToken")
+    @ApiOperation(value = "根据token查找用户信息")
+    public GeneralVo findByToken(HttpServletRequest request, HttpServletResponse response){
+        try{
+            String userId = getCurrentId(request,response);
+            UserVo userVo = userService.findUserById(userId);
+            if(null == userVo){
+                return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
+            }else{
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,userVo);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
+        }
+    }
+
+    /**
      * 插入用户信息
      * @param userVo
      * @return

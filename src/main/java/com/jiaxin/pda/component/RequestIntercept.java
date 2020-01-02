@@ -15,8 +15,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import springfox.documentation.spring.web.json.Json;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.OutputStream;
@@ -73,6 +71,7 @@ public class RequestIntercept implements HandlerInterceptor {
         UserVo userVo = userService.findUserById(id);
         if(null != userVo){
             request.getSession().setAttribute(Constant.USER_ID,userVo.getUserId());
+            request.getSession().setAttribute(Constant.ID,id);
         }else{
             GeneralVo result = new GeneralVo(ErrorListEnum.INVALID_USER,null);
             OutputStream out = response.getOutputStream();
