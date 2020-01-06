@@ -37,4 +37,11 @@ public interface FinanceDetailService {
      * @return
      */
     List<FinanceDetailVo> queryFinanceDetailByPage(FinanceDetailDto financeDetailDto);
+
+    /**
+     * 按照用户ID查询财务对象
+     * @param userId
+     * @return
+     */
+    List<FinanceDetailVo> queryFinanceDetailByUserId(Integer userId);
 }

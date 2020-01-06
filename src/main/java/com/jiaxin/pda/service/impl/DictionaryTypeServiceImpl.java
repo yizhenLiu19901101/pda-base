@@ -100,4 +100,9 @@ public class DictionaryTypeServiceImpl implements DictionaryTypeService {
     public DictionaryVo queryDictionaryItemInfoByName(String itemName) {
         return dictionaryMapper.queryDictionaryItemInfoByName(itemName);
     }
+
+    @Override
+    public DictionaryVo queryDictionaryItemInfoByUuid(int uuid) {
+        return dictionaryMapper.queryDictionaryItemInfoByUuid(uuid);
+    }
 }

@@ -90,4 +90,11 @@ public interface DictionaryTypeService {
      * @return
      */
     DictionaryVo queryDictionaryItemInfoByName(String itemName);
+
+    /**
+     * 根据uuid查询字典项信息
+     * @param uuid
+     * @return
+     */
+    DictionaryVo queryDictionaryItemInfoByUuid(int uuid);
 }

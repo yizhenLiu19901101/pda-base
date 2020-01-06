@@ -123,4 +123,15 @@ public class FinanceDetailControllerTest extends AbstractTestNGSpringContextTest
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
+
+    @Test
+    public void queryByToken() throws Exception{
+        logger.info("查询财务信息");
+        //执行测试
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/finance/getDetailDate/2")
+                .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg5MDcxNjQxMzYsInBheWxvYWQiOiJcIjI1Yjk1NzkwOGExZDQ2MTI4MDdlMGE4ZjZmMGU4OGU1XCIifQ.doewhePCMz-U4fCt5AQwcE5hSwcyyt3U_-xXAjnGTv4")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
 }

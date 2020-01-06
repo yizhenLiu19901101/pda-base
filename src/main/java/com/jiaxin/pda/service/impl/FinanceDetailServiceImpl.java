@@ -44,4 +44,9 @@ public class FinanceDetailServiceImpl implements FinanceDetailService {
     public List<FinanceDetailVo> queryFinanceDetailByPage(FinanceDetailDto financeDetailDto) {
         return financeDetailMapper.queryFinanceDetailByPage(financeDetailDto);
     }
+
+    @Override
+    public List<FinanceDetailVo> queryFinanceDetailByUserId(Integer userId) {
+        return financeDetailMapper.queryFinanceDetailByUserId(userId);
+    }
 }

@@ -3,9 +3,12 @@ package com.jiaxin.pda.controller;
 import com.jiaxin.pda.constant.Constant;
 import com.jiaxin.pda.entity.ListPageVo;
 import com.jiaxin.pda.entity.dto.FinanceDetailDto;
+import com.jiaxin.pda.entity.vo.DictionaryVo;
 import com.jiaxin.pda.entity.vo.FinanceDetailVo;
 import com.jiaxin.pda.entity.vo.GeneralVo;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
+import com.jiaxin.pda.enumeration.QueryTypeEnum;
+import com.jiaxin.pda.service.DictionaryTypeService;
 import com.jiaxin.pda.service.FinanceDetailService;
 import com.jiaxin.pda.swagger.note.FinanceDetailNote;
 import io.swagger.annotations.Api;
@@ -14,9 +17,13 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 财务详情控制器类(业务数据，被该微服务忽略)
@@ -29,6 +36,8 @@ import javax.servlet.http.HttpServletResponse;
 public class FinanceDetailController extends BaseController{
     @Autowired
     private FinanceDetailService financeDetailService;
+    @Autowired
+    private DictionaryTypeService dictionaryTypeService;
 
     /**
      * 插入财务信息
@@ -118,4 +127,55 @@ public class FinanceDetailController extends BaseController{
             return new ListPageVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null,null);
         }
     }
+
+    /**
+     * 获得当前用户的所有财务数据
+     */
+    @GetMapping("/getDetailDate/{queryType}")
+    @ApiOperation(value = "根据token查找当前用户的数据")
+    public GeneralVo findByToken(@PathVariable("queryType") int queryType, HttpServletRequest request, HttpServletResponse response){
+        try{
+            Integer userId = getCurrentUserId(request,response);
+            List<FinanceDetailVo> financeDetailList  =  financeDetailService.queryFinanceDetailByUserId(userId);
+            if(null == financeDetailList){
+                return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
+            }else{
+                //以明细的方式展示
+                List<Map<String,Object>> result = new ArrayList<>();
+                if(QueryTypeEnum.QUERY_DETAIL.getKey() == queryType){
+                    Map<String,Object> detailData;
+                    for(FinanceDetailVo financeDetailVo:financeDetailList){
+                        detailData= new HashMap<>(4);
+                        if(financeDetailVo.getCostMoney() >= Constant.EMPTY_INTEGER_VALUE ){
+                            detailData.put("type","circle");
+                            detailData.put("color","red");
+                        }else{
+                            detailData.put("type","star");
+                            detailData.put("color","green");
+                        }
+                        SimpleDateFormat sdf = new SimpleDateFormat(Constant.TIME_FORMAT);
+                        detailData.put("tag",sdf.format(financeDetailVo.getUpdatedTime()));
+                        detailData.put("content",Math.abs(financeDetailVo.getCostMoney()));
+                        result.add(detailData);
+                    }
+                    return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,result);
+                }
+                //以统计的方式展示
+                else{
+                    for(FinanceDetailVo financeDetailVo:financeDetailList){
+                        HashMap<String,Object> item = new HashMap<>(2);
+                        DictionaryVo dictionaryVo = dictionaryTypeService.queryDictionaryItemInfoByUuid(financeDetailVo.getItemId());
+                        item.put("item",dictionaryVo.getItemName());
+                        item.put("money",financeDetailVo.getCostMoney());
+                        result.add(item);
+                    }
+                    return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,result);
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
+        }
+    }
+
 }

@@ -3,6 +3,7 @@ package com.jiaxin.pda.mapper;
 import com.jiaxin.pda.entity.dto.FinanceDetailDto;
 import com.jiaxin.pda.entity.vo.FinanceDetailVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -53,4 +54,10 @@ public interface FinanceDetailMapper {
      */
     List<FinanceDetailVo> queryFinanceDetailByPage(FinanceDetailDto financeDetailDto);
 
+    /**
+     * 按照用户ID查询财务对象
+     * @param userId
+     * @return
+     */
+    List<FinanceDetailVo> queryFinanceDetailByUserId(@Param("userId") Integer userId);
 }

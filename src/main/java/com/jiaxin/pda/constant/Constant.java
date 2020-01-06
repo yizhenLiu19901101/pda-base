@@ -125,4 +125,9 @@ public class Constant {
      * 测试用例的标志
      */
     public static final String TEST_EXAMPLE_FLAG = "-1";
+
+    /**
+     * 时间格式
+     */
+    public static final String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 }

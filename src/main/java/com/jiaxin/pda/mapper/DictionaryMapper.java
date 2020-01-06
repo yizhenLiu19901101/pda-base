@@ -75,4 +75,11 @@ public interface DictionaryMapper {
      * @return
      */
     int deleteDictionaryByTypeId(int dictionaryTypeUuid);
+
+    /**
+     * 根据uuid查询字典项信息
+     * @param uuid
+     * @return
+     */
+    DictionaryVo queryDictionaryItemInfoByUuid(int uuid);
 }
