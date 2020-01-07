@@ -17,6 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 字典控制器类
@@ -255,6 +260,35 @@ public class DictionaryController extends BaseController{
         try{
             logger.info("根据字典类型ID查询字典项，入参为：{}",typeId);
             return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,dictionaryTypeService.queryDictionaryByTypeId(typeId));
+        }catch(Exception e){
+            e.printStackTrace();
+            return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
+        }
+    }
+
+    /**
+     * 根据token查找字典信息
+     * @return
+     */
+    @GetMapping("/queryDictionaryByToken")
+    @ApiOperation(value = "根据token查询字典项",notes = DictionaryNote.ITEM_QUERY_BY_PAGE_NOTE)
+    public GeneralVo queryDictionaryByToken(HttpServletRequest request,HttpServletResponse response){
+        try{
+            int userId = getCurrentUserId(request,response);
+            List<DictionaryVo> dictionaryList = dictionaryTypeService.queryDictionaryByUserId(userId);
+            if(null != dictionaryList && Constant.EMPTY_INTEGER_VALUE < dictionaryList.size()){
+                List<Map<String,Object>> resultList = new ArrayList<>();
+                Map<String,Object> result;
+                for(DictionaryVo dictionaryVo:dictionaryList){
+                    result = new HashMap<String,Object>();
+                    result.put("label",dictionaryVo.getItemName());
+                    result.put("value",dictionaryVo.getUuid());
+                    resultList.add(result);
+                }
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,resultList);
+            }else{
+                return new GeneralVo(ErrorListEnum.NO_DATA,null);
+            }
         }catch(Exception e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);

@@ -82,4 +82,11 @@ public interface DictionaryMapper {
      * @return
      */
     DictionaryVo queryDictionaryItemInfoByUuid(int uuid);
+
+    /**
+     * 根据用户ID查询字典
+     * @param userId
+     * @return
+     */
+    List<DictionaryVo> queryDictionaryByUserId(Integer userId);
 }

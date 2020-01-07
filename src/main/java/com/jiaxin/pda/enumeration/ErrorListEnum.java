@@ -90,6 +90,10 @@ public enum ErrorListEnum {
      */
     INVALID_USER(206,"用户不存在"),
     /**
+     * 没有数据
+     */
+    NO_DATA(220,"没有数据"),
+    /**
      * 服务器内部错误
      */
     SERVER_INTERNAL_ERROR(202,"服务器内部错误");

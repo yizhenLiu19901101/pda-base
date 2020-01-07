@@ -76,7 +76,9 @@ public class BaseController {
     public static void initSimpleOperateParam(HttpServletRequest request, HttpServletResponse response, SimpleOperateVo simpleOperateVo, Integer type){
         int currentUserId = getCurrentUserId(request,response);
         simpleOperateVo.setUpdatedBy(currentUserId);
-        simpleOperateVo.setUpdatedTime(Constant.NOW);
+        if(null == simpleOperateVo.getUpdatedTime()){
+            simpleOperateVo.setUpdatedTime(Constant.NOW);
+        }
         if(type == Constant.CREATE_TYPE){
             simpleOperateVo.setCreatedTime(Constant.NOW);
             simpleOperateVo.setCreatedBy(currentUserId);
