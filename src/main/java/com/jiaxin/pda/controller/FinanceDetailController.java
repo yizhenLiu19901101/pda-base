@@ -3,6 +3,7 @@ package com.jiaxin.pda.controller;
 import com.jiaxin.pda.constant.Constant;
 import com.jiaxin.pda.entity.ListPageVo;
 import com.jiaxin.pda.entity.dto.FinanceDetailDto;
+import com.jiaxin.pda.entity.vo.DictionaryTypeVo;
 import com.jiaxin.pda.entity.vo.DictionaryVo;
 import com.jiaxin.pda.entity.vo.FinanceDetailVo;
 import com.jiaxin.pda.entity.vo.GeneralVo;
@@ -156,6 +157,10 @@ public class FinanceDetailController extends BaseController{
                         SimpleDateFormat sdf = new SimpleDateFormat(Constant.TIME_FORMAT);
                         detailData.put("tag",sdf.format(financeDetailVo.getUpdatedTime()));
                         detailData.put("content",Math.abs(financeDetailVo.getCostMoney()));
+                        detailData.put("note",financeDetailVo.getNote());
+                        DictionaryVo dictionaryVo = dictionaryTypeService.queryDictionaryItemInfoByUuid(financeDetailVo.getItemId());
+                        detailData.put("itemName",dictionaryVo.getItemName());
+                        detailData.put("id",financeDetailVo.getId());
                         result.add(detailData);
                     }
                     return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,result);
