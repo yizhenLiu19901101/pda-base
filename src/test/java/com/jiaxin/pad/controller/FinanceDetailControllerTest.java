@@ -128,7 +128,7 @@ public class FinanceDetailControllerTest extends AbstractTestNGSpringContextTest
     public void queryByToken() throws Exception{
         logger.info("查询财务信息");
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/finance/getDetailDate/2")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/finance/getDetailDate/1")
                 .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzk1MDc1NzQ0MjIsInBheWxvYWQiOiJcIjI1Yjk1NzkwOGExZDQ2MTI4MDdlMGE4ZjZmMGU4OGU1XCIifQ.GFCupog4i4pTBTFA8spukxUiXRniCUdFM6hPgdNuRhc")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
