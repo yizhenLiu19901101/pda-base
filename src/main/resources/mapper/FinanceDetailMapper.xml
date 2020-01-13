@@ -85,12 +85,11 @@
         tb_finance_detail tfd
         WHERE
         tfd.delete_flag = 0
-        AND tfd.updated_by = 3
-        GROUP BY
-        item_id
         <if test="userId != null and userId > 0">
             and tfd.updated_by = #{userId}
         </if>
+        GROUP BY
+        item_id
     </select>
 
 
