@@ -55,9 +55,17 @@ public interface FinanceDetailMapper {
     List<FinanceDetailVo> queryFinanceDetailByPage(FinanceDetailDto financeDetailDto);
 
     /**
-     * 按照用户ID查询财务对象
+     * 按照用户ID查询财务明细
      * @param userId
      * @return
      */
     List<FinanceDetailVo> queryFinanceDetailByUserId(@Param("userId") Integer userId);
+
+    /**
+     * 按照用户ID查询财务统计数据
+     * @param userId
+     * @return
+     */
+    List<FinanceDetailVo> queryFinanceStatisticsByUserId(@Param("userId") Integer userId);
+
 }

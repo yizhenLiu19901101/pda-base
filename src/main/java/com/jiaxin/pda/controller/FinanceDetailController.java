@@ -137,7 +137,14 @@ public class FinanceDetailController extends BaseController{
     public GeneralVo findByToken(@PathVariable("queryType") int queryType, HttpServletRequest request, HttpServletResponse response){
         try{
             Integer userId = getCurrentUserId(request,response);
-            List<FinanceDetailVo> financeDetailList  =  financeDetailService.queryFinanceDetailByUserId(userId);
+            List<FinanceDetailVo> financeDetailList;
+            if(QueryTypeEnum.QUERY_DETAIL.getKey() == queryType){
+                //查询明细数据
+                financeDetailList = financeDetailService.queryFinanceDetailByUserId(userId);
+            }else{
+                //查询统计数据
+                financeDetailList = financeDetailService.queryFinanceStatisticsByUserId(userId);
+            }
             if(null == financeDetailList){
                 return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
             }else{
@@ -158,6 +165,7 @@ public class FinanceDetailController extends BaseController{
                         detailData.put("tag",sdf.format(financeDetailVo.getUpdatedTime()));
                         detailData.put("content",Math.abs(financeDetailVo.getCostMoney()));
                         detailData.put("note",financeDetailVo.getNote());
+                        //以明细的方式展示数据
                         DictionaryVo dictionaryVo = dictionaryTypeService.queryDictionaryItemInfoByUuid(financeDetailVo.getItemId());
                         detailData.put("itemName",dictionaryVo.getItemName());
                         detailData.put("id",financeDetailVo.getId());

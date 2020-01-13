@@ -18,7 +18,7 @@ spring:
     host: 122.51.17.153
     #host:127.0.0.1
     port: 6379
-    password: 123456
+    password: zhi!20181218.xuan
 #sql版本控制
 liquibase:
   change-log: classpath:/sql/master.xml

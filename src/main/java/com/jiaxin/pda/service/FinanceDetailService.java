@@ -2,6 +2,7 @@ package com.jiaxin.pda.service;
 
 import com.jiaxin.pda.entity.dto.FinanceDetailDto;
 import com.jiaxin.pda.entity.vo.FinanceDetailVo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -44,4 +45,11 @@ public interface FinanceDetailService {
      * @return
      */
     List<FinanceDetailVo> queryFinanceDetailByUserId(Integer userId);
+
+    /**
+     * 按照用户ID查询财务统计数据
+     * @param userId
+     * @return
+     */
+    List<FinanceDetailVo> queryFinanceStatisticsByUserId(Integer userId);
 }
