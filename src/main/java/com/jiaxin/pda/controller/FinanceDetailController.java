@@ -165,6 +165,7 @@ public class FinanceDetailController extends BaseController{
                         detailData.put("tag",sdf.format(financeDetailVo.getUpdatedTime()));
                         detailData.put("content",Math.abs(financeDetailVo.getCostMoney()));
                         detailData.put("note",financeDetailVo.getNote());
+                        detailData.put("itemId",financeDetailVo.getItemId());
                         detailData.put("reversion",financeDetailVo.getReversion());
                         //以明细的方式展示数据
                         DictionaryVo dictionaryVo = dictionaryTypeService.queryDictionaryItemInfoByUuid(financeDetailVo.getItemId());
