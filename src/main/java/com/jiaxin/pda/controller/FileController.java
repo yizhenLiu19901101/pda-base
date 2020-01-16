@@ -30,7 +30,7 @@ public class FileController extends BaseController{
     private UserService userService;
 
     @ApiOperation(value = "上传图片", notes = "上传图片")
-    @PutMapping("/uploadImage")
+    @PostMapping("/uploadImage")
     public GeneralVo uploadImage(HttpServletRequest request, HttpServletResponse response, @RequestParam("file") MultipartFile file, @RequestHeader("token") String token) {
         try{
             logger.info("上传图片");
