@@ -52,4 +52,9 @@ public class UserVo extends OperateVo implements Serializable {
      * 用户等级
      */
     private int userLevel;
+
+    /**
+     * 数据版本
+     */
+    private int reversion;
 }
