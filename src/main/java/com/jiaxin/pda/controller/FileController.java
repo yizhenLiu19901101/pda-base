@@ -11,6 +11,10 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 文件控制器类
  * @author milo
@@ -18,7 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @Api(value = "file",tags = {"file_controller"})
 @RequestMapping("/api/file")
-public class FileController {
+public class FileController extends BaseController{
 
     @Autowired
     private FileService fileService;
@@ -27,11 +31,11 @@ public class FileController {
 
     @ApiOperation(value = "上传图片", notes = "上传图片")
     @PutMapping("/uploadImage")
-    public GeneralVo uploadImage(@RequestParam("file") MultipartFile file, @RequestHeader("token") String token) {
-        String id = JWT.unsign(token,String.class);
-        UserVo userVo = userService.findUserById(id);
+    public GeneralVo uploadImage(HttpServletRequest request, HttpServletResponse response, @RequestParam("file") MultipartFile file, @RequestHeader("token") String token) {
         try{
-            String result = fileService.insertFile(file,userVo.getUserId());
+            logger.info("上传图片");
+            int userId = getCurrentUserId(request,response);
+            String result = fileService.insertFile(file,userId);
             return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,result);
         }catch(Exception e){
             e.printStackTrace();
