@@ -27,7 +27,7 @@ public class FileController {
 
     @ApiOperation(value = "上传图片", notes = "上传图片")
     @PutMapping("/uploadImage")
-    public GeneralVo uploadImage(@RequestParam(required = true) MultipartFile file, @RequestHeader("token") String token) {
+    public GeneralVo uploadImage(@RequestParam("file") MultipartFile file, @RequestHeader("token") String token) {
         String id = JWT.unsign(token,String.class);
         UserVo userVo = userService.findUserById(id);
         try{
