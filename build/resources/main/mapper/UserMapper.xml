@@ -81,12 +81,14 @@
         AND reversion = #{reversion}
     </update>
 
-    <!--修改用户名 -->
-    <update id="updateUserName" parameterType="com.jiaxin.pda.entity.vo.UserVo">
+    <!--修改用户信息 -->
+    <update id="updateUserInfo" parameterType="com.jiaxin.pda.entity.vo.UserVo">
         UPDATE tb_user
         SET updated_by = #{updatedBy},
             updated_time = #{updatedTime},
             user_name = #{userName},
+            user_desc = #{userDesc},
+            image_url = #{imageUrl},
             reversion = reversion + 1
         WHERE
             id = #{id}

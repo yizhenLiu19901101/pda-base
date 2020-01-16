@@ -130,4 +130,9 @@ public class Constant {
      * 时间格式
      */
     public static final String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
+    /**
+     * 网站图片的前缀
+     */
+    public static final String WEB_SITE_PREFIX = "http://www.zhixuanda.top";
 }

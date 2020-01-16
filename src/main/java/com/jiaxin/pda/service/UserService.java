@@ -38,11 +38,11 @@ public interface UserService {
     Integer deleteUserInfo(UserVo userVo);
 
     /**
-     * 修改用户名
+     * 修改用户信息
      * @param userVo
      * @return
      */
-    Integer updateUserName(UserVo userVo) ;
+    Integer updateUserInfo(UserVo userVo) ;
 
     /**
      * 修改用密码

@@ -123,14 +123,14 @@ public class UserController extends BaseController{
     }
 
     /**
-     * 修改用户名
+     * 修改用户信息
      * @param userVo
      * @return
      */
-    @PutMapping("/updateUserName")
+    @PutMapping("/updateUserInfo")
     @ApiImplicitParam(name = "userVo", value = UserNote.UPDATE_USER_NAME_VALUE, required = true, dataType = "UserVo")
-    @ApiOperation(value = "修改用户名",notes = UserNote.UPDATE_USER_NAME_NOTE)
-    public GeneralVo updateUserName(HttpServletRequest request, HttpServletResponse response,@RequestBody @Valid UserVo userVo, BindingResult result){
+    @ApiOperation(value = "修改用户信息",notes = UserNote.UPDATE_USER_NAME_NOTE)
+    public GeneralVo updateUserInfo(HttpServletRequest request, HttpServletResponse response,@RequestBody @Valid UserVo userVo, BindingResult result){
         try{
             logger.info("修改用户-参数,{}",userVo);
             //用户名不能为空/重复
@@ -145,8 +145,8 @@ public class UserController extends BaseController{
             }
             //修改修改人
             initOperateParam(request,response,userVo,Constant.UPDATE_TYPE);
-            //修改用户名
-            userService.updateUserName(userVo);
+            //修改用户信息
+            userService.updateUserInfo(userVo);
             return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
         }catch(Exception e){
             e.printStackTrace();

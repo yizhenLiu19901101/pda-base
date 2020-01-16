@@ -88,6 +88,12 @@
         <if test="userId != null and userId > 0">
             and tfd.updated_by = #{userId}
         </if>
+        <if test="queryType == 2">
+            and tfd.cost_money &gt; 0
+        </if>
+        <if test="queryType == 3">
+            and tfd.cost_money &lt; 0
+        </if>
         GROUP BY
         item_id
     </select>

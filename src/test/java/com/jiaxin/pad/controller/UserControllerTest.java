@@ -101,15 +101,17 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
     }
 
     @Test
-    public void updateUserName() throws Exception{
+    public void updateUserInfo() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
-        userCondition.put("id","27d98c37195e448193639c9c382235ef");
-        userCondition.put("userName","lele");
-        userCondition.put("reversion",2);
+        userCondition.put("id","fb8529492ace4c749081a1803bbdabd6");
+        userCondition.put("userName","blue2");
+        userCondition.put("userDesc","33");
+        userCondition.put("imageUrl","44");
+        userCondition.put("reversion",1);
         logger.info("修改用户姓名条件: " + userCondition.toJSONString());
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.put("/user/updateUserName")
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/user/updateUserInfo")
                 .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)

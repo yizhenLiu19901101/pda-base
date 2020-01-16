@@ -143,7 +143,7 @@ public class FinanceDetailController extends BaseController{
                 financeDetailList = financeDetailService.queryFinanceDetailByUserId(userId);
             }else{
                 //查询统计数据
-                financeDetailList = financeDetailService.queryFinanceStatisticsByUserId(userId);
+                financeDetailList = financeDetailService.queryFinanceStatisticsByUserId(userId,queryType);
             }
             if(null == financeDetailList){
                 return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
@@ -181,7 +181,7 @@ public class FinanceDetailController extends BaseController{
                         HashMap<String,Object> item = new HashMap<>(2);
                         DictionaryVo dictionaryVo = dictionaryTypeService.queryDictionaryItemInfoByUuid(financeDetailVo.getItemId());
                         item.put("item",dictionaryVo.getItemName());
-                        item.put("money",financeDetailVo.getCostMoney());
+                        item.put("money",Math.abs(financeDetailVo.getCostMoney()));
                         result.add(item);
                     }
                     return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,result);

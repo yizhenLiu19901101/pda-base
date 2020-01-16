@@ -59,7 +59,7 @@ public class FileServiceImpl implements FileService {
                     fileObject.setUpdatedTime(new Date());
                     int result = mapper.insertFile(fileObject);
                     if (Constant.OPERATE_SUCCESS == result) {
-                        return fileObject.getFilePath()+File.separator+fileName;
+                        return Constant.WEB_SITE_PREFIX + fileObject.getFilePath() + File.separator + fileName;
                     }
                 }else{
                     System.out.println("没有写权限");

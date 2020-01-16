@@ -89,8 +89,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer updateUserName(UserVo userVo) {
-        result = userMapper.updateUserName(userVo);
+    public Integer updateUserInfo(UserVo userVo) {
+        result = userMapper.updateUserInfo(userVo);
         if(Constant.OPERATE_SUCCESS == result){
             this.rePutUserObject(userVo.getId());
        }
