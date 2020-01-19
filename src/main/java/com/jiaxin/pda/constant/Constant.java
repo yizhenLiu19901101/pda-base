@@ -138,8 +138,8 @@ public class Constant {
     public static final String WEB_SITE_PREFIX = "http://www.zhixuanda.top";
 
     /**
-     * 1MB
+     * 10MB
      */
-    public static final int ONE_MB = 1048576;
+    public static final int ONE_MB = 10485760;
 
 }
