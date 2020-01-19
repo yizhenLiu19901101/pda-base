@@ -94,6 +94,10 @@ public enum ErrorListEnum {
      */
     NO_DATA(220,"没有数据"),
     /**
+     * 没有数据
+     */
+    PIC_TOO_BIG(221,"上传图片不能大于1MB"),
+    /**
      * 服务器内部错误
      */
     SERVER_INTERNAL_ERROR(202,"服务器内部错误");

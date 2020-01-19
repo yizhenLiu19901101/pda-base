@@ -1,5 +1,6 @@
 package com.jiaxin.pda.controller;
 
+import com.jiaxin.pda.constant.Constant;
 import com.jiaxin.pda.entity.vo.GeneralVo;
 import com.jiaxin.pda.entity.vo.UserVo;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
@@ -35,8 +36,12 @@ public class FileController extends BaseController{
         try{
             logger.info("上传图片");
             int userId = getCurrentUserId(request,response);
-            String result = fileService.insertFile(file,userId);
-            return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,result);
+            if(file.getSize() > Constant.ONE_MB){
+                return new GeneralVo(ErrorListEnum.PIC_TOO_BIG,null);
+            }else{
+                String result = fileService.insertFile(file,userId);
+                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,result);
+            }
         }catch(Exception e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);

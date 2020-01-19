@@ -1,5 +1,6 @@
 package com.jiaxin.pda.constant;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -135,4 +136,10 @@ public class Constant {
      * 网站图片的前缀
      */
     public static final String WEB_SITE_PREFIX = "http://www.zhixuanda.top";
+
+    /**
+     * 1MB
+     */
+    public static final int ONE_MB = 1048576;
+
 }
