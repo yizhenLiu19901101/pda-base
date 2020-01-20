@@ -74,6 +74,11 @@ public class Constant {
     public static final int EMPTY_INTEGER_VALUE = 0;
 
     /**
+     * 双浮点零
+     */
+    public static final int ZERO_DOUBLE_VALUE = 0;
+
+    /**
      * 用户ID
      */
     public static final String USER_ID = "userId";

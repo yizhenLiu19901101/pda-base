@@ -153,7 +153,7 @@ public class FinanceDetailController extends BaseController{
                 if(QueryTypeEnum.QUERY_DETAIL.getKey() == queryType){
                     Map<String,Object> detailData;
                     for(FinanceDetailVo financeDetailVo:financeDetailList){
-                        detailData= new HashMap<>(4);
+                        detailData= new HashMap<>(9);
                         if(financeDetailVo.getCostMoney() >= Constant.EMPTY_INTEGER_VALUE ){
                             detailData.put("type","circle");
                             detailData.put("color","red");
@@ -177,13 +177,19 @@ public class FinanceDetailController extends BaseController{
                 }
                 //以统计的方式展示
                 else{
+                    Map<String,Object> statisticsResult = new HashMap<String,Object>(2);
+                    List<Map<String,Object>> detailResult = new ArrayList<>();
+                    double sum = Constant.ZERO_DOUBLE_VALUE;
                     for(FinanceDetailVo financeDetailVo:financeDetailList){
+                        sum = sum + Math.abs(financeDetailVo.getCostMoney());
                         HashMap<String,Object> item = new HashMap<>(2);
                         DictionaryVo dictionaryVo = dictionaryTypeService.queryDictionaryItemInfoByUuid(financeDetailVo.getItemId());
                         item.put("item",dictionaryVo.getItemName());
                         item.put("money",Math.abs(financeDetailVo.getCostMoney()));
-                        result.add(item);
+                        detailResult.add(item);
                     }
+                    statisticsResult.put("detail",detailResult);
+                    statisticsResult.put("sum",sum);
                     return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,result);
                 }
             }
@@ -192,5 +198,4 @@ public class FinanceDetailController extends BaseController{
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
-
 }

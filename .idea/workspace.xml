@@ -12,9 +12,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.7/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.7/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.7/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.7/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/jiaxin/pda/constant/Constant.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/jiaxin/pda/constant/Constant.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/pda-1.0.0.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/pda-1.0.0.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/constant/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/constant/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/FinanceDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/FinanceDetailController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,11 +202,11 @@
     </configuration>
     <list>
       <item itemvalue="Application.pda" />
+      <item itemvalue="Application.FileController" />
       <item itemvalue="Gradle.UserControllerTest.userLogin" />
       <item itemvalue="Gradle.FinanceDetailControllerTest.queryByToken" />
       <item itemvalue="Gradle.UserControllerTest.updateUserInfo" />
       <item itemvalue="Gradle.UserControllerTest.queryUserInfoById" />
-      <item itemvalue="Application.FileController" />
     </list>
     <recent_temporary>
       <list>
@@ -285,21 +287,25 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="254" key="GridCell.Tab.0.bottom" timestamp="1579419574346">
+    <state width="1398" height="254" key="GridCell.Tab.0.bottom" timestamp="1579483874694">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="254" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1579419574346" />
-    <state width="1398" height="254" key="GridCell.Tab.0.center" timestamp="1579419574345">
+    <state width="1398" height="254" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1579483874694" />
+    <state width="1398" height="254" key="GridCell.Tab.0.center" timestamp="1579483874693">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="254" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1579419574345" />
-    <state width="1398" height="254" key="GridCell.Tab.0.left" timestamp="1579419574344">
+    <state width="1398" height="254" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1579483874693" />
+    <state width="1398" height="254" key="GridCell.Tab.0.left" timestamp="1579483874692">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="254" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1579419574344" />
-    <state width="1398" height="254" key="GridCell.Tab.0.right" timestamp="1579419574346">
+    <state width="1398" height="254" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1579483874692" />
+    <state width="1398" height="254" key="GridCell.Tab.0.right" timestamp="1579483874693">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="254" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1579419574346" />
+    <state width="1398" height="254" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1579483874693" />
+    <state x="375" y="214" width="689" height="472" key="find.popup" timestamp="1579425483817">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="375" y="214" width="689" height="472" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1579425483817" />
   </component>
 </project>
