@@ -104,7 +104,7 @@
     <!-- 按照用户ID查询财务统计数据 -->
     <select id="queryFinanceNetStatisticsByUserId" resultType="com.jiaxin.pda.entity.vo.FinanceDetailVo">
         SELECT
-        tfd.cost_type AS itemId,
+        tfd.cost_type AS costType,
         IFNULL( sum( tfd.cost_money ), 0 ) AS costMoney
         FROM
         tb_finance_detail tfd

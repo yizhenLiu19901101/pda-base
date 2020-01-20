@@ -141,7 +141,7 @@ public class FinanceDetailController extends BaseController{
             if(QueryTypeEnum.QUERY_DETAIL.getKey() == queryType){
                 //查询明细数据
                 financeDetailList = financeDetailService.queryFinanceDetailByUserId(userId);
-            }else if(QueryTypeEnum.QUERY_NET_INCOME_STATISTICS.getKey() != queryType){
+            }else if(QueryTypeEnum.QUERY_NET_INCOME_STATISTICS.getKey() == queryType){
                 //查询净收入统计数据
                 financeDetailList = financeDetailService.queryFinanceNetStatisticsByUserId(userId);
             }else{

@@ -20,6 +20,7 @@
         tfd.item_id AS itemId,
         tfd.cost_money AS costMoney,
         tfd.note,
+        tdf.cost_type as costType,
         tfd.created_by AS createdBy,
         tfd.created_time AS createdTime,
         tfd.updated_by AS updatedBy,
@@ -38,6 +39,7 @@
         tfd.uuid,
         tfd.item_id AS itemId,
         tfd.cost_money AS costMoney,
+        tdf.cost_type as costType,
         tfd.note,
         tfd.created_by AS createdBy,
         tfd.created_time AS createdTime,
@@ -60,6 +62,7 @@
         tfd.uuid,
         tfd.item_id AS itemId,
         tfd.cost_money AS costMoney,
+        tfd.cost_type as costType,
         tfd.note,
         tfd.created_by AS createdBy,
         tfd.created_time AS createdTime,
@@ -77,7 +80,7 @@
     </select>
 
     <!-- 按照用户ID查询财务统计数据 -->
-    <select id="queryFinanceStatisticsByUserId" resultType="com.jiaxin.pda.entity.vo.FinanceDetailVo">
+    <select id="queryFinanceSumStatisticsByUserId" resultType="com.jiaxin.pda.entity.vo.FinanceDetailVo">
         SELECT
             tfd.item_id AS itemId,
             IFNULL( sum( tfd.cost_money ), 0 ) AS costMoney
@@ -89,15 +92,30 @@
             and tfd.updated_by = #{userId}
         </if>
         <if test="queryType == 2">
-            and tfd.cost_money &gt; 0
+            and tfd.cost_type = 1
         </if>
         <if test="queryType == 3">
-            and tfd.cost_money &lt; 0
+            and tfd.cost_type = 2
         </if>
         GROUP BY
         item_id
     </select>
 
+    <!-- 按照用户ID查询财务统计数据 -->
+    <select id="queryFinanceNetStatisticsByUserId" resultType="com.jiaxin.pda.entity.vo.FinanceDetailVo">
+        SELECT
+        tfd.cost_type AS costType,
+        IFNULL( sum( tfd.cost_money ), 0 ) AS costMoney
+        FROM
+        tb_finance_detail tfd
+        WHERE
+        tfd.delete_flag = 0
+        <if test="userId != null and userId > 0">
+            and tfd.updated_by = #{userId}
+        </if>
+        GROUP BY
+        tfd.cost_type
+    </select>
     <!-- 插入财务数据 -->
     <insert id="insertFinanceDetail" parameterType="com.jiaxin.pda.entity.vo.FinanceDetailVo">
         INSERT INTO tb_finance_detail (
@@ -105,6 +123,7 @@
             uuid,
             item_id,
             cost_money,
+            cost_type,
             note,
             delete_flag,
             reversion,
@@ -119,6 +138,7 @@
             #{uuid},
             #{itemId},
             #{costMoney},
+            #{costType},
             #{note},
             #{deleteFlag},
             #{reversion},
@@ -134,6 +154,7 @@
         UPDATE tb_finance_detail
         SET item_id = #{itemId},
         cost_money = #{costMoney},
+        cost_type = #{costType},
         note = #{note},
         reversion = reversion + 1,
         updated_by = #{updatedBy},
