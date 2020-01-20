@@ -20,6 +20,7 @@
         tfd.item_id AS itemId,
         tfd.cost_money AS costMoney,
         tfd.note,
+        tdf.cost_type as costType,
         tfd.created_by AS createdBy,
         tfd.created_time AS createdTime,
         tfd.updated_by AS updatedBy,
@@ -38,6 +39,7 @@
         tfd.uuid,
         tfd.item_id AS itemId,
         tfd.cost_money AS costMoney,
+        tdf.cost_type as costType,
         tfd.note,
         tfd.created_by AS createdBy,
         tfd.created_time AS createdTime,
@@ -60,6 +62,7 @@
         tfd.uuid,
         tfd.item_id AS itemId,
         tfd.cost_money AS costMoney,
+        tfd.cost_type as costType,
         tfd.note,
         tfd.created_by AS createdBy,
         tfd.created_time AS createdTime,
@@ -89,17 +92,14 @@
             and tfd.updated_by = #{userId}
         </if>
         <if test="queryType == 2">
-            and tfd.cost_money &gt; 0
+            and tfd.cost_type = 1
         </if>
         <if test="queryType == 3">
-            and tfd.cost_money &lt; 0
+            and tfd.cost_type = 2
         </if>
         GROUP BY
         item_id
     </select>
-
-
-
 
     <!-- 插入财务数据 -->
     <insert id="insertFinanceDetail" parameterType="com.jiaxin.pda.entity.vo.FinanceDetailVo">
@@ -108,6 +108,7 @@
             uuid,
             item_id,
             cost_money,
+            cost_type,
             note,
             delete_flag,
             reversion,
@@ -122,6 +123,7 @@
             #{uuid},
             #{itemId},
             #{costMoney},
+            #{costType},
             #{note},
             #{deleteFlag},
             #{reversion},
@@ -137,6 +139,7 @@
         UPDATE tb_finance_detail
         SET item_id = #{itemId},
         cost_money = #{costMoney},
+        cost_type = #{costType},
         note = #{note},
         reversion = reversion + 1,
         updated_by = #{updatedBy},

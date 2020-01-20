@@ -315,4 +315,16 @@
             CHANGE COLUMN `menu_level` `menu_image` varchar(64) NULL DEFAULT NULL COMMENT '菜单图标' AFTER `menu_path`;
         </sql>
     </changeSet>
+
+    <changeSet id="tb_finance_detail_add_consume_type" author="milo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName = "tb_finance_detail" columnName = "cost_type" />
+            </not>
+        </preConditions>
+        <sql>
+            ALTER TABLE `tb_finance_detail`
+            ADD COLUMN `cost_type` tinyint(0) NULL DEFAULT 1 COMMENT '消费类型，1代表支出，2代表收入' AFTER `cost_money`;
+        </sql>
+    </changeSet>
 </databaseChangeLog>

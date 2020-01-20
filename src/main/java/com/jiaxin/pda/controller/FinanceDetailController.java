@@ -141,8 +141,11 @@ public class FinanceDetailController extends BaseController{
             if(QueryTypeEnum.QUERY_DETAIL.getKey() == queryType){
                 //查询明细数据
                 financeDetailList = financeDetailService.queryFinanceDetailByUserId(userId);
+            }else if(QueryTypeEnum.QUERY_NET_INCOME_STATISTICS.getKey() != queryType){
+                //查询净收入统计数据
+                financeDetailList = financeDetailService.queryFinanceStatisticsByUserId(userId,queryType);
             }else{
-                //查询统计数据
+                //查询总收入/总支出统计数据
                 financeDetailList = financeDetailService.queryFinanceStatisticsByUserId(userId,queryType);
             }
             if(null == financeDetailList){
@@ -190,7 +193,7 @@ public class FinanceDetailController extends BaseController{
                     }
                     statisticsResult.put("detail",detailResult);
                     statisticsResult.put("sum",sum);
-                    return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,result);
+                    return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,statisticsResult);
                 }
             }
         }catch(Exception e){

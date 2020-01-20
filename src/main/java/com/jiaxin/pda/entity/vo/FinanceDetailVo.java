@@ -35,4 +35,9 @@ public class FinanceDetailVo extends OperateVo{
      * 备注
      */
     private String note;
+
+    /**
+     * 消费类型
+     */
+    private int costType;
 }

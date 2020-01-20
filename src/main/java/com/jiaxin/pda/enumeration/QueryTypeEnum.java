@@ -12,11 +12,15 @@ public enum QueryTypeEnum {
     /**
      * 查询消费统计数据
      */
-    QUERY_CONSUME_STATISTICS(2,"查询统计数据（消费）"),
+    QUERY_SUM_CONSUME_STATISTICS(2,"查询统计数据（总消费）"),
     /**
      * 查询收入统计数据
      */
-    QUERY_INCOME_STATISTICS(3,"查询统计数据（收入）");
+    QUERY_SUM_INCOME_STATISTICS(3,"查询统计数据（总收入）"),
+    /**
+     * 查询净收入统计数据
+     */
+    QUERY_NET_INCOME_STATISTICS(4,"查询统计数据（净收入）");
     
     private final int key;
     private final String value;

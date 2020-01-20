@@ -98,9 +98,6 @@
         item_id
     </select>
 
-
-
-
     <!-- 插入财务数据 -->
     <insert id="insertFinanceDetail" parameterType="com.jiaxin.pda.entity.vo.FinanceDetailVo">
         INSERT INTO tb_finance_detail (
