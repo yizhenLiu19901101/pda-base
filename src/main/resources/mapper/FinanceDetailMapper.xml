@@ -80,7 +80,7 @@
     </select>
 
     <!-- 按照用户ID查询财务统计数据 -->
-    <select id="queryFinanceStatisticsByUserId" resultType="com.jiaxin.pda.entity.vo.FinanceDetailVo">
+    <select id="queryFinanceSumStatisticsByUserId" resultType="com.jiaxin.pda.entity.vo.FinanceDetailVo">
         SELECT
             tfd.item_id AS itemId,
             IFNULL( sum( tfd.cost_money ), 0 ) AS costMoney
@@ -101,6 +101,21 @@
         item_id
     </select>
 
+    <!-- 按照用户ID查询财务统计数据 -->
+    <select id="queryFinanceNetStatisticsByUserId" resultType="com.jiaxin.pda.entity.vo.FinanceDetailVo">
+        SELECT
+        tfd.cost_type AS itemId,
+        IFNULL( sum( tfd.cost_money ), 0 ) AS costMoney
+        FROM
+        tb_finance_detail tfd
+        WHERE
+        tfd.delete_flag = 0
+        <if test="userId != null and userId > 0">
+            and tfd.updated_by = #{userId}
+        </if>
+        GROUP BY
+        tfd.cost_type
+    </select>
     <!-- 插入财务数据 -->
     <insert id="insertFinanceDetail" parameterType="com.jiaxin.pda.entity.vo.FinanceDetailVo">
         INSERT INTO tb_finance_detail (

@@ -67,6 +67,12 @@ public interface FinanceDetailMapper {
      * @param queryType
      * @return
      */
-    List<FinanceDetailVo> queryFinanceStatisticsByUserId(@Param("userId") Integer userId,@Param("queryType") Integer queryType);
+    List<FinanceDetailVo> queryFinanceSumStatisticsByUserId(@Param("userId") Integer userId,@Param("queryType") Integer queryType);
 
+    /**
+     * 按照用户ID查询财务统计数据
+     * @param userId
+     * @return
+     */
+    List<FinanceDetailVo> queryFinanceNetStatisticsByUserId(@Param("userId") Integer userId);
 }

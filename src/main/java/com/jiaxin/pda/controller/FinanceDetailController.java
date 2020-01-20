@@ -143,10 +143,10 @@ public class FinanceDetailController extends BaseController{
                 financeDetailList = financeDetailService.queryFinanceDetailByUserId(userId);
             }else if(QueryTypeEnum.QUERY_NET_INCOME_STATISTICS.getKey() != queryType){
                 //查询净收入统计数据
-                financeDetailList = financeDetailService.queryFinanceStatisticsByUserId(userId,queryType);
+                financeDetailList = financeDetailService.queryFinanceNetStatisticsByUserId(userId);
             }else{
                 //查询总收入/总支出统计数据
-                financeDetailList = financeDetailService.queryFinanceStatisticsByUserId(userId,queryType);
+                financeDetailList = financeDetailService.queryFinanceSumStatisticsByUserId(userId,queryType);
             }
             if(null == financeDetailList){
                 return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
@@ -166,7 +166,8 @@ public class FinanceDetailController extends BaseController{
                         }
                         SimpleDateFormat sdf = new SimpleDateFormat(Constant.TIME_FORMAT);
                         detailData.put("tag",sdf.format(financeDetailVo.getUpdatedTime()));
-                        detailData.put("content",Math.abs(financeDetailVo.getCostMoney()));
+                        detailData.put("content",financeDetailVo.getCostMoney());
+                        detailData.put("costType",financeDetailVo.getCostType());
                         detailData.put("note",financeDetailVo.getNote());
                         detailData.put("itemId",financeDetailVo.getItemId());
                         detailData.put("reversion",financeDetailVo.getReversion());
@@ -179,7 +180,7 @@ public class FinanceDetailController extends BaseController{
                     return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,result);
                 }
                 //以统计的方式展示
-                else{
+                else if(QueryTypeEnum.QUERY_NET_INCOME_STATISTICS.getKey() != queryType){
                     Map<String,Object> statisticsResult = new HashMap<String,Object>(2);
                     List<Map<String,Object>> detailResult = new ArrayList<>();
                     double sum = Constant.ZERO_DOUBLE_VALUE;
@@ -189,6 +190,25 @@ public class FinanceDetailController extends BaseController{
                         DictionaryVo dictionaryVo = dictionaryTypeService.queryDictionaryItemInfoByUuid(financeDetailVo.getItemId());
                         item.put("item",dictionaryVo.getItemName());
                         item.put("money",Math.abs(financeDetailVo.getCostMoney()));
+                        detailResult.add(item);
+                    }
+                    statisticsResult.put("detail",detailResult);
+                    statisticsResult.put("sum",sum);
+                    return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,statisticsResult);
+                }else{
+                    Map<String,Object> statisticsResult = new HashMap<>(2);
+                    List<Map<String,Object>> detailResult = new ArrayList<>();
+                    double sum = Constant.ZERO_DOUBLE_VALUE;
+                    for(FinanceDetailVo financeDetailVo:financeDetailList){
+                        HashMap<String,Object> item = new HashMap<>(2);
+                        if(financeDetailVo.getCostType() == 1){
+                            sum = sum - financeDetailVo.getCostMoney();
+                            item.put("item", "支出");
+                        }else{
+                            sum = sum + financeDetailVo.getCostMoney();
+                            item.put("item", "收入");
+                        }
+                        item.put("money",financeDetailVo.getCostMoney());
                         detailResult.add(item);
                     }
                     statisticsResult.put("detail",detailResult);

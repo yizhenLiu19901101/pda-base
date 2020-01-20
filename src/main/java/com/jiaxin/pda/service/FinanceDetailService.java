@@ -52,5 +52,12 @@ public interface FinanceDetailService {
      * @param queryType
      * @return
      */
-    List<FinanceDetailVo> queryFinanceStatisticsByUserId(Integer userId,Integer queryType);
+    List<FinanceDetailVo> queryFinanceSumStatisticsByUserId(Integer userId,Integer queryType);
+
+    /**
+     * 按照用户ID查询财务统计数据
+     * @param userId
+     * @return
+     */
+    List<FinanceDetailVo> queryFinanceNetStatisticsByUserId(Integer userId);
 }
