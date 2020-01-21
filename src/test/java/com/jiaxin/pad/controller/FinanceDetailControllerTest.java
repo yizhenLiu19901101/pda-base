@@ -129,7 +129,7 @@ public class FinanceDetailControllerTest extends AbstractTestNGSpringContextTest
         logger.info("查询财务信息");
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.get("/api/finance/getDetailDate/4")
-                .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODAxMTQ2NjQ0NDAsInBheWxvYWQiOiJcIjI1Yjk1NzkwOGExZDQ2MTI4MDdlMGE4ZjZmMGU4OGU1XCIifQ.4oMCTdsOsxnyjswYHpcNnHbC7K1oeTsOGypOnq1uZ8g")
+                .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODAxNzg3NDQ3OTQsInBheWxvYWQiOiJcIjI1Yjk1NzkwOGExZDQ2MTI4MDdlMGE4ZjZmMGU4OGU1XCIifQ.DPU0MDXSI5nwYikVE6SlpZXo4ufw0u3qUh7jgFIbswM")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -198,14 +199,15 @@ public class FinanceDetailController extends BaseController{
                 }else{
                     Map<String,Object> statisticsResult = new HashMap<>(2);
                     List<Map<String,Object>> detailResult = new ArrayList<>();
-                    double sum = Constant.ZERO_DOUBLE_VALUE;
+                    BigDecimal sum = BigDecimal.ZERO.setScale(2,BigDecimal.ROUND_HALF_UP);
                     for(FinanceDetailVo financeDetailVo:financeDetailList){
                         HashMap<String,Object> item = new HashMap<>(2);
+                        BigDecimal costMoney = new BigDecimal(financeDetailVo.getCostMoney()).setScale(2,BigDecimal.ROUND_HALF_UP);
                         if(financeDetailVo.getCostType() == 1){
-                            sum = sum - financeDetailVo.getCostMoney();
+                            sum = sum.subtract(costMoney);
                             item.put("item", "支出");
                         }else{
-                            sum = sum + financeDetailVo.getCostMoney();
+                            sum = sum.add(costMoney);
                             item.put("item", "收入");
                         }
                         item.put("money",financeDetailVo.getCostMoney());
