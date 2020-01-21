@@ -184,9 +184,10 @@ public class FinanceDetailController extends BaseController{
                 else if(QueryTypeEnum.QUERY_NET_INCOME_STATISTICS.getKey() != queryType){
                     Map<String,Object> statisticsResult = new HashMap<String,Object>(2);
                     List<Map<String,Object>> detailResult = new ArrayList<>();
-                    double sum = Constant.ZERO_DOUBLE_VALUE;
+                    BigDecimal sum = BigDecimal.ZERO.setScale(2,BigDecimal.ROUND_HALF_UP);
                     for(FinanceDetailVo financeDetailVo:financeDetailList){
-                        sum = sum + Math.abs(financeDetailVo.getCostMoney());
+                        BigDecimal costMoney = new BigDecimal(financeDetailVo.getCostMoney()).setScale(2,BigDecimal.ROUND_HALF_UP);
+                        sum = sum.add(costMoney);
                         HashMap<String,Object> item = new HashMap<>(2);
                         DictionaryVo dictionaryVo = dictionaryTypeService.queryDictionaryItemInfoByUuid(financeDetailVo.getItemId());
                         item.put("item",dictionaryVo.getItemName());
