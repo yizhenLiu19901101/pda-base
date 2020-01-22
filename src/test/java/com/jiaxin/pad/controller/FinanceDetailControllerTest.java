@@ -126,12 +126,19 @@ public class FinanceDetailControllerTest extends AbstractTestNGSpringContextTest
 
     @Test
     public void queryByToken() throws Exception{
+        //设置查询条件
+        JSONObject userCondition = new JSONObject();
+        userCondition.put("timeType",1);
+        userCondition.put("queryType",2);
+        userCondition.put("endDate",null);
+        userCondition.put("startDate",null);
         logger.info("查询财务信息");
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/finance/getDetailDate/2")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/finance/getDetailDate")
                 .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODAxOTAzMDcwMTgsInBheWxvYWQiOiJcIjI1Yjk1NzkwOGExZDQ2MTI4MDdlMGE4ZjZmMGU4OGU1XCIifQ.kwBzRLbcTl0zJvu16dyYqvWJ2ey3-D034vZ4sL_viFE")
                 .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON))
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 }

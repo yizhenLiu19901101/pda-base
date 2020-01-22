@@ -74,4 +74,8 @@ dependencies {
     compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
     // https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload
     compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
+    // https://mvnrepository.com/artifact/com.baidu.aip/java-sdk
+    compile group: 'com.baidu.aip', name: 'java-sdk', version: '4.11.3'
+    // https://mvnrepository.com/artifact/cn.hutool/hutool-all
+    compile group: 'cn.hutool', name: 'hutool-all', version: '4.6.1'
 }

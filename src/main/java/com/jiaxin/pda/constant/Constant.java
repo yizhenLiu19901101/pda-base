@@ -147,4 +147,26 @@ public class Constant {
      */
     public static final int ONE_MB = 1048576;
 
+    /**
+     * 当日
+     */
+    public static final int CURRENT_DAY = 1;
+
+    /**
+     * 本周
+     */
+    public static final int CURRENT_WEEK = 2;
+
+    /**
+     * 当前月
+     */
+    public static final int CURRENT_MONTH = 3;
+
+    /**
+     * 自定义
+     */
+    public static final int CUSTOMIZE = 4;
+
+
+
 }
