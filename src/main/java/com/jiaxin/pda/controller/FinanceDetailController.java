@@ -251,8 +251,8 @@ public class FinanceDetailController extends BaseController{
     private GeneralVo processDetailData(List<FinanceDetailVo> financeDetailList){
         List<Map<String,Object>> result = new ArrayList<>();
         Map<String,Object> detailData;
-        if(null == financeDetailList || 0 < financeDetailList.size()){
-            return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
+        if(null == financeDetailList || 0 > financeDetailList.size()){
+            return new GeneralVo(ErrorListEnum.NO_DATA,null);
         }
         for(FinanceDetailVo financeDetailVo:financeDetailList){
             detailData= new HashMap<>(9);
@@ -288,8 +288,8 @@ public class FinanceDetailController extends BaseController{
         Map<String,Object> statisticsResult = new HashMap<String,Object>(2);
         List<Map<String,Object>> detailResult = new ArrayList<>();
         BigDecimal sum = BigDecimal.ZERO.setScale(2,BigDecimal.ROUND_HALF_UP);
-        if(null == financeDetailList || 0 < financeDetailList.size()){
-            return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
+        if(null == financeDetailList || 0 > financeDetailList.size()){
+            return new GeneralVo(ErrorListEnum.NO_DATA,null);
         }
         for(FinanceDetailVo financeDetailVo:financeDetailList){
             BigDecimal costMoney = new BigDecimal(financeDetailVo.getCostMoney()).setScale(2,BigDecimal.ROUND_HALF_UP);
@@ -311,6 +311,9 @@ public class FinanceDetailController extends BaseController{
      * @return
      */
     private GeneralVo processSumDate(List<FinanceDetailVo> financeDetailList){
+        if(null == financeDetailList || 0 > financeDetailList.size()){
+            return new GeneralVo(ErrorListEnum.NO_DATA,null);
+        }
         Map<String,Object> statisticsResult = new HashMap<>(2);
         List<Map<String,Object>> detailResult = new ArrayList<>();
         BigDecimal sum = BigDecimal.ZERO.setScale(2,BigDecimal.ROUND_HALF_UP);
