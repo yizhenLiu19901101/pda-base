@@ -128,7 +128,10 @@ public class FinanceDetailControllerTest extends AbstractTestNGSpringContextTest
     public void queryByToken() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
-        userCondition.put("queryType",1);
+        userCondition.put("timeType",1);
+        userCondition.put("queryType","3");
+        userCondition.put("startDate",null);
+        userCondition.put("endDate",null);
         logger.info("查询财务信息");
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.post("/api/finance/getDetailDate")

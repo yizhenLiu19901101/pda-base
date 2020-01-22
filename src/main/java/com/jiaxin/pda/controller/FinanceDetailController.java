@@ -284,7 +284,7 @@ public class FinanceDetailController extends BaseController{
      * @param financeDetailList
      * @return
      */
-    private GeneralVo processNetIncome(List<FinanceDetailVo> financeDetailList){
+    private GeneralVo processSumDate(List<FinanceDetailVo> financeDetailList){
         Map<String,Object> statisticsResult = new HashMap<String,Object>(2);
         List<Map<String,Object>> detailResult = new ArrayList<>();
         BigDecimal sum = BigDecimal.ZERO.setScale(2,BigDecimal.ROUND_HALF_UP);
@@ -310,7 +310,7 @@ public class FinanceDetailController extends BaseController{
      * @param financeDetailList
      * @return
      */
-    private GeneralVo processSumDate(List<FinanceDetailVo> financeDetailList){
+    private GeneralVo processNetIncome(List<FinanceDetailVo> financeDetailList){
         if(null == financeDetailList || 0 > financeDetailList.size()){
             return new GeneralVo(ErrorListEnum.NO_DATA,null);
         }
