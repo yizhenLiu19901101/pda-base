@@ -56,23 +56,22 @@ public interface FinanceDetailMapper {
 
     /**
      * 按照用户ID查询财务明细
-     * @param userId
+     * @param financeDetailDto
      * @return
      */
-    List<FinanceDetailVo> queryFinanceDetailByUserId(@Param("userId") Integer userId);
+    List<FinanceDetailVo> queryFinanceDetailByUserId(FinanceDetailDto financeDetailDto);
 
     /**
      * 按照用户ID查询财务统计数据
-     * @param userId
-     * @param queryType
+     * @param financeDetailDto
      * @return
      */
-    List<FinanceDetailVo> queryFinanceSumStatisticsByUserId(@Param("userId") Integer userId,@Param("queryType") Integer queryType);
+    List<FinanceDetailVo> queryFinanceSumStatisticsByUserId(FinanceDetailDto financeDetailDto);
 
     /**
      * 按照用户ID查询财务统计数据
-     * @param userId
+     * @param financeDetailDto
      * @return
      */
-    List<FinanceDetailVo> queryFinanceNetStatisticsByUserId(@Param("userId") Integer userId);
+    List<FinanceDetailVo> queryFinanceNetStatisticsByUserId(FinanceDetailDto financeDetailDto);
 }

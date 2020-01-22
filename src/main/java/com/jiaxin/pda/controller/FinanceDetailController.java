@@ -133,155 +133,202 @@ public class FinanceDetailController extends BaseController{
      */
     @PostMapping("/getDetailDate")
     @ApiOperation(value = "根据token查找当前用户的数据")
-    public GeneralVo findByToken(@RequestBody FinanceDetailDto financeDetailDto, HttpServletRequest request, HttpServletResponse response){
+    public GeneralVo queryDetailDate(@RequestBody FinanceDetailDto financeDetailDto, HttpServletRequest request, HttpServletResponse response){
         try{
-            Integer userId = getCurrentUserId(request,response);
+            financeDetailDto.setPeopleId(getCurrentUserId(request,response));
             List<FinanceDetailVo> financeDetailList;
-            Calendar cal = Calendar.getInstance();
-            //设置开始时间和结束时间
-            switch (financeDetailDto.getTimeType()){
-                //当日
-                case Constant.CURRENT_DAY:
-                    //设置开始时间
-                    cal.set(Calendar.HOUR_OF_DAY, 0);
-                    cal.set(Calendar.SECOND, 0);
-                    cal.set(Calendar.MINUTE, 0);
-                    financeDetailDto.setStartDate(cal.getTime());
-                    //设置结束时间
-                    cal.set(Calendar.HOUR_OF_DAY, 23);
-                    cal.set(Calendar.SECOND, 59);
-                    cal.set(Calendar.MINUTE, 59);
-                    financeDetailDto.setEndDate(cal.getTime());
-                    break;
-                //本周
-                case Constant.CURRENT_WEEK:
-                    //设置开始时间
-                    cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONDAY), cal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
-                    cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-                    financeDetailDto.setStartDate(cal.getTime());
-                    //设置结束时间
-                    cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONDAY), cal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
-                    cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-                    cal.add(Calendar.DAY_OF_WEEK, 7);
-                    cal.set(Calendar.HOUR_OF_DAY, 23);
-                    cal.set(Calendar.SECOND, 59);
-                    cal.set(Calendar.MINUTE, 59);
-                    financeDetailDto.setEndDate(cal.getTime());
-                    break;
-                //当前月
-                case Constant.CURRENT_MONTH:
-                    // 设置开始时间
-                    cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONDAY), cal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
-                    cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
-                    financeDetailDto.setStartDate(cal.getTime());
-                    // 设置结束时间
-                    cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONDAY), cal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
-                    cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
-                    cal.set(Calendar.HOUR_OF_DAY, 23);
-                    cal.set(Calendar.SECOND, 59);
-                    cal.set(Calendar.MINUTE, 59);
-                    financeDetailDto.setEndDate(cal.getTime());
-                    break;
-                //自定义
-                case Constant.CUSTOMIZE:
-                    // 什么都不做
-                    cal = Calendar.getInstance();
-                    cal.setTime(financeDetailDto.getEndDate());
-                    cal.set(Calendar.HOUR_OF_DAY, 23);
-                    cal.set(Calendar.SECOND, 59);
-                    cal.set(Calendar.MINUTE, 59);
-                    financeDetailDto.setEndDate(cal.getTime());
-                    break;
-                default:
-                    // 什么都不做
-                    break;
-            }
-            logger.info("开始时间为 "+ financeDetailDto.getStartDate() + " 结束时间为"+ financeDetailDto.getEndDate());
+            //设置开始日期和结束日期
+            this.settingDate(financeDetailDto);
             if(QueryTypeEnum.QUERY_DETAIL.getKey() == financeDetailDto.getQueryType()){
                 //查询明细数据
-                financeDetailList = financeDetailService.queryFinanceDetailByUserId(userId);
+                financeDetailList = financeDetailService.queryFinanceDetailByUserId(financeDetailDto);
+                //处理明细数据
+                return processDetailData(financeDetailList);
             }else if(QueryTypeEnum.QUERY_NET_INCOME_STATISTICS.getKey() == financeDetailDto.getQueryType()){
                 //查询净收入统计数据
-                financeDetailList = financeDetailService.queryFinanceNetStatisticsByUserId(userId);
+                financeDetailList = financeDetailService.queryFinanceNetStatisticsByUserId(financeDetailDto);
+                return processNetIncome(financeDetailList);
             }else{
                 //查询总收入/总支出统计数据
-                financeDetailList = financeDetailService.queryFinanceSumStatisticsByUserId(userId,financeDetailDto.getQueryType());
-            }
-            if(null == financeDetailList){
-                return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
-            }else{
-                //以明细的方式展示
-                List<Map<String,Object>> result = new ArrayList<>();
-                if(QueryTypeEnum.QUERY_DETAIL.getKey() == financeDetailDto.getQueryType()){
-                    Map<String,Object> detailData;
-                    for(FinanceDetailVo financeDetailVo:financeDetailList){
-                        detailData= new HashMap<>(9);
-                        if(financeDetailVo.getCostMoney() >= Constant.EMPTY_INTEGER_VALUE ){
-                            detailData.put("type","circle");
-                            detailData.put("color","red");
-                        }else{
-                            detailData.put("type","star");
-                            detailData.put("color","green");
-                        }
-                        SimpleDateFormat sdf = new SimpleDateFormat(Constant.TIME_FORMAT);
-                        detailData.put("tag",sdf.format(financeDetailVo.getUpdatedTime()));
-                        detailData.put("content",financeDetailVo.getCostMoney());
-                        detailData.put("costType",financeDetailVo.getCostType());
-                        detailData.put("note",financeDetailVo.getNote());
-                        detailData.put("itemId",financeDetailVo.getItemId());
-                        detailData.put("reversion",financeDetailVo.getReversion());
-                        //以明细的方式展示数据
-                        DictionaryVo dictionaryVo = dictionaryTypeService.queryDictionaryItemInfoByUuid(financeDetailVo.getItemId());
-                        detailData.put("itemName",dictionaryVo.getItemName());
-                        detailData.put("id",financeDetailVo.getId());
-                        result.add(detailData);
-                    }
-                    return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,result);
-                }
-                //以统计的方式展示-净收入
-                else if(QueryTypeEnum.QUERY_NET_INCOME_STATISTICS.getKey() != financeDetailDto.getQueryType()){
-                    Map<String,Object> statisticsResult = new HashMap<String,Object>(2);
-                    List<Map<String,Object>> detailResult = new ArrayList<>();
-                    BigDecimal sum = BigDecimal.ZERO.setScale(2,BigDecimal.ROUND_HALF_UP);
-                    for(FinanceDetailVo financeDetailVo:financeDetailList){
-                        BigDecimal costMoney = new BigDecimal(financeDetailVo.getCostMoney()).setScale(2,BigDecimal.ROUND_HALF_UP);
-                        sum = sum.add(costMoney);
-                        HashMap<String,Object> item = new HashMap<>(2);
-                        DictionaryVo dictionaryVo = dictionaryTypeService.queryDictionaryItemInfoByUuid(financeDetailVo.getItemId());
-                        item.put("item",dictionaryVo.getItemName());
-                        item.put("money",Math.abs(financeDetailVo.getCostMoney()));
-                        detailResult.add(item);
-                    }
-                    statisticsResult.put("detail",detailResult);
-                    statisticsResult.put("sum",sum);
-                    return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,statisticsResult);
-                }
-                //以统计的方式展示-总收入、总支出
-                else{
-                    Map<String,Object> statisticsResult = new HashMap<>(2);
-                    List<Map<String,Object>> detailResult = new ArrayList<>();
-                    BigDecimal sum = BigDecimal.ZERO.setScale(2,BigDecimal.ROUND_HALF_UP);
-                    for(FinanceDetailVo financeDetailVo:financeDetailList){
-                        HashMap<String,Object> item = new HashMap<>(2);
-                        BigDecimal costMoney = new BigDecimal(financeDetailVo.getCostMoney()).setScale(2,BigDecimal.ROUND_HALF_UP);
-                        if(financeDetailVo.getCostType() == 1){
-                            sum = sum.subtract(costMoney);
-                            item.put("item", "支出");
-                        }else{
-                            sum = sum.add(costMoney);
-                            item.put("item", "收入");
-                        }
-                        item.put("money",financeDetailVo.getCostMoney());
-                        detailResult.add(item);
-                    }
-                    statisticsResult.put("detail",detailResult);
-                    statisticsResult.put("sum",sum);
-                    return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,statisticsResult);
-                }
+                financeDetailList = financeDetailService.queryFinanceSumStatisticsByUserId(financeDetailDto);
+                return processSumDate(financeDetailList);
             }
         }catch(Exception e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
+    }
+
+    /**
+     * 设置日期
+     * @param financeDetailDto
+     */
+    private void settingDate(FinanceDetailDto financeDetailDto){
+        Calendar cal = Calendar.getInstance();
+        //设置开始时间和结束时间
+        switch (financeDetailDto.getTimeType()){
+            //当日
+            case Constant.CURRENT_DAY:
+                //设置开始时间
+                cal.set(Calendar.HOUR_OF_DAY, 0);
+                cal.set(Calendar.SECOND, 0);
+                cal.set(Calendar.MINUTE, 0);
+                cal.set(Calendar.MILLISECOND,000);
+                financeDetailDto.setStartDate(cal.getTime());
+                //设置结束时间
+                cal.set(Calendar.HOUR_OF_DAY, 23);
+                cal.set(Calendar.SECOND, 59);
+                cal.set(Calendar.MINUTE, 59);
+                cal.set(Calendar.MILLISECOND,999);
+                financeDetailDto.setEndDate(cal.getTime());
+                break;
+            //本周
+            case Constant.CURRENT_WEEK:
+                //设置开始时间
+                cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONDAY), cal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
+                int day_of_week = cal.get(Calendar.DAY_OF_WEEK) - 1;
+                if (day_of_week == 0){
+                    day_of_week = 7;
+                }
+                cal.add(Calendar.DATE, -day_of_week + 1);
+                cal.set(Calendar.HOUR_OF_DAY, 23);
+                cal.set(Calendar.SECOND, 59);
+                cal.set(Calendar.MINUTE, 59);
+                cal.set(Calendar.MILLISECOND,999);
+                financeDetailDto.setStartDate(cal.getTime());
+                //设置结束时间
+                cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONDAY), cal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
+                day_of_week = cal.get(Calendar.DAY_OF_WEEK) - 1;
+                if (day_of_week == 0){
+                    day_of_week = 7;
+                }
+                cal.add(Calendar.DATE, -day_of_week + 7);
+                cal.set(Calendar.HOUR_OF_DAY, 23);
+                cal.set(Calendar.SECOND, 59);
+                cal.set(Calendar.MINUTE, 59);
+                cal.set(Calendar.MILLISECOND,999);
+                financeDetailDto.setEndDate(cal.getTime());
+                break;
+            //当前月
+            case Constant.CURRENT_MONTH:
+                // 设置开始时间
+                cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONDAY), cal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
+                cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
+                cal.set(Calendar.MILLISECOND,000);
+                financeDetailDto.setStartDate(cal.getTime());
+                // 设置结束时间
+                cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONDAY), cal.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
+                cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+                cal.set(Calendar.HOUR_OF_DAY, 23);
+                cal.set(Calendar.SECOND, 59);
+                cal.set(Calendar.MINUTE, 59);
+                cal.set(Calendar.MILLISECOND,999);
+                financeDetailDto.setEndDate(cal.getTime());
+                break;
+            //自定义
+            case Constant.CUSTOMIZE:
+                // 什么都不做
+                cal = Calendar.getInstance();
+                cal.setTime(financeDetailDto.getEndDate());
+                cal.set(Calendar.HOUR_OF_DAY, 23);
+                cal.set(Calendar.SECOND, 59);
+                cal.set(Calendar.MINUTE, 59);
+                cal.set(Calendar.MILLISECOND,999);
+                financeDetailDto.setEndDate(cal.getTime());
+                break;
+            default:
+                // 什么都不做
+                break;
+        }
+        logger.info("开始时间为 "+ financeDetailDto.getStartDate() + " 结束时间为"+ financeDetailDto.getEndDate());
+    }
+
+    /**
+     * 处理明细数据
+     * @param financeDetailList
+     * @return
+     */
+    private GeneralVo processDetailData(List<FinanceDetailVo> financeDetailList){
+        List<Map<String,Object>> result = new ArrayList<>();
+        Map<String,Object> detailData;
+        if(null == financeDetailList || 0 < financeDetailList.size()){
+            return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
+        }
+        for(FinanceDetailVo financeDetailVo:financeDetailList){
+            detailData= new HashMap<>(9);
+            if(financeDetailVo.getCostMoney() >= Constant.EMPTY_INTEGER_VALUE ){
+                detailData.put("type","circle");
+                detailData.put("color","red");
+            }else{
+                detailData.put("type","star");
+                detailData.put("color","green");
+            }
+            SimpleDateFormat sdf = new SimpleDateFormat(Constant.TIME_FORMAT);
+            detailData.put("tag",sdf.format(financeDetailVo.getUpdatedTime()));
+            detailData.put("content",financeDetailVo.getCostMoney());
+            detailData.put("costType",financeDetailVo.getCostType());
+            detailData.put("note",financeDetailVo.getNote());
+            detailData.put("itemId",financeDetailVo.getItemId());
+            detailData.put("reversion",financeDetailVo.getReversion());
+            //以明细的方式展示数据
+            DictionaryVo dictionaryVo = dictionaryTypeService.queryDictionaryItemInfoByUuid(financeDetailVo.getItemId());
+            detailData.put("itemName",dictionaryVo.getItemName());
+            detailData.put("id",financeDetailVo.getId());
+            result.add(detailData);
+        }
+        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,result);
+    }
+
+    /**
+     * 处理净收入数据
+     * @param financeDetailList
+     * @return
+     */
+    private GeneralVo processNetIncome(List<FinanceDetailVo> financeDetailList){
+        Map<String,Object> statisticsResult = new HashMap<String,Object>(2);
+        List<Map<String,Object>> detailResult = new ArrayList<>();
+        BigDecimal sum = BigDecimal.ZERO.setScale(2,BigDecimal.ROUND_HALF_UP);
+        if(null == financeDetailList || 0 < financeDetailList.size()){
+            return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
+        }
+        for(FinanceDetailVo financeDetailVo:financeDetailList){
+            BigDecimal costMoney = new BigDecimal(financeDetailVo.getCostMoney()).setScale(2,BigDecimal.ROUND_HALF_UP);
+            sum = sum.add(costMoney);
+            HashMap<String,Object> item = new HashMap<>(2);
+            DictionaryVo dictionaryVo = dictionaryTypeService.queryDictionaryItemInfoByUuid(financeDetailVo.getItemId());
+            item.put("item",dictionaryVo.getItemName());
+            item.put("money",Math.abs(financeDetailVo.getCostMoney()));
+            detailResult.add(item);
+        }
+        statisticsResult.put("detail",detailResult);
+        statisticsResult.put("sum",sum);
+        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,statisticsResult);
+    }
+
+    /**
+     * 处理净收入数据
+     * @param financeDetailList
+     * @return
+     */
+    private GeneralVo processSumDate(List<FinanceDetailVo> financeDetailList){
+        Map<String,Object> statisticsResult = new HashMap<>(2);
+        List<Map<String,Object>> detailResult = new ArrayList<>();
+        BigDecimal sum = BigDecimal.ZERO.setScale(2,BigDecimal.ROUND_HALF_UP);
+        for(FinanceDetailVo financeDetailVo:financeDetailList){
+            HashMap<String,Object> item = new HashMap<>(2);
+            BigDecimal costMoney = new BigDecimal(financeDetailVo.getCostMoney()).setScale(2,BigDecimal.ROUND_HALF_UP);
+            if(financeDetailVo.getCostType() == 1){
+                sum = sum.subtract(costMoney);
+                item.put("item", "支出");
+            }else{
+                sum = sum.add(costMoney);
+                item.put("item", "收入");
+            }
+            item.put("money",financeDetailVo.getCostMoney());
+            detailResult.add(item);
+        }
+        statisticsResult.put("detail",detailResult);
+        statisticsResult.put("sum",sum);
+        return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,statisticsResult);
     }
 }

@@ -46,18 +46,18 @@ public class FinanceDetailServiceImpl implements FinanceDetailService {
     }
 
     @Override
-    public List<FinanceDetailVo> queryFinanceDetailByUserId(Integer userId) {
-        return financeDetailMapper.queryFinanceDetailByUserId(userId);
+    public List<FinanceDetailVo> queryFinanceDetailByUserId(FinanceDetailDto financeDetailDto) {
+        return financeDetailMapper.queryFinanceDetailByUserId(financeDetailDto);
     }
 
     @Override
-    public List<FinanceDetailVo> queryFinanceSumStatisticsByUserId(Integer userId,Integer queryType) {
-        return financeDetailMapper.queryFinanceSumStatisticsByUserId(userId,queryType);
+    public List<FinanceDetailVo> queryFinanceSumStatisticsByUserId(FinanceDetailDto financeDetailDto) {
+        return financeDetailMapper.queryFinanceSumStatisticsByUserId(financeDetailDto);
     }
 
     @Override
-    public List<FinanceDetailVo> queryFinanceNetStatisticsByUserId(Integer userId) {
-        return financeDetailMapper.queryFinanceNetStatisticsByUserId(userId);
+    public List<FinanceDetailVo> queryFinanceNetStatisticsByUserId(FinanceDetailDto financeDetailDto) {
+        return financeDetailMapper.queryFinanceNetStatisticsByUserId(financeDetailDto);
     }
 
 

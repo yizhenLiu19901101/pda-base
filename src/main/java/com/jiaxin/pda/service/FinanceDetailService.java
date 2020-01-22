@@ -41,23 +41,22 @@ public interface FinanceDetailService {
 
     /**
      * 按照用户ID查询财务对象
-     * @param userId
+     * @param financeDetailDto
      * @return
      */
-    List<FinanceDetailVo> queryFinanceDetailByUserId(Integer userId);
+    List<FinanceDetailVo> queryFinanceDetailByUserId(FinanceDetailDto financeDetailDto);
 
     /**
      * 按照用户ID查询财务统计数据
-     * @param userId
-     * @param queryType
+     * @param financeDetailDto
      * @return
      */
-    List<FinanceDetailVo> queryFinanceSumStatisticsByUserId(Integer userId,Integer queryType);
+    List<FinanceDetailVo> queryFinanceSumStatisticsByUserId(FinanceDetailDto financeDetailDto);
 
     /**
      * 按照用户ID查询财务统计数据
-     * @param userId
+     * @param financeDetailDto
      * @return
      */
-    List<FinanceDetailVo> queryFinanceNetStatisticsByUserId(Integer userId);
+    List<FinanceDetailVo> queryFinanceNetStatisticsByUserId(FinanceDetailDto financeDetailDto);
 }
