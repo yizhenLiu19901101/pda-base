@@ -156,18 +156,6 @@
             CHANGE COLUMN `is_delete` `delete_flag` tinyint(1) NULL DEFAULT 0 COMMENT '删除标志(0代表未删除，1代表已删除)' AFTER `role_name`;
         </sql>
     </changeSet>
-
-    <changeSet id="tb_menu_role_and_tb_role_user_drop_columns" author="milo">
-        <sql>
-            ALTER TABLE `tb_menu_role`
-            DROP COLUMN `id_delete`,
-            DROP COLUMN `reversion`;
-            ALTER TABLE `tb_role_use`
-            DROP COLUMN `reversion`;
-        </sql>
-    </changeSet>
-
-
     <changeSet id="tb_dictionary_type" author="milo">
         <preConditions onFail="MARK_RAN">
             <not>
@@ -253,20 +241,19 @@
         ADD COLUMN `menu_path` varchar(64) NULL COMMENT '菜单路径' AFTER `parent_menu_id`;
     </sql>
 </changeSet>
-<changeSet id="tb_user_menu_add_column" author="milo">
-    <sql>
-        ALTER TABLE `tb_menu`
-        DROP COLUMN `menu_type`,
-        ADD COLUMN `menu_type` tinyint(1) NULL COMMENT '菜单类型，1代表PC端，2代表移动端' AFTER `menu_name`;
-    </sql>
-</changeSet>
 
-<changeSet id="tb_user_add_column" author="milo">
+    <changeSet id="tb_user_menu_add_column" author="milo">
+        <sql>
+            ALTER TABLE `tb_menu`
+            ADD COLUMN `menu_type` tinyint(1) NULL COMMENT '菜单类型，1代表PC端，2代表移动端' AFTER `menu_name`;
+        </sql>
+    </changeSet>
+    <changeSet id="tb_user_add_column" author="milo">
     <sql>
         ALTER TABLE `tb_user`
         ADD COLUMN `image_url` varchar(128) NULL COMMENT '用户头像' AFTER `password`;
     </sql>
-</changeSet>
+    </changeSet>
 
 <changeSet id="tb_file" author="milo">
     <preConditions onFail="MARK_RAN">
