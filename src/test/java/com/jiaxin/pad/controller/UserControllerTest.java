@@ -71,11 +71,11 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
     public void insertUser() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
-        userCondition.put("userName","<name>嘉义<name>");
-        userCondition.put("password","999999");
+        userCondition.put("userName","milo");
+        userCondition.put("password","123456");
         logger.info("插入用户信息条件: " + userCondition.toJSONString());
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.put("/user/registerUser")
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/user/registerUser")
                 .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -183,11 +183,11 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
     public void giveUserRole() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
-        userCondition.put("userId",8);
+        userCondition.put("userId",1);
         userCondition.put("roleId",1);
         logger.info("插入添加用户权限条件: " + userCondition.toJSONString());
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.put("/user/insertUserRole")
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/user/insertUserRole")
                 .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)

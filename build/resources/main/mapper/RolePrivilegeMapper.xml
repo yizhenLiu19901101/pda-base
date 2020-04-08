@@ -58,5 +58,6 @@
         tb_menu_role
         WHERE
         role_id = #{roleId}
+        and menu_id = #{menuId}
     </select>
 </mapper>

@@ -58,7 +58,7 @@ public class RoleControllerTest extends AbstractTestNGSpringContextTests {
         userCondition.put("roleName","超级管理员");
         logger.info("插入角色信息条件: " + userCondition.toJSONString());
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.put("/role/insertRole")
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/role/insertRole")
                 .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -119,11 +119,11 @@ public class RoleControllerTest extends AbstractTestNGSpringContextTests {
     public void givePrivilege() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
-        userCondition.put("menuId",3);
+        userCondition.put("menuId",7);
         userCondition.put("roleId",1);
         logger.info("角色授权条件: " + userCondition.toJSONString());
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.post("/role/givePrivilege")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/role/givePrivilege")
                 .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
