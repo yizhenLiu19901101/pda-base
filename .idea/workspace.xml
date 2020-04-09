@@ -6,7 +6,31 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af92b1f6-cbf2-4c80-8b77-49a8b22389c3" name="Default Changelist" comment="" />
+    <list default="true" id="af92b1f6-cbf2-4c80-8b77-49a8b22389c3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.7/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.7/fileContent/fileContent.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.7/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.7/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.7/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.7/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.7/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.7/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/pda-1.0.0.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/pda-1.0.0.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/config/CrossOriginResourceSharingConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/config/CrossOriginResourceSharingConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/FinanceDetailControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/FinanceDetailControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/MenuControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/MenuControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/jiaxin/pad/controller/UserControllerTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,7 +110,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/sql" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.pda">
+  <component name="RunManager" selected="Gradle.FinanceDetailControllerTest.queryByToken">
     <configuration name="pda" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -96,12 +120,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MenuControllerTest.insertMenu" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="FinanceDetailControllerTest.queryByToken" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.MenuControllerTest.insertMenu&quot;" />
+        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.FinanceDetailControllerTest.queryByToken&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -116,12 +140,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="RoleControllerTest.givePrivilege" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MenuControllerTest.insertMenu" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.RoleControllerTest.givePrivilege&quot;" />
+        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.MenuControllerTest.insertMenu&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -176,12 +200,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="UserControllerTest.userLogin" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UserControllerTest.queryMenuListByUserToken" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.UserControllerTest.userLogin&quot;" />
+        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.UserControllerTest.queryMenuListByUserToken&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -198,19 +222,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.pda" />
-      <item itemvalue="Gradle.MenuControllerTest.insertMenu" />
-      <item itemvalue="Gradle.RoleControllerTest.givePrivilege" />
-      <item itemvalue="Gradle.UserControllerTest.userLogin" />
       <item itemvalue="Gradle.UserControllerTest.insertUser" />
       <item itemvalue="Gradle.UserControllerTest.giveUserRole" />
+      <item itemvalue="Gradle.UserControllerTest.queryMenuListByUserToken" />
+      <item itemvalue="Gradle.MenuControllerTest.insertMenu" />
+      <item itemvalue="Gradle.FinanceDetailControllerTest.queryByToken" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.FinanceDetailControllerTest.queryByToken" />
+        <item itemvalue="Gradle.UserControllerTest.queryMenuListByUserToken" />
+        <item itemvalue="Gradle.MenuControllerTest.insertMenu" />
         <item itemvalue="Gradle.UserControllerTest.giveUserRole" />
         <item itemvalue="Gradle.UserControllerTest.insertUser" />
-        <item itemvalue="Gradle.UserControllerTest.userLogin" />
-        <item itemvalue="Gradle.RoleControllerTest.givePrivilege" />
-        <item itemvalue="Gradle.MenuControllerTest.insertMenu" />
       </list>
     </recent_temporary>
   </component>
@@ -291,38 +315,46 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="481" height="466" key="DebuggerActiveHint/0.0.1440.900@0.0.1440.900" timestamp="1579676173435" />
-    <state width="1398" height="253" key="GridCell.Tab.0.bottom" timestamp="1586337529821">
+    <state x="320" y="117" key="GrepConsoleSettings" timestamp="1586412557658">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="253" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586337529821" />
-    <state width="1398" height="253" key="GridCell.Tab.0.center" timestamp="1586337529819">
+    <state x="320" y="117" key="GrepConsoleSettings/0.0.1440.900@0.0.1440.900" timestamp="1586412557658" />
+    <state width="1398" height="295" key="GridCell.Tab.0.bottom" timestamp="1586404777036">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="253" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1586337529819" />
-    <state width="1398" height="253" key="GridCell.Tab.0.left" timestamp="1586337529819">
+    <state width="1398" height="295" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586404777036" />
+    <state width="1398" height="295" key="GridCell.Tab.0.center" timestamp="1586404777033">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="253" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1586337529819" />
-    <state width="1398" height="253" key="GridCell.Tab.0.right" timestamp="1586337529820">
+    <state width="1398" height="295" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1586404777033" />
+    <state width="1398" height="295" key="GridCell.Tab.0.left" timestamp="1586404777032">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="253" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1586337529820" />
-    <state width="1398" height="287" key="GridCell.Tab.1.bottom" timestamp="1582529668292">
+    <state width="1398" height="295" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1586404777032" />
+    <state width="1398" height="295" key="GridCell.Tab.0.right" timestamp="1586404777035">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="287" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1582529668292" />
-    <state width="1398" height="287" key="GridCell.Tab.1.center" timestamp="1582529668291">
+    <state width="1398" height="295" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1586404777035" />
+    <state width="1398" height="295" key="GridCell.Tab.1.bottom" timestamp="1586404777040">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="287" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1582529668291" />
-    <state width="1398" height="287" key="GridCell.Tab.1.left" timestamp="1582529668290">
+    <state width="1398" height="295" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586404777040" />
+    <state width="1398" height="295" key="GridCell.Tab.1.center" timestamp="1586404777039">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="287" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1582529668290" />
-    <state width="1398" height="287" key="GridCell.Tab.1.right" timestamp="1582529668291">
+    <state width="1398" height="295" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1586404777039" />
+    <state width="1398" height="295" key="GridCell.Tab.1.left" timestamp="1586404777036">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="287" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1582529668291" />
+    <state width="1398" height="295" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1586404777036" />
+    <state width="1398" height="295" key="GridCell.Tab.1.right" timestamp="1586404777040">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="295" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1586404777040" />
+    <state x="504" y="167" key="RollbackChangesDialog" timestamp="1586397696120">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="504" y="167" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1586397696120" />
     <state x="375" y="214" width="689" height="472" key="find.popup" timestamp="1579678270302">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

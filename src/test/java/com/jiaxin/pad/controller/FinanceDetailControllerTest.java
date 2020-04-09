@@ -129,13 +129,13 @@ public class FinanceDetailControllerTest extends AbstractTestNGSpringContextTest
         //设置查询条件
         JSONObject userCondition = new JSONObject();
         userCondition.put("timeType",1);
-        userCondition.put("queryType","3");
+        userCondition.put("queryType","-1");
         userCondition.put("startDate",null);
         userCondition.put("endDate",null);
         logger.info("查询财务信息");
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.post("/api/finance/getDetailDate")
-                .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODAyODg0NzU0NDksInBheWxvYWQiOiJcIjI1Yjk1NzkwOGExZDQ2MTI4MDdlMGE4ZjZmMGU4OGU1XCIifQ.bPMjHAGvrFW9RMeto69EpJYvu34LIMNRMKd3E9JAoVQ")
+                .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODcwMTUyMzYyMjIsInBheWxvYWQiOiJcIjI1Yjk1NzkwOGExZDQ2MTI4MDdlMGE4ZjZmMGU4OGU1XCIifQ.sxky_sz85i3kLv1zCiOg_uwJ0oSmqVhUPxz3cbLAi18")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))

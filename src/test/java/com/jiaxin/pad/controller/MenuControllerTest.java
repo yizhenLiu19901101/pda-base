@@ -60,11 +60,11 @@ public class MenuControllerTest extends AbstractTestNGSpringContextTests {
         logger.info("插入菜单信息");
         //设置查询条件
         JSONObject userCondition = new JSONObject();
-        userCondition.put("menuName","系统设置");
-        userCondition.put("parentMenuId",2);
-        userCondition.put("menuPath","/systemSetting");
-        userCondition.put("menuNo",3);
-        userCondition.put("menuLevel",2);
+        userCondition.put("menuName","修改密码");
+        userCondition.put("parentMenuId",7);
+        userCondition.put("menuPath","/passwordModify");
+        userCondition.put("menuNo",1);
+        userCondition.put("menuLevel",3);
         logger.info("插入菜单信息条件: " + userCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.put("/api/menu/insertMenu")
