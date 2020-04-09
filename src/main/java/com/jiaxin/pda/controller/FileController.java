@@ -36,7 +36,7 @@ public class FileController extends BaseController{
         try{
             logger.info("上传图片");
             int userId = getCurrentUserId(request,response);
-            if(file.getSize() > Constant.ONE_MB){
+            if(file.getSize() > Constant.TEN_MB){
                 return new GeneralVo(ErrorListEnum.PIC_TOO_BIG,null);
             }else{
                 String result = fileService.insertFile(file,userId);
