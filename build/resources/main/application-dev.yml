@@ -29,3 +29,10 @@ mybatis:
 #是否展示swagger接口
 swagger:
   enable: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://122.51.17.153:3000/eureka/
+  instance:
+    prefer-ip-address: true
