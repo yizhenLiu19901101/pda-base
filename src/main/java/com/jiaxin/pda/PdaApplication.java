@@ -13,7 +13,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @author milo
  */
 @SpringBootApplication
-@EnableDiscoveryClient
 @EnableEurekaClient
 @EnableSwagger2
 public class PdaApplication {

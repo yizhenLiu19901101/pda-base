@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @RestController
 @Api(value = "file",tags = {"file_controller"})
-@RequestMapping("/api/file")
+@RequestMapping("/file")
 public class FileController extends BaseController{
 
     @Autowired

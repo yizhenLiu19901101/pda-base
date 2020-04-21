@@ -30,7 +30,7 @@ import java.util.*;
  * @author milo
  */
 @RestController
-@RequestMapping(value = "/api/finance")
+@RequestMapping(value = "/finance")
 @ApiIgnore
 @Api(value = "finance",tags = {"finance_controller"})
 public class FinanceDetailController extends BaseController{

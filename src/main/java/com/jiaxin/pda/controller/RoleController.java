@@ -30,7 +30,7 @@ import javax.validation.Valid;
  */
 @RestController
 @Api(value = "role",tags = {"role_controller"})
-@RequestMapping(value = "/api/role")
+@RequestMapping(value = "/role")
 public class RoleController extends BaseController{
     private static final Logger logger = LoggerFactory.getLogger(RoleController.class);
 

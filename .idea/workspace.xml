@@ -49,15 +49,17 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="pda" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="pda" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -306,22 +308,22 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="320" y="117" key="GrepConsoleSettings/0.0.1440.900@0.0.1440.900" timestamp="1586412557658" />
-    <state width="1398" height="253" key="GridCell.Tab.0.bottom" timestamp="1587375741676">
+    <state width="1398" height="253" key="GridCell.Tab.0.bottom" timestamp="1587439884131">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="253" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1587375741676" />
-    <state width="1398" height="253" key="GridCell.Tab.0.center" timestamp="1587375741674">
+    <state width="1398" height="253" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1587439884131" />
+    <state width="1398" height="253" key="GridCell.Tab.0.center" timestamp="1587439884128">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="253" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1587375741674" />
-    <state width="1398" height="253" key="GridCell.Tab.0.left" timestamp="1587375741674">
+    <state width="1398" height="253" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1587439884128" />
+    <state width="1398" height="253" key="GridCell.Tab.0.left" timestamp="1587439884127">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="253" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1587375741674" />
-    <state width="1398" height="253" key="GridCell.Tab.0.right" timestamp="1587375741675">
+    <state width="1398" height="253" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1587439884127" />
+    <state width="1398" height="253" key="GridCell.Tab.0.right" timestamp="1587439884130">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="253" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1587375741675" />
+    <state width="1398" height="253" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1587439884130" />
     <state width="1398" height="295" key="GridCell.Tab.1.bottom" timestamp="1586404777040">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

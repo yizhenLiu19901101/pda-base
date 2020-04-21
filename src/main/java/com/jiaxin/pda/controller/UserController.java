@@ -35,7 +35,7 @@ import java.util.List;
  */
 @RestController
 @Api(value = "user",tags = {"user_controller"})
-@RequestMapping("/api/user")
+@RequestMapping("/user")
 public class UserController extends BaseController{
     @Autowired
     private UserService userService;

@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @RestController
 @Api(value = "menu",tags = {"menu_controller"})
-@RequestMapping("/api/menu")
+@RequestMapping("/menu")
 public class MenuController extends BaseController{
 
     @Autowired

@@ -29,7 +29,7 @@ import java.util.Map;
  */
 @RestController
 @Api(value = "dictionary",tags = {"dictionary_controller"})
-@RequestMapping("/api/dictionary")
+@RequestMapping("/dictionary")
 public class DictionaryController extends BaseController{
 
     @Autowired
