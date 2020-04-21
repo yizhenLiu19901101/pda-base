@@ -33,7 +33,6 @@ swagger:
 eureka:
   client:
     serviceUrl:
-      #  defaultZone: http://122.51.17.153:3000/eureka/
       efaultZone: http://127.0.0.1:3000/eureka/
   instance:
     prefer-ip-address: true
