@@ -142,7 +142,7 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
         //设置查询条件
         JSONObject userCondition = new JSONObject();
         userCondition.put("userName","milo");
-        userCondition.put("password","123456");
+        userCondition.put("password","19901101");
         logger.info("登录条件: " + userCondition.toJSONString());
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.post("/user/login")
