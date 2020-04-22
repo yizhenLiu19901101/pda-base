@@ -59,7 +59,7 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
     public void queryUserInfoById() throws Exception{
         logger.info("根据ID查询用户信息");
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/user/findById/25b957908a1d4612807e0a8f6f0e88e5")
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/findById/25b957908a1d4612807e0a8f6f0e88e5")
                 .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -75,7 +75,7 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
         userCondition.put("password","123456");
         logger.info("插入用户信息条件: " + userCondition.toJSONString());
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.put("/api/user/registerUser")
+        mockMvc.perform(MockMvcRequestBuilders.put("/user/registerUser")
                 .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -111,7 +111,7 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
         userCondition.put("reversion",1);
         logger.info("修改用户姓名条件: " + userCondition.toJSONString());
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.put("/api/user/updateUserInfo")
+        mockMvc.perform(MockMvcRequestBuilders.put("/user/updateUserInfo")
                 .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -128,7 +128,7 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
         userCondition.put("reversion",2);
         logger.info("修改用户密码条件: " + userCondition.toJSONString());
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.put("/user/updateUserPassword")
+        mockMvc.perform(MockMvcRequestBuilders.put("/updateUserPassword")
                 .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -145,7 +145,7 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
         userCondition.put("password","123456");
         logger.info("登录条件: " + userCondition.toJSONString());
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/user/login")
+        mockMvc.perform(MockMvcRequestBuilders.post("/user/login")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
@@ -187,7 +187,7 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
         userCondition.put("roleId",1);
         logger.info("插入添加用户权限条件: " + userCondition.toJSONString());
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.put("/api/user/insertUserRole")
+        mockMvc.perform(MockMvcRequestBuilders.put("/user/insertUserRole")
                 .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -224,7 +224,7 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
     @Test
     public void queryMenuListByUserToken() throws Exception{
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/user/queryUserPrivileges/3")
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/queryUserPrivileges/3")
                 .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODcwMDI3MjE5ODUsInBheWxvYWQiOiJcIjI1Yjk1NzkwOGExZDQ2MTI4MDdlMGE4ZjZmMGU4OGU1XCIifQ.6pAqA-DT6B6u1bn-HPMybr1-H36zF8ab4-ZkO-vmopk")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))

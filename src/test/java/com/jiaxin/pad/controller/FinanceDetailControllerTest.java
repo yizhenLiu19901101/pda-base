@@ -134,7 +134,7 @@ public class FinanceDetailControllerTest extends AbstractTestNGSpringContextTest
         userCondition.put("endDate",null);
         logger.info("查询财务信息");
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/finance/getDetailDate")
+        mockMvc.perform(MockMvcRequestBuilders.post("/finance/getDetailDate")
                 .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODcwMTUyMzYyMjIsInBheWxvYWQiOiJcIjI1Yjk1NzkwOGExZDQ2MTI4MDdlMGE4ZjZmMGU4OGU1XCIifQ.sxky_sz85i3kLv1zCiOg_uwJ0oSmqVhUPxz3cbLAi18")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)

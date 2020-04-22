@@ -206,7 +206,7 @@ public class DictionaryControllerTest extends AbstractTestNGSpringContextTests {
     public void queryDictionaryByToken() throws Exception{
         logger.info("根据token查找字典信息");
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/dictionary/queryDictionaryByToken")
+        mockMvc.perform(MockMvcRequestBuilders.get("/dictionary/queryDictionaryByToken")
                 .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Nzg5ODk4NDM0MDYsInBheWxvYWQiOiJcIjI1Yjk1NzkwOGExZDQ2MTI4MDdlMGE4ZjZmMGU4OGU1XCIifQ.LcRZ2RYmlp04NaZfA0ZgYcS16__AkHeu5QvMsz0lll8")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))

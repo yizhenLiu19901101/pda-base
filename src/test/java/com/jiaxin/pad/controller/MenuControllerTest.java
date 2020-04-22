@@ -67,7 +67,7 @@ public class MenuControllerTest extends AbstractTestNGSpringContextTests {
         userCondition.put("menuLevel",3);
         logger.info("插入菜单信息条件: " + userCondition.toJSONString());
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.put("/api/menu/insertMenu")
+        mockMvc.perform(MockMvcRequestBuilders.put("/menu/insertMenu")
                 .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
