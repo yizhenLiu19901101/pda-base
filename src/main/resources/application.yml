@@ -1,7 +1,7 @@
 #选择配置文件
 spring:
   profiles:
-    active: local
+    active: dev
   http:
     multipart:
       enabled: true
