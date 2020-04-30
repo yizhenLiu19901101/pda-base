@@ -24,7 +24,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af92b1f6-cbf2-4c80-8b77-49a8b22389c3" name="Default Changelist" comment="" />
+    <list default="true" id="af92b1f6-cbf2-4c80-8b77-49a8b22389c3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -156,46 +159,6 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="UserControllerTest.giveUserRole" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.UserControllerTest.giveUserRole&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":cleanTest" />
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="UserControllerTest.insertUser" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.UserControllerTest.insertUser&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":cleanTest" />
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="UserControllerTest.queryMenuListByUserToken" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -216,21 +179,59 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="UserControllerTest.queryUserInfoByToken" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.UserControllerTest.queryUserInfoByToken&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="UserControllerTest.userLogin" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;com.jiaxin.pad.controller.UserControllerTest.userLogin&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.pda" />
-      <item itemvalue="Gradle.UserControllerTest.insertUser" />
-      <item itemvalue="Gradle.UserControllerTest.giveUserRole" />
       <item itemvalue="Gradle.UserControllerTest.queryMenuListByUserToken" />
       <item itemvalue="Gradle.MenuControllerTest.insertMenu" />
       <item itemvalue="Gradle.FinanceDetailControllerTest.queryByToken" />
+      <item itemvalue="Gradle.UserControllerTest.userLogin" />
+      <item itemvalue="Gradle.UserControllerTest.queryUserInfoByToken" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.UserControllerTest.queryUserInfoByToken" />
+        <item itemvalue="Gradle.UserControllerTest.userLogin" />
         <item itemvalue="Gradle.FinanceDetailControllerTest.queryByToken" />
         <item itemvalue="Gradle.UserControllerTest.queryMenuListByUserToken" />
         <item itemvalue="Gradle.MenuControllerTest.insertMenu" />
-        <item itemvalue="Gradle.UserControllerTest.giveUserRole" />
-        <item itemvalue="Gradle.UserControllerTest.insertUser" />
       </list>
     </recent_temporary>
   </component>
@@ -306,46 +307,50 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="320" y="117" key="GrepConsoleSettings/0.0.1440.900@0.0.1440.900" timestamp="1586412557658" />
-    <state width="1398" height="295" key="GridCell.Tab.0.bottom" timestamp="1587526006540">
+    <state width="1398" height="253" key="GridCell.Tab.0.bottom" timestamp="1587549688821">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="295" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1587526006540" />
-    <state width="1398" height="295" key="GridCell.Tab.0.center" timestamp="1587526006539">
+    <state width="1398" height="253" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1587549688821" />
+    <state width="1398" height="253" key="GridCell.Tab.0.center" timestamp="1587549688820">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="295" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1587526006539" />
-    <state width="1398" height="295" key="GridCell.Tab.0.left" timestamp="1587526006538">
+    <state width="1398" height="253" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1587549688820" />
+    <state width="1398" height="253" key="GridCell.Tab.0.left" timestamp="1587549688819">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="295" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1587526006538" />
-    <state width="1398" height="295" key="GridCell.Tab.0.right" timestamp="1587526006539">
+    <state width="1398" height="253" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1587549688819" />
+    <state width="1398" height="253" key="GridCell.Tab.0.right" timestamp="1587549688821">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="295" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1587526006539" />
-    <state width="1398" height="295" key="GridCell.Tab.1.bottom" timestamp="1587526006542">
+    <state width="1398" height="253" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1587549688821" />
+    <state width="1398" height="295" key="GridCell.Tab.1.bottom" timestamp="1587546853688">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="295" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1587526006542" />
-    <state width="1398" height="295" key="GridCell.Tab.1.center" timestamp="1587526006541">
+    <state width="1398" height="295" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1587546853688" />
+    <state width="1398" height="295" key="GridCell.Tab.1.center" timestamp="1587546853687">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="295" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1587526006541" />
-    <state width="1398" height="295" key="GridCell.Tab.1.left" timestamp="1587526006540">
+    <state width="1398" height="295" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1587546853687" />
+    <state width="1398" height="295" key="GridCell.Tab.1.left" timestamp="1587546853686">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="295" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1587526006540" />
-    <state width="1398" height="295" key="GridCell.Tab.1.right" timestamp="1587526006541">
+    <state width="1398" height="295" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1587546853686" />
+    <state width="1398" height="295" key="GridCell.Tab.1.right" timestamp="1587546853688">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="295" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1587526006541" />
-    <state x="504" y="167" key="RollbackChangesDialog" timestamp="1586397696120">
+    <state width="1398" height="295" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1587546853688" />
+    <state x="504" y="167" key="RollbackChangesDialog" timestamp="1587548989885">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="504" y="167" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1586397696120" />
-    <state x="375" y="214" width="689" height="472" key="find.popup" timestamp="1579678270302">
+    <state x="504" y="167" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1587548989885" />
+    <state x="480" y="191" key="VcsDiffUtil.ChangesDialog" timestamp="1587549669101">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="375" y="214" width="689" height="472" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1579678270302" />
+    <state x="480" y="191" key="VcsDiffUtil.ChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1587549669101" />
+    <state x="375" y="214" width="689" height="486" key="find.popup" timestamp="1587544895587">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="375" y="214" width="689" height="486" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1587544895587" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pda$FinanceDetailControllerTest_queryByToken.ic" NAME="FinanceDetailControllerTest.queryByToken Coverage Results" MODIFIED="1579678900749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
