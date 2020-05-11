@@ -39,3 +39,4 @@ eureka:
   instance:
     instance-id: api
     prefer-ip-address: true
+    ip-address: 203.195.136.168
