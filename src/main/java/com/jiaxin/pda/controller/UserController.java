@@ -70,7 +70,7 @@ public class UserController extends BaseController{
     @ApiOperation(value = "根据token查找用户信息")
     public GeneralVo findByToken(HttpServletRequest request, HttpServletResponse response){
         try{
-            String userId = getCurrentId(request,response);
+            String userId = JWT.unsign(request.getHeader("token"),String.class);
             UserVo userVo = userService.findUserById(userId);
             if(null == userVo){
                 return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
