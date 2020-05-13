@@ -125,10 +125,10 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
         JSONObject userCondition = new JSONObject();
         userCondition.put("id","80bc9bf1702040f884a52fa0c4c0b4e9");
         userCondition.put("password","999999");
-        userCondition.put("reversion",2);
+        userCondition.put("reversion",6);
         logger.info("修改用户密码条件: " + userCondition.toJSONString());
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.put("/updateUserPassword")
+        mockMvc.perform(MockMvcRequestBuilders.put("/user/updateUserPassword")
                 .header("token", Constant.TEST_EXAMPLE_FLAG)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -224,8 +224,8 @@ public class UserControllerTest extends AbstractTestNGSpringContextTests {
     @Test
     public void queryMenuListByUserToken() throws Exception{
         //执行测试
-        mockMvc.perform(MockMvcRequestBuilders.get("/user/queryUserPrivileges/3")
-                .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODcwMDI3MjE5ODUsInBheWxvYWQiOiJcIjI1Yjk1NzkwOGExZDQ2MTI4MDdlMGE4ZjZmMGU4OGU1XCIifQ.6pAqA-DT6B6u1bn-HPMybr1-H36zF8ab4-ZkO-vmopk")
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/queryUserPrivileges/0")
+                .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODk5NDQzMzQ4NjMsInBheWxvYWQiOiJcIjI1Yjk1NzkwOGExZDQ2MTI4MDdlMGE4ZjZmMGU4OGU1XCIifQ.3la6WNRW9rQ7D0y-BI1hRS-AbrIzQsvxXEH9Nt0JqCk")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());

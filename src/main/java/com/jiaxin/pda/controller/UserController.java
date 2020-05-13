@@ -1,18 +1,16 @@
 package com.jiaxin.pda.controller;
 
 
-import com.auth0.jwt.internal.org.apache.commons.lang3.ArrayUtils;
+
 import com.jiaxin.pda.constant.Constant;
 import com.jiaxin.pda.entity.ListPageVo;
 import com.jiaxin.pda.entity.dto.UserDto;
 import com.jiaxin.pda.entity.vo.*;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.enumeration.LoginStatusEnum;
-import com.jiaxin.pda.exception.PDAException;
 import com.jiaxin.pda.service.MenuService;
 import com.jiaxin.pda.service.RoleService;
 import com.jiaxin.pda.service.UserService;
-import com.jiaxin.pda.swagger.note.RoleNote;
 import com.jiaxin.pda.swagger.note.UserNote;
 import com.jiaxin.pda.util.JWT;
 import io.swagger.annotations.Api;
@@ -20,7 +18,6 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -336,8 +333,9 @@ public class UserController extends BaseController{
     @GetMapping("/queryUserPrivileges/{parentMenuId}")
     public GeneralVo queryUserPrivileges(HttpServletRequest request, HttpServletResponse response,@PathVariable("parentMenuId") int parentMenuId) {
         try {
-            int userId = getCurrentUserId(request,response);
-            UserPrivilegeVo userPrivilegeVo = userService.selectByUserId(userId);
+            String userId = JWT.unsign(request.getHeader("token"),String.class);
+            UserVo userVo = userService.findUserById(userId);
+            UserPrivilegeVo userPrivilegeVo = userService.selectByUserId(userVo.getUserId());
             if (null != userPrivilegeVo) {
                 List<RolePrivilegeVo> rolePrivilegeVoList = roleService.selectByRoleId(Integer.valueOf(userPrivilegeVo.getRoleId()));
                 if (null != rolePrivilegeVoList && Constant.EMPTY_INTEGER_VALUE < rolePrivilegeVoList.size()) {
