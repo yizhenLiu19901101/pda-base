@@ -7,18 +7,18 @@ spring:
   #设置数据源
   datasource:
     druid:
-      url: jdbc:mysql://122.51.17.153:3306/pda?allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true&failOverReadOnly=false&characterEncoding=UTF-8&characterSetResults=UTF-8
+      url: jdbc:mysql://203.195.136.168:3306/pda?allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true&failOverReadOnly=false&characterEncoding=UTF-8&characterSetResults=UTF-8
       #url: jdbc:mysql://localhost:3306/pda?allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true&failOverReadOnly=false&characterEncoding=UTF-8&characterSetResults=UTF-8
       username: root
-      password: cK4jWFFBfRaSFkF8
+      password: 1zhen.Liu
       driver-class-name: com.mysql.jdbc.Driver
   #redis数据库配置
   redis:
     database: 0
-    host: 122.51.17.153
+    host: 203.195.136.168
     #host:127.0.0.1
     port: 6379
-    password: dK4jWFFBfRaSFkF7
+    password: 1zhen.Liu
 #sql版本控制
 liquibase:
   change-log: classpath:/sql/master.xml
@@ -29,14 +29,3 @@ mybatis:
 #是否展示swagger接口
 swagger:
   enable: true
-
-eureka:
-  #客户端
-  client:
-    #注册中心地址
-    service-url:
-      defaultZone: http://203.195.136.168:3000/eureka
-  instance:
-    instance-id: api
-    prefer-ip-address: true
-    ip-address: 203.195.136.168
