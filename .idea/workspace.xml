@@ -32,10 +32,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.7/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.7/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application-local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application-local.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-local.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/config/SwaggerConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +112,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.11187439" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -326,22 +323,22 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="208" y="28" key="#Project_Structure/0.0.1440.900@0.0.1440.900" timestamp="1621496548372" />
-    <state width="1398" height="243" key="GridCell.Tab.0.bottom" timestamp="1621502321833">
+    <state width="1398" height="243" key="GridCell.Tab.0.bottom" timestamp="1621585724871">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="243" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1621502321833" />
-    <state width="1398" height="243" key="GridCell.Tab.0.center" timestamp="1621502321832">
+    <state width="1398" height="243" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1621585724871" />
+    <state width="1398" height="243" key="GridCell.Tab.0.center" timestamp="1621585724870">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="243" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1621502321832" />
-    <state width="1398" height="243" key="GridCell.Tab.0.left" timestamp="1621502321832">
+    <state width="1398" height="243" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1621585724870" />
+    <state width="1398" height="243" key="GridCell.Tab.0.left" timestamp="1621585724870">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="243" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1621502321832" />
-    <state width="1398" height="243" key="GridCell.Tab.0.right" timestamp="1621502321832">
+    <state width="1398" height="243" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1621585724870" />
+    <state width="1398" height="243" key="GridCell.Tab.0.right" timestamp="1621585724870">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="243" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1621502321832" />
+    <state width="1398" height="243" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1621585724870" />
     <state width="1398" height="295" key="GridCell.Tab.1.bottom" timestamp="1620813537512">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -358,10 +355,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="295" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1620813537512" />
-    <state x="229" y="86" key="SettingsEditor" timestamp="1621502090225">
+    <state x="229" y="57" key="SettingsEditor" timestamp="1621584504013">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="229" y="86" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1621502090225" />
+    <state x="229" y="57" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1621584504013" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pda$FinanceDetailControllerTest_queryByToken.ic" NAME="FinanceDetailControllerTest.queryByToken Coverage Results" MODIFIED="1579678900749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
