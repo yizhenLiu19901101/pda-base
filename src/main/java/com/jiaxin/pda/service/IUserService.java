@@ -12,7 +12,7 @@ import java.util.List;
  * 用户业务类
  * @author milo
  */
-public interface UserService {
+public interface IUserService {
 
     /**
      * 根据ID查找用户对象

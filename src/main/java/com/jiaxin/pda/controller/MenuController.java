@@ -6,8 +6,7 @@ import com.jiaxin.pda.entity.dto.MenuDto;
 import com.jiaxin.pda.entity.vo.GeneralVo;
 import com.jiaxin.pda.entity.vo.MenuVo;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
-import com.jiaxin.pda.service.MenuService;
-import com.jiaxin.pda.swagger.note.DictionaryNote;
+import com.jiaxin.pda.service.IMenuService;
 import com.jiaxin.pda.swagger.note.MenuNote;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -28,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 public class MenuController extends BaseController{
 
     @Autowired
-    private MenuService menuService;
+    private IMenuService menuService;
 
     /**
      * 插入菜单信息

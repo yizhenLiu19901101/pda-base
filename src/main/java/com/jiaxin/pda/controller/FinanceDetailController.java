@@ -3,15 +3,13 @@ package com.jiaxin.pda.controller;
 import com.jiaxin.pda.constant.Constant;
 import com.jiaxin.pda.entity.ListPageVo;
 import com.jiaxin.pda.entity.dto.FinanceDetailDto;
-import com.jiaxin.pda.entity.vo.DictionaryTypeVo;
 import com.jiaxin.pda.entity.vo.DictionaryVo;
 import com.jiaxin.pda.entity.vo.FinanceDetailVo;
 import com.jiaxin.pda.entity.vo.GeneralVo;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.enumeration.QueryTypeEnum;
-import com.jiaxin.pda.enumeration.TimeTypeEnum;
-import com.jiaxin.pda.service.DictionaryTypeService;
-import com.jiaxin.pda.service.FinanceDetailService;
+import com.jiaxin.pda.service.IDictionaryTypeService;
+import com.jiaxin.pda.service.IFinanceDetailService;
 import com.jiaxin.pda.swagger.note.FinanceDetailNote;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -35,9 +33,9 @@ import java.util.*;
 @Api(value = "finance",tags = {"finance_controller"})
 public class FinanceDetailController extends BaseController{
     @Autowired
-    private FinanceDetailService financeDetailService;
+    private IFinanceDetailService financeDetailService;
     @Autowired
-    private DictionaryTypeService dictionaryTypeService;
+    private IDictionaryTypeService dictionaryTypeService;
 
     /**
      * 插入财务信息

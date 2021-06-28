@@ -9,7 +9,7 @@ import java.util.List;
  * 菜单业务类
  * @author milo
  */
-public interface MenuService {
+public interface IMenuService {
 
 
     /**

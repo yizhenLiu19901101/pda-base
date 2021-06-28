@@ -6,7 +6,7 @@ import com.jiaxin.pda.entity.vo.RolePrivilegeVo;
 import com.jiaxin.pda.entity.vo.RoleVo;
 import com.jiaxin.pda.mapper.RoleMapper;
 import com.jiaxin.pda.mapper.RolePrivilegeMapper;
-import com.jiaxin.pda.service.RoleService;
+import com.jiaxin.pda.service.IRoleService;
 import com.jiaxin.pda.util.GenerateUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +20,7 @@ import java.util.List;
  * @author milo
  */
 @Service
-public class RoleServiceImpl implements RoleService {
+public class RoleServiceImpl implements IRoleService {
 
     private static final Logger logger = LoggerFactory.getLogger(RoleServiceImpl.class);
     @Autowired

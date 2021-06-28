@@ -10,7 +10,7 @@ import java.util.List;
  * 财务详情业务接口
  * @author milo
  */
-public interface FinanceDetailService {
+public interface IFinanceDetailService {
     /**
      * 插入财务数据
      * @param financeDetailVo

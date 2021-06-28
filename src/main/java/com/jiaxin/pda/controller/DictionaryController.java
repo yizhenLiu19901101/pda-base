@@ -8,7 +8,7 @@ import com.jiaxin.pda.entity.vo.DictionaryTypeVo;
 import com.jiaxin.pda.entity.vo.DictionaryVo;
 import com.jiaxin.pda.entity.vo.GeneralVo;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
-import com.jiaxin.pda.service.DictionaryTypeService;
+import com.jiaxin.pda.service.IDictionaryTypeService;
 import com.jiaxin.pda.swagger.note.DictionaryNote;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,7 +32,7 @@ import java.util.Map;
 public class DictionaryController extends BaseController{
 
     @Autowired
-    private DictionaryTypeService dictionaryTypeService;
+    private IDictionaryTypeService dictionaryTypeService;
 
     /**
      * 插入字典类型信息

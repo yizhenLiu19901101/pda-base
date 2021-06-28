@@ -2,11 +2,9 @@ package com.jiaxin.pda.controller;
 
 import com.jiaxin.pda.constant.Constant;
 import com.jiaxin.pda.entity.vo.GeneralVo;
-import com.jiaxin.pda.entity.vo.UserVo;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.service.FileService;
-import com.jiaxin.pda.service.UserService;
-import com.jiaxin.pda.util.JWT;
+import com.jiaxin.pda.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +26,7 @@ public class FileController extends BaseController{
     @Autowired
     private FileService fileService;
     @Autowired
-    private UserService userService;
+    private IUserService userService;
 
     @ApiOperation(value = "上传图片", notes = "上传图片")
     @PostMapping("/uploadImage")

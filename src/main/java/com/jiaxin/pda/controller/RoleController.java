@@ -7,8 +7,7 @@ import com.jiaxin.pda.entity.vo.GeneralVo;
 import com.jiaxin.pda.entity.vo.RolePrivilegeVo;
 import com.jiaxin.pda.entity.vo.RoleVo;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
-import com.jiaxin.pda.service.RoleService;
-import com.jiaxin.pda.swagger.note.MenuNote;
+import com.jiaxin.pda.service.IRoleService;
 import com.jiaxin.pda.swagger.note.RoleNote;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -17,7 +16,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +36,7 @@ public class RoleController extends BaseController{
      * 角色业务类
      */
     @Autowired
-    private RoleService roleService;
+    private IRoleService roleService;
 
     /**
      * 插入角色信息

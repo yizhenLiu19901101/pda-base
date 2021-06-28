@@ -11,7 +11,7 @@ import java.util.List;
  * 角色业务类
  * @author milo
  */
-public interface RoleService {
+public interface IRoleService {
 
 
     /**

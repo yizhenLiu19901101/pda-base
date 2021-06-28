@@ -11,7 +11,7 @@ import com.jiaxin.pda.enumeration.LoginStatusEnum;
 import com.jiaxin.pda.mapper.UserMapper;
 import com.jiaxin.pda.mapper.UserPrivilegeMapper;
 import com.jiaxin.pda.mapper.UserTokenMapper;
-import com.jiaxin.pda.service.UserService;
+import com.jiaxin.pda.service.IUserService;
 import com.jiaxin.pda.util.GenerateUtil;
 import com.jiaxin.pda.util.JWT;
 import com.jiaxin.pda.util.Md5Util;
@@ -29,7 +29,7 @@ import java.util.concurrent.TimeUnit;
  * @author milo
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements IUserService {
     private final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     /**
      * 用户映射类

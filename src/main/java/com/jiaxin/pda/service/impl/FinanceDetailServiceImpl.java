@@ -3,10 +3,8 @@ package com.jiaxin.pda.service.impl;
 import com.jiaxin.pda.constant.Constant;
 import com.jiaxin.pda.entity.dto.FinanceDetailDto;
 import com.jiaxin.pda.entity.vo.FinanceDetailVo;
-import com.jiaxin.pda.entity.vo.MenuVo;
-import com.jiaxin.pda.entity.vo.OperateVo;
 import com.jiaxin.pda.mapper.FinanceDetailMapper;
-import com.jiaxin.pda.service.FinanceDetailService;
+import com.jiaxin.pda.service.IFinanceDetailService;
 import com.jiaxin.pda.util.GenerateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +16,7 @@ import java.util.List;
  * @author milo
  */
 @Service
-public class FinanceDetailServiceImpl implements FinanceDetailService {
+public class FinanceDetailServiceImpl implements IFinanceDetailService {
     @Autowired
     private FinanceDetailMapper financeDetailMapper;
 

@@ -3,11 +3,9 @@ package com.jiaxin.pda.service.impl;
 import com.jiaxin.pda.constant.Constant;
 import com.jiaxin.pda.entity.dto.MenuDto;
 import com.jiaxin.pda.entity.vo.MenuVo;
-import com.jiaxin.pda.entity.vo.UserVo;
 import com.jiaxin.pda.mapper.MenuMapper;
-import com.jiaxin.pda.service.MenuService;
+import com.jiaxin.pda.service.IMenuService;
 import com.jiaxin.pda.util.GenerateUtil;
-import com.jiaxin.pda.util.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +16,7 @@ import java.util.List;
  * @author milo
  */
 @Service
-public class MenuServiceImpl implements MenuService {
+public class MenuServiceImpl implements IMenuService {
     @Autowired
     private MenuMapper menuMapper;
 

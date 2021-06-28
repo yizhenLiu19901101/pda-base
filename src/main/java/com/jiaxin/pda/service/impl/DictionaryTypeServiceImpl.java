@@ -7,7 +7,7 @@ import com.jiaxin.pda.entity.vo.DictionaryTypeVo;
 import com.jiaxin.pda.entity.vo.DictionaryVo;
 import com.jiaxin.pda.mapper.DictionaryMapper;
 import com.jiaxin.pda.mapper.DictionaryTypeMapper;
-import com.jiaxin.pda.service.DictionaryTypeService;
+import com.jiaxin.pda.service.IDictionaryTypeService;
 import com.jiaxin.pda.util.GenerateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ import java.util.List;
  * @author milo
  */
 @Service
-public class DictionaryTypeServiceImpl implements DictionaryTypeService {
+public class DictionaryTypeServiceImpl implements IDictionaryTypeService {
 
     @Autowired
     private DictionaryTypeMapper dictionaryTypeMapper;

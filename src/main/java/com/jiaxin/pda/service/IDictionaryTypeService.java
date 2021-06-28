@@ -12,7 +12,7 @@ import java.util.List;
  * @author milo
  *
  */
-public interface DictionaryTypeService {
+public interface IDictionaryTypeService {
     /**
      * 插入字典类型
      * @param dictionaryTypeVo

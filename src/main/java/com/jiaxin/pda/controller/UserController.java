@@ -8,9 +8,9 @@ import com.jiaxin.pda.entity.dto.UserDto;
 import com.jiaxin.pda.entity.vo.*;
 import com.jiaxin.pda.enumeration.ErrorListEnum;
 import com.jiaxin.pda.enumeration.LoginStatusEnum;
-import com.jiaxin.pda.service.MenuService;
-import com.jiaxin.pda.service.RoleService;
-import com.jiaxin.pda.service.UserService;
+import com.jiaxin.pda.service.IMenuService;
+import com.jiaxin.pda.service.IRoleService;
+import com.jiaxin.pda.service.IUserService;
 import com.jiaxin.pda.swagger.note.UserNote;
 import com.jiaxin.pda.util.JWT;
 import io.swagger.annotations.Api;
@@ -35,11 +35,11 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController extends BaseController{
     @Autowired
-    private UserService userService;
+    private IUserService userService;
     @Autowired
-    private RoleService roleService;
+    private IRoleService roleService;
     @Autowired
-    private MenuService menuService;
+    private IMenuService menuService;
     /**
      * 根据ID查找用户信息
      * @param id
