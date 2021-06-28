@@ -24,14 +24,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af92b1f6-cbf2-4c80-8b77-49a8b22389c3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/DictionaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/DictionaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/FinanceDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/FinanceDetailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jiaxin/pda/controller/UserController.java" afterDir="false" />
-    </list>
+    <list default="true" id="af92b1f6-cbf2-4c80-8b77-49a8b22389c3" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

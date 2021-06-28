@@ -16,7 +16,7 @@ class CrosConfig extends WebMvcConfigurerAdapter {
         registry.addMapping("/**")
                 .allowedOrigins("*")
                 .allowCredentials(true)
-                .allowedMethods("GET", "POST", "DELETE", "PUT")
+                .allowedMethods("OPTIONS","GET", "POST", "DELETE", "PUT")
                 .maxAge(3600);
     }
 }
