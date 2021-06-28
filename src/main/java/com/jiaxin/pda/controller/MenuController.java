@@ -13,7 +13,6 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -51,11 +50,7 @@ public class MenuController extends BaseController{
                 initOperateParam(request,response,menuVo,Constant.CREATE_TYPE);
                 result = menuService.insertMenu(menuVo);
             }
-            if(Constant.OPERATE_SUCCESS == result){
-                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-            }else{
-                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
-            }
+            return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
         }catch(Exception e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
@@ -75,11 +70,7 @@ public class MenuController extends BaseController{
             logger.info("删除菜单，入参为：{}",menuVo);
             initOperateParam(request,response,menuVo,Constant.UPDATE_TYPE);
             int result = menuService.deleteMenu(menuVo);
-            if(Constant.OPERATE_SUCCESS == result){
-                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-            }else{
-                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
-            }
+            return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
         }catch(Exception e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
@@ -108,11 +99,7 @@ public class MenuController extends BaseController{
                 initOperateParam(request,response,menuVo,Constant.UPDATE_TYPE);
                 result = menuService.updateMenuName(menuVo);
             }
-            if(Constant.OPERATE_SUCCESS == result){
-                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-            }else{
-                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
-            }
+            return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
         }catch(Exception e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);

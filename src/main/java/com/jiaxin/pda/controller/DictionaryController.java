@@ -1,5 +1,6 @@
 package com.jiaxin.pda.controller;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.jiaxin.pda.constant.Constant;
 import com.jiaxin.pda.entity.ListPageVo;
 import com.jiaxin.pda.entity.dto.DictionaryDto;
@@ -57,11 +58,7 @@ public class DictionaryController extends BaseController{
             }else{
                 return new GeneralVo(ErrorListEnum.DICTIONARY_TYPE_NAME_REPEAT,null);
             }
-            if(Constant.OPERATE_SUCCESS == result){
-                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-            }else{
-                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
-            }
+            return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
         }catch(Exception e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
@@ -91,11 +88,7 @@ public class DictionaryController extends BaseController{
             }else{
                 return new GeneralVo(ErrorListEnum.ITEM_NAME_REPEAT,null);
             }
-            if(Constant.OPERATE_SUCCESS == result){
-                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-            }else{
-                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
-            }
+            return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
         }catch(Exception e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
@@ -125,11 +118,7 @@ public class DictionaryController extends BaseController{
                 initOperateParam(request,response,dictionaryTypeVo,Constant.UPDATE_TYPE);
                 result = dictionaryTypeService.updateDictionaryType(dictionaryTypeVo);
             }
-            if(Constant.OPERATE_SUCCESS == result){
-                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-            }else{
-                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
-            }
+            return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
         }catch(Exception e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
@@ -146,11 +135,7 @@ public class DictionaryController extends BaseController{
     public GeneralVo deleteDictionaryType(HttpServletRequest request,HttpServletResponse response,@RequestBody DictionaryTypeVo dictionaryTypeVo){
         try{
             int result = dictionaryTypeService.deleteDictionaryType(dictionaryTypeVo);
-            if(Constant.OPERATE_SUCCESS == result){
-                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-            }else{
-                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
-            }
+            return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
         }catch(Exception e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
@@ -198,11 +183,7 @@ public class DictionaryController extends BaseController{
                 initOperateParam(request,response,dictionaryVo,Constant.UPDATE_TYPE);
                 result = dictionaryTypeService.updateDictionaryItem(dictionaryVo);
             }
-            if(Constant.OPERATE_SUCCESS == result){
-                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-            }else{
-                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
-            }
+            return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
         }catch(Exception e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
@@ -220,11 +201,7 @@ public class DictionaryController extends BaseController{
         try{
             logger.info("删除字典条目信息，入参为：{}",dictionaryVo);
             int result = dictionaryTypeService.deleteDictionaryItem(dictionaryVo);
-            if(Constant.OPERATE_SUCCESS == result){
-                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-            }else{
-                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
-            }
+            return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
         }catch(Exception e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
@@ -275,15 +252,14 @@ public class DictionaryController extends BaseController{
         try{
             int userId = getCurrentUserId(request,response);
             List<DictionaryVo> dictionaryList = dictionaryTypeService.queryDictionaryByUserId(userId);
-            if(null != dictionaryList && Constant.EMPTY_INTEGER_VALUE < dictionaryList.size()){
+            if(CollectionUtil.isNotEmpty(dictionaryList)){
                 List<Map<String,Object>> resultList = new ArrayList<>();
-                Map<String,Object> result;
-                for(DictionaryVo dictionaryVo:dictionaryList){
-                    result = new HashMap<String,Object>();
-                    result.put("label",dictionaryVo.getItemName());
-                    result.put("value",dictionaryVo.getUuid());
+                dictionaryList.forEach(e->{
+                    Map<String,Object>  result = new HashMap();
+                    result.put("label",e.getItemName());
+                    result.put("value",e.getUuid());
                     resultList.add(result);
-                }
+                });
                 return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,resultList);
             }else{
                 return new GeneralVo(ErrorListEnum.NO_DATA,null);
@@ -293,5 +269,4 @@ public class DictionaryController extends BaseController{
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
         }
     }
-
 }

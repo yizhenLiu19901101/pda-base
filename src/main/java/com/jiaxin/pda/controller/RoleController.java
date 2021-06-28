@@ -116,11 +116,7 @@ public class RoleController extends BaseController{
             initOperateParam(request,response,roleVo, Constant.UPDATE_TYPE);
             //删除角色名称
             int result = roleService.deleteRole(roleVo);
-            if(Constant.OPERATE_SUCCESS == result){
-                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-            }else{
-                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
-            }
+            return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
         }catch(Exception e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
@@ -183,11 +179,7 @@ public class RoleController extends BaseController{
             //初始化创建参数
             initSimpleOperateParam(request,response,rolePrivilegeVo, Constant.UPDATE_TYPE);
             int result = roleService.deleteRoleMenu(rolePrivilegeVo);
-            if(Constant.EMPTY_INTEGER_VALUE == result){
-                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
-            }else{
-                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-            }
+            return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
         }catch(Exception e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);

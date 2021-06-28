@@ -50,11 +50,7 @@ public class FinanceDetailController extends BaseController{
             logger.info("插入财务信息，入参为：{}",financeDetailVo);
             initOperateParam(request,response,financeDetailVo, Constant.CREATE_TYPE);
             int result = financeDetailService.insertFinanceDetail(financeDetailVo);
-            if(Constant.OPERATE_SUCCESS == result){
-                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-            }else{
-                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
-            }
+            return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
         }catch(Exception e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
@@ -74,11 +70,7 @@ public class FinanceDetailController extends BaseController{
             logger.info("修改财务信息，入参为：{}",financeDetailVo);
             initOperateParam(request,response,financeDetailVo, Constant.UPDATE_TYPE);
             int result = financeDetailService.updateFinanceDetail(financeDetailVo);
-            if(Constant.OPERATE_SUCCESS == result){
-                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-            }else{
-                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
-            }
+            return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
         }catch(Exception e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);
@@ -98,11 +90,7 @@ public class FinanceDetailController extends BaseController{
             logger.info("删除财务信息，入参为：{}",financeDetailVo);
             initOperateParam(request,response,financeDetailVo, Constant.UPDATE_TYPE);
             int result = financeDetailService.deleteFinanceDetail(financeDetailVo);
-            if(Constant.OPERATE_SUCCESS == result){
-                return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
-            }else{
-                return new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
-            }
+            return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
         }catch(Exception e){
             e.printStackTrace();
             return new GeneralVo(ErrorListEnum.SERVER_INTERNAL_ERROR,null);

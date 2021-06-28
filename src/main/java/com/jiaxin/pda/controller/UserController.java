@@ -140,9 +140,9 @@ public class UserController extends BaseController{
                     return new GeneralVo(ErrorListEnum.USERNAME_REPEAT,null);
                 }
             }
-            //修改修改人
+            // 修改修改人
             initOperateParam(request,response,userVo,Constant.UPDATE_TYPE);
-            //修改用户信息
+            // 修改用户信息
             userService.updateUserInfo(userVo);
             return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null);
         }catch(Exception e){
