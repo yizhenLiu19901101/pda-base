@@ -27,7 +27,7 @@ public class FileServiceImpl implements FileService {
     @Override
     public String insertFile(MultipartFile fileVo,int userId) {
         try {
-                String wholePath = File.separator+"images";
+                String wholePath = uploadFilePrefix+File.separator+"images";
                 File folder = new File(wholePath);
                 if (!folder.exists()){
                     folder.mkdirs();
@@ -61,7 +61,7 @@ public class FileServiceImpl implements FileService {
                     fileObject.setUpdatedTime(new Date());
                     int result = mapper.insertFile(fileObject);
                     if (Constant.OPERATE_SUCCESS == result) {
-                        return uploadFilePrefix + fileObject.getFilePath() + File.separator + fileName;
+                        return wholePath + File.separator + fileName;
                     }
                 }else{
                     System.out.println("没有写权限");

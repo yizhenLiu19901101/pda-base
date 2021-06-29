@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiaxin.pda.mapper.RoleMapper">
+
+    <!-- 查询最大的角色ID -->
+    <select id="selectMaxRoleId" resultType="java.lang.Integer">
+        SELECT
+            IFNULL( max( tr.role_id ), 0 )
+        FROM
+            tb_role tr
+        WHERE
+            tr.delete_flag = 0
+    </select>
+
+    <!--  插入角色 -->
+    <insert id="insertRole" parameterType="com.jiaxin.pda.entity.vo.RoleVo">
+        INSERT INTO tb_role (
+            id,
+            role_id,
+            role_name,
+            delete_flag,
+            reversion,
+            created_by,
+            created_time,
+            updated_by,
+            updated_time
+        )
+        VALUES
+        (
+            #{id},
+            #{roleId},
+            #{roleName},
+            #{deleteFlag},
+            #{reversion},
+            #{createdBy},
+            #{createdTime},
+            #{updatedBy},
+            #{updatedTime}
+        )
+    </insert>
+
+
+    <!-- 删除角色 -->
+    <update id="deleteRole" parameterType="com.jiaxin.pda.entity.vo.RoleVo">
+        UPDATE tb_role SET
+            delete_flag = #{deleteFlag},
+            reversion = reversion + 1,
+            updated_by = #{updatedBy},
+            updated_time = #{updatedTime}
+        WHERE
+            id = #{id}
+        AND reversion = #{reversion}
+    </update>
+
+    <!-- 修改角色名称 -->
+    <update id="updateRoleName" parameterType="com.jiaxin.pda.entity.vo.RoleVo">
+        UPDATE tb_role SET
+            role_name = #{roleName},
+            reversion = reversion + 1,
+            updated_by = #{updatedBy},
+            updated_time = #{updatedTime}
+        WHERE
+            id = #{id}
+        AND reversion = #{reversion}
+    </update>
+
+    <!-- 根据ID查询角色 -->
+    <select id="findRoleById" parameterType="java.lang.String" resultType="com.jiaxin.pda.entity.vo.RoleVo">
+        SELECT
+            tr.id,
+            tr.role_id AS roleId,
+            tr.role_name AS roleName,
+            tr.reversion,
+            tr.delete_flag AS deleteFlag,
+            tr.created_by AS createdBy,
+            tr.created_time AS createdTime,
+            tr.updated_by AS updatedBy,
+            tr.updated_time AS updatedTime
+        FROM
+            tb_role tr
+        WHERE
+            tr.id = #{id}
+    </select>
+
+    <!-- 根据ID查询角色 -->
+    <select id="selectRoleByPage" parameterType="com.jiaxin.pda.entity.dto.RoleDto" resultType="com.jiaxin.pda.entity.vo.RoleVo">
+        SELECT
+            tr.id,
+            tr.role_id AS roleId,
+            tr.role_name AS roleName,
+            tr.reversion,
+            tr.delete_flag AS deleteFlag,
+            tr.created_by AS createdBy,
+            tr.created_time AS createdTime,
+            tr.updated_by AS updatedBy,
+            tr.updated_time AS updatedTime
+        FROM
+            tb_role tr
+        WHERE tr.delete_flag = 0
+        <if test="roleName != null and roleName != ''">
+            and tr.role_name like concat('%',#{roleName},'%')
+        </if>
+    </select>
+
+    <!-- 根据角色名称查询的角色信息 -->
+    <select id="selectByRoleName" parameterType="java.lang.String" resultType="com.jiaxin.pda.entity.vo.RoleVo">
+        SELECT
+            tr.id,
+            tr.role_id AS roleId,
+            tr.role_name AS roleName,
+            tr.reversion,
+            tr.delete_flag AS deleteFlag,
+            tr.created_by AS createdBy,
+            tr.created_time AS createdTime,
+            tr.updated_by AS updatedBy,
+            tr.updated_time AS updatedTime
+        FROM
+            tb_role tr
+        WHERE tr.role_name = #{roleName} and tr.delete_flag = 0
+    </select>
+
+    <!-- 根据角色名称查询的角色信息 -->
+    <select id="queryById" parameterType="java.lang.String" resultType="com.jiaxin.pda.entity.vo.RoleVo">
+        SELECT
+        tr.id,
+        tr.role_id AS roleId,
+        tr.role_name AS roleName,
+        tr.reversion,
+        tr.delete_flag AS deleteFlag,
+        tr.created_by AS createdBy,
+        tr.created_time AS createdTime,
+        tr.updated_by AS updatedBy,
+        tr.updated_time AS updatedTime
+        FROM
+        tb_role tr
+        WHERE tr.id = #{id}
+    </select>
+
+</mapper>
