@@ -7,6 +7,7 @@ import com.jiaxin.pda.service.FileService;
 import com.jiaxin.pda.util.GenerateUtil;
 import org.apache.commons.fileupload.FileItem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,7 +22,8 @@ import java.util.Date;
 public class FileServiceImpl implements FileService {
     @Autowired
     private FileMapper mapper;
-
+    @Value("${uploadFile.prefix}")
+    private String uploadFilePrefix;
     @Override
     public String insertFile(MultipartFile fileVo,int userId) {
         try {
@@ -59,7 +61,7 @@ public class FileServiceImpl implements FileService {
                     fileObject.setUpdatedTime(new Date());
                     int result = mapper.insertFile(fileObject);
                     if (Constant.OPERATE_SUCCESS == result) {
-                        return Constant.WEB_SITE_PREFIX + fileObject.getFilePath() + File.separator + fileName;
+                        return uploadFilePrefix + fileObject.getFilePath() + File.separator + fileName;
                     }
                 }else{
                     System.out.println("没有写权限");

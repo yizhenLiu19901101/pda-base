@@ -29,3 +29,7 @@ mybatis:
 #是否展示swagger接口
 swagger:
   enable: true
+uploadFile:
+  prefix: /home
+
+
