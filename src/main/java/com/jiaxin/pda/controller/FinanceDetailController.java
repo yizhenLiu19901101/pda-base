@@ -256,9 +256,9 @@ public class FinanceDetailController extends BaseController{
             detailData.put("note",financeDetailVo.getNote());
             detailData.put("itemId",financeDetailVo.getItemId());
             detailData.put("reversion",financeDetailVo.getReversion());
-            //以明细的方式展示数据
+            // 以明细的方式展示数据
             DictionaryVo dictionaryVo = dictionaryTypeService.queryDictionaryItemInfoByUuid(financeDetailVo.getItemId());
-            detailData.put("itemName",dictionaryVo.getItemName());
+            detailData.put("itemName",dictionaryVo == null?"":dictionaryVo.getItemName());
             detailData.put("id",financeDetailVo.getId());
             result.add(detailData);
         }

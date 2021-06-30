@@ -30,6 +30,6 @@ mybatis:
 swagger:
   enable: true
 uploadFile:
-  prefix: /Users/mac/documents
+  prefix: /home
 
 

@@ -128,14 +128,14 @@ public class FinanceDetailControllerTest extends AbstractTestNGSpringContextTest
     public void queryByToken() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
-        userCondition.put("timeType",1);
-        userCondition.put("queryType","-1");
+      //  userCondition.put("timeType",1);
+        userCondition.put("queryType","1");
         userCondition.put("startDate",null);
         userCondition.put("endDate",null);
         logger.info("查询财务信息");
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.post("/finance/getDetailDate")
-                .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODcwMTUyMzYyMjIsInBheWxvYWQiOiJcIjI1Yjk1NzkwOGExZDQ2MTI4MDdlMGE4ZjZmMGU4OGU1XCIifQ.sxky_sz85i3kLv1zCiOg_uwJ0oSmqVhUPxz3cbLAi18")
+                .header("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjU2MTk5Mjc2NzEsInBheWxvYWQiOiJcImJkNjAxZjUzYTFiMDQzYjA4ZjllYThiMmI3YjhlZWI1XCIifQ.zKJwwMGOW_Hr5T_QRFNFiPDVIOWSnZown4omdyyk8RU")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8").content(userCondition.toString().getBytes()))
