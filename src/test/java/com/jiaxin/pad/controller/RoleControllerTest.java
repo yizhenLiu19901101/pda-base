@@ -51,7 +51,7 @@ public class RoleControllerTest extends AbstractTestNGSpringContextTests {
                 .build();
     }
 
-    @Test
+    @Test(enabled = false)
     public void insertRole() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
@@ -66,7 +66,7 @@ public class RoleControllerTest extends AbstractTestNGSpringContextTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void updateRoleName() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
@@ -83,7 +83,7 @@ public class RoleControllerTest extends AbstractTestNGSpringContextTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void deleteRole() throws Exception{
         JSONObject userCondition = new JSONObject();
         userCondition.put("id","1f2e572cb99344459ed9d7e600e19574");
@@ -98,7 +98,7 @@ public class RoleControllerTest extends AbstractTestNGSpringContextTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void queryRoleByPage() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
@@ -115,7 +115,7 @@ public class RoleControllerTest extends AbstractTestNGSpringContextTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void givePrivilege() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
@@ -131,7 +131,7 @@ public class RoleControllerTest extends AbstractTestNGSpringContextTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void cancelPrivilege() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
@@ -147,7 +147,7 @@ public class RoleControllerTest extends AbstractTestNGSpringContextTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void queryPrivilegeByRoleId() throws Exception{
         //执行测试
         mockMvc.perform(MockMvcRequestBuilders.get("/role/queryPrivilegeByRoleId/1")

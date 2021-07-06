@@ -55,7 +55,7 @@ public class MenuControllerTest extends AbstractTestNGSpringContextTests {
                 .build();
     }
 
-    @Test
+    @Test(enabled = false)
     public void insertMenu() throws Exception{
         logger.info("插入菜单信息");
         //设置查询条件
@@ -75,7 +75,7 @@ public class MenuControllerTest extends AbstractTestNGSpringContextTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void updateMenuName() throws Exception{
         logger.info("修改菜单名称");
         //设置查询条件
@@ -93,7 +93,7 @@ public class MenuControllerTest extends AbstractTestNGSpringContextTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void deleteMenu() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
@@ -109,7 +109,7 @@ public class MenuControllerTest extends AbstractTestNGSpringContextTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void queryByPage() throws Exception{
         logger.info("分页查询菜单对象");
         //设置查询条件

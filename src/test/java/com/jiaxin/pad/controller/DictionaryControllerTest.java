@@ -52,7 +52,7 @@ public class DictionaryControllerTest extends AbstractTestNGSpringContextTests {
                 .build();
     }
 
-    @Test
+    @Test(enabled = false)
     public void insertDictionaryType() throws Exception{
         logger.info("插入字典类型信息");
         //设置查询条件
@@ -68,7 +68,7 @@ public class DictionaryControllerTest extends AbstractTestNGSpringContextTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void updateDictionaryType() throws Exception{
         logger.info("修改字典类型信息");
         //设置查询条件
@@ -86,7 +86,7 @@ public class DictionaryControllerTest extends AbstractTestNGSpringContextTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void deleteDictionaryType() throws Exception{
         logger.info("删除字典类型信息");
         //设置查询条件
@@ -103,7 +103,7 @@ public class DictionaryControllerTest extends AbstractTestNGSpringContextTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void queryDictionaryTypeByPage() throws Exception{
         logger.info("分页查找字典类型信息");
         //设置查询条件
@@ -121,7 +121,7 @@ public class DictionaryControllerTest extends AbstractTestNGSpringContextTests {
     }
 
 
-    @Test
+    @Test(enabled = false)
     public void insertDictionaryItem() throws Exception{
         logger.info("插入字典信息");
         //设置查询条件
@@ -139,7 +139,7 @@ public class DictionaryControllerTest extends AbstractTestNGSpringContextTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void updateDictionaryItem() throws Exception{
         logger.info("修改字典信息");
         //设置查询条件
@@ -158,7 +158,7 @@ public class DictionaryControllerTest extends AbstractTestNGSpringContextTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void deleteDictionaryItem() throws Exception{
         logger.info("删除字典信息");
         //设置查询条件
@@ -174,7 +174,7 @@ public class DictionaryControllerTest extends AbstractTestNGSpringContextTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void queryDictionaryByPage() throws Exception{
         logger.info("分页查找字典信息");
         //设置查询条件
@@ -191,7 +191,7 @@ public class DictionaryControllerTest extends AbstractTestNGSpringContextTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void queryDictionaryByTypeId() throws Exception{
         logger.info("根据typeId查找字典信息");
         //执行测试
@@ -202,7 +202,7 @@ public class DictionaryControllerTest extends AbstractTestNGSpringContextTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void queryDictionaryByToken() throws Exception{
         logger.info("根据token查找字典信息");
         //执行测试

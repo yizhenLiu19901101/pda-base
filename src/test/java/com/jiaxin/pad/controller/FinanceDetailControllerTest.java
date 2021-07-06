@@ -53,7 +53,7 @@ public class FinanceDetailControllerTest extends AbstractTestNGSpringContextTest
                 .build();
     }
 
-    @Test
+    @Test(enabled = false)
     public void insertFinanceDetail() throws Exception{
         logger.info("插入财务信息");
         //设置查询条件
@@ -71,7 +71,7 @@ public class FinanceDetailControllerTest extends AbstractTestNGSpringContextTest
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void updateFinanceDetail() throws Exception{
         logger.info("修改财务信息");
         //设置查询条件
@@ -90,7 +90,7 @@ public class FinanceDetailControllerTest extends AbstractTestNGSpringContextTest
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void deleteFinanceDetail() throws Exception{
         logger.info("删除财务信息");
         //设置查询条件
@@ -106,7 +106,7 @@ public class FinanceDetailControllerTest extends AbstractTestNGSpringContextTest
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void queryByPage() throws Exception{
         logger.info("分页查询财务信息");
         //设置查询条件
@@ -124,7 +124,7 @@ public class FinanceDetailControllerTest extends AbstractTestNGSpringContextTest
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+    @Test(enabled = false)
     public void queryByToken() throws Exception{
         //设置查询条件
         JSONObject userCondition = new JSONObject();
