@@ -347,8 +347,7 @@ public class UserController extends BaseController{
                             menuIdList.add(rolePrivilegeVo.getMenuId());
                         }
                     }
-                    List<MenuVo> menuVoList = menuService.queryMenuListByMenuIdList(menuIdList);
-                    return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS, menuVoList);
+                    return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS, menuService.queryMenuListByMenuIdList(menuIdList));
                 }
             }
             return new GeneralVo(ErrorListEnum.OPERATE_FAIL, null);

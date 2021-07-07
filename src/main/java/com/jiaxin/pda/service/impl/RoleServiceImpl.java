@@ -8,6 +8,7 @@ import com.jiaxin.pda.mapper.RoleMapper;
 import com.jiaxin.pda.mapper.RolePrivilegeMapper;
 import com.jiaxin.pda.service.IRoleService;
 import com.jiaxin.pda.util.GenerateUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,8 @@ import java.util.List;
  * @author milo
  */
 @Service
+@Slf4j
 public class RoleServiceImpl implements IRoleService {
-
-    private static final Logger logger = LoggerFactory.getLogger(RoleServiceImpl.class);
     @Autowired
     private RoleMapper roleMapper;
     @Autowired
@@ -37,20 +37,20 @@ public class RoleServiceImpl implements IRoleService {
     public int insertRole(RoleVo roleVo) {
         roleVo.setId(GenerateUtil.generateRandomString());
         roleVo.setRoleId(roleMapper.selectMaxRoleId()+ Constant.INCREASE_PACE);
-        logger.info("插入角色，入参为-{}",roleVo);
+        log.info("插入角色，入参为-{}",roleVo);
         return roleMapper.insertRole(roleVo);
     }
 
     @Override
     public int deleteRole(RoleVo  roleVo) {
         roleVo.setDeleteFlag(true);
-        logger.info("删除角色，入参为-{}",roleVo);
+        log.info("删除角色，入参为-{}",roleVo);
         return roleMapper.deleteRole(roleVo);
     }
 
     @Override
     public int updateRoleName(RoleVo roleVo) {
-        logger.info("修改角色名称，入参为-{}",roleVo);
+        log.info("修改角色名称，入参为-{}",roleVo);
         return roleMapper.updateRoleName(roleVo);
     }
 
@@ -84,6 +84,4 @@ public class RoleServiceImpl implements IRoleService {
     public int queryMenuAuthorityByCondition(String menuId, String roleId) {
         return rolePrivilegeMapper.queryMenuAuthorityByCondition(menuId,roleId);
     }
-
-
 }
