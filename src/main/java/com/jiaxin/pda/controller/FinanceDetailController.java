@@ -14,6 +14,7 @@ import com.jiaxin.pda.swagger.note.FinanceDetailNote;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
@@ -31,6 +32,7 @@ import java.util.*;
 @RequestMapping(value = "/finance")
 @ApiIgnore
 @Api(value = "finance",tags = {"finance_controller"})
+@Slf4j
 public class FinanceDetailController extends BaseController{
     @Autowired
     private IFinanceDetailService financeDetailService;
@@ -47,7 +49,7 @@ public class FinanceDetailController extends BaseController{
     @ApiOperation(value = "插入财务详情",notes = FinanceDetailNote.INSERT_NOTE)
     public GeneralVo insertFinanceDetail(HttpServletRequest request, HttpServletResponse response, @RequestBody FinanceDetailVo financeDetailVo){
         try{
-            logger.info("插入财务信息，入参为：{}",financeDetailVo);
+            log.info("插入财务信息，入参为：{}",financeDetailVo);
             initOperateParam(request,response,financeDetailVo, Constant.CREATE_TYPE);
             int result = financeDetailService.insertFinanceDetail(financeDetailVo);
             return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
@@ -67,7 +69,7 @@ public class FinanceDetailController extends BaseController{
     @ApiOperation(value = "修改财务详情",notes = FinanceDetailNote.UPDATE_NOTE)
     public GeneralVo updateFinanceDetail(HttpServletRequest request, HttpServletResponse response,@RequestBody FinanceDetailVo financeDetailVo){
         try{
-            logger.info("修改财务信息，入参为：{}",financeDetailVo);
+            log.info("修改财务信息，入参为：{}",financeDetailVo);
             initOperateParam(request,response,financeDetailVo, Constant.UPDATE_TYPE);
             int result = financeDetailService.updateFinanceDetail(financeDetailVo);
             return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
@@ -87,7 +89,7 @@ public class FinanceDetailController extends BaseController{
     @ApiOperation(value = "删除财务详情",notes = FinanceDetailNote.DELETE_NOTE)
     public GeneralVo deleteFinanceDetail(HttpServletRequest request, HttpServletResponse response,@RequestBody FinanceDetailVo financeDetailVo){
         try{
-            logger.info("删除财务信息，入参为：{}",financeDetailVo);
+            log.info("删除财务信息，入参为：{}",financeDetailVo);
             initOperateParam(request,response,financeDetailVo, Constant.UPDATE_TYPE);
             int result = financeDetailService.deleteFinanceDetail(financeDetailVo);
             return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);

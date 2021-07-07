@@ -14,6 +14,7 @@ import com.jiaxin.pda.swagger.note.DictionaryNote;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +31,7 @@ import java.util.Map;
 @RestController
 @Api(value = "dictionary",tags = {"dictionary_controller"})
 @RequestMapping("/dictionary")
+@Slf4j
 public class DictionaryController extends BaseController{
 
     @Autowired
@@ -45,7 +47,7 @@ public class DictionaryController extends BaseController{
     @ApiOperation(value = "插入字典类型",notes = DictionaryNote.TYPE_INSERT_NOTE)
     public GeneralVo insertDictionaryType(HttpServletRequest request,HttpServletResponse response, @RequestBody DictionaryTypeVo dictionaryTypeVo){
         try{
-            logger.info("插入数据字典类型：{}",dictionaryTypeVo);
+            log.info("插入数据字典类型：{}",dictionaryTypeVo);
             //数据字典类型名称校验
             if(null == dictionaryTypeVo.getTypeName() || Constant.EMPTY_INTEGER_VALUE == dictionaryTypeVo.getTypeName().trim().length()){
                 return new GeneralVo(ErrorListEnum.DICTIONARY_TYPE_NAME_NOT_BLANK,null);
@@ -75,7 +77,7 @@ public class DictionaryController extends BaseController{
     @ApiOperation(value = "插入字典项",notes = DictionaryNote.ITEM_INSERT_NOTE)
     public GeneralVo insertDictionaryType(HttpServletRequest request,HttpServletResponse response,@RequestBody DictionaryVo dictionaryVo){
         try{
-            logger.info("插入字典项，参数信息为：{}",dictionaryVo);
+            log.info("插入字典项，参数信息为：{}",dictionaryVo);
             int result = 0;
             //数据字典类型名称校验
             if(null == dictionaryVo.getItemName() || Constant.EMPTY_INTEGER_VALUE == dictionaryVo.getItemName().trim().length()){
@@ -105,7 +107,7 @@ public class DictionaryController extends BaseController{
     @ApiOperation(value = "修改字典类型",notes = DictionaryNote.TYPE_UPDATE_NOTE)
     public GeneralVo updateDictionaryType(HttpServletRequest request,HttpServletResponse response,@RequestBody DictionaryTypeVo dictionaryTypeVo){
         try{
-            logger.info("修改字典类型，入参为:{}",dictionaryTypeVo);
+            log.info("修改字典类型，入参为:{}",dictionaryTypeVo);
             //数据字典类型名称校验
             if(null == dictionaryTypeVo.getTypeName() || Constant.EMPTY_INTEGER_VALUE == dictionaryTypeVo.getTypeName().trim().length()){
                 return new GeneralVo(ErrorListEnum.DICTIONARY_TYPE_NAME_NOT_BLANK,null);
@@ -151,7 +153,7 @@ public class DictionaryController extends BaseController{
     @ApiOperation(value = "分页查找字典类型",notes = DictionaryNote.TYPE_QUERY_BY_PAGE_NOTE)
     public ListPageVo queryDictionaryTypeByPage(@RequestBody DictionaryTypeDto dictionaryTypeDto){
         try{
-            logger.info("分页查询字典类型，入参为：{}",dictionaryTypeDto);
+            log.info("分页查询字典类型，入参为：{}",dictionaryTypeDto);
             dictionaryTypeDto.build();
             return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,dictionaryTypeService.queryDictionaryTypeByPage(dictionaryTypeDto),dictionaryTypeDto.getPageInfo());
         }catch(Exception e){
@@ -170,7 +172,7 @@ public class DictionaryController extends BaseController{
     @ApiOperation(value = "修改字典项",notes = DictionaryNote.ITEM_UPDATE_NOTE)
     public GeneralVo updateDictionaryType(HttpServletRequest request,HttpServletResponse response,@RequestBody DictionaryVo dictionaryVo){
         try{
-            logger.info("修改字典条目信息，入参为：{}",dictionaryVo);
+            log.info("修改字典条目信息，入参为：{}",dictionaryVo);
             //数据字典类型名称校验
             if(null == dictionaryVo.getItemName() || Constant.EMPTY_INTEGER_VALUE == dictionaryVo.getItemName().trim().length()){
                 return new GeneralVo(ErrorListEnum.ITEM_NAME_NOT_BLANK,null);
@@ -199,7 +201,7 @@ public class DictionaryController extends BaseController{
     @DeleteMapping("/deleteDictionaryItem")
     public GeneralVo deleteDictionary(HttpServletRequest request,HttpServletResponse response,@RequestBody DictionaryVo dictionaryVo){
         try{
-            logger.info("删除字典条目信息，入参为：{}",dictionaryVo);
+            log.info("删除字典条目信息，入参为：{}",dictionaryVo);
             int result = dictionaryTypeService.deleteDictionaryItem(dictionaryVo);
             return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
         }catch(Exception e){
@@ -217,7 +219,7 @@ public class DictionaryController extends BaseController{
     @ApiOperation(value = "分页查询字典项",notes = DictionaryNote.ITEM_QUERY_BY_PAGE_NOTE)
     public ListPageVo queryDictionaryByPage(@RequestBody DictionaryDto dictionaryDto){
         try{
-            logger.info("分页查询字典项，入参为：{}",dictionaryDto);
+            log.info("分页查询字典项，入参为：{}",dictionaryDto);
             dictionaryDto.build();
             return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,dictionaryTypeService.queryDictionaryByPage(dictionaryDto),dictionaryDto.getPageInfo());
         }catch(Exception e){
@@ -234,7 +236,7 @@ public class DictionaryController extends BaseController{
     @GetMapping("/queryDictionaryByTypeId/{typeId}")
     public GeneralVo queryDictionaryByPage(@PathVariable("typeId") Integer typeId){
         try{
-            logger.info("根据字典类型ID查询字典项，入参为：{}",typeId);
+            log.info("根据字典类型ID查询字典项，入参为：{}",typeId);
             return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,dictionaryTypeService.queryDictionaryByTypeId(typeId));
         }catch(Exception e){
             e.printStackTrace();

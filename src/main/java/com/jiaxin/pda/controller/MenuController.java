@@ -11,6 +11,7 @@ import com.jiaxin.pda.swagger.note.MenuNote;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @Api(value = "menu",tags = {"menu_controller"})
 @RequestMapping("/menu")
+@Slf4j
 public class MenuController extends BaseController{
 
     @Autowired
@@ -38,7 +40,7 @@ public class MenuController extends BaseController{
     @ApiOperation(value = "插入菜单信息",notes = MenuNote.INSERT_NOTE)
     public GeneralVo insertMenu(HttpServletRequest request, HttpServletResponse response,@RequestBody MenuVo menuVo){
         try{
-            logger.info("菜单信息：{}",menuVo);
+            log.info("菜单信息：{}",menuVo);
             int result;
             if(null == menuVo.getMenuName() || Constant.EMPTY_INTEGER_VALUE == menuVo.getMenuName().trim().length()){
                 return new GeneralVo(ErrorListEnum.MENU_NAME_NOT_BLANK,null);
@@ -67,7 +69,7 @@ public class MenuController extends BaseController{
     @ApiOperation(value = "删除菜单信息",notes = MenuNote.DELETE_NOTE)
     public GeneralVo deleteMenu(HttpServletRequest request, HttpServletResponse response,@RequestBody MenuVo menuVo){
         try{
-            logger.info("删除菜单，入参为：{}",menuVo);
+            log.info("删除菜单，入参为：{}",menuVo);
             initOperateParam(request,response,menuVo,Constant.UPDATE_TYPE);
             int result = menuService.deleteMenu(menuVo);
             return Constant.OPERATE_SUCCESS == result?new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,null):new GeneralVo(ErrorListEnum.OPERATE_FAIL,null);
@@ -87,7 +89,7 @@ public class MenuController extends BaseController{
     @ApiOperation(value = "修改菜单信息",notes = MenuNote.UPDATE_NOTE)
     public GeneralVo updateMenuName(HttpServletRequest request, HttpServletResponse response,@RequestBody MenuVo menuVo){
         try{
-            logger.info("修改菜单名称，入参为:{}",menuVo);
+            log.info("修改菜单名称，入参为:{}",menuVo);
             if(null == menuVo.getMenuName() || Constant.EMPTY_INTEGER_VALUE == menuVo.getMenuName().trim().length()){
                 return new GeneralVo(ErrorListEnum.MENU_NAME_NOT_BLANK,null);
             }
@@ -117,7 +119,7 @@ public class MenuController extends BaseController{
     public ListPageVo queryMenuListByPage(@RequestBody MenuDto menuDto){
         try{
             menuDto.build();
-            logger.info("分页查询菜单信息，入参为：{}",menuDto);
+            log.info("分页查询菜单信息，入参为：{}",menuDto);
             return new ListPageVo(ErrorListEnum.OPERATE_SUCCESS,menuService.queryMenuListByPage(menuDto),menuDto.getPageInfo());
         }catch(Exception e){
             e.printStackTrace();

@@ -2,6 +2,7 @@ package com.jiaxin.pda.controller;
 
 
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.jiaxin.pda.constant.Constant;
 import com.jiaxin.pda.entity.ListPageVo;
 import com.jiaxin.pda.entity.dto.UserDto;
@@ -16,6 +17,7 @@ import com.jiaxin.pda.util.JWT;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +35,7 @@ import java.util.List;
 @RestController
 @Api(value = "user",tags = {"user_controller"})
 @RequestMapping("/user")
+@Slf4j
 public class UserController extends BaseController{
     @Autowired
     private IUserService userService;
@@ -49,7 +52,7 @@ public class UserController extends BaseController{
     @ApiOperation(value = "根据ID查找用户信息")
     public GeneralVo findById(@PathVariable("id") String id){
         try{
-            logger.info("用户的ID为 {}",id);
+            log.info("用户的ID为 {}",id);
             UserVo userVo = userService.findUserById(id);
             if(null == userVo){
                 return new GeneralVo(ErrorListEnum.NOT_EXIST,null);
@@ -93,7 +96,7 @@ public class UserController extends BaseController{
     @ApiImplicitParam(name = "userVo", value = UserNote.REGISTER_VALUE, required = true, dataType = "UserVo")
     public GeneralVo insertUser(HttpServletRequest request, HttpServletResponse response,@RequestBody UserVo userVo){
         try{
-            logger.info("插入用户-参数,{}",userVo);
+            log.info("插入用户-参数,{}",userVo);
             //用户名不能为空/重复
             if(null == userVo.getUserName() || userVo.getUserName().trim().length() == 0){
                 return new GeneralVo(ErrorListEnum.USERNAME_NOT_EMPTY,null);
@@ -129,7 +132,7 @@ public class UserController extends BaseController{
     @ApiOperation(value = "修改用户信息",notes = UserNote.UPDATE_USER_NAME_NOTE)
     public GeneralVo updateUserInfo(HttpServletRequest request, HttpServletResponse response,@RequestBody @Valid UserVo userVo, BindingResult result){
         try{
-            logger.info("修改用户-参数,{}",userVo);
+            log.info("修改用户-参数,{}",userVo);
             //用户名不能为空/重复
             if(null == userVo.getUserName() || userVo.getUserName().trim().length() == 0){
                 return new GeneralVo(ErrorListEnum.USERNAME_NOT_EMPTY,null);
@@ -338,7 +341,7 @@ public class UserController extends BaseController{
             UserPrivilegeVo userPrivilegeVo = userService.selectByUserId(userVo.getUserId());
             if (null != userPrivilegeVo) {
                 List<RolePrivilegeVo> rolePrivilegeVoList = roleService.selectByRoleId(Integer.valueOf(userPrivilegeVo.getRoleId()));
-                if (null != rolePrivilegeVoList && Constant.EMPTY_INTEGER_VALUE < rolePrivilegeVoList.size()) {
+                if (CollectionUtil.isNotEmpty(rolePrivilegeVoList)) {
                     List<String> menuIdList = new ArrayList<>();
                     for (RolePrivilegeVo rolePrivilegeVo : rolePrivilegeVoList) {
                         int menuId = Integer.valueOf(rolePrivilegeVo.getMenuId()).intValue();

@@ -7,6 +7,7 @@ import com.jiaxin.pda.service.FileService;
 import com.jiaxin.pda.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @Api(value = "file",tags = {"file_controller"})
 @RequestMapping("/file")
+@Slf4j
 public class FileController extends BaseController{
 
     @Autowired
@@ -33,7 +35,7 @@ public class FileController extends BaseController{
     @PostMapping("/uploadImage")
     public GeneralVo uploadImage(HttpServletRequest request, HttpServletResponse response, @RequestParam("file") MultipartFile file, @RequestHeader("token") String token) {
         try{
-            logger.info("上传图片");
+            log.info("上传图片");
             int userId = getCurrentUserId(request,response);
             if(file.getSize() > Constant.TEN_MB){
                 return new GeneralVo(ErrorListEnum.PIC_TOO_BIG,null);
