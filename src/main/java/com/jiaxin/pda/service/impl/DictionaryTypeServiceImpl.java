@@ -52,7 +52,7 @@ public class DictionaryTypeServiceImpl implements IDictionaryTypeService {
         int result = dictionaryTypeMapper.deleteDictionaryType(dictionaryTypeVo);
         //删掉字典项
         if(Constant.OPERATE_SUCCESS == result){
-            dictionaryMapper.deleteDictionaryByTypeId(dictionaryTypeVo.getUuid());
+            result = dictionaryMapper.deleteDictionaryByTypeId(dictionaryTypeVo.getUuid());
         }
         return result;
     }

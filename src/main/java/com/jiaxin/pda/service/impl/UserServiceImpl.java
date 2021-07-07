@@ -15,6 +15,7 @@ import com.jiaxin.pda.service.IUserService;
 import com.jiaxin.pda.util.GenerateUtil;
 import com.jiaxin.pda.util.JWT;
 import com.jiaxin.pda.util.Md5Util;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,8 @@ import java.util.concurrent.TimeUnit;
  * @author milo
  */
 @Service
+@Slf4j
 public class UserServiceImpl implements IUserService {
-    private final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     /**
      * 用户映射类
      */
@@ -51,10 +52,10 @@ public class UserServiceImpl implements IUserService {
         UserVo userVo;
         boolean flag =  redisTemplate.opsForHash().hasKey(id, Constant.USER_KEY);
         if(flag){
-            logger.info("从redis中获得数据");
+            log.info("从redis中获得数据");
             userVo= (UserVo) redisTemplate.opsForHash().get(id,Constant.USER_KEY);
         }else{
-            logger.info("从mysql中获得数据");
+            log.info("从mysql中获得数据");
             userVo = userMapper.findUserById(id);
             redisTemplate.opsForHash().put(id,Constant.USER_KEY,userVo);
             redisTemplate.expire(id,Constant.VALID_PERIOD,TimeUnit.SECONDS);
@@ -71,7 +72,7 @@ public class UserServiceImpl implements IUserService {
         //成功将数据插入mysql数据库后，再将对象放到redis中
         if(Constant.OPERATE_SUCCESS == result){
             redisTemplate.opsForHash().put(userVo.getId(),Constant.USER_KEY,userVo);
-            logger.info("将对象放入redis");
+            log.info("将对象放入redis");
         }
         return result;
     }
@@ -83,7 +84,7 @@ public class UserServiceImpl implements IUserService {
         //成功将数据插入mysql数据库后，再将对象放到redis中
         if(Constant.OPERATE_SUCCESS == result){
             redisTemplate.opsForHash().delete(userVo.getId(),Constant.USER_KEY);
-            logger.info("从redis中删掉该对象");
+            log.info("从redis中删掉该对象");
         }
         return result;
     }
@@ -128,7 +129,7 @@ public class UserServiceImpl implements IUserService {
                 result = userTokenMapper.insertUserToken(userTokenVo);
                 if(Constant.OPERATE_SUCCESS == result){
                     redisTemplate.opsForHash().put(userTokenVo.getUserToken(),Constant.USER_TOKEN_KEY,userTokenVo);
-                    logger.info("将对象放入redis");
+                    log.info("将对象放入redis");
                 }
                 return token;
             }else{
@@ -149,7 +150,7 @@ public class UserServiceImpl implements IUserService {
             result = userTokenMapper.deleteUserToken(queryResult);
             if(Constant.OPERATE_SUCCESS == result){
                 redisTemplate.opsForHash().delete(token,Constant.USER_TOKEN_KEY);
-                logger.info("将对象从redis中移除");
+                log.info("将对象从redis中移除");
             }
             return result;
         }else{
@@ -161,11 +162,11 @@ public class UserServiceImpl implements IUserService {
     public List<UserVo> queryUserListByPage(UserDto userDto) {
         List<UserVo> userVoList;
         if(redisTemplate.hasKey(Constant.USER_LIST_KEY + userDto.getUserName()) && redisTemplate.hasKey(Constant.LIST_PAGE_KEY)){
-            logger.info("从redis中获得数据");
+            log.info("从redis中获得数据");
             userVoList = redisTemplate.opsForList().range(Constant.USER_LIST_KEY+userDto.getUserName(),0,-1);
             userDto.setPageInfo((Page) redisTemplate.opsForHash().get(Constant.LIST_PAGE_KEY,Constant.USER_LIST_KEY+userDto.getUserName()));
         }else{
-            logger.info("从mysql中获得数据");
+            log.info("从mysql中获得数据");
             userVoList = userMapper.queryUserListByPage(userDto);
             redisTemplate.opsForList().leftPushAll(Constant.USER_LIST_KEY + userDto.getUserName(),userVoList);
             redisTemplate.expire(Constant.USER_LIST_KEY + userDto.getUserName(),Constant.VALID_PERIOD,TimeUnit.SECONDS);
@@ -212,6 +213,6 @@ public class UserServiceImpl implements IUserService {
     private void rePutUserObject(String userId){
         redisTemplate.opsForHash().delete(userId,Constant.USER_KEY);
         redisTemplate.opsForHash().put(userId,Constant.USER_KEY,userMapper.findUserById(userId));
-        logger.info("将对象重新放入redis");
+        log.info("将对象重新放入redis");
     }
 }

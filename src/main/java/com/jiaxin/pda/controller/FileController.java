@@ -28,19 +28,16 @@ public class FileController extends BaseController{
 
     @Autowired
     private FileService fileService;
-    @Autowired
-    private IUserService userService;
 
     @ApiOperation(value = "上传图片", notes = "上传图片")
     @PostMapping("/uploadImage")
     public GeneralVo uploadImage(HttpServletRequest request, HttpServletResponse response, @RequestParam("file") MultipartFile file, @RequestHeader("token") String token) {
         try{
             log.info("上传图片");
-            int userId = getCurrentUserId(request,response);
             if(file.getSize() > Constant.TEN_MB){
                 return new GeneralVo(ErrorListEnum.PIC_TOO_BIG,null);
             }else{
-                String result = fileService.insertFile(file,userId);
+                String result = fileService.insertFile(file,getCurrentUserId(request,response));
                 return new GeneralVo(ErrorListEnum.OPERATE_SUCCESS,result);
             }
         }catch(Exception e){
