@@ -121,13 +121,13 @@ public class DictionaryControllerTest extends AbstractTestNGSpringContextTests {
     }
 
 
-    @Test(enabled = false)
+    @Test
     public void insertDictionaryItem() throws Exception{
         logger.info("插入字典信息");
         //设置查询条件
         JSONObject dictionaryTypeCondition = new JSONObject();
         dictionaryTypeCondition.put("itemName","饮料");
-        dictionaryTypeCondition.put("orderNo",3);
+        dictionaryTypeCondition.put("orderNo",4);
         dictionaryTypeCondition.put("dictionaryTypeId",3);
         logger.info("插入字典信息条件: " + dictionaryTypeCondition.toJSONString());
         //执行测试

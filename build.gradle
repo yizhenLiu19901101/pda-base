@@ -49,9 +49,9 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
     compile("org.springframework.boot:spring-boot-starter-tomcat:${springBootVersion}")
     //redis数据库
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis
+    //https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '1.5.13.RELEASE'
-    compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '1.1.1'
+    compile group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.2.0'
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.2.RELEASE'
     compile 'com.alibaba:druid-spring-boot-starter:1.1.10'

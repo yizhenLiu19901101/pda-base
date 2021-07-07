@@ -1,6 +1,8 @@
 package com.jiaxin.pda.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.jiaxin.pda.entity.dto.DictionaryDto;
+import com.jiaxin.pda.entity.po.DictionaryPO;
 import com.jiaxin.pda.entity.vo.DictionaryTypeVo;
 import com.jiaxin.pda.entity.vo.DictionaryVo;
 import org.apache.ibatis.annotations.Mapper;
@@ -12,14 +14,8 @@ import java.util.List;
  * @author milo
  */
 @Mapper
-public interface DictionaryMapper {
+public interface DictionaryMapper extends BaseMapper<DictionaryPO> {
 
-    /**
-     * 插入字典项
-     * @param dictionaryVo 字典对象
-     * @return 返回结果
-     */
-    int insertDictionaryItem(DictionaryVo dictionaryVo);
 
     /**
      * 查询字典表中最大的ID

@@ -3,12 +3,14 @@ package com.jiaxin.pda.service.impl;
 import com.jiaxin.pda.constant.Constant;
 import com.jiaxin.pda.entity.dto.DictionaryDto;
 import com.jiaxin.pda.entity.dto.DictionaryTypeDto;
+import com.jiaxin.pda.entity.po.DictionaryPO;
 import com.jiaxin.pda.entity.vo.DictionaryTypeVo;
 import com.jiaxin.pda.entity.vo.DictionaryVo;
 import com.jiaxin.pda.mapper.DictionaryMapper;
 import com.jiaxin.pda.mapper.DictionaryTypeMapper;
 import com.jiaxin.pda.service.IDictionaryTypeService;
 import com.jiaxin.pda.util.GenerateUtil;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -70,9 +72,13 @@ public class DictionaryTypeServiceImpl implements IDictionaryTypeService {
 
     @Override
     public int insertDictionaryItem(DictionaryVo dictionaryVo) {
-        dictionaryVo.setId(GenerateUtil.generateRandomString());
-        dictionaryVo.setUuid(dictionaryMapper.selectMaxUuid() + Constant.INCREASE_PACE);
-        return dictionaryMapper.insertDictionaryItem(dictionaryVo);
+        DictionaryPO dictionaryPo = new DictionaryPO();
+        //属性复制
+        BeanUtils.copyProperties(dictionaryVo,dictionaryPo);
+        dictionaryPo.setDeleteFlag(0);
+        dictionaryPo.setId(GenerateUtil.generateRandomString());
+        dictionaryPo.setUuid(dictionaryMapper.selectMaxUuid() + Constant.INCREASE_PACE);
+        return dictionaryMapper.insert(dictionaryPo);
     }
 
     @Override
